@@ -282,6 +282,7 @@ const Contact = () => {
               <input type="email" placeholder="Enter your email" required />
               <button type="submit" className="btn btn-primary">Subscribe</button>
             </form>
+            <h1>my name </h1>
           </div>
         </div>
       </section>
