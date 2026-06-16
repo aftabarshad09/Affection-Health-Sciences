@@ -1,0 +1,22 @@
+/* App Styles */
+main {
+  min-height: calc(100vh - 200px);
+}
+
+/* Add smooth scroll behavior for links */
+a {
+  scroll-behavior: smooth;
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  main {
+    min-height: calc(100vh - 150px);
+  }
+}
