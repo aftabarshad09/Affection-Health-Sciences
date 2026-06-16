@@ -1,15 +1,12 @@
 .hero {
   width: 100%;
   min-height: 100vh;
-  background: #f7fafb;
   overflow: hidden;
   padding: 2rem 0;
   margin-top: 3.2rem;
+
 }
 
-/* =========================
-   GRID
-========================= */
 
 .hero-grid {
   display: grid;
@@ -23,9 +20,8 @@
   position: relative;
 }
 
-/* =========================
-   MAIN BANNER
-========================= */
+
+
 .div1 {
   grid-column: 1 / span 10;
   grid-row: 1 / span 4;
@@ -34,7 +30,7 @@
   position: relative;
   background: #fff;
   width: 100%;
-  height: 290px;   /* fixed height as you want */
+  height: 290px;
 }
 
 .banner-container {
@@ -53,13 +49,14 @@
 }
 
 .hero-main-img {
-  width: 100%;   /* your exact banner width */
-  height: 290px;   /* your exact banner height */
+  width: 100%;
+  height: 290px;
   max-width: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
 }
+
 .banner-dots {
   position: absolute;
   right: 24px;
@@ -82,12 +79,9 @@
 .active-dot {
   width: 28px;
   border-radius: 50px;
-  background: white;
 }
 
-/* =========================
-   LOGO
-========================= */
+
 
 .div2 {
   position: absolute;
@@ -99,9 +93,8 @@
   border-radius: 50%;
   overflow: hidden;
   z-index: 10;
-
   backdrop-filter: blur(14px);
-  border: 5px solid rgba(255,255,255,0.9);
+  border: 5px solid rgba(255, 255, 255, 0.9);
 }
 
 .circle-img {
@@ -110,44 +103,45 @@
   object-fit: cover;
 }
 
-/* =========================
-   CARDS
-========================= */
+
 
 .div3,
-.div4,
 .div5,
-.div6,
-.div7 {
+.div6 {
   position: relative;
   overflow: hidden;
   border-radius: 18px;
-  background: white;
   cursor: pointer;
+  transition: transform 0.4s ease;
 }
+
+.div3:hover,
+.div5:hover,
+.div6:hover {
+  transform: translateY(-3px);
+}
+
 
 .div3 {
   grid-column: 7 / span 4;
   grid-row: 5 / span 2;
 }
 
+
 .div4 {
   grid-column: 7 / span 4;
   grid-row: 7 / span 2;
 }
 
+
 .div5 {
   grid-column: 4;
-  grid-row: 7 / span 2;
+  grid-row: 7 / span 3;
 }
+
 
 .div6 {
-  grid-column: 5;
-  grid-row: 6 / span 3;
-}
-
-.div7 {
-  grid-column: 6;
+  grid-column: 5 / span 2;
   grid-row: 6 / span 3;
 }
 
@@ -162,13 +156,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-
   padding: 16px;
   color: white;
-  background: linear-gradient(
-    transparent,
-    rgba(0,0,0,0.75)
-  );
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
 }
 
 .image-overlay p {
@@ -178,21 +168,75 @@
 
 .image-overlay.small {
   padding: 12px;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-/* =========================
-   TEXT
-========================= */
 
-.div8 {
-  grid-column: 1 / span 4;
-  grid-row: 5 / span 2;
+
+.div4.text-block {
+  grid-column: 7 / span 4;
+  grid-row: 7 / span 2;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 8px;
 
+  padding: 1.4rem 1.6rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  border-left: 4px solid; 
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  transition: background 0.5s;
+}
+
+.text-block-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+}
+
+.text-block-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #13232f;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.text-block-body {
+  font-size: 0.82rem;
+  color: #5f6d78;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.text-block-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.text-block-list li {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+
+.div8 {
+  grid-column: 1 / span 4;
+  grid-row: 5 / span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 1rem;
 }
 
@@ -207,17 +251,13 @@
 .hero-subtitle {
   color: #5f6d78;
   font-size: 1rem;
-  
 }
 
-/* =========================
-   BUTTON
-========================= */
+
 
 .div9 {
   grid-column: 1 / span 3;
   grid-row: 7;
-
   display: flex;
   align-items: center;
   padding-left: 1rem;
@@ -225,81 +265,43 @@
 
 .browse-btn {
   position: relative;
-
   padding: 15px 34px;
-
   border: 1px solid rgba(20, 20, 20, 0.4);
   border-radius: 999px;
-
-  background: rgba(255,255,255,.55);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(18px);
-
   color: #13232f;
   font-weight: 700;
-  letter-spacing: .5px;
-
+  letter-spacing: 0.5px;
   cursor: pointer;
   overflow: hidden;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .browse-btn::before {
   content: "";
-
   position: absolute;
   top: -100%;
   left: -120%;
-
   width: 60%;
   height: 300%;
-
-  background: linear-gradient(
-    transparent,
-    rgba(255,255,255,.8),
-    transparent
-  );
-
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.8), transparent);
   transform: rotate(25deg);
-  transition: .8s;
+  transition: 0.8s;
 }
 
 .browse-btn:hover::before {
   left: 140%;
 }
 
-/* =========================
-   SOCIALS
-========================= */
 
 .div10 {
   grid-column: 1 / span 2;
   grid-row: 8;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* border-radius: 999px;
-
-  background: #101820; */
 }
-
-/* .social-icons {
-  display: flex;
-  gap: 24px;
-}
-
-.social-icons a {
-  color: white;
-  font-size: 1.3rem;
-  transition: .3s;
-}
-
-.social-icons a:hover {
-  color: #5ce6d8;
-} */
 
 .social-pill {
   display: flex;
@@ -320,25 +322,8 @@
   transform: translateY(-3px);
 }
 
-/* =========================
-   CARD HOVER
-========================= */
-
-.div3:hover,
-.div4:hover,
-.div5:hover,
-.div6:hover,
-.div7:hover {
-  transform: translateY(-3px);
-  transition: .4s ease;
-}
-
-/* =========================
-   TABLET
-========================= */
 
 @media (max-width: 1100px) {
-
   .hero-grid {
     height: auto;
     min-height: 1200px;
@@ -347,18 +332,10 @@
   .hero-title {
     font-size: 2.4rem;
   }
-
-  .banner-content h2 {
-    font-size: 2.2rem;
-  }
 }
 
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 768px) {
-
   .hero {
     padding: 1rem 0 2rem;
   }
@@ -372,29 +349,21 @@
     padding: 0 1rem;
   }
 
-  /* Banner First */
-
   .div1 {
     height: 420px;
     order: 1;
   }
-
-  /* Logo */
 
   .div2 {
     position: relative;
     top: auto;
     left: auto;
     transform: none;
-
     margin: -70px auto 0;
     width: 120px;
     height: 120px;
-
     order: 2;
   }
-
-  /* Text directly after banner */
 
   .div8 {
     order: 3;
@@ -407,7 +376,7 @@
   }
 
   .hero-subtitle {
-    font-size: .95rem;
+    font-size: 0.95rem;
   }
 
   .div9 {
@@ -421,42 +390,23 @@
     min-height: 60px;
   }
 
-  .div3 {
+  .div4.text-block {
     order: 6;
-    height: 220px;
+    min-height: 180px;
   }
 
-  .div4 {
+  .div3 {
     order: 7;
     height: 220px;
   }
 
   .div5 {
     order: 8;
-    height: 180px;
+    height: 220px;
   }
 
   .div6 {
     order: 9;
     height: 180px;
-  }
-
-  .div7 {
-    order: 10;
-    height: 180px;
-  }
-
-  .banner-content {
-    left: 20px;
-    right: 20px;
-    bottom: 30px;
-  }
-
-  .banner-content h2 {
-    font-size: 1.8rem;
-  }
-
-  .banner-content p {
-    font-size: .95rem;
   }
 }
