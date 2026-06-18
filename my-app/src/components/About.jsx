@@ -26,6 +26,10 @@ const About = () => {
 
   return (
     <section className="about-home">
+      <span className="about-home__shape about-home__shape--triangle-1" />
+      <span className="about-home__shape about-home__shape--triangle-2" />
+      <span className="about-home__shape about-home__shape--blob" />
+      
       <div className="about-home__inner">
         {/* Left: text */}
         <div className="about-home__text">
