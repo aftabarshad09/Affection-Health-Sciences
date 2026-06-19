@@ -1,271 +1,108 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaPlus, FaMinus } from "react-icons/fa";
+import { useState, useRef } from "react";
 import "./FAQ.css";
 
-// FAQ Data - Product focused for supplement brand
-const faqData = [
+const FAQS = [
   {
-    id: 1,
-    category: "Products",
-    question: "What makes Affection supplements different?",
-    answer:
-      "Our supplements are scientifically formulated using premium, bioavailable ingredients. Each product undergoes rigorous third-party testing for purity and potency. We prioritize clean, transparent formulas with no unnecessary fillers or artificial additives.",
+    q: "Are your products lab-tested before release?",
+    a: "Every batch is tested by an independent, third-party lab before it ships — for potency, purity, and contaminants. Certificates of analysis are available on request for any product.",
   },
   {
-    id: 2,
-    category: "Products",
-    question: "Are your supplements suitable for all ages?",
-    answer:
-      "We offer specialized formulations for different life stages. Our baby nutrition range is designed for infants and toddlers, while our women's health line supports reproductive wellness. Always consult with a healthcare professional before starting any supplement regimen.",
+    q: "Do you use artificial fillers, colors, or preservatives?",
+    a: "No. Our formulations avoid artificial fillers, synthetic colors, and unnecessary preservatives. If an ingredient is listed, it's there because it serves the formula — not the shelf life.",
   },
   {
-    id: 3,
-    category: "Products",
-    question: "What is the difference between Whey Protein and Plant Protein?",
-    answer:
-      "Our Whey Protein is rapidly absorbed and ideal for post-workout recovery, containing all essential amino acids. We also offer plant-based alternatives derived from pea and brown rice protein for those with dairy sensitivities or plant-based preferences.",
+    q: "How long does delivery take within Pakistan?",
+    a: "Orders within major cities typically arrive in 2–4 business days. Other regions may take 4–7 business days depending on courier coverage. You'll receive tracking details as soon as your order ships.",
   },
   {
-    id: 4,
-    category: "Products",
-    question: "How should I take Glumin supplements?",
-    answer:
-      "Glumin (Glutamine) is best taken with meals or post-workout. The recommended dosage is 5-10g daily, mixed with water or your favorite beverage. Athletes often split the dose between morning and post-training for optimal recovery.",
+    q: "Can I return a product if it doesn't work for me?",
+    a: "Yes — unopened products can be returned within 14 days of delivery for a full refund. Opened products are eligible for a one-time replacement if there's a genuine quality concern.",
   },
   {
-    id: 5,
-    category: "Nutrition",
-    question: "Why is Zinc & Magnesium important for health?",
-    answer:
-      "Zinc supports immune function, protein synthesis, and wound healing, while Magnesium aids muscle function, sleep quality, and energy production. Together they form a powerhouse combination for athletic performance and overall wellness.",
+    q: "Are your supplements suitable for daily long-term use?",
+    a: "Most of our formulations are designed for sustained daily use. That said, we recommend reviewing the dosage guidance on each product page and checking with a healthcare provider if you have an existing condition.",
   },
   {
-    id: 6,
-    category: "Nutrition",
-    question: "What is Hepatic Nutrition support?",
-    answer:
-      "Our Hepatic Nutrition line is specially formulated to support liver health. It contains Milk Thistle, Artichoke Extract, and essential B-vitamins that promote natural detoxification pathways and maintain healthy liver function.",
-  },
-  {
-    id: 7,
-    category: "Nutrition",
-    question: "Are these supplements safe for long-term use?",
-    answer:
-      "Our supplements are manufactured in GMP-certified facilities and follow strict quality guidelines. For long-term use, we recommend cycling certain products and consulting with your healthcare provider to ensure they align with your individual health needs.",
-  },
-  {
-    id: 8,
-    category: "Nutrition",
-    question: "What is the recommended daily intake?",
-    answer:
-      "Recommended dosages vary by product and individual needs. Our packaging includes clear dosage instructions, and we recommend starting with the minimum effective dose. Always follow the label directions and consult your healthcare provider.",
+    q: "Do you offer bulk pricing for clinics or retailers?",
+    a: "Yes. We work with clinics, gyms, and retail partners on volume pricing and custom packaging. Reach out through the contact form and our team will follow up with a tailored quote.",
   },
 ];
 
-// Category filter options
-const categories = ["All", "Products", "Nutrition"];
+function FaqItem({ item, index, isOpen, onToggle }) {
+  const panelRef = useRef(null);
 
-const FAQItem = ({ item, isOpen, onToggle }) => {
   return (
-    <motion.div
-      className={`faq-item ${isOpen ? "open" : ""}`}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      layout
-    >
-      <motion.button
-        className="faq-question"
-        onClick={() => onToggle(item.id)}
+    <div className={`faq-item ${isOpen ? "is-open" : ""}`}>
+      <button
+        type="button"
+        className="faq-item__trigger"
         aria-expanded={isOpen}
-        whileHover={{ x: 4 }}
-        whileTap={{ scale: 0.99 }}
+        aria-controls={`faq-panel-${index}`}
+        id={`faq-trigger-${index}`}
+        onClick={() => onToggle(index)}
       >
-        <span className="faq-question-text">{item.question}</span>
-        <motion.span
-          className="faq-icon"
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {isOpen ? <FaMinus /> : <FaPlus />}
-        </motion.span>
-      </motion.button>
+        <span className="faq-item__index">{String(index + 1).padStart(2, "0")}</span>
+        <span className="faq-item__question">{item.q}</span>
+        <span className="faq-item__icon" aria-hidden="true">
+          <span className="faq-item__icon-line faq-item__icon-line--h" />
+          <span className="faq-item__icon-line faq-item__icon-line--v" />
+        </span>
+      </button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="faq-answer-wrapper"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <div className="faq-answer">
-              <p>{item.answer}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+      <div
+        id={`faq-panel-${index}`}
+        role="region"
+        aria-labelledby={`faq-trigger-${index}`}
+        className="faq-item__panel"
+        ref={panelRef}
+        style={{
+          maxHeight: isOpen ? `${panelRef.current?.scrollHeight ?? 400}px` : "0px",
+        }}
+      >
+        <p className="faq-item__answer">{item.a}</p>
+      </div>
+    </div>
   );
-};
+}
 
-const FAQ = () => {
-  const [openId, setOpenId] = useState(null);
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
-  const sectionRef = useRef(null);
+export default function FaqSection() {
+  const [openIndex, setOpenIndex] = useState(0);
 
-  // Toggle FAQ item
-  const handleToggle = (id) => {
-    setOpenId(openId === id ? null : id);
-  };
-
-  // Filter FAQs based on category and search
-  const filteredFAQs = faqData.filter((faq) => {
-    const matchesCategory =
-      activeCategory === "All" || faq.category === activeCategory;
-    const matchesSearch = faq.question
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  // Close FAQ when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (sectionRef.current && !sectionRef.current.contains(e.target)) {
-        setOpenId(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  // Animation variants for container
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+  const handleToggle = (index) => {
+    setOpenIndex((prev) => (prev === index ? -1 : index));
   };
 
   return (
-    <section className="faq-section" ref={sectionRef} id="faqs">
-      <div className="faq-container">
-        {/* Header */}
-        <motion.div
-          className="faq-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="faq-badge">FAQ</div>
-          <h2 className="faq-title">Frequently Asked Questions</h2>
-          <p className="faq-subtitle">
-            Find answers to common questions about our supplements, nutrition
-            guidance, and product usage.
+    <section className="faq-section" aria-labelledby="faq-heading">
+      <div className="faq-section__inner">
+        <div className="faq-section__intro">
+          <span className="faq-section__eyebrow">FAQ</span>
+          <h2 id="faq-heading" className="faq-section__heading">
+            Questions,<br />answered.
+          </h2>
+          <p className="faq-section__lede">
+            Everything we get asked most — about formulation, shipping, and what happens after you order. Can't find it here? Reach out directly.
           </p>
-        </motion.div>
+          <a href="#contact" className="faq-section__contact-link">
+            <span>Ask us directly</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3.5 8H12.5M12.5 8L8.5 4M12.5 8L8.5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
 
-        {/* Filters */}
-        <motion.div
-          className="faq-controls"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="faq-categories">
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                className={`faq-category-btn ${
-                  activeCategory === category ? "active" : ""
-                }`}
-                onClick={() => setActiveCategory(category)}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </div>
-
-          <div className="faq-search">
-            <input
-              type="text"
-              placeholder="Search questions..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="faq-search-input"
+        <div className="faq-section__list">
+          {FAQS.map((item, index) => (
+            <FaqItem
+              key={item.q}
+              item={item}
+              index={index}
+              isOpen={openIndex === index}
+              onToggle={handleToggle}
             />
-          </div>
-        </motion.div>
-
-        {/* FAQ List */}
-        <motion.div
-          className="faq-list"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {filteredFAQs.length > 0 ? (
-            filteredFAQs.map((faq) => (
-              <motion.div key={faq.id} variants={itemVariants}>
-                <FAQItem
-                  item={faq}
-                  isOpen={openId === faq.id}
-                  onToggle={handleToggle}
-                />
-              </motion.div>
-            ))
-          ) : (
-            <motion.div
-              className="faq-empty"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <p>No questions found matching your criteria.</p>
-            </motion.div>
-          )}
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          className="faq-cta"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <p className="faq-cta-text">
-            Still have questions? We're here to help.
-          </p>
-          <motion.a
-            href="#contact"
-            className="faq-cta-btn"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Contact Our Nutrition Experts
-          </motion.a>
-        </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default FAQ;
+}

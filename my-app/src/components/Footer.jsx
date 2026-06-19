@@ -1,108 +1,124 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaInstagram, FaTwitter, FaFacebookF, FaLinkedinIn, FaEnvelope, FaPhone, FaMapMarkerAlt, FaArrowUp } from 'react-icons/fa';
-import './Footer.css';
+import { Link } from "react-router-dom";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+} from "react-icons/fa";
+import logo from "../assets/logo.png"; // adjust path to match your project
+import "./Footer.css";
 
-const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+const NAV_LINKS = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "Who We Are" },
+  { to: "/products", label: "Our Products" },
+  { to: "/blogs", label: "Wellness Blogs" },
+  { to: "/careers", label: "Careers" },
+  { to: "/contact", label: "Contact Us" },
+];
+
+const SOCIALS = [
+  { href: "https://facebook.com", label: "Facebook", icon: FaFacebookF },
+  { href: "https://instagram.com", label: "Instagram", icon: FaInstagram },
+  { href: "https://linkedin.com", label: "LinkedIn", icon: FaLinkedinIn },
+  { href: "https://twitter.com", label: "Twitter", icon: FaTwitter },
+];
+
+export default function Footer() {
+  const year = new Date().getFullYear();
 
   return (
     <footer className="footer">
+      <div className="footer-bg" aria-hidden="true">
+        <span className="footer-circle footer-circle--one" />
+        <span className="footer-circle footer-circle--two" />
+        <span className="footer-circle footer-circle--three" />
+        <span className="footer-circle footer-circle--four" />
+      </div>
+
       <div className="footer-inner">
-        <div className="footer-grid">
-          {/* Brand Column */}
-          <div className="footer-brand">
+        <div className="footer-top">
+          <div className="footer-main">
             <Link to="/" className="footer-logo">
+              <img src={logo} alt="Affection Health Sciences" className="footer-logo-img" />
               <span className="footer-logo-text">
                 <span className="footer-logo-main">Affection</span>
                 <span className="footer-logo-sub">Health Sciences</span>
               </span>
             </Link>
-            <p className="footer-description">
-              Delivering premium nutritional solutions for babies, women and families. 
-              Scientifically formulated supplements designed to support growth, 
-              wellness and a healthier future.
+
+            <p className="footer-tagline">
+              Wellness, formulated with intention — research-led products made
+              for people who read the label.
             </p>
-            <div className="footer-social">
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <FaInstagram />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <FaTwitter />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <FaFacebookF />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <FaLinkedinIn />
-              </a>
+
+            <ul className="footer-socials" aria-label="Follow us on social media">
+              {SOCIALS.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="footer-social-link">
+                    <s.icon size={15} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer-cols">
+            <nav className="footer-col" aria-label="Footer navigation">
+              <h3 className="footer-col-title">Explore</h3>
+              <ul>
+                {NAV_LINKS.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} className="footer-link">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className="footer-col" itemScope itemType="https://schema.org/PostalAddress">
+              <h3 className="footer-col-title">Contact</h3>
+              <ul className="footer-contact-list">
+                <li>
+                  <FaMapMarkerAlt aria-hidden="true" />
+                  <span itemProp="addressLocality">Islamabad, Pakistan</span>
+                </li>
+                <li>
+                  <FaPhoneAlt aria-hidden="true" />
+                  <a href="tel:+923001234567">+92 300 1234567</a>
+                </li>
+                <li>
+                  <FaEnvelope aria-hidden="true" />
+                  <a href="mailto:hello@affectionhealthsciences.com">hello@affectionhealthsciences.com</a>
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">Who We Are</Link></li>
-              <li><Link to="/products">Our Products</Link></li>
-              <li><Link to="/blogs">Wellness Blogs</Link></li>
-              <li><Link to="/careers">Careers</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
-            </ul>
-          </div>
-
-          {/* Products */}
-          <div className="footer-links">
-            <h3>Our Products</h3>
-            <ul>
-              <li><Link to="/products/baby-nutrition">Baby Nutrition</Link></li>
-              <li><Link to="/products/whey-protein">Whey Protein</Link></li>
-              <li><Link to="/products/glumin">Glumin</Link></li>
-              <li><Link to="/products/zinc-magnesium">Zinc & Magnesium</Link></li>
-              <li><Link to="/products/womens-health">Women's Health</Link></li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="footer-contact">
-            <h3>Get in Touch</h3>
-            <ul>
-              <li>
-                <FaMapMarkerAlt />
-                <span>123 Wellness Avenue, Health City, HC 12345</span>
-              </li>
-              <li>
-                <FaPhone />
-                <a href="tel:+1234567890">+1 (234) 567-890</a>
-              </li>
-              <li>
-                <FaEnvelope />
-                <a href="mailto:info@affectionhealth.com">info@affectionhealth.com</a>
-              </li>
-            </ul>
+          <div className="footer-map" aria-label="Affection Health Sciences location">
+            <iframe
+              title="Affection Health Sciences — Islamabad location"
+              src="https://www.google.com/maps?q=Islamabad,Pakistan&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Affection Health Sciences. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <Link to="/privacy-policy">Privacy Policy</Link>
-            <Link to="/terms-of-service">Terms of Service</Link>
-            <Link to="/shipping-policy">Shipping Policy</Link>
+          <p className="footer-copyright">© {year} Affection Health Sciences. All rights reserved.</p>
+          <div className="footer-legal">
+            <Link to="/privacy">Privacy Policy</Link>
+            <span className="footer-legal-dot" aria-hidden="true">•</span>
+            <Link to="/terms">Terms of Service</Link>
           </div>
         </div>
       </div>
-
-      {/* Scroll to Top Button */}
-      <button className="scroll-to-top" onClick={scrollToTop} aria-label="Scroll to top">
-        <FaArrowUp />
-      </button>
     </footer>
   );
-};
-
-export default Footer;
+}

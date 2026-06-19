@@ -1,9 +1,9 @@
 export const blogMenuItems = [
-  { label: "Custom Web Development", slug: "custom-web-development" },
   { label: "BCAAs and Liver Health", slug: "bcaas-liver-health-cirrhosis-management" },
   { label: "MCT Oil for Kids", slug: "mct-oil-kids-weight-gain-nutritional-support" },
   { label: "Folic Acid vs L-Methylfolate", slug: "folic-acid-vs-l-methylfolate-pregnancy" },
   { label: "Complete Adult Nutrition", slug: "complete-adult-nutrition-energid-plus" },
+  { label: "NAFLD in Children", slug: "nafld-children-maternal-nutrition-early-intervention" },
 ];
 
 export const blogArticles = [

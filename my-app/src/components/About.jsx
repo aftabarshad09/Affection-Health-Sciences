@@ -1,67 +1,91 @@
-import React from 'react';
-import './About.css';
-import { FaFlask, FaLeaf, FaUsers, FaArrowRight } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from "react";
+import "./About.css";
 
-const pillars = [
-  {
-    icon: <FaFlask />,
-    title: 'Clinically Formulated',
-    desc: 'Every product is developed with precision — combining essential micronutrients and amino acids backed by science.',
-  },
-  {
-    icon: <FaLeaf />,
-    title: 'Natural Ingredients',
-    desc: 'No artificial fillers. Only clean, natural compounds your body recognizes and absorbs efficiently.',
-  },
-  {
-    icon: <FaUsers />,
-    title: 'Trusted by Families',
-    desc: 'From babies to adults, our range supports every stage of life with safe, targeted nutrition.',
-  },
+const STATS = [
+  { value: "20+", label: "Formulated products" },
+  { value: "100%", label: "Lab-tested batches" },
+  { value: "0", label: "Artificial fillers" },
 ];
 
-const About = () => {
-  const navigate = useNavigate();
+export default function About({ onExplore }) {
+  const sectionRef = useRef(null);
+  const [offset, setOffset] = useState(0);
+  const [inView, setInView] = useState(false);
+  const prefersReducedMotion = useRef(false);
+
+  useEffect(() => {
+    prefersReducedMotion.current = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const handleScroll = () => {
+      if (!sectionRef.current || prefersReducedMotion.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      const progress = (rect.top - viewportH) / (viewportH + rect.height);
+      setOffset(progress * -60);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <section className="about-home">
-      <span className="about-home__shape about-home__shape--triangle-1" />
-      <span className="about-home__shape about-home__shape--triangle-2" />
-      <span className="about-home__shape about-home__shape--blob" />
-      
-      <div className="about-home__inner">
-        {/* Left: text */}
-        <div className="about-home__text">
-          <span className="about-home__eyebrow">WHO WE ARE</span>
-          <h2 className="about-home__heading">
-            Nutrition Built on <em>Science</em>, Delivered with <em>Care</em>
+    <section ref={sectionRef} className="about-teaser" aria-labelledby="about-teaser-heading">
+      <div className="about-teaser__scene" aria-hidden="true">
+        <div className="about-teaser__petal about-teaser__petal--one" style={{ transform: `translate3d(0, ${offset * 0.6}px, 0)` }} />
+        <div className="about-teaser__petal about-teaser__petal--two" style={{ transform: `translate3d(0, ${offset}px, 0)` }} />
+        <div className="about-teaser__petal about-teaser__petal--three" style={{ transform: `translate3d(0, ${offset * 0.35}px, 0)` }} />
+        <svg className="about-teaser__ring" style={{ transform: `translate3d(0, ${offset * 0.2}px, 0) rotate(${offset * 0.15}deg)` }} viewBox="0 0 400 400" fill="none">
+          <circle cx="200" cy="200" r="180" stroke="#d99fdb" strokeWidth="1" strokeOpacity="0.4" />
+          <circle cx="200" cy="200" r="140" stroke="#d99fdb" strokeWidth="1" strokeOpacity="0.25" />
+        </svg>
+      </div>
+
+      <div className={`about-teaser__inner ${inView ? "is-visible" : ""}`}>
+        <div className="about-teaser__copy">
+          <span className="about-teaser__eyebrow">Affection Health Sciences</span>
+
+          <h2 id="about-teaser-heading" className="about-teaser__heading">
+            Wellness, formulated<br />
+            with <em>intention</em>.
           </h2>
-          <p className="about-home__body">
-            Affection Health Sciences was founded with one belief — that every family deserves
-            access to premium, trustworthy nutrition. We formulate supplements that go beyond
-            generic solutions, targeting real needs at every life stage.
+
+          <p className="about-teaser__lede">
+            Every product we make starts with a question: does this genuinely
+            serve the body, or just the shelf? We research, source, and test
+            with that single standard — so what reaches you is functional
+            first, and beautiful because it's honest.
           </p>
-          <button className="about-home__cta" onClick={() => navigate('/about')}>
-            Our Full Story <FaArrowRight />
+
+          <button type="button" className="about-teaser__cta" onClick={onExplore}>
+            <span>Explore who we are</span>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M4 9H14M14 9L9.5 4.5M14 9L9.5 13.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </div>
 
-        {/* Right: pillars */}
-        <div className="about-home__pillars">
-          {pillars.map((p, i) => (
-            <div className="about-home__pillar" key={i}>
-              <div className="about-home__pillar-icon">{p.icon}</div>
-              <div>
-                <h4>{p.title}</h4>
-                <p>{p.desc}</p>
-              </div>
+        <div className="about-teaser__stats" role="list">
+          {STATS.map((stat) => (
+            <div className="about-teaser__stat" role="listitem" key={stat.label}>
+              <span className="about-teaser__stat-value">{stat.value}</span>
+              <span className="about-teaser__stat-label">{stat.label}</span>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default About;
+}

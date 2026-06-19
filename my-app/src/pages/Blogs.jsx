@@ -1,120 +1,38 @@
-import React, { useState } from 'react';
-import { FaDna, FaDumbbell, FaYinYang, FaBook } from 'react-icons/fa';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaBook } from 'react-icons/fa';
 import Hero from '../components/Hero';
+import { blogArticles } from '../data/seed';
+import { blogImages } from '../data/blogImages';
 import '../style/Blogs.css';
+
+const formatDate = (dateStr) =>
+  new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
 const Blogs = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const blogs = [
-    {
-      id: 1,
-      title: 'The Ultimate Guide to Zinc Supplementation',
-      category: 'nutrition',
-      date: 'June 1, 2024',
-      author: 'Dr. Sarah Johnson',
-      excerpt: 'Discover how zinc supports immune function, wound healing, and metabolic health.',
-      image: '💊',
-      readTime: '8 min read'
-    },
-    {
-      id: 2,
-      title: 'Magnesium: The Mineral for Better Sleep',
-      category: 'wellness',
-      date: 'May 28, 2024',
-      author: 'Dr. Michael Chen',
-      excerpt: 'Learn why magnesium is crucial for sleep quality and how to optimize your intake.',
-      image: '😴',
-      readTime: '6 min read'
-    },
-    {
-      id: 3,
-      title: 'Vitamin D Deficiency: Symptoms and Solutions',
-      category: 'health',
-      date: 'May 25, 2024',
-      author: 'Emily Williams',
-      excerpt: 'Understanding vitamin D deficiency and practical strategies to maintain healthy levels.',
-      image: '🌞',
-      readTime: '7 min read'
-    },
-    {
-      id: 4,
-      title: 'Omega-3s: Essential Fats for Heart and Brain',
-      category: 'nutrition',
-      date: 'May 20, 2024',
-      author: 'Dr. Sarah Johnson',
-      excerpt: 'Explore the science behind omega-3 fatty acids and their critical role in health.',
-      image: '🐟',
-      readTime: '9 min read'
-    },
-    {
-      id: 5,
-      title: 'Gut Health: The Foundation of Wellness',
-      category: 'wellness',
-      date: 'May 15, 2024',
-      author: 'Dr. Michael Chen',
-      excerpt: 'Why gut health matters and how probiotics can transform your digestive system.',
-      image: '🦠',
-      readTime: '8 min read'
-    },
-    {
-      id: 6,
-      title: 'Natural Energy Boosters Without Caffeine',
-      category: 'health',
-      date: 'May 10, 2024',
-      author: 'James Martinez',
-      excerpt: 'Combat fatigue naturally with supplements and lifestyle changes recommended by experts.',
-      image: '⚡',
-      readTime: '5 min read'
-    },
-    {
-      id: 7,
-      title: 'Collagen for Skin, Hair, and Joints',
-      category: 'beauty',
-      date: 'May 5, 2024',
-      author: 'Emily Williams',
-      excerpt: 'How collagen supplementation can enhance your beauty and mobility naturally.',
-      image: '✨',
-      readTime: '6 min read'
-    },
-    {
-      id: 8,
-      title: 'Anti-Inflammatory Foods and Supplements',
-      category: 'nutrition',
-      date: 'April 30, 2024',
-      author: 'Dr. Sarah Johnson',
-      excerpt: 'Reduce inflammation naturally with proven supplements and dietary strategies.',
-      image: '🌱',
-      readTime: '7 min read'
-    },
-    {
-      id: 9,
-      title: 'Women\'s Health: Essential Supplements Guide',
-      category: 'health',
-      date: 'April 25, 2024',
-      author: 'Emily Williams',
-      excerpt: 'Key supplements every woman should consider for hormonal and overall health.',
-      image: '👩',
-      readTime: '8 min read'
-    }
-  ];
-
-  const filteredBlogs = selectedCategory === 'all' 
-    ? blogs 
-    : blogs.filter(b => b.category === selectedCategory);
-
   const categories = [
     { id: 'all', label: 'All Articles' },
-    { id: 'nutrition', label: 'Nutrition' },
-    { id: 'wellness', label: 'Wellness' },
-    { id: 'health', label: 'Health' },
-    { id: 'beauty', label: 'Beauty' }
+    ...[...new Set(blogArticles.map((a) => a.category))].map((cat) => ({
+      id: cat,
+      label: cat,
+    })),
   ];
+
+  const filteredBlogs =
+    selectedCategory === 'all'
+      ? blogArticles
+      : blogArticles.filter((a) => a.category === selectedCategory);
 
   return (
     <div className="blogs-page">
-      <Hero 
-        title="Wellness Blogs" 
+      <Hero
+        title="Wellness Blogs"
         subtitle="Expert insights on nutrition, health, and wellness"
         Icon={FaBook}
       />
@@ -129,7 +47,7 @@ const Blogs = () => {
 
           {/* Category Filter */}
           <div className="blog-filter">
-            {categories.map(cat => (
+            {categories.map((cat) => (
               <button
                 key={cat.id}
                 className={`filter-btn ${selectedCategory === cat.id ? 'active' : ''}`}
@@ -142,16 +60,23 @@ const Blogs = () => {
 
           {/* Blog Grid */}
           <div className="blogs-grid">
-            {filteredBlogs.map(blog => (
-              <article key={blog.id} className="blog-card">
-                <div className="blog-image">{blog.image}</div>
+            {filteredBlogs.map((blog) => (
+              <article key={blog.slug} className="blog-card">
+                <div className="blog-image">
+                  <img src={blogImages[blog.slug]} alt={blog.title} />
+                </div>
                 <div className="blog-content">
                   <div className="blog-meta">
-                    <span className="blog-category">{blog.category}</span>
-                    <span className="blog-date">{blog.date}</span>
+                    <span
+                      className="blog-category"
+                      style={{ background: blog.categoryColor, color: '#fff' }}
+                    >
+                      {blog.category}
+                    </span>
+                    <span className="blog-date">{formatDate(blog.date)}</span>
                   </div>
                   <h3 className="blog-title">{blog.title}</h3>
-                  <p className="blog-excerpt">{blog.excerpt}</p>
+                  <p className="blog-excerpt">{blog.metaDescription}</p>
                   <div className="blog-footer">
                     <div className="blog-author">
                       <span className="author-avatar">👤</span>
@@ -160,7 +85,9 @@ const Blogs = () => {
                         <p className="read-time">{blog.readTime}</p>
                       </div>
                     </div>
-                    <a href="#" className="read-more-link">Read More →</a>
+                    <Link to={`/blog/${blog.slug}`} className="read-more-link">
+                      Read More →
+                    </Link>
                   </div>
                 </div>
               </article>

@@ -1,292 +1,380 @@
-import React, { useState } from 'react';
-import { FaRocket, FaHospital, FaBook as FaLearning, FaHome, FaMoneyBill, FaUsers, FaUserTie, FaChartLine, FaCheckCircle } from 'react-icons/fa';
-import Hero from '../components/Hero';
-import '../style/Careers.css';
+// Careers.jsx — Careers page
+import { useEffect, useRef, useState } from "react";
+import "../style/Careers.css";
+import NewsletterStrip from "../components/Newsletter";
+import ContactSection from "../components/contact";
 
-const Careers = () => {
-  const [selectedDept, setSelectedDept] = useState('all');
+/**
+ * Careers
+ * Multi-section careers page. Video hero, parallax break, why-work-here,
+ * open medical-rep roles with full job descriptions, and a white/black
+ * application form. No pink anywhere on this page — strictly ink/white/gray.
+ */
 
-  const jobs = [
-    {
-      id: 1,
-      title: 'Senior Nutritionist',
-      department: 'nutrition',
-      location: 'New York, USA',
-      type: 'Full-time',
-      experience: '5+ years',
-      description: 'Lead our nutrition research team and develop innovative supplement formulations.'
-    },
-    {
-      id: 2,
-      title: 'Product Manager',
-      department: 'product',
-      location: 'San Francisco, USA',
-      type: 'Full-time',
-      experience: '3+ years',
-      description: 'Manage product development from concept to market launch.'
-    },
-    {
-      id: 3,
-      title: 'Quality Assurance Specialist',
-      department: 'quality',
-      location: 'Boston, USA',
-      type: 'Full-time',
-      experience: '2+ years',
-      description: 'Ensure all products meet our strict quality standards and regulations.'
-    },
-    {
-      id: 4,
-      title: 'Marketing Specialist',
-      department: 'marketing',
-      location: 'Remote',
-      type: 'Full-time',
-      experience: '2+ years',
-      description: 'Create compelling marketing campaigns for our nutrition brand.'
-    },
-    {
-      id: 5,
-      title: 'Sales Representative',
-      department: 'sales',
-      location: 'Multiple Locations',
-      type: 'Full-time',
-      experience: '1+ years',
-      description: 'Build relationships with retailers and distributors to grow our market presence.'
-    },
-    {
-      id: 6,
-      title: 'Research Scientist',
-      department: 'nutrition',
-      location: 'New York, USA',
-      type: 'Full-time',
-      experience: '3+ years',
-      description: 'Conduct research on nutritional science and supplement efficacy.'
-    },
-    {
-      id: 7,
-      title: 'Customer Service Manager',
-      department: 'support',
-      location: 'Remote',
-      type: 'Full-time',
-      experience: '2+ years',
-      description: 'Lead and manage our customer support team to ensure excellence.'
-    },
-    {
-      id: 8,
-      title: 'Supply Chain Manager',
-      department: 'operations',
-      location: 'Chicago, USA',
-      type: 'Full-time',
-      experience: '4+ years',
-      description: 'Optimize our supply chain and manage vendor relationships.'
+function useReveal() {
+  const ref = useRef(null);
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return undefined;
+    const obs = new IntersectionObserver(
+      ([e]) => e.isIntersecting && setShown(true),
+      { threshold: 0.16 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, shown];
+}
+
+const PERKS = [
+  { title: "Field autonomy", body: "Own your territory and your relationships. We hire people we trust to make the right call in the room." },
+  { title: "Clinical depth", body: "Sell products you can stand behind — every formulation is third-party tested and clinician-reviewed." },
+  { title: "Real progression", body: "Clear paths from field rep to regional and national roles, with mentorship that isn't just a line in a handbook." },
+  { title: "Health-first culture", body: "We make wellness products; we'd be hypocrites not to live it. Flexible hours and genuine support." },
+];
+
+const ROLES = [
+  {
+    id: "msr-lhr",
+    title: "Medical Sales Representative",
+    location: "Lahore, Pakistan",
+    type: "Full-time · Field-based",
+    summary:
+      "Represent our hepatic and maternal nutrition range to hospitals, clinics, and pharmacies across the Lahore region.",
+    responsibilities: [
+      "Build and maintain relationships with physicians, pharmacists, and hospital procurement teams",
+      "Deliver clinically accurate product detailing to healthcare professionals",
+      "Achieve territory sales targets while maintaining compliance with medical marketing standards",
+      "Gather field intelligence on prescribing patterns and competitor activity",
+    ],
+    requirements: [
+      "Bachelor's in Pharmacy, Life Sciences, or related field",
+      "1–3 years medical/pharmaceutical sales experience preferred",
+      "Strong communication and relationship-building skills",
+      "Valid driving licence and willingness to travel within territory",
+    ],
+  },
+  {
+    id: "ksr-isb",
+    title: "Key Accounts Specialist",
+    location: "Islamabad, Pakistan",
+    type: "Full-time · Hybrid",
+    summary:
+      "Manage strategic hospital and distributor accounts for our pediatric and immune-support product lines.",
+    responsibilities: [
+      "Own relationships with major hospital and pharmacy chain accounts",
+      "Negotiate supply agreements and coordinate with the compliance team",
+      "Lead product training sessions for partner clinical staff",
+      "Forecast demand and coordinate with operations on fulfilment",
+    ],
+    requirements: [
+      "Bachelor's degree in a health, business, or science discipline",
+      "3+ years in pharmaceutical key-account or B2B medical sales",
+      "Proven negotiation and account-management track record",
+      "Comfortable with CRM tools and structured reporting",
+    ],
+  },
+  {
+    id: "rm-north",
+    title: "Regional Sales Manager — North",
+    location: "Islamabad / Rawalpindi",
+    type: "Full-time · Leadership",
+    summary:
+      "Lead and grow a team of medical representatives across the northern region, owning targets and team development.",
+    responsibilities: [
+      "Recruit, coach, and manage a team of field representatives",
+      "Set and track regional sales targets across product lines",
+      "Partner with marketing on territory-level campaigns and launches",
+      "Ensure full compliance with medical marketing regulations across the team",
+    ],
+    requirements: [
+      "Bachelor's or Master's in a relevant discipline",
+      "5+ years pharmaceutical sales, including 2+ in team leadership",
+      "Strong analytical and people-management skills",
+      "Track record of hitting regional targets in a medical context",
+    ],
+  },
+];
+
+export default function Careers() {
+  const [scrollY, setScrollY] = useState(0);
+  const [openRole, setOpenRole] = useState(ROLES[0].id);
+  const [appliedRole, setAppliedRole] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    role: "",
+    experience: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle");
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const [perksRef, perksShown] = useReveal();
+  const [rolesRef, rolesShown] = useReveal();
+  const [formRef, formShown] = useReveal();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((p) => ({ ...p, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      await fetch("/api/careers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      setStatus("done");
+      setForm({ name: "", email: "", phone: "", role: "", experience: "", message: "" });
+    } catch (err) {
+      setStatus("idle");
     }
-  ];
+  };
 
-  const departments = [
-    { id: 'all', name: 'All Departments' },
-    { id: 'nutrition', name: 'Nutrition & Research' },
-    { id: 'product', name: 'Product Development' },
-    { id: 'quality', name: 'Quality Assurance' },
-    { id: 'marketing', name: 'Marketing' },
-    { id: 'sales', name: 'Sales' },
-    { id: 'support', name: 'Customer Support' },
-    { id: 'operations', name: 'Operations' }
-  ];
-
-  const filteredJobs = selectedDept === 'all' 
-    ? jobs 
-    : jobs.filter(j => j.department === selectedDept);
-
-  const benefits = [
-    { icon: '🏥', title: 'Health Insurance', desc: 'Comprehensive health, dental, and vision coverage' },
-    { icon: '📚', title: 'Learning & Development', desc: 'Continuous professional development opportunities' },
-    { icon: '🏠', title: 'Flexible Work', desc: 'Remote and flexible working arrangements' },
-    { icon: '💰', title: 'Competitive Salary', desc: 'Industry-leading compensation packages' },
-    { icon: '🏖️', title: 'Generous PTO', desc: '25+ days of paid time off annually' },
-    { icon: '🎯', title: 'Growth Opportunities', desc: 'Clear career advancement pathways' },
-    { icon: '🤝', title: 'Team Culture', desc: 'Collaborative and supportive work environment' },
-    { icon: '🎁', title: 'Wellness Benefits', desc: 'Free NutriFactor products and gym memberships' }
-  ];
+  const applyToRole = (role) => {
+    setForm((p) => ({ ...p, role: role.title }));
+    setAppliedRole(role.title);
+    document.getElementById("apply")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <div className="careers-page">
-      <Hero 
-        title="Join Our Team" 
-        subtitle="Help us revolutionize the nutrition industry"
-        Icon={FaRocket}
-      />
+    <main className="careers">
+      {/* ---------- HERO (video) ---------- */}
+      <section className="careers-hero">
+        <div className="careers-hero__media" aria-hidden="true">
+          <video
+            className="careers-hero__video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80"
+          >
+            <source
+              src="https://cdn.coverr.co/videos/coverr-a-team-meeting-in-an-office-1080p.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="careers-hero__scrim" />
+        </div>
 
-      {/* About Working Here */}
-      <section className="why-join">
-        <div className="container">
-          <div className="section-header">
-            <h2>Why Join NutriFactor?</h2>
-            <p>Be part of a team that's changing lives through nutrition</p>
-          </div>
-          <div className="grid grid-2">
-            <div className="why-box">
-              <h3>Our Mission</h3>
-              <p>
-                We're on a mission to make premium nutrition accessible to everyone. When you join NutriFactor, you become part of a movement that impacts millions of lives globally.
-              </p>
-            </div>
-            <div className="why-box">
-              <h3>Our Culture</h3>
-              <p>
-                We believe in innovation, transparency, and putting people first. Our team is passionate, diverse, and committed to excellence in everything we do.
-              </p>
-            </div>
-          </div>
+        <div className="careers-hero__content">
+          <span className="careers-eyebrow careers-eyebrow--light">Careers</span>
+          <h1 className="careers-hero__title">
+            Represent products
+            <br />
+            worth standing behind.
+          </h1>
+          <p className="careers-hero__lede">
+            We're hiring medical sales professionals who'd rather detail a
+            formula they trust than push one they don't. If that's you, read on.
+          </p>
+          <a href="#openings" className="careers-hero__cta">
+            View open roles
+          </a>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="benefits-section light-bg">
-        <div className="container">
-          <h2 className="section-title">What We Offer</h2>
-          <div className="benefits-grid">
-            {benefits.map((benefit, idx) => (
-              <div key={idx} className="benefit-card">
-                <div className="benefit-icon">{benefit.icon}</div>
-                <h4>{benefit.title}</h4>
-                <p>{benefit.desc}</p>
-              </div>
-            ))}
-          </div>
+      {/* ---------- WHY WORK HERE ---------- */}
+      <section
+        ref={perksRef}
+        className={`careers-perks ${perksShown ? "is-shown" : ""}`}
+      >
+        <div className="careers-perks__head">
+          <span className="careers-eyebrow">Why join us</span>
+          <h2 className="careers-h2">A medical sales role that respects you</h2>
+        </div>
+        <div className="careers-perks__grid">
+          {PERKS.map((p) => (
+            <article className="careers-perk" key={p.title}>
+              <h3 className="careers-perk__title">{p.title}</h3>
+              <p className="careers-perk__body">{p.body}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* Open Positions */}
-      <section className="open-positions">
-        <div className="container">
-          <div className="section-header">
-            <h2>Open Positions</h2>
-            <p>Find your next opportunity with NutriFactor</p>
-          </div>
+      {/* ---------- PARALLAX BREAK ---------- */}
+      <div className="careers-parallax" aria-hidden="true">
+        <div
+          className="careers-parallax__img"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80')",
+            transform: `translateY(${scrollY * 0.04}px)`,
+          }}
+        />
+        <div className="careers-parallax__quote">
+          <p>"The best representatives don't sell. They inform, and the trust does the rest."</p>
+        </div>
+      </div>
 
-          {/* Department Filter */}
-          <div className="dept-filter">
-            {departments.map(dept => (
-              <button
-                key={dept.id}
-                className={`dept-btn ${selectedDept === dept.id ? 'active' : ''}`}
-                onClick={() => setSelectedDept(dept.id)}
-              >
-                {dept.name}
-              </button>
-            ))}
-          </div>
+      {/* ---------- OPEN ROLES ---------- */}
+      <section
+        id="openings"
+        ref={rolesRef}
+        className={`careers-roles ${rolesShown ? "is-shown" : ""}`}
+      >
+        <div className="careers-roles__head">
+          <span className="careers-eyebrow">Open positions</span>
+          <h2 className="careers-h2">Current openings</h2>
+          <p className="careers-roles__intro">
+            Medical and field-sales roles across Pakistan. Expand a role to read
+            the full description, then apply below.
+          </p>
+        </div>
 
-          {/* Job Listings */}
-          <div className="jobs-list">
-            {filteredJobs.length > 0 ? (
-              filteredJobs.map(job => (
-                <div key={job.id} className="job-card">
-                  <div className="job-header">
-                    <div>
-                      <h3>{job.title}</h3>
-                      <p className="job-department">{job.department}</p>
-                    </div>
-                    <a href="#apply" className="apply-btn">Apply Now</a>
-                  </div>
-                  <div className="job-details">
-                    <div className="job-detail">
-                      <span className="detail-label">📍 Location:</span>
-                      <span>{job.location}</span>
-                    </div>
-                    <div className="job-detail">
-                      <span className="detail-label">⏰ Type:</span>
-                      <span>{job.type}</span>
-                    </div>
-                    <div className="job-detail">
-                      <span className="detail-label">📊 Experience:</span>
-                      <span>{job.experience}</span>
+        <div className="careers-roles__list">
+          {ROLES.map((role) => {
+            const isOpen = openRole === role.id;
+            return (
+              <article className={`careers-role ${isOpen ? "is-open" : ""}`} key={role.id}>
+                <button
+                  type="button"
+                  className="careers-role__bar"
+                  aria-expanded={isOpen}
+                  aria-controls={`role-${role.id}`}
+                  onClick={() => setOpenRole(isOpen ? "" : role.id)}
+                >
+                  <div className="careers-role__bar-main">
+                    <h3 className="careers-role__title">{role.title}</h3>
+                    <div className="careers-role__meta">
+                      <span>{role.location}</span>
+                      <span className="careers-role__dot" aria-hidden="true">·</span>
+                      <span>{role.type}</span>
                     </div>
                   </div>
-                  <p className="job-description">{job.description}</p>
+                  <span className="careers-role__toggle" aria-hidden="true">
+                    {isOpen ? "–" : "+"}
+                  </span>
+                </button>
+
+                <div
+                  id={`role-${role.id}`}
+                  className="careers-role__panel"
+                  style={{ maxHeight: isOpen ? "1200px" : "0px" }}
+                >
+                  <div className="careers-role__panel-inner">
+                    <p className="careers-role__summary">{role.summary}</p>
+
+                    <div className="careers-role__cols">
+                      <div>
+                        <h4 className="careers-role__subhead">Responsibilities</h4>
+                        <ul>
+                          {role.responsibilities.map((r) => (
+                            <li key={r}>{r}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="careers-role__subhead">Requirements</h4>
+                        <ul>
+                          {role.requirements.map((r) => (
+                            <li key={r}>{r}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="careers-role__apply"
+                      onClick={() => applyToRole(role)}
+                    >
+                      Apply for this role
+                    </button>
+                  </div>
                 </div>
-              ))
-            ) : (
-              <p className="no-jobs">No positions available in this department currently.</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ---------- APPLICATION FORM ---------- */}
+      <section
+        id="apply"
+        ref={formRef}
+        className={`careers-apply ${formShown ? "is-shown" : ""}`}
+      >
+        <div className="careers-apply__inner">
+          <div className="careers-apply__head">
+            <span className="careers-eyebrow">Application</span>
+            <h2 className="careers-h2">Apply now</h2>
+            <p className="careers-apply__intro">
+              {appliedRole
+                ? `You're applying for: ${appliedRole}. Fill in your details and our team will be in touch.`
+                : "Tell us a little about yourself and the role you're interested in. We review every application."}
+            </p>
+          </div>
+
+          <form className="careers-form" onSubmit={handleSubmit} noValidate>
+            <div className="careers-form__grid">
+              <label className="careers-field">
+                <span>Full name</span>
+                <input type="text" name="name" required autoComplete="name" value={form.name} onChange={handleChange} placeholder="Your name" />
+              </label>
+
+              <label className="careers-field">
+                <span>Email</span>
+                <input type="email" name="email" required autoComplete="email" value={form.email} onChange={handleChange} placeholder="you@example.com" />
+              </label>
+
+              <label className="careers-field">
+                <span>Phone</span>
+                <input type="tel" name="phone" autoComplete="tel" value={form.phone} onChange={handleChange} placeholder="+92 300 1234567" />
+              </label>
+
+              <label className="careers-field">
+                <span>Role applying for</span>
+                <select name="role" value={form.role} onChange={handleChange} required>
+                  <option value="" disabled>Select a role</option>
+                  {ROLES.map((r) => (
+                    <option key={r.id} value={r.title}>{r.title}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="careers-field careers-field--full">
+                <span>Years of relevant experience</span>
+                <input type="text" name="experience" value={form.experience} onChange={handleChange} placeholder="e.g. 3 years in pharmaceutical sales" />
+              </label>
+
+              <label className="careers-field careers-field--full">
+                <span>Why are you a fit?</span>
+                <textarea name="message" rows={5} value={form.message} onChange={handleChange} placeholder="A few lines about your experience and why this role interests you..." />
+              </label>
+            </div>
+
+            <button type="submit" className="careers-form__submit" disabled={status === "submitting"}>
+              {status === "submitting" ? "Submitting..." : status === "done" ? "Application sent" : "Submit application"}
+            </button>
+
+            {status === "done" && (
+              <p className="careers-form__success" role="status">
+                Thank you — your application has been received. We'll be in touch if there's a fit.
+              </p>
             )}
-          </div>
-        </div>
-      </section>
 
-      {/* Our Team */}
-      <section className="team-highlights light-bg">
-        <div className="container">
-          <h2 className="section-title">Meet Our Team</h2>
-          <div className="team-stats">
-            <div className="stat">
-              <h3>500+</h3>
-              <p>Team Members Worldwide</p>
-            </div>
-            <div className="stat">
-              <h3>30+</h3>
-              <p>Countries Represented</p>
-            </div>
-            <div className="stat">
-              <h3>95%</h3>
-              <p>Employee Satisfaction</p>
-            </div>
-            <div className="stat">
-              <h3>4.8/5</h3>
-              <p>Company Rating</p>
-            </div>
-          </div>
+            <p className="careers-form__note">
+              Note: this form posts to a placeholder endpoint. Attach CV upload handling on your Node backend.
+            </p>
+          </form>
         </div>
       </section>
-
-      {/* Interview Process */}
-      <section className="process">
-        <div className="container">
-          <h2 className="section-title">Our Interview Process</h2>
-          <div className="process-steps">
-            <div className="step">
-              <div className="step-number">1</div>
-              <h4>Application Review</h4>
-              <p>We review your resume and cover letter to understand your fit.</p>
-            </div>
-            <div className="step-arrow">→</div>
-            <div className="step">
-              <div className="step-number">2</div>
-              <h4>Phone Screening</h4>
-              <p>Initial conversation to discuss your background and the role.</p>
-            </div>
-            <div className="step-arrow">→</div>
-            <div className="step">
-              <div className="step-number">3</div>
-              <h4>Technical/Skill Test</h4>
-              <p>Assessment relevant to the position requirements.</p>
-            </div>
-            <div className="step-arrow">→</div>
-            <div className="step">
-              <div className="step-number">4</div>
-              <h4>Team Interview</h4>
-              <p>Meet with team members and learn about the company culture.</p>
-            </div>
-            <div className="step-arrow">→</div>
-            <div className="step">
-              <div className="step-number">5</div>
-              <h4>Offer & Onboarding</h4>
-              <p>Receive offer and join our amazing team!</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="careers-cta light-bg">
-        <div className="container">
-          <div className="cta-content">
-            <h2>Don't See Your Dream Role?</h2>
-            <p>Submit your resume for future opportunities</p>
-            <button className="btn btn-primary">Submit Your Resume</button>
-          </div>
-        </div>
-      </section>
-    </div>
+      <ContactSection  />
+      <NewsletterStrip  />
+    </main>
   );
-};
-
-export default Careers;
+}
