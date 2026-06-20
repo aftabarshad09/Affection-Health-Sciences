@@ -110,6 +110,8 @@ export default function Careers() {
     message: "",
   });
   const [status, setStatus] = useState("idle");
+  const [cvFile, setCvFile] = useState(null);
+  const cvInputRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -126,17 +128,34 @@ export default function Careers() {
     setForm((p) => ({ ...p, [name]: value }));
   };
 
+  const handleFileChange = (e) => {
+    setCvFile(e.target.files[0] || null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("submitting");
     try {
-      await fetch("/api/careers", {
+      const data = new FormData();
+      data.append("fullName", form.name);
+      data.append("email", form.email);
+      data.append("phone", form.phone);
+      data.append("role", form.role);
+      data.append("experience", form.experience);
+      data.append("coverLetter", form.message);
+      if (cvFile) data.append("resume", cvFile);
+
+      const res = await fetch("/api/careers/apply", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: data,
       });
+      const result = await res.json();
+      if (!res.ok || !result.success) throw new Error(result.error || "Failed to submit application");
+
       setStatus("done");
       setForm({ name: "", email: "", phone: "", role: "", experience: "", message: "" });
+      setCvFile(null);
+      if (cvInputRef.current) cvInputRef.current.value = "";
     } catch (err) {
       setStatus("idle");
     }
@@ -355,6 +374,18 @@ export default function Careers() {
                 <span>Why are you a fit?</span>
                 <textarea name="message" rows={5} value={form.message} onChange={handleChange} placeholder="A few lines about your experience and why this role interests you..." />
               </label>
+
+              <label className="careers-field careers-field--full">
+                <span>Upload CV</span>
+                <input
+                  type="file"
+                  name="cv"
+                  ref={cvInputRef}
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleFileChange}
+                  required
+                />
+              </label>
             </div>
 
             <button type="submit" className="careers-form__submit" disabled={status === "submitting"}>
@@ -367,9 +398,6 @@ export default function Careers() {
               </p>
             )}
 
-            <p className="careers-form__note">
-              Note: this form posts to a placeholder endpoint. Attach CV upload handling on your Node backend.
-            </p>
           </form>
         </div>
       </section>

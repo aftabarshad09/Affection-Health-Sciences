@@ -452,6 +452,29 @@
   border-color: var(--ink);
 }
 
+.careers-field input[type="file"] {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.careers-field input[type="file"]::file-selector-button {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--ink);
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  margin-right: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.careers-field input[type="file"]::file-selector-button:hover {
+  background: var(--gray-800);
+}
+
 .careers-form__submit {
   margin-top: 1.8rem;
   display: inline-flex;

@@ -1,4 +1,6 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { FiBookOpen } from "react-icons/fi";
 import { blogArticles } from "../data/seed";
 import { blogImages } from "../data/blogImages";
 import "../style/BlogPost.css";
@@ -26,12 +28,13 @@ const renderSection = (section, index, fallbackImage) => {
       );
     case "image":
       return (
-        <img
-          key={index}
-          src={fallbackImage}
-          alt={section.alt}
-          className="blog-post__inline-image"
-        />
+        <div key={index} className="blog-post__image-wrap">
+          <img
+            src={fallbackImage}
+            alt={section.alt}
+            className="blog-post__inline-image"
+          />
+        </div>
       );
     case "list": {
       const ListTag = section.ordered ? "ol" : "ul";
@@ -85,6 +88,18 @@ const renderSection = (section, index, fallbackImage) => {
 export default function BlogPost() {
   const { slug } = useParams();
   const article = blogArticles.find((a) => a.slug === slug);
+  const [readProgress, setReadProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      setReadProgress(Math.min(100, Math.max(0, percent)));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [slug]);
 
   if (!article) {
     return (
@@ -102,6 +117,13 @@ export default function BlogPost() {
 
   return (
     <article className="blog-post">
+      <div className="blog-post__progress">
+        <div className="blog-post__progress-bar" style={{ width: `${readProgress}%` }} />
+        <span className="blog-post__progress-icon" style={{ left: `${readProgress}%` }}>
+          <FiBookOpen size={12} />
+        </span>
+      </div>
+
       <div className="blog-post__hero">
         <img src={heroImage} alt={article.title} className="blog-post__hero-img" />
       </div>

@@ -3,6 +3,9 @@ import mctKids from "../assets/banners/banner2.jpeg";
 import folicAcid from "../assets/banners/banner333.jpeg";
 import adultNutrition from "../assets/banners/banner444.png";
 import nafld from "../assets/Grid/A1.png";
+import maternalNutrition from "../assets/banners/banner111.jpeg";
+import pediatricHealth from "../assets/banners/banner22.png";
+import immuneSupport from "../assets/banners/banner222.jpeg";
 
 export const blogImages = {
   "bcaas-liver-health-cirrhosis-management": liverHealth,
@@ -10,4 +13,7 @@ export const blogImages = {
   "folic-acid-vs-l-methylfolate-pregnancy": folicAcid,
   "complete-adult-nutrition-energid-plus": adultNutrition,
   "nafld-children-maternal-nutrition-early-intervention": nafld,
+  "maternal-nutrition-prenatal-postnatal-care": maternalNutrition,
+  "pediatric-health-growth-milestones-infant-nutrition": pediatricHealth,
+  "immune-support-vitamins-minerals-immune-response": immuneSupport,
 };

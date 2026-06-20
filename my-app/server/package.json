@@ -1,0 +1,30 @@
+{
+  "name": "qodexxa-backend",
+  "version": "1.0.0",
+  "description": "QODEXXA Backend Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "email",
+    "contact-form",
+    "qodexxa"
+  ],
+  "author": "Aftab Arshadi",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "emailjs": "^5.0.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

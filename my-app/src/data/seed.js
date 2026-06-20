@@ -1516,4 +1516,446 @@ export const blogArticles = [
       },
     ],
   },
+
+  // -----------------------------------------------------------------------------------------
+  // maternal-nutrition-prenatal-postnatal-care------------------------------------------------
+  {
+    slug: "maternal-nutrition-prenatal-postnatal-care",
+    title: "Maternal Nutrition: Evidence-Based Guidance for Prenatal and Postnatal Care",
+    metaDescription: "A complete, evidence-based guide to maternal nutrition across pregnancy and the postpartum period — what to supplement, when to take it, and why it matters for mother and baby.",
+    date: "2026-06-18",
+    readTime: "9 min read",
+    category: "Maternal Health",
+    categoryColor: "#ec4899",
+    featured: false,
+    featuredImage: "/images/blog/maternal-nutrition/image1.jpg",
+    imageCount: 4,
+    imageBasePath: "/images/blog/maternal-nutrition",
+    author: "Affection Health Sciences Team",
+    authorImg: "/images/author/affection-team.jpg",
+    sections: [
+      { type: "heading", level: 2, content: "Why Maternal Nutrition Shapes Two Lives at Once" },
+      {
+        type: "paragraph",
+        content: "Pregnancy and the months that follow are the only time in human biology when one body's nutrition directly builds another. <strong>Maternal nutrition</strong> isn't a single checklist you complete once — it's a moving target that shifts from trimester to trimester and continues to matter long after delivery, through recovery and breastfeeding. Getting it right protects fetal development, reduces pregnancy complications, and gives the mother's own body the resources it needs to heal.",
+      },
+      {
+        type: "paragraph",
+        content: "This guide breaks maternal nutrition into its two natural phases — <strong>prenatal</strong> (during pregnancy) and <strong>postnatal</strong> (after birth) — and explains what to supplement, when, and why, in plain language.",
+      },
+      { type: "image", src: "/images/blog/maternal-nutrition/image1.jpg", alt: "Maternal Nutrition During Pregnancy", index: 1 },
+
+      { type: "heading", level: 2, content: "The Prenatal Phase: Building Blocks for a Healthy Pregnancy" },
+      {
+        type: "paragraph",
+        content: "During pregnancy, nutrient demand rises faster than appetite usually does. A handful of nutrients consistently make the difference between adequate and optimal prenatal nutrition:",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Folate / Folic Acid:</strong> Critical for neural tube formation in the first weeks of pregnancy, often before a woman knows she's pregnant.",
+          "<strong>DHA (Omega-3):</strong> Structural fat for the developing fetal brain and eyes, especially in the third trimester.",
+          "<strong>Iron:</strong> Supports the expansion of maternal blood volume and prevents pregnancy anemia.",
+          "<strong>Calcium:</strong> Builds fetal bone and teeth while protecting maternal bone density.",
+          "<strong>Protein:</strong> Supplies the amino acids needed for placental and fetal tissue growth.",
+          "<strong>Iodine:</strong> Supports fetal thyroid function and early brain development.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Trimester-by-Trimester Nutritional Priorities" },
+      {
+        type: "paragraph",
+        content: "Needs are not static — what matters most in week six is different from what matters most in week thirty-two.",
+      },
+      {
+        type: "table",
+        headers: ["Trimester", "Priority Focus", "Why It Matters"],
+        rows: [
+          ["First", "Folate, hydration, managing nausea", "Neural tube closes by week 6; nutrient absorption can be limited by morning sickness"],
+          ["Second", "Calcium, iron, steady caloric increase", "Fetal skeleton and blood volume expansion accelerate"],
+          ["Third", "DHA, protein, iron", "Rapid brain growth and final weight gain place the highest demand on the mother"],
+        ],
+      },
+
+      { type: "heading", level: 2, content: "The 3G Approach: Go, Grow, Glow" },
+      {
+        type: "paragraph",
+        content: "A useful way to think about comprehensive prenatal nutrition is the <strong>3G framework</strong>: Go (sustained energy), Grow (nutrients that build the baby), and Glow (nutrients that support maternal wellbeing). Formulas like <strong>Gynogid Forte</strong> are built around this exact logic, combining folic acid, DHA, calcium, and iron with balanced calories and protein in a single daily serving, rather than asking mothers to juggle multiple separate supplements.",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Go:</strong> Balanced calories that support energy without excessive weight gain.",
+          "<strong>Grow:</strong> Folic acid, DHA, calcium, and iron dosed for fetal development.",
+          "<strong>Glow:</strong> Supporting micronutrients that help maintain maternal energy and mood through pregnancy.",
+        ],
+      },
+      { type: "image", src: "/images/blog/maternal-nutrition/image2.jpg", alt: "The 3G Maternal Nutrition Framework", index: 2 },
+
+      { type: "heading", level: 2, content: "Postnatal Nutrition: Recovery, Lactation, and Replenishment" },
+      {
+        type: "paragraph",
+        content: "Nutritional needs don't end at delivery — for many nutrients, they peak afterward. The postpartum body is simultaneously healing from childbirth, replenishing nutrient stores spent during pregnancy, and, for breastfeeding mothers, producing milk that draws directly on maternal reserves.",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Iron replenishment:</strong> Blood loss during delivery can leave iron stores depleted; ongoing intake supports recovery from fatigue.",
+          "<strong>DHA for lactation:</strong> Breast milk DHA content reflects maternal intake, directly supporting infant brain development.",
+          "<strong>Calcium continuation:</strong> Breastfeeding draws on maternal calcium stores; continued intake protects bone density.",
+          "<strong>Extra calories and protein:</strong> Milk production is metabolically demanding and requires sustained energy intake.",
+          "<strong>Hydration:</strong> Milk supply is sensitive to maternal hydration status.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Common Maternal Nutrition Mistakes to Avoid" },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Stopping supplementation right after birth:</strong> Postnatal needs are often as high as prenatal ones, especially for breastfeeding mothers.",
+          "<strong>Relying on folic acid alone:</strong> A complete prenatal nutrition plan also needs DHA, iron, and calcium, not folate in isolation.",
+          "<strong>Treating nausea as a reason to skip nutrition entirely:</strong> Smaller, more frequent intake — including nutrient-dense liquids — often works better than forcing large meals.",
+          "<strong>Ignoring protein intake:</strong> Protein needs rise substantially in the second and third trimesters and are easy to underestimate.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "When to Talk to Your Healthcare Provider" },
+      {
+        type: "paragraph",
+        content: "Every pregnancy carries its own nutritional risk profile, shaped by pre-existing conditions, dietary restrictions, multiple pregnancies, and genetic factors like MTHFR variants that affect folate metabolism. A healthcare provider or registered dietitian can personalize dosing — particularly for iron and DHA, where needs vary widely between individuals.",
+      },
+
+      { type: "heading", level: 2, content: "FAQs About Maternal Nutrition" },
+      {
+        type: "faq",
+        items: [
+          {
+            question: "Do prenatal nutrition needs change after the first trimester?",
+            answer: "Yes. While folate is most urgent early on, calcium and iron demand rises through the second trimester, and DHA and protein needs peak in the third as fetal growth accelerates.",
+          },
+          {
+            question: "How long should I continue prenatal supplementation after birth?",
+            answer: "Most healthcare providers recommend continuing through the postpartum period, especially while breastfeeding, since milk production draws directly on maternal nutrient stores.",
+          },
+          {
+            question: "Can poor maternal nutrition affect the baby long-term?",
+            answer: "Research on fetal programming suggests maternal nutritional status during pregnancy can influence a child's long-term metabolic health, which is why consistent, comprehensive nutrition matters throughout pregnancy.",
+          },
+          {
+            question: "Is it safe to combine a prenatal multivitamin with a separate DHA supplement?",
+            answer: "Generally yes, but always check combined dosing with your provider to avoid exceeding recommended limits for fat-soluble vitamins like A and D.",
+          },
+          {
+            question: "What's the difference between prenatal and postnatal nutrition needs?",
+            answer: "Prenatal nutrition is focused on supporting fetal development as it happens. Postnatal nutrition shifts toward maternal recovery and, for breastfeeding mothers, sustaining milk production — both remain nutritionally demanding.",
+          },
+          {
+            question: "Can diet alone meet maternal nutrition needs without supplements?",
+            answer: "It's difficult for most people. Nutrients like folate and DHA are needed in amounts that are hard to consistently reach through diet alone, which is why supplementation is broadly recommended during pregnancy and lactation.",
+          },
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Conclusion: Nutrition as a Continuous Thread, Not a Phase" },
+      {
+        type: "paragraph",
+        content: "Maternal nutrition works best when treated as a continuous thread running from preconception through breastfeeding, rather than a box to check during pregnancy alone. Comprehensive formulas built on frameworks like 3G — providing folate, DHA, calcium, iron, and balanced calories together — make it easier to meet these shifting needs consistently, supporting both a healthy pregnancy and a strong recovery afterward.",
+      },
+    ],
+  },
+
+  // -----------------------------------------------------------------------------------------
+  // pediatric-health-growth-milestones-infant-nutrition---------------------------------------
+  {
+    slug: "pediatric-health-growth-milestones-infant-nutrition",
+    title: "Pediatric Health: Growth Milestones, Infant Nutrition, and Trusted Supplementation",
+    metaDescription: "A parent's guide to pediatric health — growth milestones by age, infant and toddler nutrition essentials, and how to support healthy weight gain in slow-growing children.",
+    date: "2026-06-18",
+    readTime: "8 min read",
+    category: "Children's Health",
+    categoryColor: "#f59e0b",
+    featured: false,
+    featuredImage: "/images/blog/pediatric-health/image1.jpg",
+    imageCount: 4,
+    imageBasePath: "/images/blog/pediatric-health",
+    author: "Affection Health Sciences Team",
+    authorImg: "/images/author/affection-team.jpg",
+    sections: [
+      { type: "heading", level: 2, content: "Pediatric Health Begins With the Right Nutritional Foundation" },
+      {
+        type: "paragraph",
+        content: "The first years of life involve faster growth than at any other point in the human lifespan. <strong>Pediatric health</strong> during this window is shaped heavily by nutrition — not just how much a child eats, but whether they're getting the specific nutrients that growth, brain development, and immune maturity depend on.",
+      },
+      {
+        type: "paragraph",
+        content: "This guide walks through what to expect at each growth stage, the infant nutrition essentials parents are most likely to overlook, and what to do when a child isn't gaining weight the way their growth chart suggests they should.",
+      },
+      { type: "image", src: "/images/blog/pediatric-health/image1.jpg", alt: "Pediatric Health and Growth Milestones", index: 1 },
+
+      { type: "heading", level: 2, content: "Growth Milestones: What to Watch For at Every Stage" },
+      {
+        type: "table",
+        headers: ["Age Range", "Typical Milestone", "Nutritional Focus"],
+        rows: [
+          ["0–6 months", "Birth weight roughly doubles", "Exclusive breast milk or formula; vitamin D supplementation"],
+          ["6–12 months", "Triples birth weight by 12 months; first foods introduced", "Iron-rich purées, continued breast milk/formula"],
+          ["1–3 years", "Steady, slower growth velocity; rapid brain development", "Whole foods, healthy fats, consistent mealtime routine"],
+          ["3–6 years", "Refinement of motor skills and appetite regulation", "Balanced meals, limiting added sugar, calcium for bone growth"],
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Infant Nutrition: From First Feed to First Foods" },
+      {
+        type: "paragraph",
+        content: "The transition from milk-only feeding to solid foods is one of the most nutritionally important windows in <strong>infant nutrition</strong>. Done well, it builds taste acceptance, supports iron stores that naturally decline after six months, and lays the groundwork for healthy eating habits.",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Breast milk or formula</strong> remains the primary nutrition source through the first year, even after solids are introduced.",
+          "<strong>Iron-rich first foods</strong> — fortified cereals, pureed meats, legumes — matter because iron stores from birth begin depleting around six months.",
+          "<strong>Vitamin D</strong> supplementation is commonly recommended for breastfed infants, since breast milk alone often doesn't provide enough.",
+          "<strong>Avoiding added sugar and salt</strong> in the first year protects developing taste preferences and kidney function.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Common Pediatric Nutrition Gaps" },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Iron deficiency:</strong> One of the most common nutritional deficiencies in toddlers, often linked to excessive milk intake displacing iron-rich foods.",
+          "<strong>Vitamin D shortfalls:</strong> Common in children with limited sun exposure or restricted diets.",
+          "<strong>Picky eating phases:</strong> Can create temporary but real nutrient gaps, particularly around fiber, iron, and healthy fats.",
+          "<strong>Insufficient calories for slow gainers:</strong> Some children need calorie-dense additions to meet energy needs without large food volumes.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Supporting Healthy Weight Gain in Slow-Growing Children" },
+      {
+        type: "paragraph",
+        content: "When a child tracks below their expected growth curve, the goal is usually to increase caloric density without forcing larger meal volumes — something small appetites often can't accommodate. <strong>MCT (medium-chain triglyceride) oil</strong>, found in products like <strong>Mctolip</strong>, is one well-studied option: it's rapidly absorbed, easy on developing digestive systems, and can be mixed into purées, yogurt, or formula to add concentrated calories in just a teaspoon or two.",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "Start with small amounts and increase gradually to assess tolerance.",
+          "Mix into familiar foods rather than serving alone, to maintain acceptance.",
+          "Use under guidance from a pediatrician, particularly for infants or children with underlying digestive conditions.",
+        ],
+      },
+      { type: "image", src: "/images/blog/pediatric-health/image2.jpg", alt: "Supporting Healthy Weight Gain in Children", index: 2 },
+
+      { type: "heading", level: 2, content: "Building Strong Immune and Cognitive Foundations" },
+      {
+        type: "paragraph",
+        content: "Growth isn't only about weight and height — brain and immune development run in parallel. Adequate intake of iron, zinc, DHA, and vitamin D during early childhood supports cognitive development and reduces the frequency and severity of common childhood illnesses, making consistent nutrition one of the most effective preventive tools parents have.",
+      },
+
+      { type: "heading", level: 2, content: "Practical Tips for Parents" },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Track growth against pediatric growth charts at every checkup rather than comparing to other children.",
+          "Offer new foods repeatedly — taste acceptance in toddlers often takes 8–10 exposures.",
+          "Keep milk intake within recommended limits (roughly 16–24 oz/day for toddlers) so it doesn't crowd out solid food intake.",
+          "Discuss any consistent growth chart plateau with a pediatrician rather than waiting it out.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "FAQs About Pediatric Health and Infant Nutrition" },
+      {
+        type: "faq",
+        items: [
+          {
+            question: "When should solid foods be introduced?",
+            answer: "Most guidelines recommend introducing solids around six months, alongside continued breast milk or formula, once a baby shows signs of readiness like good head control and interest in food.",
+          },
+          {
+            question: "How do I know if my child isn't gaining weight properly?",
+            answer: "Pediatricians track growth using percentile curves over time rather than single measurements. A consistent drop across percentiles, rather than a single low reading, is usually the signal that prompts further evaluation.",
+          },
+          {
+            question: "Is MCT oil safe for toddlers?",
+            answer: "Yes, when introduced gradually and used as directed. It's generally well tolerated, though starting with too much at once can cause loose stools — start low and increase slowly.",
+          },
+          {
+            question: "Does picky eating cause real nutritional harm?",
+            answer: "Short phases are usually harmless if overall variety improves over weeks. Prolonged, severe food restriction is worth discussing with a pediatrician or pediatric dietitian.",
+          },
+          {
+            question: "How much vitamin D does a breastfed infant need?",
+            answer: "Many pediatric guidelines recommend a daily vitamin D supplement for exclusively or partially breastfed infants, since breast milk alone typically doesn't supply enough. Confirm the exact dose with your pediatrician.",
+          },
+          {
+            question: "What's the biggest nutrition mistake parents make with toddlers?",
+            answer: "Over-reliance on milk. Excess milk intake is filling, which can reduce appetite for iron-rich solid foods and contribute to iron deficiency.",
+          },
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Conclusion: Nutrition as the Quiet Driver of Pediatric Health" },
+      {
+        type: "paragraph",
+        content: "Most of pediatric health happens quietly, in the accumulation of thousands of small meals and feeds. Knowing what each growth stage needs — and recognizing early when a child needs extra calorie or nutrient support — turns an overwhelming list of milestones into a manageable, stage-by-stage plan that supports healthy growth and development.",
+      },
+    ],
+  },
+
+  // -----------------------------------------------------------------------------------------
+  // immune-support-vitamins-minerals-immune-response------------------------------------------
+  {
+    slug: "immune-support-vitamins-minerals-immune-response",
+    title: "Immune Support: How Vitamins, Minerals, and Targeted Formulas Strengthen Your Immune Response",
+    metaDescription: "An evidence-based look at immune support — the vitamins and minerals that matter most, the gut-immunity connection, seasonal risk factors, and how to choose a quality immune formula.",
+    date: "2026-06-18",
+    readTime: "8 min read",
+    category: "Immune Health",
+    categoryColor: "#06b6d4",
+    featured: false,
+    featuredImage: "/images/blog/immune-support/image1.jpg",
+    imageCount: 4,
+    imageBasePath: "/images/blog/immune-support",
+    author: "Affection Health Sciences Team",
+    authorImg: "/images/author/affection-team.jpg",
+    sections: [
+      { type: "heading", level: 2, content: "How Your Immune System Actually Works" },
+      {
+        type: "paragraph",
+        content: "The immune system isn't a single organ — it's a coordinated network of cells, signaling proteins, and physical barriers spanning the skin, gut, and bloodstream. <strong>Immune support</strong> nutrition works by giving that network the raw materials it needs: amino acids to build antibodies, micronutrients to fuel immune cell production, and antioxidants to limit collateral inflammation during an immune response.",
+      },
+      { type: "image", src: "/images/blog/immune-support/image1.jpg", alt: "How the Immune System Works", index: 1 },
+
+      { type: "heading", level: 2, content: "The Nutrients That Matter Most for Immune Function" },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Vitamin C:</strong> Supports the function of immune cells and acts as an antioxidant during immune responses.",
+          "<strong>Vitamin D:</strong> Regulates immune cell activity and is one of the most commonly deficient nutrients tied to immune function.",
+          "<strong>Zinc:</strong> Essential for the development and function of immune cells; even mild deficiency can impair immune response.",
+          "<strong>Selenium:</strong> Supports antioxidant enzyme systems that regulate inflammation.",
+          "<strong>Iron:</strong> Needed for immune cell proliferation; both deficiency and excess can impair immune function.",
+          "<strong>Protein:</strong> Antibodies are proteins — inadequate protein intake directly limits the immune system's raw materials.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Vitamin D: The Most Common Immune Gap" },
+      {
+        type: "paragraph",
+        content: "Of all nutrients linked to immune function, <strong>vitamin D</strong> deficiency is among the most widespread — particularly for people with limited sun exposure, darker skin, or northern climates. Vitamin D receptors are present on most immune cells, meaning low levels can blunt the immune system's ability to mount an effective, well-regulated response. Routine bloodwork is the only reliable way to confirm a deficiency, since symptoms are often subtle or absent.",
+      },
+
+      { type: "heading", level: 2, content: "Gut Health and Immunity: The Overlooked Connection" },
+      {
+        type: "paragraph",
+        content: "Roughly 70% of the body's immune tissue is located in or around the gut. A healthy, diverse gut microbiome trains immune cells to distinguish harmless substances from genuine threats, and disruption to that balance — from poor diet, antibiotics, or chronic stress — can leave the immune system either underactive or inappropriately reactive.",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Probiotics:</strong> Support a diverse, balanced gut microbiome linked to healthier immune regulation.",
+          "<strong>Fiber:</strong> Feeds beneficial gut bacteria, which in turn produce compounds that support gut-lining integrity.",
+          "<strong>Fermented foods:</strong> Yogurt, kefir, and similar foods provide live cultures that contribute to microbiome diversity.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Seasonal Immune Support: What Changes in Winter" },
+      {
+        type: "table",
+        headers: ["Season", "Common Risk Factor", "Nutritional Focus"],
+        rows: [
+          ["Winter", "Reduced sun exposure, indoor crowding", "Vitamin D, zinc, vitamin C"],
+          ["Spring", "Seasonal allergies, fluctuating sleep", "Antioxidants, quercetin-rich foods, consistent sleep"],
+          ["Summer", "Travel, dietary disruption", "Hydration, balanced electrolytes, gut-friendly foods"],
+          ["Autumn", "Back-to-school exposure, schedule changes", "Consistent meal timing, vitamin C, sleep hygiene"],
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Lifestyle Factors That Support — or Undermine — Immunity" },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Sleep:</strong> Chronic sleep deprivation measurably reduces immune cell activity and response quality.",
+          "<strong>Stress:</strong> Prolonged elevated cortisol suppresses several aspects of immune function over time.",
+          "<strong>Exercise:</strong> Moderate, regular activity is associated with better immune surveillance; extreme overtraining without recovery can have the opposite effect.",
+          "<strong>Hydration:</strong> Supports the mucous membranes that act as a first physical barrier against pathogens.",
+        ],
+      },
+      { type: "image", src: "/images/blog/immune-support/image2.jpg", alt: "Lifestyle Factors and Immune Health", index: 2 },
+
+      { type: "heading", level: 2, content: "Choosing a Targeted Immune Support Formula" },
+      {
+        type: "paragraph",
+        content: "Not every immune supplement on the shelf is formulated the same way. A few practical filters help separate well-designed products from marketing-driven ones:",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Clinically studied doses:</strong> Look for amounts that match research-backed ranges, not arbitrary or excessive mega-doses.",
+          "<strong>Third-party testing:</strong> Independent verification of purity and label accuracy.",
+          "<strong>Transparent labeling:</strong> Full disclosure of every ingredient and amount, with no hidden proprietary blends.",
+          "<strong>Complementary nutrients:</strong> Formulas that combine vitamin C, D, and zinc tend to address immune support more comprehensively than single-nutrient products.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Common Immune Support Myths" },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>Myth: More vitamin C always means stronger immunity.</strong> Reality: benefits plateau past a certain intake; excess is simply excreted.",
+          "<strong>Myth: Supplements can replace sleep and stress management.</strong> Reality: nutrition supports immune function, but it doesn't override chronic sleep loss or stress.",
+          "<strong>Myth: You only need immune support when you're already sick.</strong> Reality: consistent nutrient status matters most as ongoing prevention, not a same-day fix.",
+        ],
+      },
+
+      { type: "heading", level: 2, content: "FAQs About Immune Support" },
+      {
+        type: "faq",
+        items: [
+          {
+            question: "Can supplements prevent illness entirely?",
+            answer: "No supplement can guarantee prevention. Immune support nutrients reduce risk factors and support a well-functioning immune response, but they work alongside — not instead of — sleep, hygiene, and overall health.",
+          },
+          {
+            question: "How do I know if I'm vitamin D deficient?",
+            answer: "A simple blood test is the most reliable way to check vitamin D status, since deficiency often produces no obvious symptoms.",
+          },
+          {
+            question: "Is zinc safe to take daily for immune support?",
+            answer: "Zinc is generally safe within recommended daily limits. Long-term excessive intake can interfere with copper absorption, so staying within labeled doses matters.",
+          },
+          {
+            question: "Do probiotics really affect immune health?",
+            answer: "A substantial portion of immune tissue is located in the gut, and a healthy microbiome is linked to better-regulated immune responses, which is why gut health is increasingly considered part of immune support.",
+          },
+          {
+            question: "Should immune support nutrients be taken year-round or only seasonally?",
+            answer: "Baseline nutrients like vitamin D and zinc are often relevant year-round, especially for people with limited sun exposure, while needs may increase seasonally during higher-exposure periods like winter.",
+          },
+          {
+            question: "Can children take immune support supplements?",
+            answer: "Many immune-supporting nutrients are appropriate for children at pediatric-specific doses, but formulations and amounts should always be confirmed with a pediatrician before starting.",
+          },
+        ],
+      },
+
+      { type: "heading", level: 2, content: "Conclusion: Immune Support Is a Pattern, Not a Single Product" },
+      {
+        type: "paragraph",
+        content: "Strong immune function comes from a consistent pattern — adequate vitamin D and zinc, a fiber-rich diet that supports gut health, sufficient sleep, and stress management — rather than any single nutrient or supplement. Targeted formulas can fill real gaps, particularly for vitamin D and zinc, but they work best as part of that broader, ongoing pattern rather than a stand-alone fix.",
+      },
+    ],
+  },
 ]

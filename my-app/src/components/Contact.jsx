@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FiUser, FiMail, FiMessageSquare, FiArrowRight, FiPhone, FiMapPin } from "react-icons/fi";
+import { FiUser, FiMail, FiMessageSquare, FiArrowRight, FiPhone, FiMapPin, FiTag } from "react-icons/fi";
 import "./Contact.css";
 
 const CONTACT_DETAILS = [
@@ -12,7 +12,14 @@ export default function ContactSection() {
   const sectionRef = useRef(null);
   const [offset, setOffset] = useState(0);
   const [status, setStatus] = useState("idle");
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    contact: "",
+    subject: "",
+    message: "",
+  });
   const reducedMotion = useRef(false);
 
   useEffect(() => {
@@ -41,14 +48,16 @@ export default function ContactSection() {
     setStatus("submitting");
 
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || "Failed to send message");
       setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
-    } catch (err) {
+      setForm({ firstName: "", lastName: "", email: "", contact: "", subject: "", message: "" });
+    } catch {
       setStatus("idle");
     }
   };
@@ -86,22 +95,48 @@ export default function ContactSection() {
 
       <div className="contact-form-wrap">
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
-          <div className="contact-form__row">
+          <div className="contact-form__row contact-form__row--split">
             <label className="contact-form__field">
-              <span>Full name</span>
+              <span>First name</span>
               <div className="contact-form__input-wrap">
                 <FiUser className="contact-form__icon" aria-hidden="true" />
-                <input type="text" name="name" required autoComplete="name" value={form.name} onChange={handleChange} placeholder="Ahmad Raza" />
+                <input type="text" name="firstName" required autoComplete="given-name" value={form.firstName} onChange={handleChange} placeholder="Ahmad" />
+              </div>
+            </label>
+
+            <label className="contact-form__field">
+              <span>Last name</span>
+              <div className="contact-form__input-wrap">
+                <FiUser className="contact-form__icon" aria-hidden="true" />
+                <input type="text" name="lastName" required autoComplete="family-name" value={form.lastName} onChange={handleChange} placeholder="Raza" />
+              </div>
+            </label>
+          </div>
+
+          <div className="contact-form__row contact-form__row--split">
+            <label className="contact-form__field">
+              <span>Email address</span>
+              <div className="contact-form__input-wrap">
+                <FiMail className="contact-form__icon" aria-hidden="true" />
+                <input type="email" name="email" required autoComplete="email" value={form.email} onChange={handleChange} placeholder="you@example.com" />
+              </div>
+            </label>
+
+            <label className="contact-form__field">
+              <span>Contact number</span>
+              <div className="contact-form__input-wrap">
+                <FiPhone className="contact-form__icon" aria-hidden="true" />
+                <input type="tel" name="contact" required autoComplete="tel" value={form.contact} onChange={handleChange} placeholder="+92 300 1234567" />
               </div>
             </label>
           </div>
 
           <div className="contact-form__row">
             <label className="contact-form__field">
-              <span>Email address</span>
+              <span>Subject</span>
               <div className="contact-form__input-wrap">
-                <FiMail className="contact-form__icon" aria-hidden="true" />
-                <input type="email" name="email" required autoComplete="email" value={form.email} onChange={handleChange} placeholder="you@example.com" />
+                <FiTag className="contact-form__icon" aria-hidden="true" />
+                <input type="text" name="subject" required value={form.subject} onChange={handleChange} placeholder="How can we help?" />
               </div>
             </label>
           </div>

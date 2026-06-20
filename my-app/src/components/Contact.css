@@ -146,6 +146,16 @@
   gap: 1.4rem;
 }
 
+.contact-form__row--split {
+  display: flex;
+  gap: 1rem;
+}
+
+.contact-form__row--split .contact-form__field {
+  flex: 1;
+  min-width: 0;
+}
+
 .contact-form__field {
   display: flex;
   flex-direction: column;
@@ -279,6 +289,9 @@
   }
   .contact-panel__details {
     gap: 0.85rem;
+  }
+  .contact-form__row--split {
+    flex-direction: column;
   }
 }
 

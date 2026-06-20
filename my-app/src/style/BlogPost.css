@@ -33,9 +33,43 @@
 }
 
 .blog-post__container {
-  max-width: 760px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 40px 24px 0;
+}
+
+/* ---------- Reading progress bar ---------- */
+
+.blog-post__progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #f0e6f1;
+  z-index: 1000;
+}
+
+.blog-post__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #d99fdb, #b766bd);
+  transition: width 0.1s linear;
+}
+
+.blog-post__progress-icon {
+  position: absolute;
+  top: 2px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #b766bd;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(183, 102, 189, 0.5);
+  transition: left 0.1s linear;
 }
 
 .blog-post__back {
@@ -130,12 +164,65 @@ h3.blog-post__heading {
   color: #1a1a2e;
 }
 
+.blog-post__image-wrap {
+  position: relative;
+  float: left;
+  width: 42%;
+  margin: 6px 32px 24px 0;
+}
+
+.blog-post__image-wrap::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  bottom: -14px;
+  left: -14px;
+  border: 2px dashed rgba(217, 159, 219, 0.55);
+  border-radius: 50%;
+  animation: bpImageRotate 14s linear infinite;
+  pointer-events: none;
+}
+
+.blog-post__image-wrap::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 159, 219, 0.95), rgba(217, 159, 219, 0));
+  animation: bpImagePulse 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
 .blog-post__inline-image {
+  position: relative;
+  z-index: 1;
+  display: block;
   width: 100%;
-  border-radius: 16px;
-  margin: 28px 0;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  max-height: 360px;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(26, 26, 46, 0.16);
+}
+
+@keyframes bpImageRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bpImagePulse {
+  0%, 100% { transform: scale(0.85); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.blog-post__heading,
+.blog-post__list,
+.blog-post__table-wrap,
+.blog-post__faq {
+  clear: both;
 }
 
 .blog-post__table-wrap {
@@ -189,6 +276,14 @@ h3.blog-post__heading {
   font-size: 15px;
   line-height: 1.7;
   color: #4a4a6a;
+}
+
+@media (max-width: 768px) {
+  .blog-post__image-wrap {
+    float: none;
+    width: 100%;
+    margin: 6px 0 24px;
+  }
 }
 
 @media (max-width: 600px) {
