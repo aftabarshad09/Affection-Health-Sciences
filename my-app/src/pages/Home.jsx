@@ -5,13 +5,15 @@ import About from '../components/About';
 import ContactSection from '../components/contact';
 import NewsletterStrip from '../components/Newsletter';
 import WheelServices from '../components/wheel';
-
+import Logostrip from '../components/Logostrip';
 const Home = () => {
 
   return (
     <div className="home-page">
       <Hero />
       <About />
+<Logostrip />
+      
       <WheelServices />
       <ContactSection />
       <FAQ />

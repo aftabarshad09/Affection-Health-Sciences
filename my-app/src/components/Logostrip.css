@@ -1,0 +1,105 @@
+/* ===========================
+   LogoStrip.css
+   Continuous marquee of partner/trust logos.
+   Theme: matches ProductsPage/Aboutpage tokens
+   =========================== */
+
+.logostrip {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 36px 0;
+  background: #faf7ff;
+  border-top: 1px solid #f0eaff;
+  border-bottom: 1px solid #f0eaff;
+}
+
+/* ---- edge fade so logos don't hard-cut at the container edge ---- */
+.logostrip__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logostrip__fade--left {
+  left: 0;
+  background: linear-gradient(to right, #faf7ff 0%, rgba(250, 247, 255, 0) 100%);
+}
+
+.logostrip__fade--right {
+  right: 0;
+  background: linear-gradient(to left, #faf7ff 0%, rgba(250, 247, 255, 0) 100%);
+}
+
+/* ---- scrolling track ---- */
+.logostrip__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 72px;
+  animation: logostrip-scroll 18s linear infinite;
+}
+
+.logostrip:hover .logostrip__track {
+  animation-play-state: paused;
+}
+
+@keyframes logostrip-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---- individual logo ---- */
+.logostrip__item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  width: 160px;
+}
+
+.logostrip__img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.55);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logostrip__item:hover .logostrip__img {
+  filter: grayscale(0%) opacity(1);
+  transform: translateY(-4px) scale(1.06);
+}
+
+/* ---- responsive ---- */
+@media (max-width: 640px) {
+  .logostrip {
+    padding: 28px 0;
+  }
+
+  .logostrip__track {
+    gap: 48px;
+  }
+
+  .logostrip__item {
+    height: 44px;
+    width: 120px;
+  }
+
+  .logostrip__fade {
+    width: 50px;
+  }
+}
+
+/* ---- reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .logostrip__track {
+    animation: none;
+  }
+}
