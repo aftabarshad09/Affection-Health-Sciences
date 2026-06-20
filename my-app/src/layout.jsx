@@ -50,7 +50,7 @@ const Layout = ({ children }) => {
               { to: '/products', label: 'Our Products' },
               { to: '/blogs', label: 'Wellness Blogs' },
               { to: '/careers', label: 'Careers' },
-              { to: '/contact', label: 'Contact Us' },
+              { to: '/review', label: 'Reviews' },
             ].map(({ to, label }) => (
               <Link
                 key={to}
@@ -67,7 +67,7 @@ const Layout = ({ children }) => {
               className="nav-cta"
               onClick={() => setMenuOpen(false)}
             >
-              Get Started
+              CONTACT US
             </Link>
           </nav>
         </div>

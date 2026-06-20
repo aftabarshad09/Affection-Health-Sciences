@@ -10,6 +10,7 @@ import Aboutpage from './pages/Aboutpage';
 
 import './App.css'
 import ProductsPage from './pages/ProductsPage'
+import Reviews from './pages/Reviews'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/review" element={<Reviews />} />
           <Route path="/about" element={<Aboutpage />} />
 
         </Routes>
