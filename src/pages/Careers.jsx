@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../style/Careers.css";
 import NewsletterStrip from "../components/Newsletter";
-import ContactSection from "../components/contact";
+import ContactSection from "../components/Contact";
 
 /**
  * Careers
