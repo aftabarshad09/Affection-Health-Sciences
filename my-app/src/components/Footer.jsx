@@ -3,7 +3,6 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaTwitter,
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
@@ -21,10 +20,9 @@ const NAV_LINKS = [
 ];
 
 const SOCIALS = [
-  { href: "https://facebook.com", label: "Facebook", icon: FaFacebookF },
-  { href: "https://instagram.com", label: "Instagram", icon: FaInstagram },
-  { href: "https://linkedin.com", label: "LinkedIn", icon: FaLinkedinIn },
-  { href: "https://twitter.com", label: "Twitter", icon: FaTwitter },
+  { href: "https://www.facebook.com/share/1A8zXHbfSK/", label: "Facebook", icon: FaFacebookF },
+  { href: "https://www.instagram.com/affectionhealth_sciences?igsh=MXkxMWUyanlhd3BiNg%3D%3D&utm_source=qr", label: "Instagram", icon: FaInstagram },
+  { href: "https://www.linkedin.com/company/affection-healtb-sciences/", label: "LinkedIn", icon: FaLinkedinIn },
 ];
 
 export default function Footer() {
@@ -148,15 +146,15 @@ export default function Footer() {
               <ul className="footer-contact-list">
                 <li>
                   <FaMapMarkerAlt aria-hidden="true" />
-                  <span itemProp="addressLocality">Islamabad, Pakistan</span>
+                  <span itemProp="streetAddress">B109 Satellite Town, Rawalpindi, Pakistan</span>
                 </li>
                 <li>
                   <FaPhoneAlt aria-hidden="true" />
-                  <a href="tel:+923001234567">+92 300 1234567</a>
+                  <a href="https://wa.me/923319845081" target="_blank" rel="noopener noreferrer">+92 331 9845081</a>
                 </li>
                 <li>
                   <FaEnvelope aria-hidden="true" />
-                  <a href="mailto:hello@affectionhealthsciences.com">hello@affectionhealthsciences.com</a>
+                  <a href="mailto:info@affectionhealthsciences.com">info@affectionhealthsciences.com</a>
                 </li>
               </ul>
             </div>
@@ -164,8 +162,8 @@ export default function Footer() {
 
           <div className="footer-map">
             <iframe
-              title="Affection Health Sciences — Islamabad location"
-              src="https://www.google.com/maps?q=Islamabad,Pakistan&output=embed"
+              title="Affection Health Sciences — B109 Satellite Town, Rawalpindi location"
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3321.8087718636157!2d73.06602507569875!3d33.63619997331652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDM4JzEwLjMiTiA3M8KwMDQnMDcuMCJF!5e0!3m2!1sen!2s!4v1782048699926!5m2!1sen!2s"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen

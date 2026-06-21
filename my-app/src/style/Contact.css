@@ -282,6 +282,15 @@
   margin: 0 0 0.35rem;
 }
 
+.cp-info-value--link {
+  display: block;
+  text-decoration: none;
+}
+
+.cp-info-value--link:hover {
+  text-decoration: underline;
+}
+
 .cp-info-desc {
   font-size: 0.85rem;
   color: var(--muted-light);
@@ -607,36 +616,11 @@
 .cp-map-card__visual {
   position: relative;
   min-height: 260px;
-  background:
-    radial-gradient(circle at 35% 35%, rgba(45, 106, 79, 0.15), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(27, 67, 50, 0.1), transparent 55%),
-    var(--amber);
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(27, 67, 50, 0.03) 27px, rgba(27, 67, 50, 0.03) 28px),
-    repeating-linear-gradient(90deg, transparent, transparent 27px, rgba(27, 67, 50, 0.03) 27px, rgba(27, 67, 50, 0.03) 28px),
-    radial-gradient(circle at 35% 35%, rgba(45, 106, 79, 0.15), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(27, 67, 50, 0.1), transparent 55%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--amber);
 }
 
-.cp-map-card__pin {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: var(--terra);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 0 8px rgba(201, 123, 92, 0.2), var(--shadow-md);
-  animation: cpPinPulse 2.6s ease-in-out infinite;
-}
-
-@keyframes cpPinPulse {
-  0%, 100% { box-shadow: 0 0 0 8px rgba(201, 123, 92, 0.2), var(--shadow-md); }
-  50% { box-shadow: 0 0 0 16px rgba(201, 123, 92, 0.08), var(--shadow-md); }
+.cp-map-card__visual iframe {
+  display: block;
 }
 
 .cp-map-card__details {
@@ -865,10 +849,6 @@
   }
 
   .cp-hero__scroll-hint span {
-    animation: none;
-  }
-
-  .cp-map-card__pin {
     animation: none;
   }
 

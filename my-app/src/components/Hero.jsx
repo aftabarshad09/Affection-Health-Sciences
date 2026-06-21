@@ -71,9 +71,30 @@ export default function HeroSection() {
               <button className="hero-button">Explore Our Products</button>
 
               <div className="hero-social">
-                <FaInstagram className="social-icon" size={16} />
-                <FaFacebookF className="social-icon" size={16} />
-                <FaLinkedinIn className="social-icon" size={16} />
+                <a
+                  href="https://www.instagram.com/affectionhealth_sciences?igsh=MXkxMWUyanlhd3BiNg%3D%3D&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="social-icon" size={16} />
+                </a>
+                <a
+                  href="https://www.facebook.com/share/1A8zXHbfSK/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <FaFacebookF className="social-icon" size={16} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/affection-healtb-sciences/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedinIn className="social-icon" size={16} />
+                </a>
               </div>
             </div>
           </div>

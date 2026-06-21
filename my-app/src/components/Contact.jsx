@@ -3,9 +3,9 @@ import { FiUser, FiMail, FiMessageSquare, FiArrowRight, FiPhone, FiMapPin, FiTag
 import "./Contact.css";
 
 const CONTACT_DETAILS = [
-  { label: "Email", value: "hello@affectionhealthsciences.com", icon: FiMail },
-  { label: "Phone", value: "+92 300 1234567", icon: FiPhone },
-  { label: "Studio", value: "Islamabad, Pakistan", icon: FiMapPin },
+  { label: "Email", value: "info@affectionhealthsciences.com", href: "mailto:info@affectionhealthsciences.com", icon: FiMail },
+  { label: "Phone", value: "+92 331 9845081", href: "https://wa.me/923319845081", icon: FiPhone },
+  { label: "Studio", value: "B109 Satellite Town, Rawalpindi, Pakistan", icon: FiMapPin },
 ];
 
 export default function ContactSection() {
@@ -85,7 +85,18 @@ export default function ContactSection() {
                 </span>
                 <span className="contact-panel__detail-text">
                   <span className="contact-panel__detail-label">{item.label}</span>
-                  <span className="contact-panel__detail-value">{item.value}</span>
+                  {item.href ? (
+                    <a
+                      className="contact-panel__detail-value"
+                      href={item.href}
+                      target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                      rel={item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span className="contact-panel__detail-value">{item.value}</span>
+                  )}
                 </span>
               </li>
             ))}

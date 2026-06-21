@@ -10,11 +10,8 @@ import {
   FaChevronDown,
   FaFacebookF,
   FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-  FaTiktok
+  FaLinkedinIn
 } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
 import heroVideo from '../assets/videos/001.mp4';
 import '../style/Contact.css';
 import NewsletterStrip from '../components/Newsletter';
@@ -23,20 +20,22 @@ const contactInfo = [
   {
     Icon: FaEnvelope,
     title: 'Email',
-    value: 'info@nutrifactor.com',
+    value: 'info@affectionhealthsciences.com',
+    href: 'mailto:info@affectionhealthsciences.com',
     description: 'Response within 24 hours'
   },
   {
     Icon: FaPhone,
     title: 'Phone',
-    value: '+1 (555) 123-4567',
-    description: 'Available Mon-Fri, 9AM-6PM EST'
+    value: '+92 331 9845081',
+    href: 'https://wa.me/923319845081',
+    description: 'Chat with us on WhatsApp'
   },
   {
     Icon: FaMapMarkerAlt,
     title: 'Address',
-    value: '123 Wellness Street',
-    description: 'New York, NY 10001, USA'
+    value: 'B109 Satellite Town',
+    description: 'Rawalpindi, Pakistan'
   },
   {
     Icon: FaComments,
@@ -66,12 +65,9 @@ const faqs = [
 ];
 
 const socialLinks = [
-  { name: 'Facebook', Icon: FaFacebookF, className: 'cp-facebook' },
-  { name: 'Twitter', Icon: FaXTwitter, className: 'cp-twitter' },
-  { name: 'Instagram', Icon: FaInstagram, className: 'cp-instagram' },
-  { name: 'LinkedIn', Icon: FaLinkedinIn, className: 'cp-linkedin' },
-  { name: 'YouTube', Icon: FaYoutube, className: 'cp-youtube' },
-  { name: 'TikTok', Icon: FaTiktok, className: 'cp-tiktok' }
+  { name: 'Facebook', Icon: FaFacebookF, className: 'cp-facebook', href: 'https://www.facebook.com/share/1A8zXHbfSK/' },
+  { name: 'Instagram', Icon: FaInstagram, className: 'cp-instagram', href: 'https://www.instagram.com/affectionhealth_sciences?igsh=MXkxMWUyanlhd3BiNg%3D%3D&utm_source=qr' },
+  { name: 'LinkedIn', Icon: FaLinkedinIn, className: 'cp-linkedin', href: 'https://www.linkedin.com/company/affection-healtb-sciences/' }
 ];
 
 const Contact = () => {
@@ -188,7 +184,18 @@ const Contact = () => {
               <div key={idx} className="cp-info-card">
                 <div className="cp-info-icon"><info.Icon size={28} /></div>
                 <h3>{info.title}</h3>
-                <p className="cp-info-value">{info.value}</p>
+                {info.href ? (
+                  <a
+                    className="cp-info-value cp-info-value--link"
+                    href={info.href}
+                    target={info.href.startsWith('mailto:') ? undefined : '_blank'}
+                    rel={info.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  >
+                    {info.value}
+                  </a>
+                ) : (
+                  <p className="cp-info-value">{info.value}</p>
+                )}
                 <p className="cp-info-desc">{info.description}</p>
               </div>
             ))}
@@ -346,14 +353,19 @@ const Contact = () => {
       <section className="cp-map-section">
         <div className="cp-container">
           <div className="cp-map-card">
-            <div className="cp-map-card__visual" aria-hidden="true">
-              <div className="cp-map-card__pin">
-                <FaMapMarkerAlt size={32} />
-              </div>
+            <div className="cp-map-card__visual">
+              <iframe
+                title="Affection Health Sciences — B109 Satellite Town, Rawalpindi location"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3321.8087718636157!2d73.06602507569875!3d33.63619997331652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDM4JzEwLjMiTiA3M8KwMDQnMDcuMCJF!5e0!3m2!1sen!2s!4v1782048699926!5m2!1sen!2s"
+                style={{ border: 0, width: '100%', height: '100%' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
             <div className="cp-map-card__details">
               <h3>Visit Our Headquarters</h3>
-              <p>123 Wellness Street, New York, NY 10001, USA</p>
+              <p>B109 Satellite Town, Rawalpindi, Pakistan</p>
               <p className="cp-map-card__hint">Open Monday – Saturday for scheduled visits.</p>
             </div>
           </div>
@@ -366,8 +378,14 @@ const Contact = () => {
           <h2 className="cp-section-title">Connect With Us</h2>
           <p className="cp-section-subtitle">Follow us on social media for wellness tips and product updates</p>
           <div className="cp-social-buttons">
-            {socialLinks.map(({ name, Icon, className }) => (
-              <a key={name} href="#" className={`cp-social-btn ${className}`}>
+            {socialLinks.map(({ name, Icon, className, href }) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`cp-social-btn ${className}`}
+              >
                 <Icon size={16} /> {name}
               </a>
             ))}

@@ -219,6 +219,11 @@ html, body {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
+.hero-social a {
+  display: inline-flex;
+  text-decoration: none;
+}
+
 .social-icon {
   cursor: pointer;
   color: #1B4332;

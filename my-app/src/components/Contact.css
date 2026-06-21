@@ -126,6 +126,11 @@
   font-size: 0.98rem;
   font-weight: 600;
   color: #ffffff;
+  text-decoration: none;
+}
+
+.contact-panel__detail-value[href]:hover {
+  text-decoration: underline;
 }
 
 /* ---------- Right form panel ---------- */
