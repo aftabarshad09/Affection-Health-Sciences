@@ -25,7 +25,7 @@ function BlogCard({ post }) {
   return (
     <Link to={`/blog/${post.slug}`} className="hbs-card">
       <div className="hbs-card__img">
-        <img src={blogImages[post.slug]} alt={post.title} loading="lazy" />
+        <img src={blogImages[post.slug]?.hero} alt={post.title} loading="lazy" />
         <span className="hbs-card__cat" style={{ background: post.categoryColor }}>
           {post.category}
         </span>

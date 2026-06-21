@@ -7,14 +7,17 @@ import BlogSection from '../components/BlogSection';
 import NewsletterStrip from '../components/Newsletter';
 import WheelServices from '../components/wheel';
 import Logostrip from '../components/Logostrip';
+import CertificateStrip from '../components/CertificateStrip';
 const Home = () => {
 
   return (
     <div className="home-page">
       <Hero />
+      <CertificateStrip />
       <About />
-<Logostrip />
       
+      <Logostrip />
+
       <WheelServices />
       <BlogSection />
       <ContactSection />

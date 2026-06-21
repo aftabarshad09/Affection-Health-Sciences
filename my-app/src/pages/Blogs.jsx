@@ -162,7 +162,7 @@ const Blogs = () => {
         <div className="bp-container">
           <div className="bp-featured__card">
             <div className="bp-featured__img">
-              <img src={blogImages[featured.slug]} alt={featured.title} loading="lazy" />
+              <img src={blogImages[featured.slug]?.hero} alt={featured.title} loading="lazy" />
               <span className="bp-featured__badge">Featured</span>
             </div>
             <div className="bp-featured__body">
@@ -230,7 +230,7 @@ const Blogs = () => {
             {remaining.map((blog) => (
               <article key={blog.slug} className="bp-card">
                 <div className="bp-card__img">
-                  <img src={blogImages[blog.slug]} alt={blog.title} loading="lazy" />
+                  <img src={blogImages[blog.slug]?.hero} alt={blog.title} loading="lazy" />
                 </div>
                 <div className="bp-card__body">
                   <div className="bp-card__meta">

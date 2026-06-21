@@ -175,23 +175,20 @@
 .nav-cta {
   font-family: 'Poppins', sans-serif;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #fff;
   text-decoration: none;
-
   padding: 9px 22px;
   margin-left: 8px;
   border-radius: 999px;
-
-  background: #000000;
-  border: 1px solid #13232f;
-  letter-spacing: 0.3px;
-
+  background: #1B4332;
+  border: none;
+  letter-spacing: 0.1px;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .nav-cta:hover {
-  background: #1a1a1a;
+  background: #000000;
   transform: translateY(-1px);
 }
 

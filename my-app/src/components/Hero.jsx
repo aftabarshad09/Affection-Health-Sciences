@@ -1,333 +1,269 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";           // added for navigation
-import { FaInstagram, FaFacebookF } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import logo from "../assets/logo.png";
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import "./Hero.css";
-import banner1 from "../assets/banners/banner1111.jpeg";
-import banner2 from "../assets/banners/banner2.jpeg";
-import banner3 from "../assets/banners/banner333.jpeg";
-import banner4 from "../assets/banners/banner444.png";
 
-import A1 from "../assets/Grid/A1.png";
-import B1 from "../assets/Grid/B1.png";
-import C1 from "../assets/Grid/C1.png";
-import D1 from "../assets/Grid/D1.png";
+import P1 from "../assets/Products/P1.png";
+import P2 from "../assets/Products/P24.1.png";
+import P3 from "../assets/Products/P5.png";
+import P4 from "../assets/Products/P6.png";
+import P5 from "../assets/Products/P8.png";
+import P6 from "../assets/Products/P3.png";
+import P7 from "../assets/Products/P21.png";
+import P8 from "../assets/Products/P20.png";
+import P9 from "../assets/Products/P8.png";
 
-const banners = [
-  {
-    image: banner1,
-    theme: {
-      bg: "#f3eeff",
-      accent: "#7c3aed",
-      accentSoft: "rgba(124,58,237,0.14)",
-    },
-    showcase: D1,
-    showcaseLabel: "Baby Nutrition",
-    productLine: "Advanced Infant Formula",       // new field
-  },
-  {
-    image: banner2,
-    theme: {
-      bg: "#edfaf3",
-      accent: "#16a34a",
-      accentSoft: "rgba(22,163,74,0.14)",
-    },
-    showcase: C1,
-    showcaseLabel: "Baby Nutrition",
-    productLine: "Prenatal Wellness Support",
-  },
-  {
-    image: banner3,
-    theme: {
-      bg: "#eaf4ff",
-      accent: "#1d4ed8",
-      accentSoft: "rgba(29,78,216,0.14)",
-    },
-    showcase: A1,
-    showcaseLabel: "Baby Nutrition",
-    productLine: "Digestive Comfort Blend",
-  },
-  {
-    image: banner4,
-    theme: {
-      bg: "#fff4e6",
-      accent: "#ea580c",
-      accentSoft: "rgba(234,88,12,0.14)",
-    },
-    showcase: B1,
-    showcaseLabel: "Baby Nutrition",
-    productLine: "Family Daily Multivitamin",
-  },
+const products = [
+  { image: P1, name: "Protein" },
+  { image: P2, name: "BCAA" },
+  { image: P3, name: "Energid" },
+  { image: P4, name: "Collagen" },
+  { image: P5, name: "Immunity+" },
+  { image: P6, name: "Omega 3" },
+  { image: P7, name: "Multivitamin" },
+  { image: P8, name: "Creatine" },
+  { image: P9, name: "Wellness Blend" },
 ];
 
-const ShowcaseCard = ({ image, label }) => {
-  // ... unchanged
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const handleMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 14;
-    setPosition({ x, y });
-  };
-
-  const resetPosition = () => setPosition({ x: 0, y: 0 });
-
-  return (
-    <div
-      className="showcase-card"
-      onMouseMove={handleMove}
-      onMouseLeave={resetPosition}
-    >
-      <div className="showcase-backdrop" />
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={image}
-          src={image}
-          alt={label}
-          className="showcase-img"
-          initial={{ opacity: 0, scale: 1.04, y: 10 }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            x: position.x,
-            rotateX: -position.y * 0.3,
-            rotateY: position.x * 0.3,
-          }}
-          exit={{ opacity: 0, scale: 0.97 }}
-          transition={{
-            opacity: { duration: 0.5 },
-            scale: { duration: 0.5 },
-            x: { type: "spring", stiffness: 90, damping: 18 },
-            rotateX: { type: "spring", stiffness: 90, damping: 18 },
-            rotateY: { type: "spring", stiffness: 90, damping: 18 },
-          }}
-        />
-      </AnimatePresence>
-    </div>
-  );
-};
-
-const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [[, direction], setImageIndex] = useState([0, 0]);
-  const timeoutRef = useRef(null);
-  const [bannerPosition, setBannerPosition] = useState({ x: 0, y: 0 });
-  const bannerRef = useRef(null);
-
-  const currentBanner = banners[currentIndex];
-
-  const paginate = (newDirection) => {
-    let newIndex = currentIndex + newDirection;
-    if (newIndex < 0) newIndex = banners.length - 1;
-    if (newIndex >= banners.length) newIndex = 0;
-    setImageIndex([newIndex, newDirection]);
-    setCurrentIndex(newIndex);
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => paginate(1), 5000);
-  };
+export default function HeroSection() {
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    timeoutRef.current = setTimeout(() => paginate(1), 5000);
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [currentIndex]);
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % products.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
-  const handleBannerMove = (e) => {
-    if (!bannerRef.current) return;
-    const rect = bannerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-    setBannerPosition({ x, y });
-  };
+  const prev = current === 0 ? products.length - 1 : current - 1;
+  const next = current === products.length - 1 ? 0 : current + 1;
 
-  const variants = {
-    enter: (dir) => ({ x: dir > 0 ? 500 : -500, opacity: 0, scale: 0.95 }),
-    center: { x: 0, opacity: 1, scale: 1 },
-    exit: (dir) => ({ x: dir > 0 ? -500 : 500, opacity: 0, scale: 0.95 }),
+  const goToSlide = (index) => {
+    setCurrent(index);
   };
 
   return (
-    <motion.section
-      className="hero"
-      animate={{ backgroundColor: currentBanner.theme.bg }}
-      transition={{ duration: 0.7, ease: "easeInOut" }}
-    >
-      <div className="hero-grid">
-        {/* ── Banner ── */}
-        <div
-          className="div1"
-          ref={bannerRef}
-          onMouseMove={handleBannerMove}
-          onMouseLeave={() => setBannerPosition({ x: 0, y: 0 })}
-        >
-          <div className="banner-container">
-            <AnimatePresence initial={false} custom={direction} mode="popLayout">
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.3 },
-                  scale: { duration: 0.3 },
-                }}
-                className="banner-slide"
-              >
-                <div
-                  className="banner-backdrop"
-                  style={{ backgroundImage: `url(${currentBanner.image})` }}
-                />
+    <section className="hero-section">
+      {/* Blur Spots */}
+      <div className="blob-spot blob-spot-1"></div>
+      <div className="blob-spot blob-spot-2"></div>
+
+      <div className="hero-container">
+        <div className="hero-grid">
+          {/* LEFT SIDE */}
+          <div className="hero-left">
+            <div className="hero-badge">Affection Health Sciences</div>
+
+            <h1 className="hero-title">
+              Science-Backed
+              <span className="hero-title-green">Wellness For</span>
+              Everyday Vitality
+            </h1>
+
+            <p className="hero-description">
+              Carefully formulated supplements designed to
+              support energy, recovery, immunity, and overall
+              well-being through premium ingredients and
+              research-driven nutrition.
+            </p>
+
+            <div className="hero-actions">
+              <button className="hero-button">Explore Our Products</button>
+
+              <div className="hero-social">
+                <FaInstagram className="social-icon" size={16} />
+                <FaFacebookF className="social-icon" size={16} />
+                <FaLinkedinIn className="social-icon" size={16} />
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE - CAROUSEL */}
+          <div className="hero-right">
+            <div className="carousel-wrapper">
+              <div className="carousel-perspective">
+                {/* LEFT PRODUCT */}
                 <motion.img
-                  src={currentBanner.image}
-                  alt={`Banner ${currentIndex}`}
-                  className="hero-main-img"
-                  animate={{ x: bannerPosition.x, y: bannerPosition.y }}
-                  transition={{ type: "spring", stiffness: 150, damping: 25 }}
+                  src={products[prev].image}
+                  alt=""
+                  className="carousel-left"
+                  animate={{
+                    x: -160,
+                    scale: 0.65,
+                    rotateY: 40,
+                    opacity: 0.3,
+                  }}
+                  transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                 />
-              </motion.div>
-            </AnimatePresence>
-          </div>
 
-          {/* ── Right-side overlay (new) ── */}
-          <div className="banner-overlay">
-            <p className="overlay-company">Affection Health Sciences</p>
-            <p className="overlay-product-line">{currentBanner.productLine}</p>
-            <Link
-              to="/products"
-              className="overlay-btn"
-              style={{ background: currentBanner.theme.accent }}
-            >
-              Explore Product
-            </Link>
-          </div>
+                {/* ACTIVE PRODUCT */}
+                <motion.img
+                  key={current}
+                  src={products[current].image}
+                  alt={products[current].name}
+                  className="carousel-active"
+                  initial={{ 
+                    opacity: 0, 
+                    scale: 0.85,
+                    rotateY: 15
+                  }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    rotateY: 0,
+                    y: [0, -6, 0],
+                  }}
+                  transition={{
+                    duration: 1.2,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
+                  }}
+                />
 
-          <motion.div
-            className="banner-edge-fade"
-            animate={{
-              background: `linear-gradient(to top, ${currentBanner.theme.bg} 0%, transparent 100%)`,
-            }}
-            transition={{ duration: 0.7 }}
-          />
+                {/* RIGHT PRODUCT */}
+                <motion.img
+                  src={products[next].image}
+                  alt=""
+                  className="carousel-right"
+                  animate={{
+                    x: 160,
+                    scale: 0.65,
+                    rotateY: -40,
+                    opacity: 0.3,
+                  }}
+                  transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                />
+              </div>
 
-          <div className="banner-dots">
-            {banners.map((_, index) => (
-              <button
-                key={index}
-                className={`dot ${currentIndex === index ? "active-dot" : ""}`}
-                style={
-                  currentIndex === index
-                    ? { background: currentBanner.theme.accent }
-                    : {}
-                }
-                onClick={() => {
-                  const newDir = index > currentIndex ? 1 : -1;
-                  setImageIndex([index, newDir]);
-                  setCurrentIndex(index);
-                  if (timeoutRef.current) {
-                    clearTimeout(timeoutRef.current);
-                    timeoutRef.current = setTimeout(() => paginate(1), 5000);
-                  }
-                }}
-              />
-            ))}
-          </div>
-        </div>
+              {/* PRODUCT NAME */}
+              <div className="carousel-name">
+                <AnimatePresence mode="wait">
+                  <motion.h3
+                    key={products[current].name}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="product-name"
+                  >
+                    {products[current].name}
+                  </motion.h3>
+                </AnimatePresence>
+              </div>
 
-        {/* ── Logo removed completely ── */}
-        {/* div2 deleted */}
-
-        {/* ── Enhanced text block ── */}
-        <div className="div8">
-          <motion.span
-            className="hero-eyebrow"
-            animate={{
-              color: currentBanner.theme.accent,
-              borderColor: currentBanner.theme.accent + "55",
-            }}
-            transition={{ duration: 0.7 }}
-          >
-            Formulated with intention
-          </motion.span>
-
-          <h1 className="hero-title">
-            Affection
-            <br />
-            <span className="hero-title-script">Health Sciences</span>
-          </h1>
-
-          <p className="hero-subtitle">
-            Premium nutritional solutions for babies, women and families —
-            scientifically formulated to support growth, wellness and a
-            healthier future at every stage of life.
-          </p>
-
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <span className="hero-stat-num">27+</span>
-              <span className="hero-stat-label">Formulations</span>
-            </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="hero-stat-num">GMP</span>
-              <span className="hero-stat-label">Certified Labs</span>
-            </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="hero-stat-num">0</span>
-              <span className="hero-stat-label">Artificial Fillers</span>
+              {/* DOTS INDICATOR */}
+              <div className="carousel-dots">
+                {products.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`dot ${index === current ? "dot-active" : "dot-inactive"}`}
+                    onClick={() => goToSlide(index)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-
-          <div className="hero-actions">
-            <motion.button
-              className="browse-btn"
-              style={{ borderColor: currentBanner.theme.accent + "66" }}
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              EXPLORE PRODUCTS
-            </motion.button>
-
-            <div className="social-pill">
-              <a href="#" aria-label="Instagram">
-                <FaInstagram />
-              </a>
-              <a href="#" aria-label="X">
-                <FaXTwitter />
-              </a>
-              <a href="#" aria-label="Facebook">
-                <FaFacebookF />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Expanded rotating showcase ── */}
-        <div className="div3">
-          <span className="showcase-mark" aria-hidden="true">
-            {`0${currentIndex + 1}`}
-          </span>
-          <ShowcaseCard
-            image={currentBanner.showcase}
-            label={currentBanner.showcaseLabel}
-          />
-          <motion.span
-            className="showcase-corner"
-            animate={{ background: currentBanner.theme.accent }}
-            transition={{ duration: 0.6 }}
-          />
         </div>
       </div>
-    </motion.section>
-  );
-};
 
-export default Hero;
+      {/* WAVE ANIMATION */}
+      <div className="wave-container">
+        <svg
+          className="waves"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 160"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <filter id="waveBlur1">
+              <feGaussianBlur stdDeviation="1.5" />
+            </filter>
+            <filter id="waveBlur2">
+              <feGaussianBlur stdDeviation="3" />
+            </filter>
+            <filter id="waveBlur3">
+              <feGaussianBlur stdDeviation="4" />
+            </filter>
+            <filter id="waveBlur4">
+              <feGaussianBlur stdDeviation="5" />
+            </filter>
+            
+            <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
+              <stop offset="15%" style={{ stopColor: '#C97B5C', stopOpacity: 0.2 }} />
+              <stop offset="50%" style={{ stopColor: '#C97B5C', stopOpacity: 0.45 }} />
+              <stop offset="85%" style={{ stopColor: '#C97B5C', stopOpacity: 0.2 }} />
+              <stop offset="100%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
+            </linearGradient>
+            
+            <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
+              <stop offset="20%" style={{ stopColor: '#C97B5C', stopOpacity: 0.25 }} />
+              <stop offset="50%" style={{ stopColor: '#C97B5C', stopOpacity: 0.55 }} />
+              <stop offset="80%" style={{ stopColor: '#C97B5C', stopOpacity: 0.25 }} />
+              <stop offset="100%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
+            </linearGradient>
+            
+            <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
+              <stop offset="10%" style={{ stopColor: '#C97B5C', stopOpacity: 0.15 }} />
+              <stop offset="50%" style={{ stopColor: '#C97B5C', stopOpacity: 0.35 }} />
+              <stop offset="90%" style={{ stopColor: '#C97B5C', stopOpacity: 0.15 }} />
+              <stop offset="100%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
+            </linearGradient>
+          </defs>
+
+          {/* Layer 1 - Deep wave */}
+          <path
+            className="wave wave1"
+            d="M0,80 C180,35 360,105 540,60 C720,15 900,90 1080,50 C1260,10 1380,70 1440,50 L1440,160 L0,160 Z"
+            fill="url(#waveGradient1)"
+            filter="url(#waveBlur1)"
+            style={{ mixBlendMode: 'normal' }}
+          />
+
+          {/* Layer 2 - Medium wave */}
+          <path
+            className="wave wave2"
+            d="M0,95 C240,50 480,115 720,70 C960,25 1200,95 1440,60 L1440,160 L0,160 Z"
+            fill="url(#waveGradient2)"
+            filter="url(#waveBlur2)"
+            style={{ mixBlendMode: 'screen' }}
+          />
+
+          {/* Layer 3 - Light wave */}
+          <path
+            className="wave wave3"
+            d="M0,115 C300,70 600,135 900,90 C1200,45 1350,110 1440,80 L1440,160 L0,160 Z"
+            fill="url(#waveGradient3)"
+            filter="url(#waveBlur3)"
+            style={{ mixBlendMode: 'screen' }}
+          />
+
+          {/* Layer 4 - Subtle glow wave */}
+          <path
+            className="wave wave4"
+            d="M0,130 C200,95 400,145 600,115 C800,85 1000,135 1200,105 C1320,90 1380,120 1440,100 L1440,160 L0,160 Z"
+            fill="url(#waveGradient1)"
+            filter="url(#waveBlur4)"
+            opacity="0.35"
+            style={{ mixBlendMode: 'soft-light' }}
+          />
+
+          {/* Layer 5 - Floating ribbon */}
+          <path
+            className="wave wave5"
+            d="M0,120 C180,75 360,130 540,95 C720,60 900,115 1080,80 C1260,45 1380,85 1440,65 L1440,160 L0,160 Z"
+            fill="url(#waveGradient2)"
+            filter="url(#waveBlur2)"
+            opacity="0.25"
+            style={{ mixBlendMode: 'overlay' }}
+          />
+        </svg>
+        
+        {/* Shine overlay on waves */}
+        <div className="wave-shine"></div>
+      </div>
+    </section>
+  );
+}

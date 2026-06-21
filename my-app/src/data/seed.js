@@ -33,7 +33,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "<strong>Liver disease</strong> affects millions worldwide. Conditions like fatty liver disease, hepatitis, and cirrhosis can progressively impair liver function, leading to serious complications. Cirrhosis, in particular, represents advanced scarring of the liver tissue that disrupts its ability to function properly. This is where specialized nutrition plays a crucial role in management and support.",
       },
-      { type: "image", src: "/images/blog/bcaas-liver-health/image1.jpg", alt: "Liver Anatomy and Function", index: 1 },
+      { type: "image", src: "../assets/Blogs/liverHealth2.png", alt: "Liver Anatomy and Function", index: 1 },
       
       { type: "heading", level: 2, content: "What Are BCAAs and Why Do They Matter for Liver Health?" },
       {
@@ -89,7 +89,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "It's important to note that BCAA supplementation should be part of a comprehensive management plan under medical supervision. The <strong>targeted hepatic care</strong> provided by specialized products addresses the unique nutritional needs of liver disease patients who cannot meet their requirements through diet alone.",
       },
-      { type: "image", src: "/images/blog/bcaas-liver-health/image2.jpg", alt: "BCAA Supplementation Benefits", index: 2 },
+      { type: "image", src: "../assets/Blogs/liverHealth3.png", alt: "BCAA Supplementation Benefits", index: 2 },
       
       { type: "heading", level: 2, content: "Understanding Hepatic Nutritional Support Products" },
       {
@@ -178,7 +178,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "Research has shown that patients with cirrhosis who receive BCAA supplementation experience: lower rates of hepatic encephalopathy, improved protein synthesis, better overall survival rates, and enhanced nutritional status. The <strong>hypermetabolic needs</strong> of cirrhosis patients are addressed more effectively with BCAA supplementation than with standard nutritional support.",
       },
-      { type: "image", src: "/images/blog/bcaas-liver-health/image3.jpg", alt: "Clinical Research on BCAAs", index: 3 },
+      { type: "image", src: "../assets/Blogs/liverHealth4.png", alt: "Clinical Research on BCAAs", index: 3 },
       
       { type: "heading", level: 2, content: "Choosing the Right BCAA Supplement for Liver Health" },
       {
@@ -221,7 +221,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "The <strong>nutritional efficiency</strong> of hepatic support products makes them an integral part of this comprehensive approach, ensuring that patients receive the concentrated nutrition they need without excessive volume or calorie intake.",
       },
-      { type: "image", src: "/images/blog/bcaas-liver-health/image4.jpg", alt: "Liver Health Wellness Plan", index: 4 },
+      { type: "image", src: "../assets/Blogs/liverHealth5.png", alt: "Liver Health Wellness Plan", index: 4 },
       
       { type: "heading", level: 2, content: "Real-World Outcomes: Patient Experiences with BCAA Supplementation" },
       {
@@ -313,7 +313,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "<strong>MCT oil</strong> is derived from sources like coconut oil and palm kernel oil. It contains saturated and monounsaturated fatty acids that are easily absorbed and quickly converted into energy. The unique structure of MCTs allows them to be transported directly to the liver where they are rapidly oxidized for energy, rather than being stored as fat in adipose tissue.",
       },
-      { type: "image", src: "/images/blog/mct-oil-kids/image1.jpg", alt: "MCT Oil for Children's Health", index: 1 },
+      { type: "image", src: "../assets/Blogs/mctKids2.png", alt: "MCT Oil for Children's Health", index: 1 },
       
       { type: "heading", level: 2, content: "Why MCT Oil Matters for Children's Growth and Development" },
       {
@@ -355,7 +355,7 @@ export const blogArticles = [
         content: "MCT oil is also widely used in <strong>neonatal nutrition</strong> protocols for premature or low-birth-weight infants who require additional nutritional support. The energy density and easy digestibility make it an ideal component of specialized infant nutrition.",
       },
       {
-        type: "image", src: "/images/blog/mct-oil-kids/image2.jpg", alt: "MCT Oil Benefits for Infants", index: 2 },
+        type: "image", src: "../assets/Blogs/mctKids3.png", alt: "MCT Oil Benefits for Infants", index: 2 },
       
       { type: "heading", level: 2, content: "MCT Oil for Toddler Weight Gain" },
       {
@@ -421,7 +421,7 @@ export const blogArticles = [
         ],
       },
       {
-        type: "image", src: "/images/blog/mct-oil-kids/image3.jpg", alt: "MCT Oil and Brain Function", index: 3 },
+        type: "image", src: "../assets/Blogs/mctKids4.png", alt: "MCT Oil and Brain Function", index: 3 },
       
       { type: "heading", level: 2, content: "Dosage Guidelines for MCT Oil in Children" },
       {
@@ -517,7 +517,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "Products like <strong>Mctolip</strong> from Nutritech represent the standard in pediatric MCT oil supplementation. These products are specifically designed to support <strong>weight management</strong> in children while providing the nutritional benefits of medium-chain triglycerides.",
       },
-      { type: "image", src: "/images/blog/mct-oil-kids/image4.jpg", alt: "Choosing MCT Oil Products", index: 4 },
+      { type: "image", src: "../assets/Blogs/mctKids5.png", alt: "Choosing MCT Oil Products", index: 4 },
       
       { type: "heading", level: 2, content: "Understanding When MCT Oil Is Recommended for Children" },
       {
@@ -621,7 +621,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "The <strong>maternal nutritional supplement</strong> needs during pregnancy cannot be overstated. The demand for folate increases dramatically as the developing fetus grows, and the mother's body adapts to support this growth. Yet the discussion around which form of folate is optimal for pregnancy has evolved significantly in recent years, raising important questions about <strong>folic acid vs L-methylfolate</strong>.",
       },
-      { type: "image", src: "/images/blog/folic-acid-vs-l-methylfolate/image1.jpg", alt: "Folate Importance in Pregnancy", index: 1 },
+      { type: "image", src: "../assets/Blogs/folicAcid2.png", alt: "Folate Importance in Pregnancy", index: 1 },
       
       { type: "heading", level: 2, content: "Understanding Folic Acid: The Standard Approach" },
       {
@@ -713,7 +713,7 @@ export const blogArticles = [
           "<strong>Maternal Mood:</strong> May help support healthy mood balance during the postpartum period.",
         ],
       },
-      { type: "image", src: "/images/blog/folic-acid-vs-l-methylfolate/image2.jpg", alt: "DHA for Baby Development", index: 2 },
+      { type: "image", src: "../assets/Blogs/folicAcid3.png", alt: "DHA for Baby Development", index: 2 },
       
       { type: "heading", level: 2, content: "Calcium and Iron: Supporting Maternal and Fetal Health" },
       {
@@ -941,7 +941,7 @@ export const blogArticles = [
         content: "When medical conditions or life circumstances compromise nutritional status, specialized <strong>adult nutrition</strong> supplementation becomes crucial. Conditions like COPD, cancer, surgery recovery, and malnutrition require concentrated nutrition that goes beyond normal dietary intake. This is where complete nutritional supplements play a vital role in maintaining health and supporting recovery.",
       },
       {
-        type: "image", src: "/images/blog/adult-nutrition-energid/image1.jpg", alt: "Complete Adult Nutrition", index: 1 },
+        type: "image", src: "../assets/Blogs/adultNutrition2.png", alt: "Complete Adult Nutrition", index: 1 },
       
       { type: "heading", level: 2, content: "Conditions Requiring Complete Adult Nutrition" },
       {
@@ -1226,7 +1226,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "The rise of <strong>NAFLD in children</strong> parallels increasing rates of childhood obesity, but it's also influenced by maternal nutrition, genetic factors, and early-life exposures. This recognition has shifted focus toward prevention and early intervention strategies that begin even before birth, emphasizing the critical role of <strong>maternal nutrition</strong> in fetal development.",
       },
-      { type: "image", src: "/images/blog/nafld-children/image1.jpg", alt: "NAFLD in Children Overview", index: 1 },
+      { type: "image", src: "../assets/Blogs/nafld2.png", alt: "NAFLD in Children Overview", index: 1 },
       
       { type: "heading", level: 2, content: "Why NAFLD is on the Rise in Children" },
       {
@@ -1355,7 +1355,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "This system ensures <strong>premium maternal nutrition</strong> that not only supports fetal development but also protects against conditions that could predispose children to NAFLD and other metabolic conditions.",
       },
-      { type: "image", src: "/images/blog/nafld-children/image2.jpg", alt: "3G Nutritional System for Maternal Health", index: 2 },
+      { type: "image", src: "../assets/Blogs/nafld3.png", alt: "3G Nutritional System for Maternal Health", index: 2 },
       
       { type: "heading", level: 2, content: "Nutritional Intervention for Children with NAFLD" },
       {
@@ -1543,7 +1543,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "This guide breaks maternal nutrition into its two natural phases — <strong>prenatal</strong> (during pregnancy) and <strong>postnatal</strong> (after birth) — and explains what to supplement, when, and why, in plain language.",
       },
-      { type: "image", src: "/images/blog/maternal-nutrition/image1.jpg", alt: "Maternal Nutrition During Pregnancy", index: 1 },
+      { type: "image", src: "../assets/Blogs/maternalNutrition2.png", alt: "Maternal Nutrition During Pregnancy", index: 1 },
 
       { type: "heading", level: 2, content: "The Prenatal Phase: Building Blocks for a Healthy Pregnancy" },
       {
@@ -1592,7 +1592,7 @@ export const blogArticles = [
           "<strong>Glow:</strong> Supporting micronutrients that help maintain maternal energy and mood through pregnancy.",
         ],
       },
-      { type: "image", src: "/images/blog/maternal-nutrition/image2.jpg", alt: "The 3G Maternal Nutrition Framework", index: 2 },
+      { type: "image", src: "../assets/Blogs/maternalNutrition3.png", alt: "The 3G Maternal Nutrition Framework", index: 2 },
 
       { type: "heading", level: 2, content: "Postnatal Nutrition: Recovery, Lactation, and Replenishment" },
       {
@@ -1694,7 +1694,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "This guide walks through what to expect at each growth stage, the infant nutrition essentials parents are most likely to overlook, and what to do when a child isn't gaining weight the way their growth chart suggests they should.",
       },
-      { type: "image", src: "/images/blog/pediatric-health/image1.jpg", alt: "Pediatric Health and Growth Milestones", index: 1 },
+      { type: "image", src: "../assets/Blogs/pediatricHealth2.png", alt: "Pediatric Health and Growth Milestones", index: 1 },
 
       { type: "heading", level: 2, content: "Growth Milestones: What to Watch For at Every Stage" },
       {
@@ -1750,7 +1750,7 @@ export const blogArticles = [
           "Use under guidance from a pediatrician, particularly for infants or children with underlying digestive conditions.",
         ],
       },
-      { type: "image", src: "/images/blog/pediatric-health/image2.jpg", alt: "Supporting Healthy Weight Gain in Children", index: 2 },
+      { type: "image", src: "../assets/Blogs/pediatricHealth3.png", alt: "Supporting Healthy Weight Gain in Children", index: 2 },
 
       { type: "heading", level: 2, content: "Building Strong Immune and Cognitive Foundations" },
       {
@@ -1831,7 +1831,7 @@ export const blogArticles = [
         type: "paragraph",
         content: "The immune system isn't a single organ — it's a coordinated network of cells, signaling proteins, and physical barriers spanning the skin, gut, and bloodstream. <strong>Immune support</strong> nutrition works by giving that network the raw materials it needs: amino acids to build antibodies, micronutrients to fuel immune cell production, and antioxidants to limit collateral inflammation during an immune response.",
       },
-      { type: "image", src: "/images/blog/immune-support/image1.jpg", alt: "How the Immune System Works", index: 1 },
+      { type: "image", src: "../assets/Blogs/immuneSupport2.png", alt: "How the Immune System Works", index: 1 },
 
       { type: "heading", level: 2, content: "The Nutrients That Matter Most for Immune Function" },
       {
@@ -1891,7 +1891,7 @@ export const blogArticles = [
           "<strong>Hydration:</strong> Supports the mucous membranes that act as a first physical barrier against pathogens.",
         ],
       },
-      { type: "image", src: "/images/blog/immune-support/image2.jpg", alt: "Lifestyle Factors and Immune Health", index: 2 },
+      { type: "image", src: "../assets/Blogs/immuneSupport3.png", alt: "Lifestyle Factors and Immune Health", index: 2 },
 
       { type: "heading", level: 2, content: "Choosing a Targeted Immune Support Formula" },
       {

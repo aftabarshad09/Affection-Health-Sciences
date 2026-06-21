@@ -12,30 +12,69 @@ const formatDate = (dateStr) =>
     day: "numeric",
   });
 
-const renderSection = (section, index, fallbackImage) => {
+// Groups each "image" section with the paragraphs that immediately follow it,
+// so the image can be laid out side-by-side with its related text.
+const groupSections = (sections) => {
+  const groups = [];
+  let i = 0;
+  while (i < sections.length) {
+    const section = sections[i];
+    if (section.type === "image") {
+      const paragraphs = [];
+      let j = i + 1;
+      while (j < sections.length && sections[j].type === "paragraph") {
+        paragraphs.push(sections[j]);
+        j++;
+      }
+      groups.push({ type: "media", image: section, paragraphs });
+      i = j;
+    } else {
+      groups.push(section);
+      i++;
+    }
+  }
+  return groups;
+};
+
+const renderParagraph = (section, key) => (
+  <p
+    key={key}
+    className="blog-post__paragraph"
+    dangerouslySetInnerHTML={{ __html: section.content }}
+  />
+);
+
+const renderMedia = ({ image, paragraphs }, index, gallery) => {
+  const src = gallery?.[(image.index || 1) - 1] ?? gallery?.[0];
+
+  if (paragraphs.length === 0) {
+    return (
+      <div key={`media-${index}`} className="blog-post__solo-image-wrap">
+        <img src={src} alt={image.alt} className="blog-post__solo-image" />
+      </div>
+    );
+  }
+
+  return (
+    <div key={`media-${index}`} className="blog-post__media-row">
+      <div className="blog-post__media-image-wrap">
+        <img src={src} alt={image.alt} className="blog-post__media-image" />
+      </div>
+      <div className="blog-post__media-text">
+        {paragraphs.map((p, i) => renderParagraph(p, `media-${index}-p-${i}`))}
+      </div>
+    </div>
+  );
+};
+
+const renderSection = (section, index) => {
   switch (section.type) {
     case "heading": {
       const Tag = `h${section.level || 2}`;
       return <Tag key={index} className="blog-post__heading">{section.content}</Tag>;
     }
     case "paragraph":
-      return (
-        <p
-          key={index}
-          className="blog-post__paragraph"
-          dangerouslySetInnerHTML={{ __html: section.content }}
-        />
-      );
-    case "image":
-      return (
-        <div key={index} className="blog-post__image-wrap">
-          <img
-            src={fallbackImage}
-            alt={section.alt}
-            className="blog-post__inline-image"
-          />
-        </div>
-      );
+      return renderParagraph(section, index);
     case "list": {
       const ListTag = section.ordered ? "ol" : "ul";
       return (
@@ -113,7 +152,10 @@ export default function BlogPost() {
     );
   }
 
-  const heroImage = blogImages[article.slug];
+  const images = blogImages[article.slug];
+  const heroImage = images?.hero;
+  const gallery = images?.gallery;
+  const groupedSections = groupSections(article.sections);
 
   return (
     <article className="blog-post">
@@ -149,7 +191,11 @@ export default function BlogPost() {
         </div>
 
         <div className="blog-post__body">
-          {article.sections.map((section, i) => renderSection(section, i, heroImage))}
+          {groupedSections.map((group, i) =>
+            group.type === "media"
+              ? renderMedia(group, i, gallery)
+              : renderSection(group, i)
+          )}
         </div>
       </div>
     </article>
