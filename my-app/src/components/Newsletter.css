@@ -1,33 +1,46 @@
+/* ===========================
+   Newsletter Strip — Medical Ramp Theme
+   Forest green / warm cream / terracotta
+   =========================== */
+
 .newsletter-strip {
-  --orchid: #d99fdb;
-  --orchid-soft: #f3e2f4;
+  --terra: #C97B5C;
+  --terra-deep: #B0603F;
+  --cream: #FAF6F0;
+  --border: #D8C8B4;
+  --ink: #1A1A1A;
+  --muted: #5A6B64;
+  --muted-light: #9A8C80;
 
   position: relative;
   overflow: hidden;
   height: 250px;
-  background: #fcfcfc;
+  background: var(--cream);
   display: flex;
   align-items: center;
   isolation: isolate;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
-/* .newsletter-strip__ghost {
+/* Ghost text (optional, uncomment if needed) */
+/*
+.newsletter-strip__ghost {
   position: absolute;
   right: clamp(-2rem, 2vw, 2rem);
   bottom: -4%;
   z-index: 0;
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 500;
+  font-weight: 800;
   font-style: italic;
   font-size: clamp(5rem, 14vw, 11rem);
   line-height: 1;
   letter-spacing: -0.02em;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(217, 159, 219, 0.35);
+  -webkit-text-stroke: 1px rgba(201, 123, 92, 0.3);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
-} */
+}
+*/
 
 .newsletter-strip__glow {
   position: absolute;
@@ -36,7 +49,7 @@
   left: 1%;
   top: 80%;
   transform: translateY(-50%);
-  background: radial-gradient(circle, rgba(217, 159, 219, 0.52) 0%, rgba(217, 159, 219, 0) 70%);
+  background: radial-gradient(circle, rgba(201, 123, 92, 0.35) 0%, rgba(201, 123, 92, 0) 70%);
   z-index: 0;
   pointer-events: none;
 }
@@ -54,23 +67,19 @@
   align-items: center;
 }
 
-
-
 .newsletter-strip__heading {
-  font-family: "Fraunces", Georgia, sans-serif;
-  font-weight: 500;
+  font-weight: 800;
   font-size: clamp(2rem, 4vw, 3.2rem);
   line-height: 1.05;
   letter-spacing: -0.01em;
-  color: #000000;
+  color: var(--ink);
   margin: 0 0 1rem;
 }
 
 .newsletter-strip__subheading {
-  font-family: "Inter", system-ui, sans-serif;
   font-size: 0.98rem;
   line-height: 1.65;
-  color: rgba(0, 0, 0, 0.62);
+  color: var(--muted);
   max-width: 36ch;
   margin: 0;
 }
@@ -91,11 +100,11 @@
 .newsletter-strip__input {
   flex: 1;
   min-width: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: inherit;
   font-size: 0.95rem;
-  color: #000000;
+  color: var(--ink);
   background: transparent;
-  border: 1.5px solid rgba(217, 159, 219, 0.55);
+  border: 1.5px solid rgba(201, 123, 92, 0.45);
   border-right: none;
   border-radius: 0;
   padding: 0 1.2rem;
@@ -104,12 +113,12 @@
 }
 
 .newsletter-strip__input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.35);
 }
 
 .newsletter-strip__input:focus {
   outline: none;
-  border-color: var(--orchid);
+  border-color: var(--terra);
 }
 
 .newsletter-strip__input:disabled {
@@ -119,13 +128,13 @@
 .newsletter-strip__submit {
   position: relative;
   flex-shrink: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: inherit;
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #000000;
-  background: var(--orchid);
+  color: #ffffff;
+  background: var(--terra);
   border: none;
   height: 56px;
   padding: 0 2.1rem 0 2.6rem;
@@ -136,17 +145,17 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
   white-space: nowrap;
 }
 
 .newsletter-strip__submit:hover:not(:disabled) {
-  background: #ffffff;
-   border: 1.5px solid rgba(217, 159, 219, 0.55);
+  background: var(--terra-deep);
+  color: #ffffff;
 }
 
 .newsletter-strip__submit:focus-visible {
-  outline: 2px solid var(--orchid-soft);
+  outline: 2px solid var(--terra);
   outline-offset: 4px;
 }
 
@@ -156,9 +165,8 @@
 }
 
 .newsletter-strip__privacy {
-  font-family: "Inter", system-ui, sans-serif;
   font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.45);
+  color: var(--muted-light);
   margin: 0;
 }
 
@@ -181,10 +189,6 @@
   }
   .newsletter-strip__inner {
     grid-template-columns: 1fr;
-  }
-  .newsletter-strip__ghost {
-    font-size: clamp(3.5rem, 18vw, 6rem);
-    bottom: -2%;
   }
 }
 

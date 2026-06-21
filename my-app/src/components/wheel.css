@@ -1,15 +1,16 @@
-/* wheel.css — Product showcase wheel, themed with site orchid palette */
+/* wheel.css — Product showcase wheel, Medical Ramp theme */
 .wheel-section-wrapper {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 .wheel-heading {
   text-align: center;
   font-size: 36px;
-  font-weight: bold;
-  color: #1a1a2e;
+  font-weight: 800;
+  color: #1A1A1A;
   margin-bottom: 40px;
   text-transform: uppercase;
   position: relative;
@@ -24,7 +25,7 @@
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background-color: #d99fdb;
+  background-color: #C97B5C;            /* terracotta accent */
 }
 
 .wheel-services-container {
@@ -53,41 +54,43 @@
 }
 
 .slice {
-  fill: #d99fdb;
-  stroke: white;
+  fill: #1B4332;                        /* forest green base */
+  stroke: #FAF6F0;                      /* warm cream outline */
   stroke-width: 2;
   transition: fill 0.3s;
   cursor: pointer;
 }
 
 .slice:hover {
-  fill: #e3b4e6;
+  fill: #2D6A4F;                        /* mid green */
 }
 
 .slice.active {
-  fill: #1a1a2e;
+  fill: #1A1A1A;                        /* near-black for active */
 }
 
 .slice-label {
   font-size: 14px;
   font-weight: bold;
   pointer-events: none;
-  fill: #333;
+  fill: #FAF6F0;                        /* white cream on dark slices */
   text-anchor: middle;
   dominant-baseline: middle;
   transform: rotate(0);
 }
 
+/* Override label colour when slice is active (near-black) – still readable */
 .slice.active + .slice-label {
-  fill: white;
+  fill: #FAF6F0;
 }
 
 /* ---- content panel ---- */
 .content-section {
   flex: 1;
-  background-color: #f3eeff;
+  background-color: #FFFFFF;
   border-radius: 14px;
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.1);
+  border: 1px solid #D8C8B4;
+  box-shadow: 0 8px 24px rgba(27, 67, 50, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -109,7 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(165deg, #ffffff 0%, #ece0ff 100%);
+  background: linear-gradient(165deg, #FAF6F0 0%, #F2E8DC 100%);
   border-radius: 14px 14px 0 0;
   position: relative;
   overflow: hidden;
@@ -119,7 +122,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(217, 159, 219, 0.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(201, 123, 92, 0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -131,7 +134,7 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 18px 24px rgba(26, 26, 46, 0.18));
+  filter: drop-shadow(0 18px 24px rgba(27, 67, 50, 0.18));
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -142,8 +145,8 @@
 /* ---- text content below the image ---- */
 .label-heading {
   font-size: 26px;
-  font-weight: bold;
-  color: #1a1a2e;
+  font-weight: 800;
+  color: #1A1A1A;
   margin: 22px 32px 0;
   position: relative;
   text-transform: uppercase;
@@ -154,30 +157,30 @@
 }
 
 .label-heading svg {
-  color: #d99fdb;
+  color: #C97B5C;                       /* terracotta */
   font-size: 20px;
 }
 
 .product-tagline {
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #b766bd;
+  color: #C97B5C;                       /* terracotta */
   margin: 6px 32px 0;
 }
 
 .label-underline {
   width: 60px;
   height: 3px;
-  background-color: #d99fdb;
+  background-color: #C97B5C;
   margin: 16px 32px 18px;
 }
 
 .content-section p.product-description {
   font-size: 15px;
   line-height: 1.65;
-  color: #4a4a6a;
+  color: #5A6B64;                       /* muted green-gray */
   margin: 0 32px 26px;
   white-space: pre-line;
 }
@@ -186,20 +189,23 @@
   align-self: flex-start;
   margin: 0 32px 28px;
   background: transparent;
-  color: #b766bd;
+  color: #C97B5C;
   padding: 10px 30px;
   font-size: 15px;
+  font-weight: 700;
   text-transform: uppercase;
-  border: solid 2px #d99fdb;
+  border: solid 2px #C97B5C;
+  border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   text-decoration: none;
+  font-family: inherit;
 }
 
 .read-more-button:hover {
-  background-color: #1a1a2e;
-  color: #fff;
-  border-color: #1a1a2e;
+  background-color: #1B4332;            /* forest green */
+  color: #FAF6F0;
+  border-color: #1B4332;
 }
 
 @media (max-width: 1024px) {

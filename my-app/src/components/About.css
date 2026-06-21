@@ -1,9 +1,15 @@
+/* ===========================================================
+   About Teaser — Medical Ramp Theme
+   Forest green / warm cream / terracotta
+   Sans-serif system stack. Soft natural palette.
+   =========================================================== */
+
 .about-teaser {
-  --plum: #000000;
-  --mauve: #000000;
-  --orchid: #d99fdb;
-  --orchid-soft: #f3e2f4;
-  --bg-tint: #ffffff;
+  --plum: #1A1A1A;          /* near-black for primary text */
+  --mauve: #3A4440;         /* body text */
+  --terra: #C97B5C;         /* accent (was orchid) */
+  --terra-soft: #F2E8DC;    /* amber cream surface (was orchid-soft) */
+  --bg-tint: #FAF6F0;       /* warm cream */
 
   position: relative;
   overflow: hidden;
@@ -27,13 +33,14 @@
   will-change: transform;
 }
 
+/* Warm terracotta gradient petals */
 .about-teaser__petal--one {
   width: clamp(220px, 28vw, 420px);
   height: clamp(220px, 28vw, 420px);
   top: -8%;
   right: -6%;
-  background: linear-gradient(135deg, var(--orchid) 0%, #e979eb 100%);
-  opacity: 0.35;
+  background: linear-gradient(135deg, var(--terra) 0%, #E8956D 100%);
+  opacity: 0.3;
 }
 
 .about-teaser__petal--two {
@@ -41,8 +48,8 @@
   height: clamp(160px, 18vw, 280px);
   bottom: -10%;
   right: 18%;
-  background: linear-gradient(135deg, #e283e4 0%, var(--orchid-soft) 100%);
-  opacity: 0.5;
+  background: linear-gradient(135deg, #D8957A 0%, var(--terra-soft) 100%);
+  opacity: 0.45;
 }
 
 .about-teaser__petal--three {
@@ -50,10 +57,11 @@
   height: clamp(120px, 12vw, 180px);
   top: 22%;
   right: 4%;
-  background: var(--orchid-soft);
-  opacity: 0.6;
+  background: var(--terra-soft);
+  opacity: 0.55;
 }
 
+/* Ring kept, recolor via inline SVG or CSS if using currentColor */
 .about-teaser__ring {
   position: absolute;
   width: clamp(280px, 32vw, 460px);
@@ -61,6 +69,7 @@
   top: 6%;
   right: 2%;
   will-change: transform;
+  color: var(--terra); /* if ring uses currentColor */
 }
 
 .about-teaser__inner {
@@ -84,18 +93,18 @@
 
 .about-teaser__eyebrow {
   display: inline-block;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--orchid);
+  color: var(--terra);
   margin-bottom: 1.1rem;
 }
 
 .about-teaser__heading {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 500;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-weight: 800;
   font-size: clamp(2.1rem, 4.2vw, 3.4rem);
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -105,12 +114,12 @@
 
 .about-teaser__heading em {
   font-style: italic;
-  color: var(--orchid);
-  font-weight: 450;
+  color: var(--terra);
+  font-weight: 700;
 }
 
 .about-teaser__lede {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   font-size: clamp(1rem, 1.1vw, 1.1rem);
   line-height: 1.7;
   color: var(--mauve);
@@ -118,16 +127,17 @@
   margin: 0 0 2.2rem;
 }
 
+/* CTA – terracotta outline, solid on hover */
 .about-teaser__cta {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--plum);
+  font-weight: 700;
+  color: var(--terra);
   background: transparent;
-  border: 1.5px solid var(--plum);
+  border: 1.5px solid var(--terra);
   border-radius: 999px;
   padding: 0.85rem 1.6rem;
   cursor: pointer;
@@ -139,8 +149,8 @@
 }
 
 .about-teaser__cta:hover {
-  background: var(--plum);
-  color: #fff;
+  background: var(--terra);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
@@ -149,7 +159,7 @@
 }
 
 .about-teaser__cta:focus-visible {
-  outline: 2px solid var(--orchid);
+  outline: 2px solid #1B4332; /* forest green for contrast */
   outline-offset: 3px;
 }
 
@@ -157,7 +167,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  border-left: 1px solid #e9dbea;
+  border-left: 1px solid #D8C8B4; /* border color from theme */
   padding-left: clamp(1.5rem, 3vw, 2.4rem);
 }
 
@@ -167,17 +177,17 @@
 }
 
 .about-teaser__stat-value {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   font-size: clamp(1.9rem, 2.6vw, 2.6rem);
-  font-weight: 500;
+  font-weight: 800;
   color: var(--plum);
   line-height: 1.1;
 }
 
 .about-teaser__stat-label {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   font-size: 0.85rem;
-  color: var(--mauve);
+  color: #5A6B64; /* muted text */
   margin-top: 0.2rem;
 }
 
@@ -189,7 +199,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     border-left: none;
-    border-top: 1px solid #e9dbea;
+    border-top: 1px solid #D8C8B4;
     padding-left: 0;
     padding-top: 1.6rem;
     gap: clamp(1.4rem, 6vw, 2.4rem);

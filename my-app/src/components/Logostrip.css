@@ -1,22 +1,21 @@
 /* ===========================
    LogoStrip.css
    Continuous marquee of partner/trust logos.
-   Theme: matches ProductsPage/Aboutpage tokens
+   Theme: Medical Ramp (forest green / warm cream / terracotta)
    =========================== */
 
 .logostrip {
   position: relative;
   width: 100%;
-  background: #faf7ff;
-  border-top: 1px solid #f0eaff;
-  border-bottom: 1px solid #f0eaff;
-  /* subtle 3D depth with perspective + layered shadows */
+  background: #FAF6F0;                  /* warm cream */
+  border-top: 1px solid #D8C8B4;        /* theme border */
+  border-bottom: 1px solid #D8C8B4;
   perspective: 1000px;
   box-shadow:
-    0 4px 24px rgba(124, 58, 237, 0.07),
-    0 1.5px 0 #e4d4ff,
-    inset 0 2px 8px rgba(196, 181, 253, 0.13),
-    inset 0 -2px 8px rgba(196, 181, 253, 0.10);
+    0 4px 24px rgba(27, 67, 50, 0.06),  /* forest green shadow */
+    0 1.5px 0 rgba(27, 67, 50, 0.08),
+    inset 0 2px 8px rgba(45, 106, 79, 0.08),
+    inset 0 -2px 8px rgba(45, 106, 79, 0.06);
 }
 
 /* Inner wrapper carries the 3D tilt */
@@ -28,7 +27,7 @@
   transform-style: preserve-3d;
 }
 
-/* ---- edge fade so logos don't hard-cut at the container edge ---- */
+/* Edge fade so logos don't hard-cut at the container edge */
 .logostrip__fade {
   position: absolute;
   top: 0;
@@ -40,15 +39,15 @@
 
 .logostrip__fade--left {
   left: 0;
-  background: linear-gradient(to right, #faf7ff 0%, rgba(250, 247, 255, 0) 100%);
+  background: linear-gradient(to right, #FAF6F0 0%, rgba(250, 246, 240, 0) 100%);
 }
 
 .logostrip__fade--right {
   right: 0;
-  background: linear-gradient(to left, #faf7ff 0%, rgba(250, 247, 255, 0) 100%);
+  background: linear-gradient(to left, #FAF6F0 0%, rgba(250, 246, 240, 0) 100%);
 }
 
-/* ---- scrolling track — no gap, fully continuous ---- */
+/* Scrolling track – fully continuous */
 .logostrip__track {
   display: flex;
   align-items: center;
@@ -66,7 +65,7 @@
   to   { transform: translateX(-25%); }
 }
 
-/* ---- individual logo — divider lines between each ---- */
+/* Individual logo – divider lines between each */
 .logostrip__item {
   flex: 0 0 auto;
   display: flex;
@@ -75,28 +74,27 @@
   height: 60px;
   width: 180px;
   padding: 0 32px;
-  border-right: 1px solid #ede5ff;
+  border-right: 1px solid #D8C8B4;      /* theme border */
   box-sizing: border-box;
 }
 
-/* ---- logo image — full color, hover lift ---- */
+/* Logo image – full color, hover lift */
 .logostrip__img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
-  /* full color, always visible */
-  filter: drop-shadow(0 2px 6px rgba(124, 58, 237, 0.08));
+  filter: drop-shadow(0 2px 6px rgba(27, 67, 50, 0.08));
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .logostrip__item:hover .logostrip__img {
-  filter: opacity(1) drop-shadow(0 4px 12px rgba(124, 58, 237, 0.18));
+  filter: opacity(1) drop-shadow(0 4px 12px rgba(27, 67, 50, 0.18));
   transform: translateY(-3px) scale(1.07);
 }
 
-/* ---- responsive ---- */
+/* Responsive */
 @media (max-width: 640px) {
   .logostrip__inner {
     padding: 32px 0;
@@ -113,7 +111,7 @@
   }
 }
 
-/* ---- reduced motion ---- */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .logostrip__track {
     animation: none;

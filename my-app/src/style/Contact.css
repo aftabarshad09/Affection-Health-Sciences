@@ -1,41 +1,38 @@
 /* ===========================================================
-   Contact Page — Affection Health Sciences
-   Premium build. Orchid / ink / white system.
-   Glassmorphism cards, staggered reveals, grain texture,
-   custom focus states, fluid type, refined micro-interactions.
+   Contact Page — Medical Ramp Theme
+   Forest green / warm cream / terracotta
+   Sans-serif system stack, soft shadows, natural interactions.
    =========================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap');
 
 /* ---------- Tokens ---------- */
 .cp-page {
-  --ink: #0e0e11;
-  --ink-800: #1e1e24;
-  --gray-700: #3b3b42;
-  --gray-500: #6e6e78;
-  --gray-400: #9a9aa4;
-  --gray-200: #e2e2e6;
-  --gray-100: #f3f3f5;
-  --gray-50: #f9f9fa;
-  --orchid: #d99fdb;
-  --orchid-soft: #f3e2f4;
-  --orchid-deep: #b76ab9;
+  --forest: #1B4332;
+  --forest-deep: #163828;
+  --forest-mid: #2D6A4F;
+  --cream: #FAF6F0;
+  --amber: #F2E8DC;
+  --border: #D8C8B4;
+  --terra: #C97B5C;
+  --terra-deep: #B0603F;
+  --ink: #1A1A1A;
+  --body: #3A4440;
+  --muted: #5A6B64;
+  --muted-light: #9A8C80;
   --white: #ffffff;
-  --success: #2f7d3a;
-  --error: #c0392b;
-
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --success: #2D6A4F;
+  --error: #C0392B;
+  --focus-ring: rgba(27, 67, 50, 0.14);
+  --font-body: "Segoe UI", system-ui, sans-serif;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
-  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
-  --shadow-lift: 0 12px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-soft: 0 2px 8px rgba(27, 67, 50, 0.06);
+  --shadow-md: 0 8px 24px rgba(27, 67, 50, 0.08);
+  --shadow-lift: 0 14px 40px rgba(27, 67, 50, 0.12), 0 2px 8px rgba(27, 67, 50, 0.06);
 
   font-family: var(--font-body);
-  color: var(--ink);
-  background: var(--white);
+  color: var(--body);
+  background: var(--cream);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
@@ -51,8 +48,7 @@
 /* ---------- Shared type ---------- */
 
 .cp-section-title {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 800;
   font-size: clamp(1.8rem, 3.2vw, 2.4rem);
   text-align: center;
   color: var(--ink);
@@ -65,13 +61,13 @@
   text-align: center;
   font-size: 1.02rem;
   line-height: 1.65;
-  color: var(--gray-500);
+  color: var(--muted);
   max-width: 520px;
   margin: 0 auto 3.2rem;
 }
 
 /* ============================================================
-   1. HERO — video background, scrim, scroll hint
+   1. HERO — video background, green scrim, scroll hint
    ============================================================ */
 
 .cp-hero {
@@ -94,20 +90,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.85) saturate(1.1);
+  filter: brightness(0.9) saturate(1.05);
 }
 
 .cp-hero__scrim {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 30% 80%, rgba(217, 159, 219, 0.15) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(14, 14, 17, 0.55) 0%, rgba(14, 14, 17, 0.5) 50%, rgba(14, 14, 17, 0.72) 100%);
+    radial-gradient(ellipse at 30% 80%, rgba(201, 123, 92, 0.12) 0%, transparent 55%),
+    linear-gradient(135deg, rgba(22, 56, 40, 0.72) 0%, rgba(45, 106, 79, 0.55) 60%, rgba(22, 56, 40, 0.45) 100%);
+  z-index: 1;
 }
 
 .cp-hero__content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 680px;
   padding: 0 clamp(1.5rem, 5vw, 3rem);
   animation: cpFadeUp 0.9s cubic-bezier(0.19, 1, 0.22, 1) both;
@@ -118,12 +115,12 @@
   display: inline-block;
   font-family: var(--font-body);
   font-size: 0.76rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--orchid);
-  background: rgba(217, 159, 219, 0.12);
-  border: 1px solid rgba(217, 159, 219, 0.3);
+  color: var(--cream);
+  background: rgba(201, 123, 92, 0.25);
+  border: 1px solid rgba(201, 123, 92, 0.35);
   padding: 0.45rem 1.2rem;
   border-radius: 999px;
   margin-bottom: 1.5rem;
@@ -132,8 +129,7 @@
 }
 
 .cp-hero__title {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 900;
   font-size: clamp(2.6rem, 6vw, 4.2rem);
   color: var(--white);
   margin: 0 0 1.2rem;
@@ -153,12 +149,12 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.65);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -183,7 +179,7 @@
 }
 
 /* ============================================================
-   2. CONTACT INFO CARDS — glassmorphism, staggered hover
+   2. CONTACT INFO CARDS — terracotta accent, soft interaction
    ============================================================ */
 
 .cp-info-section {
@@ -196,8 +192,7 @@
 }
 
 .cp-section-header h2 {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 800;
   font-size: clamp(1.7rem, 3vw, 2.2rem);
   color: var(--ink);
   margin: 0 0 0.6rem;
@@ -205,7 +200,7 @@
 
 .cp-section-header p {
   font-size: 1rem;
-  color: var(--gray-500);
+  color: var(--muted);
   margin: 0;
 }
 
@@ -221,7 +216,7 @@
 .cp-info-card {
   position: relative;
   background: var(--white);
-  border: 1px solid var(--gray-200);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 2.2rem 1.8rem;
   text-align: center;
@@ -239,7 +234,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--orchid), var(--orchid-deep));
+  background: linear-gradient(90deg, var(--terra), var(--terra-deep));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -248,7 +243,7 @@
 .cp-info-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lift);
-  border-color: var(--orchid-soft);
+  border-color: var(--amber);
 }
 
 .cp-info-card:hover::before {
@@ -263,40 +258,39 @@
   justify-content: center;
   margin: 0 auto 1.2rem;
   border-radius: 50%;
-  background: var(--orchid-soft);
-  color: var(--orchid-deep);
+  background: var(--amber);
+  color: var(--terra);
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .cp-info-card:hover .cp-info-icon {
-  background: var(--orchid);
+  background: var(--terra);
   color: var(--white);
 }
 
 .cp-info-card h3 {
-  font-family: var(--font-body);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
   margin: 0 0 0.6rem;
 }
 
 .cp-info-value {
   font-size: 0.98rem;
-  font-weight: 600;
-  color: var(--orchid-deep);
+  font-weight: 700;
+  color: var(--terra-deep);
   margin: 0 0 0.35rem;
 }
 
 .cp-info-desc {
   font-size: 0.85rem;
-  color: var(--gray-400);
+  color: var(--muted-light);
   margin: 0;
   line-height: 1.5;
 }
 
 /* ============================================================
-   3. FORM SECTION — split layout, glass sidebar
+   3. FORM SECTION — split layout, cream sidebar
    ============================================================ */
 
 .cp-form-section {
@@ -304,7 +298,7 @@
 }
 
 .cp-light-bg {
-  background: var(--gray-50);
+  background: var(--amber);
 }
 
 .cp-form-wrapper {
@@ -315,8 +309,7 @@
 }
 
 .cp-form-column h2 {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 800;
   font-size: clamp(1.6rem, 2.8vw, 2rem);
   color: var(--ink);
   margin: 0 0 0.6rem;
@@ -324,16 +317,16 @@
 
 .cp-form-column > p {
   font-size: 1rem;
-  color: var(--gray-500);
+  color: var(--muted);
   margin: 0 0 2rem;
   line-height: 1.65;
 }
 
 /* Status banners */
 .cp-success-message {
-  background: #edf7ee;
+  background: #e6f0ea;
   color: var(--success);
-  border: 1px solid #c8e6c9;
+  border: 1px solid #b7d7c4;
   padding: 1rem 1.4rem;
   border-radius: var(--radius-sm);
   margin-bottom: 1.4rem;
@@ -380,7 +373,7 @@
 
 .cp-form-group label {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
 }
 
@@ -394,7 +387,7 @@
   position: absolute;
   left: 1rem;
   font-size: 0.88rem;
-  color: var(--gray-400);
+  color: var(--muted-light);
   pointer-events: none;
   transition: color 0.25s ease;
 }
@@ -406,7 +399,7 @@
   font-size: 0.95rem;
   color: var(--ink);
   background: var(--white);
-  border: 1.5px solid var(--gray-200);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 0.8rem 1rem 0.8rem 2.6rem;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -414,7 +407,7 @@
 }
 
 .cp-input-wrap select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%239a9aa4' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%239a8c80' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.6rem;
@@ -426,7 +419,7 @@
   font-size: 0.95rem;
   color: var(--ink);
   background: var(--white);
-  border: 1.5px solid var(--gray-200);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 0.85rem 1rem;
   resize: vertical;
@@ -436,19 +429,19 @@
 
 .cp-input-wrap input::placeholder,
 .cp-form-group textarea::placeholder {
-  color: var(--gray-400);
+  color: var(--muted-light);
 }
 
 .cp-input-wrap input:focus,
 .cp-input-wrap select:focus,
 .cp-form-group textarea:focus {
   outline: none;
-  border-color: var(--orchid);
-  box-shadow: 0 0 0 3px var(--orchid-soft);
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .cp-input-wrap:focus-within .cp-input-icon {
-  color: var(--orchid);
+  color: var(--terra);
 }
 
 /* Submit button */
@@ -460,53 +453,38 @@
   width: 100%;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
-  background: var(--ink);
+  background: var(--terra);
   border: none;
   border-radius: var(--radius-sm);
   padding: 1rem 1.8rem;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.cp-submit-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, var(--orchid), var(--orchid-deep));
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.cp-submit-btn span,
-.cp-submit-btn__icon {
-  position: relative;
-  z-index: 1;
+  transition: background 0.3s ease, transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 4px 12px rgba(201, 123, 92, 0.35);
 }
 
 .cp-submit-btn:hover:not(:disabled) {
+  background: var(--terra-deep);
   transform: translateY(-2px);
 }
 
-.cp-submit-btn:hover:not(:disabled)::after {
-  opacity: 1;
-}
-
 .cp-submit-btn:disabled {
-  opacity: 0.55;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
 .cp-submit-btn:focus-visible {
-  outline: 2px solid var(--orchid);
+  outline: 2px solid var(--forest);
   outline-offset: 3px;
 }
 
 .cp-submit-btn__icon {
   font-size: 0.85rem;
+  position: relative;
+  z-index: 1;
 }
 
 .cp-btn {
@@ -522,22 +500,21 @@
 }
 
 .cp-btn-primary {
-  background: var(--ink);
+  background: var(--forest);
   color: var(--white);
   padding: 0.85rem 1.8rem;
   font-size: 0.92rem;
 }
 
 .cp-btn-primary:hover {
-  background: var(--orchid-deep);
+  background: var(--forest-deep);
   transform: translateY(-1px);
 }
 
 /* ---------- Quick Support sidebar ---------- */
 
 .cp-info-column h2 {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 800;
   font-size: 1.5rem;
   color: var(--ink);
   margin: 0 0 1.6rem;
@@ -545,7 +522,7 @@
 
 .cp-support-box {
   background: var(--white);
-  border: 1px solid var(--gray-200);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 1.6rem;
   margin-bottom: 1.1rem;
@@ -560,19 +537,18 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, var(--orchid), var(--orchid-deep));
+  width: 4px;
+  background: linear-gradient(180deg, var(--terra), var(--terra-deep));
 }
 
 .cp-support-box:hover {
-  border-color: var(--orchid-soft);
+  border-color: var(--amber);
   box-shadow: var(--shadow-md);
 }
 
 .cp-support-box h4 {
-  font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
   margin: 0 0 0.9rem;
 }
@@ -589,24 +565,24 @@
 .cp-response-list li,
 .cp-inquiry-list li {
   font-size: 0.9rem;
-  color: var(--gray-500);
+  color: var(--muted);
   padding: 0.35rem 0;
   line-height: 1.55;
 }
 
 .cp-hours-list span {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
 }
 
 .cp-inquiry-list a {
-  color: var(--orchid-deep);
+  color: var(--terra-deep);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .cp-inquiry-list a:hover {
-  color: var(--ink);
+  color: var(--forest);
 }
 
 /* ============================================================
@@ -622,7 +598,7 @@
   grid-template-columns: 1fr 1.3fr;
   align-items: stretch;
   background: var(--white);
-  border: 1px solid var(--gray-200);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -632,14 +608,14 @@
   position: relative;
   min-height: 260px;
   background:
-    radial-gradient(circle at 35% 35%, rgba(217, 159, 219, 0.2), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(183, 106, 185, 0.12), transparent 55%),
-    var(--gray-100);
+    radial-gradient(circle at 35% 35%, rgba(45, 106, 79, 0.15), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(27, 67, 50, 0.1), transparent 55%),
+    var(--amber);
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(0, 0, 0, 0.03) 27px, rgba(0, 0, 0, 0.03) 28px),
-    repeating-linear-gradient(90deg, transparent, transparent 27px, rgba(0, 0, 0, 0.03) 27px, rgba(0, 0, 0, 0.03) 28px),
-    radial-gradient(circle at 35% 35%, rgba(217, 159, 219, 0.2), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(183, 106, 185, 0.12), transparent 55%);
+    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(27, 67, 50, 0.03) 27px, rgba(27, 67, 50, 0.03) 28px),
+    repeating-linear-gradient(90deg, transparent, transparent 27px, rgba(27, 67, 50, 0.03) 27px, rgba(27, 67, 50, 0.03) 28px),
+    radial-gradient(circle at 35% 35%, rgba(45, 106, 79, 0.15), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(27, 67, 50, 0.1), transparent 55%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -649,18 +625,18 @@
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: var(--orchid);
+  background: var(--terra);
   color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 8px rgba(217, 159, 219, 0.2), var(--shadow-md);
+  box-shadow: 0 0 0 8px rgba(201, 123, 92, 0.2), var(--shadow-md);
   animation: cpPinPulse 2.6s ease-in-out infinite;
 }
 
 @keyframes cpPinPulse {
-  0%, 100% { box-shadow: 0 0 0 8px rgba(217, 159, 219, 0.2), var(--shadow-md); }
-  50% { box-shadow: 0 0 0 16px rgba(217, 159, 219, 0.08), var(--shadow-md); }
+  0%, 100% { box-shadow: 0 0 0 8px rgba(201, 123, 92, 0.2), var(--shadow-md); }
+  50% { box-shadow: 0 0 0 16px rgba(201, 123, 92, 0.08), var(--shadow-md); }
 }
 
 .cp-map-card__details {
@@ -671,8 +647,7 @@
 }
 
 .cp-map-card__details h3 {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 800;
   font-size: 1.35rem;
   color: var(--ink);
   margin: 0 0 0.5rem;
@@ -680,18 +655,18 @@
 
 .cp-map-card__details p {
   font-size: 0.98rem;
-  color: var(--gray-500);
+  color: var(--muted);
   margin: 0 0 0.4rem;
   line-height: 1.6;
 }
 
 .cp-map-card__hint {
   font-size: 0.85rem;
-  color: var(--gray-400);
+  color: var(--muted-light);
 }
 
 /* ============================================================
-   5. SOCIAL MEDIA
+   5. SOCIAL MEDIA — uniform brand buttons
    ============================================================ */
 
 .cp-social-section {
@@ -716,30 +691,19 @@
   font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 600;
-  border: 1.5px solid var(--gray-200);
+  border: 1.5px solid var(--forest);
   background: var(--white);
-  color: var(--gray-700);
+  color: var(--forest);
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .cp-social-btn:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+  background: var(--forest);
+  color: var(--cream);
+  border-color: var(--forest);
 }
-
-.cp-social-btn.cp-facebook  { border-color: #1877f2; color: #1877f2; }
-.cp-social-btn.cp-twitter   { border-color: var(--ink); color: var(--ink); }
-.cp-social-btn.cp-instagram { border-color: #e1306c; color: #e1306c; }
-.cp-social-btn.cp-linkedin  { border-color: #0a66c2; color: #0a66c2; }
-.cp-social-btn.cp-youtube   { border-color: #ff0000; color: #ff0000; }
-.cp-social-btn.cp-tiktok    { border-color: var(--ink); color: var(--ink); }
-
-.cp-social-btn.cp-facebook:hover  { background: #1877f2; color: var(--white); border-color: #1877f2; }
-.cp-social-btn.cp-twitter:hover   { background: var(--ink); color: var(--white); }
-.cp-social-btn.cp-instagram:hover { background: #e1306c; color: var(--white); border-color: #e1306c; }
-.cp-social-btn.cp-linkedin:hover  { background: #0a66c2; color: var(--white); border-color: #0a66c2; }
-.cp-social-btn.cp-youtube:hover   { background: #ff0000; color: var(--white); border-color: #ff0000; }
-.cp-social-btn.cp-tiktok:hover    { background: var(--ink); color: var(--white); }
 
 /* ============================================================
    6. FAQ ACCORDION
@@ -759,15 +723,15 @@
 
 .cp-faq-item {
   background: var(--white);
-  border: 1.5px solid var(--gray-200);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-md);
   overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cp-faq-item.cp-active {
-  border-color: var(--orchid);
-  box-shadow: 0 0 0 3px var(--orchid-soft), var(--shadow-soft);
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px var(--focus-ring), var(--shadow-soft);
 }
 
 .cp-faq-item__question {
@@ -781,7 +745,7 @@
   padding: 1.3rem 1.6rem;
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
   text-align: left;
   cursor: pointer;
@@ -789,13 +753,13 @@
 }
 
 .cp-faq-item__question:hover {
-  color: var(--orchid-deep);
+  color: var(--terra);
 }
 
 .cp-faq-item__chevron {
   flex-shrink: 0;
   font-size: 0.75rem;
-  color: var(--orchid);
+  color: var(--terra);
   transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
@@ -816,13 +780,13 @@
 .cp-faq-item__answer p {
   font-size: 0.95rem;
   line-height: 1.75;
-  color: var(--gray-500);
+  color: var(--muted);
   margin: 0;
   padding: 0 1.6rem 1.4rem;
 }
 
 .cp-faq-item__question:focus-visible {
-  outline: 2px solid var(--orchid);
+  outline: 2px solid var(--forest);
   outline-offset: -2px;
   border-radius: var(--radius-md);
 }
@@ -877,7 +841,7 @@
   }
 
   .cp-cta-form input {
-    border-right: 1.5px solid rgba(217, 159, 219, 0.45);
+    border-right: 1.5px solid var(--border);
     border-radius: 999px;
   }
 

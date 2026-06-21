@@ -1,8 +1,12 @@
-/* BlogSection — homepage blog/article preview, orchid/ink theme, prefix: hbs- */
+/* ===========================================================
+   BlogSection — homepage blog/article preview
+   Medical Ramp theme (forest green / warm cream / terracotta)
+   Prefix: hbs-
+   =========================================================== */
 
 .hbs-section {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: #fff;
+  background: #FAF6F0;  /* warm cream */
 }
 
 .hbs-container {
@@ -20,18 +24,18 @@
 .hbs-eyebrow {
   display: inline-block;
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #b766bd;
+  color: #C97B5C;  /* terracotta */
   margin-bottom: 0.9rem;
 }
 
 .hbs-title {
   font-size: clamp(1.8rem, 3.4vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.15;
-  color: #1a1a2e;
+  color: #1A1A1A;  /* near-black */
   margin: 0 0 1rem;
   letter-spacing: -0.01em;
 }
@@ -39,29 +43,33 @@
 .hbs-lede {
   font-size: 1.02rem;
   line-height: 1.7;
-  color: #6b6b8a;
+  color: #5A6B64;  /* muted green-gray */
   margin: 0 0 1.8rem;
 }
 
+/* Primary CTA (Read all articles) — terracotta button */
 .hbs-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 1.8rem;
   border-radius: 999px;
-  background: #1a1a2e;
+  background: #C97B5C;  /* terracotta */
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(201, 123, 92, 0.35);
 }
 
 .hbs-cta:hover {
-  background: #b766bd;
+  background: #B0603F;  /* deep terracotta */
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(176, 96, 63, 0.45);
 }
 
+/* ---------- Article Groups ---------- */
 .hbs-group {
   margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
@@ -72,11 +80,11 @@
 
 .hbs-group-title {
   font-size: 1.3rem;
-  font-weight: 700;
-  color: #1a1a2e;
+  font-weight: 800;
+  color: #1A1A1A;
   margin: 0 0 1.4rem;
   padding-bottom: 0.8rem;
-  border-bottom: 2px solid #f0e6f1;
+  border-bottom: 2px solid #D8C8B4;  /* theme border */
 }
 
 .hbs-grid {
@@ -85,29 +93,33 @@
   gap: 1.5rem;
 }
 
+/* ---------- Article Card ---------- */
 .hbs-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border: 1px solid #ece3ee;
-  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #D8C8B4;
+  border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04);
-  transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 8px rgba(27, 67, 50, 0.05);
+  transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1),
+              box-shadow 0.35s ease,
+              border-color 0.3s ease;
 }
 
 .hbs-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-  border-color: rgba(217, 159, 219, 0.6);
+  box-shadow: 0 14px 36px rgba(27, 67, 50, 0.1);
+  border-color: rgba(201, 123, 92, 0.4);  /* terracotta tint */
 }
 
 .hbs-card__img {
   position: relative;
   height: 180px;
   overflow: hidden;
+  background: linear-gradient(165deg, #F2E8DC 0%, #D8C8B4 100%);
 }
 
 .hbs-card__img img {
@@ -121,6 +133,7 @@
   transform: scale(1.06);
 }
 
+/* Category badge – defaults to terracotta, dynamic colors remain possible */
 .hbs-card__cat {
   position: absolute;
   top: 0.8rem;
@@ -132,6 +145,7 @@
   color: #fff;
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
+  background: #C97B5C;  /* default; inline styles can override */
 }
 
 .hbs-card__body {
@@ -143,9 +157,9 @@
 
 .hbs-card__title {
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.35;
-  color: #1a1a2e;
+  color: #1A1A1A;
   margin: 0 0 0.6rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -156,7 +170,7 @@
 .hbs-card__excerpt {
   font-size: 0.88rem;
   line-height: 1.6;
-  color: #6b6b8a;
+  color: #5A6B64;
   margin: 0 0 1rem;
   flex: 1;
   display: -webkit-box;
@@ -170,7 +184,7 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 0.78rem;
-  color: #9a93a8;
+  color: #9A8C80;  /* muted light */
   margin-bottom: 0.9rem;
 }
 
@@ -181,25 +195,27 @@
 }
 
 .hbs-card__dot {
-  color: #d9c8db;
+  color: #D8C8B4;  /* border color */
 }
 
+/* Read more link */
 .hbs-card__link {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   font-size: 0.85rem;
-  font-weight: 600;
-  color: #b766bd;
+  font-weight: 700;
+  color: #C97B5C;  /* terracotta */
   margin-top: auto;
   transition: gap 0.2s ease, color 0.2s ease;
 }
 
 .hbs-card:hover .hbs-card__link {
   gap: 0.55rem;
-  color: #1a1a2e;
+  color: #B0603F;  /* deep terracotta */
 }
 
+/* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .hbs-grid {
     grid-template-columns: repeat(2, 1fr);

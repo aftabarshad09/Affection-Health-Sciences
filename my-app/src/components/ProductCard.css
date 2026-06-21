@@ -1,34 +1,43 @@
+/* ===========================
+   Product Card — Medical Ramp Theme
+   =========================== */
+
 .product-card {
-  background-color: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  background: #ffffff;
+  border: 1px solid #D8C8B4;
+  border-radius: 16px;
   overflow: hidden;
-  transition: var(--transition);
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.32s ease,
+              border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 8px rgba(27, 67, 50, 0.07);
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--primary);
+  box-shadow: 0 14px 40px rgba(27, 67, 50, 0.12),
+              0 4px 12px rgba(27, 67, 50, 0.08);
+  border-color: rgba(27, 67, 50, 0.28);
 }
 
 .product-image {
-  background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
-  padding: var(--spacing-3xl) 0;
+  background: linear-gradient(165deg, #F2E8DC 0%, #D8C8B4 100%);
+  padding: 2.5rem 0;
   text-align: center;
   font-size: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 200px;
+  color: #1B4332;  /* ensures emoji/icon contrast */
 }
 
 .product-body {
-  padding: var(--spacing-lg);
+  padding: 1.25rem 1.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -36,30 +45,55 @@
 
 .product-card h3 {
   font-size: 1.25rem;
-  margin-bottom: var(--spacing-sm);
-  color: var(--text);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #1A1A1A;
 }
 
 .product-description {
-  color: var(--text-light);
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--spacing-md);
+  color: #5A6B64;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
   flex: 1;
 }
 
 .product-price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary);
-  margin-bottom: var(--spacing-md);
+  color: #1B4332;            /* forest green primary */
+  margin-bottom: 1rem;
 }
 
+/* Small CTA button */
 .btn-small {
-  padding: var(--spacing-sm) var(--spacing-md) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem !important;
   font-size: 0.9rem !important;
+  font-weight: 700;
   width: 100%;
+  border: none;
+  border-radius: 999px;
+  background: #C97B5C;       /* terracotta accent */
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+  font-family: inherit;
 }
 
+.btn-small:hover {
+  background: #B0603F;       /* deep terracotta */
+  transform: translateY(-1px);
+}
+
+.btn-small:focus-visible {
+  outline: 2px solid #1B4332;
+  outline-offset: 2px;
+}
+
+/* Responsive */
 @media (max-width: 480px) {
   .product-image {
     font-size: 3rem;
@@ -67,6 +101,6 @@
   }
 
   .product-body {
-    padding: var(--spacing-md);
+    padding: 1rem 1.2rem;
   }
 }
