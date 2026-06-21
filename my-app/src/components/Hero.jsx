@@ -1,26 +1,19 @@
-import  { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";           // added for navigation
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
-import { FaXTwitter } from 'react-icons/fa6';
+import { FaXTwitter } from "react-icons/fa6";
 import logo from "../assets/logo.png";
 import "./Hero.css";
 import banner1 from "../assets/banners/banner1111.jpeg";
 import banner2 from "../assets/banners/banner2.jpeg";
 import banner3 from "../assets/banners/banner333.jpeg";
-import banner4 from "../assets/banners/banner444.png"; // 🆕 4th banner image
+import banner4 from "../assets/banners/banner444.png";
 
 import A1 from "../assets/Grid/A1.png";
-import A2 from "../assets/Grid/A2.png";
-import A3 from "../assets/Grid/A3.png";
 import B1 from "../assets/Grid/B1.png";
-import B2 from "../assets/Grid/B2.png";
-import B3 from "../assets/Grid/B3.png";
 import C1 from "../assets/Grid/C1.png";
-import C2 from "../assets/Grid/C2.png";
-import C3 from "../assets/Grid/C3.png";
 import D1 from "../assets/Grid/D1.png";
-import D2 from "../assets/Grid/D2.png";
-import D3 from "../assets/Grid/D3.png";
 
 const banners = [
   {
@@ -28,63 +21,55 @@ const banners = [
     theme: {
       bg: "#f3eeff",
       accent: "#7c3aed",
-      cardBg: "rgba(124,58,237,0.08)",
+      accentSoft: "rgba(124,58,237,0.14)",
     },
-    cards: {
-      babyNutrition: D1,
-      zincWomen:     D3,
-      glumin:        D2,
-    },
+    showcase: D1,
+    showcaseLabel: "Baby Nutrition",
+    productLine: "Advanced Infant Formula",       // new field
   },
   {
     image: banner2,
     theme: {
       bg: "#edfaf3",
       accent: "#16a34a",
-      cardBg: "rgba(22,163,74,0.08)",
+      accentSoft: "rgba(22,163,74,0.14)",
     },
-    cards: {
-      babyNutrition: C1,
-      zincWomen:     C3,
-      glumin:        C2,
-    },
+    showcase: C1,
+    showcaseLabel: "Baby Nutrition",
+    productLine: "Prenatal Wellness Support",
   },
   {
     image: banner3,
     theme: {
       bg: "#eaf4ff",
       accent: "#1d4ed8",
-      cardBg: "rgba(29,78,216,0.08)",
+      accentSoft: "rgba(29,78,216,0.14)",
     },
-    cards: {
-      babyNutrition: A1,
-      zincWomen:     A3,
-      glumin:        A2,
-    },
+    showcase: A1,
+    showcaseLabel: "Baby Nutrition",
+    productLine: "Digestive Comfort Blend",
   },
-  // 🆕 4th banner – using the B card set
   {
     image: banner4,
     theme: {
       bg: "#fff4e6",
       accent: "#ea580c",
-      cardBg: "rgba(234,88,12,0.08)",
+      accentSoft: "rgba(234,88,12,0.14)",
     },
-    cards: {
-      babyNutrition: B1,
-      zincWomen:     B3,
-      glumin:        B2,
-    },
+    showcase: B1,
+    showcaseLabel: "Baby Nutrition",
+    productLine: "Family Daily Multivitamin",
   },
 ];
 
-const ParallaxCard = ({ className, image, title, small, cardBg }) => {
+const ShowcaseCard = ({ image, label }) => {
+  // ... unchanged
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 15;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 15;
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 14;
     setPosition({ x, y });
   };
 
@@ -92,32 +77,36 @@ const ParallaxCard = ({ className, image, title, small, cardBg }) => {
 
   return (
     <div
-      className={className}
+      className="showcase-card"
       onMouseMove={handleMove}
       onMouseLeave={resetPosition}
-      style={{ background: cardBg }}
     >
+      <div className="showcase-backdrop" />
       <AnimatePresence mode="wait">
         <motion.img
           key={image}
           src={image}
-          alt={title}
-          className="hero-small-img"
-          initial={{ opacity: 0, scale: 1.05 }}
+          alt={label}
+          className="showcase-img"
+          initial={{ opacity: 0, scale: 1.04, y: 10 }}
           animate={{
             opacity: 1,
-            scale: 1.05,
+            scale: 1,
+            y: 0,
             x: position.x,
-            y: position.y,
+            rotateX: -position.y * 0.3,
+            rotateY: position.x * 0.3,
           }}
-          exit={{ opacity: 0 }}
-          transition={{ opacity: { duration: 0.5 }, x: { type: "spring", stiffness: 100, damping: 20 }, y: { type: "spring", stiffness: 100, damping: 20 } }}
+          exit={{ opacity: 0, scale: 0.97 }}
+          transition={{
+            opacity: { duration: 0.5 },
+            scale: { duration: 0.5 },
+            x: { type: "spring", stiffness: 90, damping: 18 },
+            rotateX: { type: "spring", stiffness: 90, damping: 18 },
+            rotateY: { type: "spring", stiffness: 90, damping: 18 },
+          }}
         />
       </AnimatePresence>
-
-      <div className={`image-overlay ${small ? "small" : ""}`}>
-        <p>{title}</p>
-      </div>
     </div>
   );
 };
@@ -143,7 +132,9 @@ const Hero = () => {
 
   useEffect(() => {
     timeoutRef.current = setTimeout(() => paginate(1), 5000);
-    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, [currentIndex]);
 
   const handleBannerMove = (e) => {
@@ -167,7 +158,6 @@ const Hero = () => {
       transition={{ duration: 0.7, ease: "easeInOut" }}
     >
       <div className="hero-grid">
-
         {/* ── Banner ── */}
         <div
           className="div1"
@@ -191,6 +181,10 @@ const Hero = () => {
                 }}
                 className="banner-slide"
               >
+                <div
+                  className="banner-backdrop"
+                  style={{ backgroundImage: `url(${currentBanner.image})` }}
+                />
                 <motion.img
                   src={currentBanner.image}
                   alt={`Banner ${currentIndex}`}
@@ -202,12 +196,37 @@ const Hero = () => {
             </AnimatePresence>
           </div>
 
+          {/* ── Right-side overlay (new) ── */}
+          <div className="banner-overlay">
+            <p className="overlay-company">Affection Health Sciences</p>
+            <p className="overlay-product-line">{currentBanner.productLine}</p>
+            <Link
+              to="/products"
+              className="overlay-btn"
+              style={{ background: currentBanner.theme.accent }}
+            >
+              Explore Product
+            </Link>
+          </div>
+
+          <motion.div
+            className="banner-edge-fade"
+            animate={{
+              background: `linear-gradient(to top, ${currentBanner.theme.bg} 0%, transparent 100%)`,
+            }}
+            transition={{ duration: 0.7 }}
+          />
+
           <div className="banner-dots">
             {banners.map((_, index) => (
               <button
                 key={index}
                 className={`dot ${currentIndex === index ? "active-dot" : ""}`}
-                style={currentIndex === index ? { background: currentBanner.theme.accent } : {}}
+                style={
+                  currentIndex === index
+                    ? { background: currentBanner.theme.accent }
+                    : {}
+                }
                 onClick={() => {
                   const newDir = index > currentIndex ? 1 : -1;
                   setImageIndex([index, newDir]);
@@ -222,103 +241,90 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* ── Logo ── */}
-        <motion.div
-          className="div2"
-          animate={{
-            boxShadow: [
-              `0 0 20px rgba(0,0,0,.08)`,
-              `0 0 35px ${currentBanner.theme.accent}44`,
-              `0 0 20px rgba(0,0,0,.08)`,
-            ],
-          }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
-          <img src={logo} alt="Affection Health Sciences" className="circle-img" />
-        </motion.div>
+        {/* ── Logo removed completely ── */}
+        {/* div2 deleted */}
 
-        {/* ── Baby Nutrition Card (div3) ── */}
-        <ParallaxCard
-          className="div3"
-          image={currentBanner.cards.babyNutrition}
-          title="Baby Nutrition"
-          cardBg={currentBanner.theme.cardBg}
-        />
-
-        {/* ── Text Block replacing Whey Protein (div4) ── */}
-        <motion.div
-          className="div4 text-block"
-          animate={{ borderColor: currentBanner.theme.accent + "55" }}
-          transition={{ duration: 0.7 }}
-          style={{ borderLeft: `4px solid ${currentBanner.theme.accent}` }}
-        >
-          <span className="text-block-eyebrow" style={{ color: currentBanner.theme.accent }}>
-            Why Choose Us
-          </span>
-          <h3 className="text-block-heading">
-            Science-Backed Nutrition You Can Trust
-          </h3>
-          <p className="text-block-body">
-            Every formula is developed with clinical precision — combining essential
-            micronutrients, amino acids, and natural ingredients to support your
-            body at every stage of life.
-          </p>
-          <ul className="text-block-list">
-            <li>✦ Clinically formulated</li>
-            <li>✦ No artificial fillers</li>
-            <li>✦ Trusted by families</li>
-          </ul>
-        </motion.div>
-
-        {/* ── Merged Zinc & Women's Health Card (div5) ── */}
-        <ParallaxCard
-          className="div5"
-          image={currentBanner.cards.zincWomen}
-          title="Zinc & Magnesium · Women's Health"
-          small
-          cardBg={currentBanner.theme.cardBg}
-        />
-
-        {/* ── Glumin Card (div6) ── */}
-        <ParallaxCard
-          className="div6"
-          image={currentBanner.cards.glumin}
-          title="Glumin"
-          small
-          cardBg={currentBanner.theme.cardBg}
-        />
-
-        {/* ── Text ── */}
+        {/* ── Enhanced text block ── */}
         <div className="div8">
-          <h1 className="hero-title">AFFECTION HEALTH SCIENCES</h1>
-          <p className="hero-subtitle">
-            Delivering premium nutritional solutions for babies, women and families.
-            Scientifically formulated supplements designed to support growth,
-            wellness and a healthier future.
-          </p>
-        </div>
-
-        {/* ── Button ── */}
-        <div className="div9">
-          <motion.button
-            className="browse-btn"
-            style={{ borderColor: currentBanner.theme.accent + "66" }}
-            whileHover={{ scale: 1.05, y: -3 }}
-            whileTap={{ scale: 0.98 }}
+          <motion.span
+            className="hero-eyebrow"
+            animate={{
+              color: currentBanner.theme.accent,
+              borderColor: currentBanner.theme.accent + "55",
+            }}
+            transition={{ duration: 0.7 }}
           >
-            EXPLORE PRODUCTS
-          </motion.button>
-        </div>
+            Formulated with intention
+          </motion.span>
 
-        {/* ── Socials ── */}
-        <div className="div10">
-          <div className="social-pill">
-            <a href="#" aria-label="Instagram"><FaInstagram /></a>
-            <a href="#" aria-label="X"><FaXTwitter /></a>
-            <a href="#" aria-label="Facebook"><FaFacebookF /></a>
+          <h1 className="hero-title">
+            Affection
+            <br />
+            <span className="hero-title-script">Health Sciences</span>
+          </h1>
+
+          <p className="hero-subtitle">
+            Premium nutritional solutions for babies, women and families —
+            scientifically formulated to support growth, wellness and a
+            healthier future at every stage of life.
+          </p>
+
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <span className="hero-stat-num">27+</span>
+              <span className="hero-stat-label">Formulations</span>
+            </div>
+            <div className="hero-stat-divider" />
+            <div className="hero-stat">
+              <span className="hero-stat-num">GMP</span>
+              <span className="hero-stat-label">Certified Labs</span>
+            </div>
+            <div className="hero-stat-divider" />
+            <div className="hero-stat">
+              <span className="hero-stat-num">0</span>
+              <span className="hero-stat-label">Artificial Fillers</span>
+            </div>
+          </div>
+
+          <div className="hero-actions">
+            <motion.button
+              className="browse-btn"
+              style={{ borderColor: currentBanner.theme.accent + "66" }}
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              EXPLORE PRODUCTS
+            </motion.button>
+
+            <div className="social-pill">
+              <a href="#" aria-label="Instagram">
+                <FaInstagram />
+              </a>
+              <a href="#" aria-label="X">
+                <FaXTwitter />
+              </a>
+              <a href="#" aria-label="Facebook">
+                <FaFacebookF />
+              </a>
+            </div>
           </div>
         </div>
 
+        {/* ── Expanded rotating showcase ── */}
+        <div className="div3">
+          <span className="showcase-mark" aria-hidden="true">
+            {`0${currentIndex + 1}`}
+          </span>
+          <ShowcaseCard
+            image={currentBanner.showcase}
+            label={currentBanner.showcaseLabel}
+          />
+          <motion.span
+            className="showcase-corner"
+            animate={{ background: currentBanner.theme.accent }}
+            transition={{ duration: 0.6 }}
+          />
+        </div>
       </div>
     </motion.section>
   );

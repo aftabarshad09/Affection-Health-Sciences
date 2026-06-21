@@ -3,81 +3,70 @@ import { useState, useEffect, useRef } from 'react';
 import './wheel.css';
 import { FaCapsules } from 'react-icons/fa';
 import logo from '../assets/logo.png';
-import image1 from '../assets/image1.png'
+
+/* ============================================================
+   PRODUCT IMAGES
+   Path: src/assets/Products/ (capital P, matches the real folder)
+   Files are named P1.png .. P13.png — only 7 are used here.
+   EDIT THE FILENAMES BELOW to point each product at the correct
+   P-number once you've matched them up yourself. Nothing else
+   in this file needs to change.
+   ============================================================ */
+const PRODUCT_IMG_BASE = '/src/assets/Products/';
+const PRODUCT_IMG = {
+  gynogid: `${PRODUCT_IMG_BASE}P1.png`,
+  mctolip: `${PRODUCT_IMG_BASE}P2.png`,
+  glumin: `${PRODUCT_IMG_BASE}P3.png`,
+  energid: `${PRODUCT_IMG_BASE}P5.png`,
+  bestProtein: `${PRODUCT_IMG_BASE}P6.png`,
+  lactilus: `${PRODUCT_IMG_BASE}P7.png`,
+  hepatovital: `${PRODUCT_IMG_BASE}P8.png`,
+};
 
 const ROTATE_INTERVAL = 5000;
 
-
 const products = [
   {
-    label: "Hepatovital",
-    image: image1,
-    tagline: "Targeted hepatic care",
-    content: `Provides optimized BCAAs (Branched Chain Amino Acids) enriched nutrition, specifically to support liver health and liver disease management.
-
-Stimulates growth factors and favors the natural regeneration process, supported by a high leucine quantity — meeting the higher protein and hypermetabolic needs of cirrhosis patients.
-
-5-scoop serving: 217 kcal total | 45 kcal/scoop | 1.5g protein/scoop. Available in Vanilla and Strawberry, 400gm.`,
-  },
-  {
-    label: "MCTOLIP",
-    image: image1,
-    tagline: "Medium chain triglycerides, cholesterol free",
-    content: `A fat-rich nutritional supplement containing saturated and monounsaturated fatty acids, recommended for low weight babies and fat malabsorption support.
-
-Helps with weight management in children, supports physiological development in newborn infants, and enhances absorption of amino acids, calcium, and magnesium.
-
-Useful for toddler weight gain, sustained energy, and improved intestinal absorption of fat and calcium.`,
-  },
-  {
     label: "Gynogid Forte",
-    image: image1,
-    tagline: "Premium maternal nutrition",
-    content: `Built on a 3G nutritional system — Go, Grow, Glow — providing sustained energy, supporting fetal development, and promoting dynamic maternal health.
-
-Fortified with DHA (18.6mg), Folic Acid (384mg), Calcium (355mg), and Iron (12mg) per serving.
-
-213 kcal and 10g protein per serving, 5 scoops daily. Vanilla flavor, 400gm net.`,
+    image: PRODUCT_IMG.gynogid,
+    tagline: "Prenatal nutrition, for mom's care",
+    content: `Built on the 3G System — Go, Grow, Glow — for sustained maternal energy and healthy fetal development. Enriched with fennel and vanilla extracts. Vanilla flavor, 400gm.`,
+  },
+  {
+    label: "MCTOLIP Drops",
+    image: PRODUCT_IMG.mctolip,
+    tagline: "Medium chain triglycerides",
+    content: `Supports weight management, improves brain function, and provides a good energy source — formulated for infants and growing children who need fat absorption support.`,
+  },
+  {
+    label: "Glumin SR",
+    image: PRODUCT_IMG.glumin,
+    tagline: "High quality nutrition for diabetics",
+    content: `Delivers sustained energy release with good fats, formulated specifically for diabetic nutritional needs. Vanilla flavor, 400gm net.`,
   },
   {
     label: "Energid Plus",
-    image: image1,
+    image: PRODUCT_IMG.energid,
     tagline: "Complete and balanced adult nutrition",
-    content: `A high-quality nutritional supplement for adults that mixes easily with water and provides complete nutrition, or can be used as a meal replacement.
-
-46 kcal per scoop, 1.6g protein/kg body weight, 230 kcal per 230ml serving.
-
-Available in Vanilla, Strawberry, Mango, and Chocolate, 400gm.`,
+    content: `A heart-friendly, easy-mix adult nutrition supplement delivering 235 kcal per 230ml serving. Available in Strawberry and other flavors, 400g.`,
   },
   {
-    label: "Mctolip Baby",
-    image: image1,
-    tagline: "The perfect baby supplement",
-    content: `Supports weight management, improves brain function, and provides a good energy source for infants. Cholesterol free.
-
-Recommended for low weight babies and fat malabsorption, helping enhance absorption of amino acids, calcium, and magnesium during early development.
-
-Also suitable for gentle skin massage in children.`,
+    label: "Best Protein",
+    image: PRODUCT_IMG.bestProtein,
+    tagline: "Rich source of whey protein",
+    content: `A sprinkling protein powder that adds high-quality whey protein to any meal, supporting muscle maintenance and daily protein needs. Net 230gm.`,
   },
   {
-    label: "NutriPro",
-    image: image1,
-    tagline: "Advanced nutritional supplement",
-    content: `A premium quality nutritional supplement designed for individuals requiring high-calorie and high-protein dietary support.
-
-Complete and balanced nutrition that's easy to mix and digest, suitable for all age groups, and supports muscle maintenance and recovery.
-
-220 kcal and 12g protein per serving, with essential vitamins, minerals, and Omega-3/Omega-6 fatty acids. Vanilla, Strawberry, and Chocolate, 500gm.`,
+    label: "Lactilus Probiotic",
+    image: PRODUCT_IMG.lactilus,
+    tagline: "Lactobacillus Acidophilus & Zinc",
+    content: `Supports digestive and immune health with live bacteria that reach the gut alive. 10 directly-consumed sachets per box.`,
   },
   {
-    label: "ImmunoBoost",
-    image: image1,
-    tagline: "Immune support, formulated with practitioners",
-    content: `Specially formulated to support and strengthen the immune system with essential nutrients and antioxidants.
-
-Includes Vitamin C (100mg), Vitamin D3 (2000 IU), Zinc (15mg), Selenium (55mcg), Elderberry Extract, and Echinacea.
-
-Strengthens immune response, reduces oxidative stress, and supports respiratory health. Natural Berry flavor, 300gm.`,
+    label: "Hepatovital",
+    image: PRODUCT_IMG.hepatovital,
+    tagline: "BCAA-enriched hepatic nutrition",
+    content: `Promotes liver function with branched chain amino acid-enriched nutrition, supporting regeneration and the elevated protein needs of liver care. Halal certified, 400gm.`,
   },
 ];
 
@@ -174,13 +163,20 @@ const WheelProducts = () => {
           </svg>
         </div>
 
-        <div className="content-section">
-          <div className="product-header">
-            <img src={active.image} alt={active.label} className="product-image" />
-            <h2 className="label-heading">
-              <FaCapsules /> {active.label}
-            </h2>
+        <div className="content-section" key={activeIndex}>
+          <div className="product-showcase">
+            <img
+              src={active.image}
+              alt={active.label}
+              className="product-image"
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
           </div>
+
+          <h2 className="label-heading">
+            <FaCapsules /> {active.label}
+          </h2>
+          <p className="product-tagline">{active.tagline}</p>
           <div className="label-underline"></div>
           <p className="product-description">{active.content}</p>
           <button className="read-more-button">Read More</button>

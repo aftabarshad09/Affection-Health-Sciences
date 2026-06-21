@@ -1,36 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap');
+
 .hero {
   width: 100%;
-  min-height: 100vh;
   overflow: hidden;
-  padding: 2rem 0;
-  margin-top: 3.2rem;
-
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(8, 1fr);
   gap: 10px;
   max-width: 1480px;
   margin: 0 auto;
-  padding: 0 2rem;
-  height: 87vh;
+  padding: 0 2rem 3rem;
   position: relative;
 }
 
 
+/* ══════════════════════════════════════
+   BANNER — full viewport height, full
+   bleed. Never crops poster content; a
+   blurred backdrop of the same image
+   fills any letterbox space. The rest
+   of the section sits below the fold
+   and appears on scroll.
+   ══════════════════════════════════════ */
 
 .div1 {
   grid-column: 1 / span 10;
-  grid-row: 1 / span 4;
-  border-radius: 24px;
-  overflow: hidden;
   position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  height: calc(100vh - 3.2rem);
+  margin-top: 0;
+  margin-bottom: 64px;
+  border-radius: 0;
+  overflow: hidden;
   background: #fff;
-  width: 100%;
-  height: 290px;
 }
 
 .banner-container {
@@ -42,25 +49,45 @@
 
 .banner-slide {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
 
+.banner-backdrop {
+  position: absolute;
+  inset: -5%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(48px) saturate(1.15) brightness(0.95);
+  transform: scale(1.15);
+}
+
 .hero-main-img {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: 290px;
-  max-width: 100%;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
 
+.banner-edge-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 140px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.6;
+}
+
 .banner-dots {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
+  right: 40px;
+  bottom: 40px;
   display: flex;
   gap: 8px;
   z-index: 10;
@@ -72,7 +99,8 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   transition: 0.4s;
 }
 
@@ -81,20 +109,49 @@
   border-radius: 50px;
 }
 
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
 
+.scroll-cue-line {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+
+/* ══════════════════════════════════════
+   LOGO — sits on the seam between the
+   banner and the lower section
+   ══════════════════════════════════════ */
 
 .div2 {
   position: absolute;
-  top: 50%;
+  top: 460px;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 145px;
-  height: 145px;
+  width: 116px;
+  height: 116px;
   border-radius: 50%;
   overflow: hidden;
   z-index: 10;
-  backdrop-filter: blur(14px);
-  border: 5px solid rgba(255, 255, 255, 0.9);
+  background: #fff;
+  border: 5px solid #fff;
+  transition: border-color 0.7s;
 }
 
 .circle-img {
@@ -104,164 +161,104 @@
 }
 
 
-
-.div3,
-.div5,
-.div6 {
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: transform 0.4s ease;
-}
-
-.div3:hover,
-.div5:hover,
-.div6:hover {
-  transform: translateY(-3px);
-}
-
-
-.div3 {
-  grid-column: 7 / span 4;
-  grid-row: 5 / span 2;
-}
-
-
-.div4 {
-  grid-column: 7 / span 4;
-  grid-row: 7 / span 2;
-}
-
-
-.div5 {
-  grid-column: 4;
-  grid-row: 7 / span 3;
-}
-
-
-.div6 {
-  grid-column: 5 / span 2;
-  grid-row: 6 / span 3;
-}
-
-.hero-small-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.image-overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 16px;
-  color: white;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
-}
-
-.image-overlay p {
-  margin: 0;
-  font-weight: 600;
-}
-
-.image-overlay.small {
-  padding: 12px;
-  font-size: 0.9rem;
-}
-
-
-
-.div4.text-block {
-  grid-column: 7 / span 4;
-  grid-row: 7 / span 2;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 8px;
-
-  padding: 1.4rem 1.6rem;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(12px);
-  border-left: 4px solid; 
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
-  transition: background 0.5s;
-}
-
-.text-block-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-
-}
-
-.text-block-heading {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #13232f;
-  line-height: 1.3;
-  margin: 0;
-}
-
-.text-block-body {
-  font-size: 0.82rem;
-  color: #5f6d78;
-  line-height: 1.55;
-  margin: 0;
-}
-
-.text-block-list {
-  list-style: none;
-  padding: 0;
-  margin: 4px 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.text-block-list li {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #374151;
-}
-
-
+/* ══════════════════════════════════════
+   LOWER SECTION — text left, showcase
+   right, equal-height two-column layout
+   ══════════════════════════════════════ */
 
 .div8 {
-  grid-column: 1 / span 4;
-  grid-row: 5 / span 2;
+  grid-column: 1 / span 5;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
+  gap: 18px;
+  padding: 1rem 2.4rem 1rem 0.5rem;
+  min-height: 460px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border: 1px solid;
+  border-radius: 999px;
+  transition: color 0.7s, border-color 0.7s;
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-family: 'Fraunces', Georgia, serif;
   font-weight: 500;
-  line-height: 1;
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
   color: #13232f;
-  margin-bottom: 5px;
+  margin: 0;
+}
+
+.hero-title-script {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.62em;
+  color: #6b7785;
+  display: inline-block;
+  margin-top: 2px;
 }
 
 .hero-subtitle {
   color: #5f6d78;
-  font-size: 1rem;
+  font-size: 1.04rem;
+  line-height: 1.65;
+  max-width: 46ch;
+  margin: 0;
 }
 
-
-
-.div9 {
-  grid-column: 1 / span 3;
-  grid-row: 7;
+.hero-stats {
   display: flex;
   align-items: center;
-  padding-left: 1rem;
+  gap: 22px;
+  padding: 16px 0 4px;
 }
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-stat-num {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #13232f;
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #8a96a3;
+  letter-spacing: 0.02em;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(19, 35, 47, 0.12);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+}
+
 
 .browse-btn {
   position: relative;
@@ -294,26 +291,17 @@
   left: 140%;
 }
 
-
-.div10 {
-  grid-column: 1 / span 2;
-  grid-row: 8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .social-pill {
   display: flex;
   gap: 18px;
   background: #1a1a1a;
-  padding: 12px 55px;
+  padding: 12px 26px;
   border-radius: 50px;
 }
 
 .social-pill a {
   color: #ccc;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   transition: all 0.3s ease;
 }
 
@@ -323,10 +311,97 @@
 }
 
 
+/* ══════════════════════════════════════
+   SHOWCASE — product image never crops
+   (contain, not cover), sits on a soft
+   tinted card with a quiet numeral mark
+   and a rotation-synced corner accent
+   ══════════════════════════════════════ */
+
+.div3 {
+  grid-column: 6 / span 5;
+  position: relative;
+  min-height: 460px;
+}
+
+.showcase-mark {
+  position: absolute;
+  top: -34px;
+  right: 4px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  font-size: 4.2rem;
+  line-height: 1;
+  color: rgba(19, 35, 47, 0.06);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.showcase-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #fbfaf8 0%, #f1efe9 100%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 24px 60px rgba(19, 35, 47, 0.1);
+  perspective: 1000px;
+  z-index: 1;
+}
+
+.showcase-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9), transparent 55%),
+    radial-gradient(circle at 75% 80%, rgba(19, 35, 47, 0.04), transparent 50%);
+  pointer-events: none;
+}
+
+.showcase-img {
+  position: relative;
+  z-index: 1;
+  max-width: 80%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 24px rgba(19, 35, 47, 0.16));
+  transform-style: preserve-3d;
+}
+
+.showcase-corner {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+
 @media (max-width: 1100px) {
-  .hero-grid {
-    height: auto;
-    min-height: 1200px;
+  .div1 {
+    height: 380px;
+    margin-bottom: 56px;
+  }
+
+  .div2 {
+    top: 380px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .div8,
+  .div3 {
+    min-height: 380px;
   }
 
   .hero-title {
@@ -343,15 +418,14 @@
   .hero-grid {
     display: flex;
     flex-direction: column;
-    height: auto;
-    min-height: auto;
     gap: 14px;
     padding: 0 1rem;
   }
 
   .div1 {
-    height: 420px;
+    height: 320px;
     order: 1;
+    margin-bottom: 60px;
   }
 
   .div2 {
@@ -359,16 +433,36 @@
     top: auto;
     left: auto;
     transform: none;
-    margin: -70px auto 0;
-    width: 120px;
-    height: 120px;
+    margin: -64px auto 0;
+    width: 104px;
+    height: 104px;
     order: 2;
   }
 
   .div8 {
     order: 3;
+    grid-column: unset;
+    min-height: auto;
     text-align: center;
+    align-items: center;
     padding: 0;
+  }
+
+  .hero-eyebrow {
+    align-self: center;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
   }
 
   .hero-title {
@@ -379,34 +473,150 @@
     font-size: 0.95rem;
   }
 
-  .div9 {
-    order: 4;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .div10 {
-    order: 5;
-    min-height: 60px;
-  }
-
-  .div4.text-block {
-    order: 6;
-    min-height: 180px;
-  }
-
   .div3 {
-    order: 7;
-    height: 220px;
+    order: 4;
+    grid-column: unset;
+    min-height: auto;
+    height: 360px;
   }
 
-  .div5 {
-    order: 8;
-    height: 220px;
+  .showcase-mark {
+    display: none;
+  }
+}
+
+
+
+
+
+
+/* ══════════════════════════════════════
+   BANNER RIGHT-SIDE OVERLAY
+   Replaces the centered logo.
+   ══════════════════════════════════════ */
+
+/* Remove the old logo – you can delete .div2 entirely or just comment it out */
+.div2 {
+  display: none; /* safely hide if still referenced */
+}
+
+/* ══════════════════════════════════════
+   BANNER LEFT-SIDE OVERLAY — PROMINENT
+   ══════════════════════════════════════ */
+
+.banner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 3;
+  text-align: left;
+  color: #fff;
+  max-width: 540px;                  /* wider container */
+  width: 90%;                       /* ensures mobile scaling */
+  pointer-events: none;
+
+  /* Frosted glass panel */
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.banner-overlay > * {
+  pointer-events: auto;
+}
+
+.overlay-company {
+  font-family: 'Fraunces', Georgia, serif;   /* elegant serif */
+  font-weight: 600;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  margin-bottom: 0.4rem;
+  line-height: 1.15;
+}
+
+.overlay-product-line {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 500;
+  margin: 0 0 1.6rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  opacity: 0.95;
+  letter-spacing: 0.01em;
+}
+
+.overlay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.8rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.8px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  background: var(--btn-bg, #7c3aed);   /* fallback; use inline style */
+}
+
+.overlay-btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive: center the glass panel on small screens */
+@media (max-width: 768px) {
+  .banner-overlay {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 90%;
+    width: auto;
+    padding: 1.6rem;
   }
 
-  .div6 {
-    order: 9;
-    height: 180px;
+  .overlay-company {
+    font-size: 2rem;
+  }
+
+  .overlay-product-line {
+    font-size: 1.1rem;
+  }
+
+  .overlay-btn {
+    padding: 0.8rem 2rem;
+  }
+}
+
+.overlay-btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .banner-overlay {
+    right: 50%;
+    transform: translate(50%, -50%);
+    text-align: center;
+    width: 90%;
+    max-width: none;
+  }
+
+  .overlay-company {
+    font-size: 1.6rem;
+  }
+
+  .overlay-product-line {
+    font-size: 1rem;
   }
 }

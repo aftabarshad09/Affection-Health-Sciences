@@ -7,11 +7,25 @@
 .logostrip {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  padding: 36px 0;
   background: #faf7ff;
   border-top: 1px solid #f0eaff;
   border-bottom: 1px solid #f0eaff;
+  /* subtle 3D depth with perspective + layered shadows */
+  perspective: 1000px;
+  box-shadow:
+    0 4px 24px rgba(124, 58, 237, 0.07),
+    0 1.5px 0 #e4d4ff,
+    inset 0 2px 8px rgba(196, 181, 253, 0.13),
+    inset 0 -2px 8px rgba(196, 181, 253, 0.10);
+}
+
+/* Inner wrapper carries the 3D tilt */
+.logostrip__inner {
+  position: relative;
+  overflow: hidden;
+  padding: 42px 0;
+  transform: rotateX(3deg);
+  transform-style: preserve-3d;
 }
 
 /* ---- edge fade so logos don't hard-cut at the container edge ---- */
@@ -19,7 +33,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 90px;
+  width: 120px;
   z-index: 2;
   pointer-events: none;
 }
@@ -34,13 +48,13 @@
   background: linear-gradient(to left, #faf7ff 0%, rgba(250, 247, 255, 0) 100%);
 }
 
-/* ---- scrolling track ---- */
+/* ---- scrolling track — no gap, fully continuous ---- */
 .logostrip__track {
   display: flex;
   align-items: center;
   width: max-content;
-  gap: 72px;
-  animation: logostrip-scroll 18s linear infinite;
+  gap: 0;
+  animation: logostrip-scroll 22s linear infinite;
 }
 
 .logostrip:hover .logostrip__track {
@@ -49,51 +63,53 @@
 
 @keyframes logostrip-scroll {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(-25%); }
 }
 
-/* ---- individual logo ---- */
+/* ---- individual logo — divider lines between each ---- */
 .logostrip__item {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
-  width: 160px;
+  height: 60px;
+  width: 180px;
+  padding: 0 32px;
+  border-right: 1px solid #ede5ff;
+  box-sizing: border-box;
 }
 
+/* ---- logo image — full color, hover lift ---- */
 .logostrip__img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.55);
+  /* full color, always visible */
+  filter: drop-shadow(0 2px 6px rgba(124, 58, 237, 0.08));
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .logostrip__item:hover .logostrip__img {
-  filter: grayscale(0%) opacity(1);
-  transform: translateY(-4px) scale(1.06);
+  filter: opacity(1) drop-shadow(0 4px 12px rgba(124, 58, 237, 0.18));
+  transform: translateY(-3px) scale(1.07);
 }
 
 /* ---- responsive ---- */
 @media (max-width: 640px) {
-  .logostrip {
-    padding: 28px 0;
-  }
-
-  .logostrip__track {
-    gap: 48px;
+  .logostrip__inner {
+    padding: 32px 0;
   }
 
   .logostrip__item {
-    height: 44px;
-    width: 120px;
+    height: 48px;
+    width: 140px;
+    padding: 0 24px;
   }
 
   .logostrip__fade {
-    width: 50px;
+    width: 60px;
   }
 }
 

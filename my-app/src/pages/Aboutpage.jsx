@@ -10,6 +10,7 @@ import "../style/Aboutpage.css";
    it's ready, no other code needs to change.
    ============================================================ */
 const STAFF_IMG_BASE = "/src/assets/staff/";
+import unsplash from "../assets/staff/p2222.png"; // placeholder until real CEO photo is added
 const STAFF_IMG = {
   ceo: `${STAFF_IMG_BASE}001.png`,
   nutritionist: `${STAFF_IMG_BASE}001.png`, // TODO: replace with 002.png once added
@@ -26,7 +27,7 @@ const STAFF_IMG = {
 const CERT_IMG_BASE = "/src/assets/Certificates/";
 const CERT_IMG = [
   `${CERT_IMG_BASE}001.png`,
-  `${CERT_IMG_BASE}002.png`,
+  `${CERT_IMG_BASE}002.jpg`,
   `${CERT_IMG_BASE}003.png`,
   `${CERT_IMG_BASE}004.png`,
   `${CERT_IMG_BASE}005.jpeg`,
@@ -89,6 +90,18 @@ const LEADERSHIP = [
   },
 ];
 
+/* ============================================================
+   AWARDS & RECOGNITION
+   Path: src/assets/awards/
+   001.jpeg .. 003.jpeg
+   ============================================================ */
+const AWARDS_IMG_BASE = "/src/assets/awards/";
+const AWARDS = [
+  { id: 1, img: `${AWARDS_IMG_BASE}001.jpeg`, alt: "Go Global Awards 2023 Finalist" },
+  { id: 2, img: `${AWARDS_IMG_BASE}002.jpeg`, alt: "2025 Go Global Awards Nominee" },
+  { id: 3, img: `${AWARDS_IMG_BASE}003.jpeg`, alt: "Go Global Awards 2025 Nominee" },
+];
+
 const CERTIFICATIONS = CERT_IMG.map((src, i) => ({
   id: i + 1,
   img: src,
@@ -107,7 +120,7 @@ const ABOUT_COMPANY = {
   images: [
     {
       id: "facility",
-      src: "https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?w=700&h=560&fit=crop",
+      src: unsplash, // placeholder until real facility photo is added
       alt: "Pharmaceutical manufacturing facility",
     },
     {
@@ -264,6 +277,25 @@ export default function Aboutpage() {
         <div className="abt-team__grid">
           {LEADERSHIP.slice(1).map((member) => (
             <TeamCard key={member.id} data={member} />
+          ))}
+        </div>
+      </section>
+
+      {/* ================= AWARDS & RECOGNITION ================= */}
+      <section className="abt-awards">
+        <div className="abt-awards__head">
+          <span className="abt-eyebrow">Recognition</span>
+          <h2 className="abt-awards__heading">Awards &amp; collaborations</h2>
+          <p className="abt-awards__sub">
+            International recognition for the work happening on the ground.
+          </p>
+        </div>
+
+        <div className="abt-awards__grid">
+          {AWARDS.map((a) => (
+            <div key={a.id} className="abt-awards__card">
+              <img src={a.img} alt={a.alt} className="abt-awards__img" />
+            </div>
           ))}
         </div>
       </section>
