@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 2000;
 
   font-family: 'Poppins', sans-serif;
 
@@ -78,6 +78,13 @@
   /* subtle shimmer line at top */
   position: relative;
   overflow: hidden;
+}
+
+/* When the mobile dropdown is open, the scrolled pill's overflow:hidden
+   (used to clip the shimmer line above) would otherwise cut off the
+   dropdown anchored just below it — let it escape in that case. */
+.header.scrolled .header-inner.menu-open {
+  overflow: visible;
 }
 
 /* Shimmer highlight on top edge of scrolled pill */
@@ -188,7 +195,7 @@
 }
 
 .nav-cta:hover {
-  background: #000000;
+  background: #163828;
   transform: translateY(-1px);
 }
 
@@ -208,6 +215,28 @@
    RESPONSIVE
 ============================================= */
 @media (max-width: 900px) {
+  /* Compact header on mobile/tablet — smaller logo + tighter padding,
+     so it takes up less of the screen and main's offset below can be
+     exact instead of inherited from the larger desktop header. */
+  .header {
+    padding: 8px 0;
+  }
+
+  .logo-img {
+    height: 38px;
+  }
+
+  /* .header is position:fixed and removed from normal flow, so without
+     this the first section of every page renders underneath it. Push
+     page content down by the header's own height (logo 38px + 8px
+     padding top/bottom), matched exactly to the mobile sizing above.
+     Scoped to .site-main (the Layout wrapper itself) rather than the
+     bare `main` element — some pages render their own <main> as their
+     root tag, and a bare selector would apply this padding twice. */
+  .site-main {
+    padding-top: 56px;
+  }
+
   .hamburger {
     display: flex;
     align-items: center;
@@ -220,10 +249,11 @@
     top: calc(100% + 10px);
     left: 16px;
     right: 16px;
+    z-index: 2001;
     flex-direction: column;
     align-items: stretch;
     gap: 4px;
-
+    margin-bottom: 8px;
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);

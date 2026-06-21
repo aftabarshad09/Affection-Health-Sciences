@@ -7,7 +7,7 @@ import {
   FaPhoneAlt,
   FaEnvelope,
 } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo3.png";
 import "./Footer.css";
 
 const NAV_LINKS = [
@@ -174,6 +174,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <p className="footer-copyright">© {year} Affection Health Sciences. All rights reserved.</p>
           <div className="footer-legal">
+            <a href="https://qodexaa.com/" target="_blank" rel="noopener noreferrer">
+              made with Qodexaa
+            </a>
             <Link to="/privacy">Privacy Policy</Link>
             <span className="footer-legal-dot" aria-hidden="true">•</span>
             <Link to="/terms">Terms of Service</Link>

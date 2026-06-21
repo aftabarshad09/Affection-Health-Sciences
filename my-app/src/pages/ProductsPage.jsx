@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import '../style/ProductsPage.css';
 import { FaTimes, FaCheckCircle, FaFlask, FaShieldAlt, FaLeaf, FaAtom } from 'react-icons/fa';
 
@@ -616,6 +617,7 @@ const DualPackPanelImage = ({ product }) => {
 };
 
 const ProductsPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [active, setActive] = useState(null);
   const [visible, setVisible] = useState(false);
   const [filter, setFilter] = useState('All');
@@ -646,6 +648,7 @@ const ProductsPage = () => {
       setActive(null);
       document.body.style.overflow = '';
     }, 320);
+    setSearchParams({}, { replace: true });
   };
 
   useEffect(() => {
@@ -653,6 +656,15 @@ const ProductsPage = () => {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
+
+  useEffect(() => {
+    const productId = searchParams.get('product');
+    if (!productId) return;
+    const match = products.find(p => String(p.id) === productId);
+    if (!match) return;
+    const timer = setTimeout(() => openProduct(match), 0);
+    return () => clearTimeout(timer);
+  }, [searchParams]);
 
   return (
     <div className="prod-pg">
@@ -698,7 +710,7 @@ const ProductsPage = () => {
             {categories.map(cat => (
               <button
                 key={cat}
-                className={`prod-filter-btn${filter === cat ? ' active' : ''}`}
+                className={`prod-filter-btn glass-btn${filter === cat ? ' active' : ''}`}
                 onClick={() => setFilter(cat)}
               >
                 {cat}

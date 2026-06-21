@@ -18,6 +18,7 @@ const upload = multer({
 });
 
 router.post('/contact', emailController.sendContactEmail);
+router.post('/review', emailController.sendReviewEmail);
 router.post('/careers/apply', upload.single('resume'), emailController.sendJobApplication);
 
 module.exports = router;

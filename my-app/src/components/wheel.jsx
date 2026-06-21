@@ -1,5 +1,6 @@
 // wheel.jsx — Product showcase wheel
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './wheel.css';
 import { FaCapsules } from 'react-icons/fa';
 import logo from '../assets/logo.png';
@@ -31,46 +32,54 @@ const products = [
     image: PRODUCT_IMG.gynogid,
     tagline: "Prenatal nutrition, for mom's care",
     content: `Built on the 3G System — Go, Grow, Glow — for sustained maternal energy and healthy fetal development. Enriched with fennel and vanilla extracts. Vanilla flavor, 400gm.`,
+    productId: 1,
   },
   {
     label: "MCTOLIP Drops",
     image: PRODUCT_IMG.mctolip,
     tagline: "Medium chain triglycerides",
     content: `Supports weight management, improves brain function, and provides a good energy source — formulated for infants and growing children who need fat absorption support.`,
+    productId: 2,
   },
   {
     label: "Glumin SR",
     image: PRODUCT_IMG.glumin,
     tagline: "High quality nutrition for diabetics",
     content: `Delivers sustained energy release with good fats, formulated specifically for diabetic nutritional needs. Vanilla flavor, 400gm net.`,
+    productId: 3,
   },
   {
     label: "Energid Plus",
     image: PRODUCT_IMG.energid,
     tagline: "Complete and balanced adult nutrition",
     content: `A heart-friendly, easy-mix adult nutrition supplement delivering 235 kcal per 230ml serving. Available in Strawberry and other flavors, 400g.`,
+    productId: 5,
   },
   {
     label: "Best Protein",
     image: PRODUCT_IMG.bestProtein,
     tagline: "Rich source of whey protein",
     content: `A sprinkling protein powder that adds high-quality whey protein to any meal, supporting muscle maintenance and daily protein needs. Net 230gm.`,
+    productId: 6,
   },
   {
-    label: "Lactilus Probiotic",
+    label: "Lactilus Prob",
     image: PRODUCT_IMG.lactilus,
     tagline: "Lactobacillus Acidophilus & Zinc",
     content: `Supports digestive and immune health with live bacteria that reach the gut alive. 10 directly-consumed sachets per box.`,
+    productId: 7,
   },
   {
     label: "Hepatovital",
     image: PRODUCT_IMG.hepatovital,
     tagline: "BCAA-enriched hepatic nutrition",
     content: `Promotes liver function with branched chain amino acid-enriched nutrition, supporting regeneration and the elevated protein needs of liver care. Halal certified, 400gm.`,
+    productId: 8,
   },
 ];
 
 const WheelProducts = () => {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const radius = 220;
   const innerRadius = 100;
@@ -179,7 +188,12 @@ const WheelProducts = () => {
           <p className="product-tagline">{active.tagline}</p>
           <div className="label-underline"></div>
           <p className="product-description">{active.content}</p>
-          <button className="read-more-button">Read More</button>
+          <button
+            className="read-more-button glass-btn"
+            onClick={() => navigate(`/products?product=${active.productId}`)}
+          >
+            Read More
+          </button>
         </div>
       </div>
     </div>

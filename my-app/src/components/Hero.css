@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -135,6 +137,35 @@ html, body {
   color: #1B4332;
 }
 
+/* ===== TYPEWRITER (ABOVE CAROUSEL, RIGHT SIDE) ===== */
+.hero-typewriter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-family: 'Poppins', 'Helvetica', 'Arial', sans-serif;
+}
+
+.hero-typewriter-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8a8378;
+}
+
+.hero-typewriter-text {
+  font-size: 19px;
+  font-weight: 600;
+  color: #C97B5C;
+  font-family: 'Poppins', 'Helvetica', 'Arial', sans-serif;
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+}
+
 .hero-description {
   margin-top: 20px;
   font-size: 15px;
@@ -219,11 +250,6 @@ html, body {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
-.hero-social a {
-  display: inline-flex;
-  text-decoration: none;
-}
-
 .social-icon {
   cursor: pointer;
   color: #1B4332;
@@ -286,21 +312,33 @@ html, body {
   will-change: transform;
 }
 
-/* Product Name */
-.carousel-name {
-  height: 36px;
-  margin-top: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ===== 3D GROUND SHADOW ===== */
+.carousel-shadow {
+  width: 190px;
+  height: 28px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(27, 67, 50, 0.32) 0%,
+    rgba(27, 67, 50, 0.16) 45%,
+    rgba(27, 67, 50, 0) 75%
+  );
+  filter: blur(3px);
 }
 
-.product-name {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1B4332;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  letter-spacing: 0.02em;
+/* ===== TYPEWRITER CURSOR ===== */
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: inherit;
+  font-family: 'Poppins', 'Helvetica', 'Arial', sans-serif;
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 /* ===== DOTS ===== */
@@ -516,6 +554,11 @@ html, body {
     height: 300px;
   }
 
+  .carousel-shadow {
+    width: 165px;
+    height: 24px;
+  }
+
   .hero-section::before {
     width: 300px;
     height: 300px;
@@ -532,13 +575,53 @@ html, body {
 }
 
 @media (max-width: 768px) {
+  /* .hero-section was forcing min-height:100vh with vertical centering,
+     which left a large empty gap below the header before the badge/title
+     even started (actual content is far shorter than 100vh on mobile).
+     Let it size to its content instead, starting right under the header. */
+  .hero-section {
+    min-height: auto;
+    align-items: flex-start;
+    padding: 28px 0 48px;
+  }
+
   .hero-container {
     padding: 0 24px;
   }
 
+  /* Reflow order on mobile: text first, then the product carousel,
+     then the social icons + explore button at the very end — without
+     restructuring the JSX. `display: contents` on .hero-left exposes
+     its children as direct items of .hero-grid so each can get its
+     own `order`, alongside .hero-right (the carousel column). */
   .hero-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
+  }
+
+  .hero-left {
+    display: contents;
+  }
+
+  .hero-badge {
+    order: 1;
+  }
+
+  .hero-title {
+    order: 2;
+  }
+
+  .hero-description {
+    order: 3;
+  }
+
+  .hero-right {
+    order: 4;
+  }
+
+  .hero-actions {
+    order: 5;
   }
 
   .hero-title {
@@ -585,6 +668,11 @@ html, body {
 
   .carousel-perspective {
     height: 260px;
+  }
+
+  .carousel-shadow {
+    width: 145px;
+    height: 20px;
   }
 
   .hero-section::before {
@@ -637,8 +725,13 @@ html, body {
     height: 220px;
   }
 
-  .product-name {
+  .hero-typewriter-text {
     font-size: 15px;
+  }
+
+  .carousel-shadow {
+    width: 130px;
+    height: 18px;
   }
 
   .dot {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import "./Hero.css";
@@ -14,22 +15,110 @@ import P8 from "../assets/Products/P20.png";
 import P9 from "../assets/Products/P8.png";
 
 const products = [
-  { image: P1, name: "Protein" },
-  { image: P2, name: "BCAA" },
-  { image: P3, name: "Energid" },
-  { image: P4, name: "Collagen" },
-  { image: P5, name: "Immunity+" },
-  { image: P6, name: "Omega 3" },
-  { image: P7, name: "Multivitamin" },
-  { image: P8, name: "Creatine" },
-  { image: P9, name: "Wellness Blend" },
+  { image: P1, name: "GYNOgID" },
+  { image: P2, name: "INFANTIN LF" },
+  { image: P3, name: "ENERGID PLUS" },
+  { image: P4, name: "BEST PROTIEN" },
+  { image: P5, name: "HIPATOVITAL" },
+  { image: P6, name: "GLUMIN SR" },
+  { image: P7, name: "INFANTIN PRE" },
+  { image: P8, name: "INFANTIN AR" },
+  { image: P9, name: "HIPATOVITAL" },
 ];
 
+// Typewriter hook: types text out, holds, then deletes (used for product name)
+function useTypewriter(text, { typeSpeed = 70, deleteSpeed = 35, holdTime = 1100 } = {}) {
+  const [displayed, setDisplayed] = useState("");
+  const [phase, setPhase] = useState("typing"); // "typing" | "holding" | "deleting"
+
+  useEffect(() => {
+    setDisplayed("");
+    setPhase("typing");
+  }, [text]);
+
+  useEffect(() => {
+    let timeout;
+
+    if (phase === "typing") {
+      if (displayed.length < text.length) {
+        timeout = setTimeout(() => {
+          setDisplayed(text.slice(0, displayed.length + 1));
+        }, typeSpeed);
+      } else {
+        timeout = setTimeout(() => setPhase("holding"), holdTime);
+      }
+    } else if (phase === "holding") {
+      timeout = setTimeout(() => setPhase("deleting"), 0);
+    } else if (phase === "deleting") {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayed(text.slice(0, displayed.length - 1));
+        }, deleteSpeed);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, phase, text, typeSpeed, deleteSpeed, holdTime]);
+
+  return displayed;
+}
+
+// Cycling typewriter: types each statement (line1 + line2) in the array, holds, deletes, then moves to the next — loops forever
+function useCyclingTypewriter(statements, { typeSpeed = 45, deleteSpeed = 25, holdTime = 1600, pauseBeforeNext = 400 } = {}) {
+  const [statementIndex, setStatementIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [phase, setPhase] = useState("typing"); // "typing" | "holding" | "deleting" | "pausing"
+
+  const current = statements[statementIndex];
+  const fullText = current.line1 + " " + current.line2;
+
+  useEffect(() => {
+    let timeout;
+
+    if (phase === "typing") {
+      if (displayed.length < fullText.length) {
+        timeout = setTimeout(() => {
+          setDisplayed(fullText.slice(0, displayed.length + 1));
+        }, typeSpeed);
+      } else {
+        timeout = setTimeout(() => setPhase("holding"), holdTime);
+      }
+    } else if (phase === "holding") {
+      timeout = setTimeout(() => setPhase("deleting"), 0);
+    } else if (phase === "deleting") {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayed(displayed.slice(0, -1));
+        }, deleteSpeed);
+      } else {
+        timeout = setTimeout(() => setPhase("pausing"), pauseBeforeNext);
+      }
+    } else if (phase === "pausing") {
+      timeout = setTimeout(() => {
+        setStatementIndex((i) => (i + 1) % statements.length);
+        setPhase("typing");
+      }, 0);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, phase, fullText, typeSpeed, deleteSpeed, holdTime, pauseBeforeNext, statements.length]);
+
+  // Split the displayed text back into line1 (default color) and line2 (green) portions
+  const line1Len = current.line1.length;
+  const line1Shown = displayed.slice(0, line1Len);
+  const line2Shown = displayed.slice(line1Len + 1); // +1 to skip the joining space
+
+  return { line1Shown, line2Shown, line1Full: current.line1, isTypingLine1: displayed.length <= line1Len };
+}
+
 export default function HeroSection() {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
 
   useEffect(() => {
     const timer = setInterval(() => {
+      setDirection(1);
       setCurrent((prev) => (prev + 1) % products.length);
     }, 3000);
     return () => clearInterval(timer);
@@ -39,8 +128,21 @@ export default function HeroSection() {
   const next = current === products.length - 1 ? 0 : current + 1;
 
   const goToSlide = (index) => {
+    setDirection(index > current ? 1 : -1);
     setCurrent(index);
   };
+
+  const typedName = useTypewriter(products[current].name);
+
+  // Headline: rotating 2-line statements — each types, holds, deletes, then cycles to the next — forever
+  const headlineStatements = [
+    { line1: "Science-Backed", line2: "Wellness For Everyday Vitality" },
+    { line1: "Affordable Health,", line2: "Without Compromise" },
+    { line1: "Premium Quality", line2: "At Prices Everyone Can Afford" },
+    { line1: "Trusted Nutrition", line2: "For Every Pakistani Household" },
+  ];
+  const { line1Shown, line2Shown, isTypingLine1 } =
+    useCyclingTypewriter(headlineStatements);
 
   return (
     <section className="hero-section">
@@ -54,10 +156,13 @@ export default function HeroSection() {
           <div className="hero-left">
             <div className="hero-badge">Affection Health Sciences</div>
 
-            <h1 className="hero-title">
-              Science-Backed
-              <span className="hero-title-green">Wellness For</span>
-              Everyday Vitality
+            <h1 className="hero-title hero-title-cycling">
+              {line1Shown}
+              {isTypingLine1 && <span className="typing-cursor">|</span>}
+              <span className="hero-title-green">
+                {line2Shown}
+                {!isTypingLine1 && <span className="typing-cursor">|</span>}
+              </span>
             </h1>
 
             <p className="hero-description">
@@ -68,7 +173,9 @@ export default function HeroSection() {
             </p>
 
             <div className="hero-actions">
-              <button className="hero-button">Explore Our Products</button>
+              <button className="hero-button" onClick={() => navigate("/products")}>
+                Explore Our Products
+              </button>
 
               <div className="hero-social">
                 <a
@@ -102,75 +209,100 @@ export default function HeroSection() {
           {/* RIGHT SIDE - CAROUSEL */}
           <div className="hero-right">
             <div className="carousel-wrapper">
-              <div className="carousel-perspective">
-                {/* LEFT PRODUCT */}
-                <motion.img
-                  src={products[prev].image}
-                  alt=""
-                  className="carousel-left"
-                  animate={{
-                    x: -160,
-                    scale: 0.65,
-                    rotateY: 40,
-                    opacity: 0.3,
-                  }}
-                  transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                />
-
-                {/* ACTIVE PRODUCT */}
-                <motion.img
-                  key={current}
-                  src={products[current].image}
-                  alt={products[current].name}
-                  className="carousel-active"
-                  initial={{ 
-                    opacity: 0, 
-                    scale: 0.85,
-                    rotateY: 15
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    rotateY: 0,
-                    y: [0, -6, 0],
-                  }}
-                  transition={{
-                    duration: 1.2,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                    y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
-                  }}
-                />
-
-                {/* RIGHT PRODUCT */}
-                <motion.img
-                  src={products[next].image}
-                  alt=""
-                  className="carousel-right"
-                  animate={{
-                    x: 160,
-                    scale: 0.65,
-                    rotateY: -40,
-                    opacity: 0.3,
-                  }}
-                  transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                />
+              <div className="hero-typewriter">
+                <span className="hero-typewriter-label">Now Featuring</span>
+                <span className="hero-typewriter-text">
+                  {typedName}
+                  <span className="typing-cursor">|</span>
+                </span>
               </div>
 
-              {/* PRODUCT NAME */}
-              <div className="carousel-name">
-                <AnimatePresence mode="wait">
-                  <motion.h3
-                    key={products[current].name}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="product-name"
-                  >
-                    {products[current].name}
-                  </motion.h3>
+              <div className="carousel-perspective">
+                <AnimatePresence initial={false} custom={direction}>
+                  {/* LEFT PRODUCT */}
+                  <motion.img
+                    key={`left-${prev}`}
+                    src={products[prev].image}
+                    alt=""
+                    className="carousel-left"
+                    initial={{ x: 0, scale: 0.85, opacity: 0, rotateY: 0 }}
+                    animate={{
+                      x: -160,
+                      scale: 0.65,
+                      rotateY: 40,
+                      opacity: 0.3,
+                    }}
+                    exit={{ opacity: 0, scale: 0.5, x: -220 }}
+                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  />
+
+                  {/* ACTIVE PRODUCT */}
+                  <motion.img
+                    key={`active-${current}`}
+                    src={products[current].image}
+                    alt={products[current].name}
+                    className="carousel-active"
+                    custom={direction}
+                    initial={(dir) => ({
+                      opacity: 0,
+                      scale: 0.6,
+                      x: dir > 0 ? 140 : -140,
+                      rotateY: dir > 0 ? 35 : -35,
+                    })}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      x: 0,
+                      rotateY: 0,
+                      y: [0, -6, 0],
+                    }}
+                    exit={(dir) => ({
+                      opacity: 0,
+                      scale: 0.6,
+                      x: dir > 0 ? -140 : 140,
+                      rotateY: dir > 0 ? -35 : 35,
+                      transition: { duration: 0.5, ease: "easeInOut" },
+                    })}
+                    transition={{
+                      duration: 0.9,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      y: { repeat: Infinity, duration: 4, ease: "easeInOut" },
+                    }}
+                  />
+
+                  {/* RIGHT PRODUCT */}
+                  <motion.img
+                    key={`right-${next}`}
+                    src={products[next].image}
+                    alt=""
+                    className="carousel-right"
+                    initial={{ x: 0, scale: 0.85, opacity: 0, rotateY: 0 }}
+                    animate={{
+                      x: 160,
+                      scale: 0.65,
+                      rotateY: -40,
+                      opacity: 0.3,
+                    }}
+                    exit={{ opacity: 0, scale: 0.5, x: 220 }}
+                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  />
                 </AnimatePresence>
               </div>
+
+              {/* 3D GROUND SHADOW */}
+              <motion.div
+                key={`shadow-${current}`}
+                className="carousel-shadow"
+                initial={{ opacity: 0, scaleX: 0.7 }}
+                animate={{
+                  opacity: [0.5, 0.3, 0.5],
+                  scaleX: [1, 0.85, 1],
+                }}
+                transition={{
+                  opacity: { repeat: Infinity, duration: 4, ease: "easeInOut" },
+                  scaleX: { repeat: Infinity, duration: 4, ease: "easeInOut" },
+                }}
+              ></motion.div>
 
               {/* DOTS INDICATOR */}
               <div className="carousel-dots">
@@ -208,7 +340,7 @@ export default function HeroSection() {
             <filter id="waveBlur4">
               <feGaussianBlur stdDeviation="5" />
             </filter>
-            
+
             <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
               <stop offset="15%" style={{ stopColor: '#C97B5C', stopOpacity: 0.2 }} />
@@ -216,7 +348,7 @@ export default function HeroSection() {
               <stop offset="85%" style={{ stopColor: '#C97B5C', stopOpacity: 0.2 }} />
               <stop offset="100%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
             </linearGradient>
-            
+
             <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
               <stop offset="20%" style={{ stopColor: '#C97B5C', stopOpacity: 0.25 }} />
@@ -224,7 +356,7 @@ export default function HeroSection() {
               <stop offset="80%" style={{ stopColor: '#C97B5C', stopOpacity: 0.25 }} />
               <stop offset="100%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
             </linearGradient>
-            
+
             <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" style={{ stopColor: '#C97B5C', stopOpacity: 0 }} />
               <stop offset="10%" style={{ stopColor: '#C97B5C', stopOpacity: 0.15 }} />
@@ -281,7 +413,7 @@ export default function HeroSection() {
             style={{ mixBlendMode: 'overlay' }}
           />
         </svg>
-        
+
         {/* Shine overlay on waves */}
         <div className="wave-shine"></div>
       </div>

@@ -76,6 +76,67 @@ exports.sendContactEmail = async (req, res) => {
 };
 
 // ============================================
+// PRODUCT REVIEW SUBMISSION
+// ============================================
+exports.sendReviewEmail = async (req, res) => {
+  console.log('\n📨 Incoming Review Submission:', req.body);
+
+  try {
+    const { name, email, product, rating, text } = req.body;
+
+    if (!name || !email || !rating || !text) {
+      return res.status(400).json({
+        success: false,
+        error: "Name, rating and review text are required"
+      });
+    }
+
+    const stars = '★'.repeat(Number(rating)) + '☆'.repeat(5 - Number(rating));
+
+    // ✅ EMAIL TO YOU
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: process.env.RECEIVER_EMAIL,
+      subject: `New ${rating}-star review from ${name}`,
+      html: `
+        <h2>New Product Review</h2>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Product:</b> ${product || 'Not specified'}</p>
+        <p><b>Rating:</b> ${stars} (${rating}/5)</p>
+        <p><b>Review:</b></p>
+        <p>${text}</p>
+      `
+    });
+
+    // ✅ CONFIRMATION TO USER
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Thanks for your review",
+      html: `
+        <h3>Hi ${name},</h3>
+        <p>Thank you for taking the time to share your experience with us. We really appreciate it!</p>
+      `
+    });
+
+    console.log('✅ Review emails sent successfully');
+
+    res.json({
+      success: true,
+      message: "Review submitted successfully!"
+    });
+
+  } catch (err) {
+    console.error('❌ Review Email Error:', err);
+    res.status(500).json({
+      success: false,
+      error: "Failed to submit review"
+    });
+  }
+};
+
+// ============================================
 // JOB APPLICATION - NEW CODE (ADDED)
 // ============================================
 exports.sendJobApplication = async (req, res) => {

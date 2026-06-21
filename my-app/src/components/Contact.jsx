@@ -162,7 +162,7 @@ export default function ContactSection() {
             </label>
           </div>
 
-          <button type="submit" className="contact-form__submit" disabled={status === "submitting"}>
+          <button type="submit" className="contact-form__submit glass-btn" disabled={status === "submitting"}>
             <span>
               {status === "submitting" ? "Sending..." : status === "sent" ? "Message sent" : "Send message"}
             </span>

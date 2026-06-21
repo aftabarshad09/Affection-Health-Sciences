@@ -56,7 +56,7 @@ export default function NewsletterStrip() {
               disabled={status !== "idle"}
               className="newsletter-strip__input"
             />
-            <button type="submit" className="newsletter-strip__submit" disabled={status !== "idle"}>
+            <button type="submit" className="newsletter-strip__submit glass-btn" disabled={status !== "idle"}>
               {status === "done" ? (
                 <>Subscribed <FiCheck aria-hidden="true" /></>
               ) : status === "submitting" ? (

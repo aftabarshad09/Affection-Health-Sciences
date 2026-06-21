@@ -307,7 +307,7 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="cp-btn cp-btn-primary cp-submit-btn" disabled={submitted}>
+                <button type="submit" className="cp-btn cp-btn-primary cp-submit-btn glass-btn" disabled={submitted}>
                   {submitted ? 'Message Sent' : 'Send Message'}
                   {!submitted && <FaPaperPlane className="cp-submit-btn__icon" aria-hidden="true" />}
                 </button>
@@ -384,7 +384,7 @@ const Contact = () => {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`cp-social-btn ${className}`}
+                className={`cp-social-btn glass-btn ${className}`}
               >
                 <Icon size={16} /> {name}
               </a>

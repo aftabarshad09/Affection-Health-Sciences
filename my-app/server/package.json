@@ -1,18 +1,17 @@
 {
-  "name": "qodexxa-backend",
+  "name": "affection-health-sciences-backend",
   "version": "1.0.0",
-  "description": "QODEXXA Backend Server",
+  "description": "Affection Health Sciences Backend Server",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "dev": "nodemon server/server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [
     "express",
     "nodejs",
     "email",
-    "contact-form",
-    "qodexxa"
+    "contact-form"
   ],
   "author": "Aftab Arshadi",
   "license": "MIT",

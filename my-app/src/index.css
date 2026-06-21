@@ -6,3 +6,66 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* ============================================================
+   GLOBAL GLASSY BUTTON HOVER
+   Add the `glass-btn` class alongside any button/CTA className
+   to get a frosted light-sweep + lift + soft themed glow on
+   hover, in the site's green / cream / terracotta palette.
+   Each button keeps its own background/colors — this layer only
+   adds the glass shine + motion on top.
+   ============================================================ */
+
+.glass-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.5) 47%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgba(255, 255, 255, 0.5) 53%,
+    transparent 75%
+  );
+  transform: translateX(-130%) skewX(-12deg);
+  transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+  pointer-events: none;
+}
+
+.glass-btn:hover::after {
+  transform: translateX(130%) skewX(-12deg);
+}
+
+/* Doubled class selector bumps specificity above each button's own
+   single-class `:hover` rule, regardless of CSS import order, so the
+   lift + glow always applies on top of the button's own hover colors. */
+.glass-btn.glass-btn:hover {
+  transform: translateY(-3px);
+  backdrop-filter: blur(3px);
+  box-shadow:
+    0 14px 30px rgba(27, 67, 50, 0.22),
+    0 4px 16px rgba(201, 123, 92, 0.28);
+}
+
+.glass-btn.glass-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-btn::after {
+    display: none;
+  }
+
+  .glass-btn:hover {
+    transform: none;
+  }
+}

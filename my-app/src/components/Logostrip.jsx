@@ -1,13 +1,6 @@
 import React from "react";
 import "./LogoStrip.css";
 
-/* ============================================================
-   LOGOS
-   Path: src/assets/logos/
-   Add/remove entries here — the strip duplicates this list
-   automatically to create the seamless infinite scroll, so you
-   don't need to repeat anything yourself.
-   ============================================================ */
 const LOGO_BASE = "/src/assets/logos/";
 
 const LOGOS = [

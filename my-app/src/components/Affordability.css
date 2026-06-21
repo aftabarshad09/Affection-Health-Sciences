@@ -1,0 +1,215 @@
+/* ===========================================================
+   Affordability — Affection Health Sciences
+   Parallax texture background, terracotta accent stats.
+   Palette: Deep Green #163828, Forest Green #1B4332,
+   Warm Cream #FAF6F0, Terracotta #C97B5C, Light Terra #E8956D.
+   =========================================================== */
+
+.afford {
+  --ink: #163828;
+  --cream: #FAF6F0;
+  --terracotta: #C97B5C;
+  --terracotta-soft: #E8956D;
+  --terracotta-deep: #B0603F;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 6vw, 5rem);
+  color: #ffffff;
+}
+
+/* ---------- Parallax texture background (img element) ---------- */
+
+.afford__bg {
+  position: absolute;
+  top: -12%;
+  left: 0;
+  width: 100%;
+  height: 124%;
+  z-index: -2;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+}
+
+.afford__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(201, 123, 92, 0.18) 0%, transparent 55%),
+    linear-gradient(165deg, rgba(22, 56, 40, 0.9) 0%, rgba(27, 67, 50, 0.84) 50%, rgba(22, 56, 40, 0.94) 100%);
+}
+
+/* ---------- Layout ---------- */
+
+.afford__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.afford__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.afford__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracotta-soft);
+  background: rgba(201, 123, 92, 0.14);
+  border: 1px solid rgba(201, 123, 92, 0.35);
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  margin-bottom: 1.4rem;
+}
+
+.afford__heading {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0 0 1.3rem;
+}
+
+.afford__lede {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 56ch;
+  margin: 0 auto;
+}
+
+/* ---------- Stats ---------- */
+
+.afford__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  margin: clamp(1.5rem, 3vw, 2.2rem) 0;
+  padding: clamp(1.2rem, 2.5vw, 1.6rem) 0;
+  border-top: 1px solid rgba(250, 246, 240, 0.18);
+  border-bottom: 1px solid rgba(250, 246, 240, 0.18);
+}
+
+.afford__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.afford__stat-value {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1;
+  color: var(--terracotta-soft);
+  margin-bottom: 0.5rem;
+}
+
+.afford__stat-label {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.afford__stat-sub {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 22ch;
+}
+
+/* ---------- Supporting points ---------- */
+
+.afford__points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.afford__point {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.afford__point-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(201, 123, 92, 0.16);
+  color: var(--terracotta-soft);
+}
+
+.afford__point-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .afford {
+    height: auto;
+    min-height: 70lvh;
+    padding-block: 3rem;
+  }
+
+  .afford__stats,
+  .afford__points {
+    grid-template-columns: 1fr;
+  }
+
+  .afford__points {
+    text-align: center;
+  }
+
+  .afford__point {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .afford__stats {
+    gap: 1.5rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .afford__bg {
+    transform: none !important;
+  }
+}

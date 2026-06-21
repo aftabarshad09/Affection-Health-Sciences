@@ -12,7 +12,7 @@ import "../style/Aboutpage.css";
 const STAFF_IMG_BASE = "/src/assets/staff/";
 import unsplash from "../assets/staff/p2222.png"; // placeholder until real CEO photo is added
 const STAFF_IMG = {
-  ceo: `${STAFF_IMG_BASE}001.png`,
+  ceo: `${STAFF_IMG_BASE}ceo.png`,
   nutritionist: `${STAFF_IMG_BASE}001.png`, // TODO: replace with 002.png once added
   marketing: `${STAFF_IMG_BASE}003.jpeg`,
   central: `${STAFF_IMG_BASE}004.jpeg`,
@@ -63,7 +63,7 @@ const LEADERSHIP = [
   },
   {
     id: "marketing",
-    name: "Name to be added",
+    name: "Mr Zahid Mehmood Raja",
     role: "National Sales Manager",
     img: STAFF_IMG.marketing,
     pos: "center 15%",
@@ -187,7 +187,7 @@ export default function Aboutpage() {
       <section className="abt-hero">
         <video
           className="abt-hero__video"
-          src="/src/assets/videos/003.mp4"
+          src="/src/assets/videos/about.mp4"
           autoPlay
           loop
           muted

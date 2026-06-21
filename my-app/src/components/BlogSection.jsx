@@ -64,7 +64,7 @@ export default function BlogSection() {
             Research-backed nutrition insights, delivered regularly — from liver
             and maternal health to pediatric nutrition and immune support.
           </p>
-          <Link to="/blogs" className="hbs-cta">
+          <Link to="/blogs" className="hbs-cta glass-btn">
             Check our blogs <FiArrowRight size={15} />
           </Link>
         </div>

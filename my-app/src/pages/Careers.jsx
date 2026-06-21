@@ -199,7 +199,7 @@ export default function Careers() {
             We're hiring medical sales professionals who'd rather detail a
             formula they trust than push one they don't. If that's you, read on.
           </p>
-          <a href="#openings" className="careers-hero__cta">
+          <a href="#openings" className="careers-hero__cta glass-btn">
             View open roles
           </a>
         </div>
@@ -308,7 +308,7 @@ export default function Careers() {
 
                     <button
                       type="button"
-                      className="careers-role__apply"
+                      className="careers-role__apply glass-btn"
                       onClick={() => applyToRole(role)}
                     >
                       Apply for this role
@@ -388,7 +388,7 @@ export default function Careers() {
               </label>
             </div>
 
-            <button type="submit" className="careers-form__submit" disabled={status === "submitting"}>
+            <button type="submit" className="careers-form__submit glass-btn" disabled={status === "submitting"}>
               {status === "submitting" ? "Submitting..." : status === "done" ? "Application sent" : "Submit application"}
             </button>
 

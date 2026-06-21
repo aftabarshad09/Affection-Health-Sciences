@@ -7,9 +7,7 @@
 .logostrip {
   position: relative;
   width: 100%;
-  background: #FAF6F0;                  /* warm cream */
-  border-top: 1px solid #D8C8B4;        /* theme border */
-  border-bottom: 1px solid #D8C8B4;
+              /* warm cream */
   perspective: 1000px;
   box-shadow:
     0 4px 24px rgba(27, 67, 50, 0.06),  /* forest green shadow */
@@ -39,12 +37,10 @@
 
 .logostrip__fade--left {
   left: 0;
-  background: linear-gradient(to right, #FAF6F0 0%, rgba(250, 246, 240, 0) 100%);
 }
 
 .logostrip__fade--right {
   right: 0;
-  background: linear-gradient(to left, #FAF6F0 0%, rgba(250, 246, 240, 0) 100%);
 }
 
 /* Scrolling track – fully continuous */
@@ -74,7 +70,7 @@
   height: 60px;
   width: 180px;
   padding: 0 32px;
-  border-right: 1px solid #D8C8B4;      /* theme border */
+      /* theme border */
   box-sizing: border-box;
 }
 

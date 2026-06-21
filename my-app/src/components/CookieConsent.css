@@ -1,0 +1,392 @@
+/* ===========================================================
+   Cookie Consent — bottom notice + customize modal
+   Palette: Deep Green #163828, Forest Green #1B4332,
+   Warm Cream #FAF6F0, Terracotta #C97B5C, Border #D8C8B4.
+   =========================================================== */
+
+@keyframes ccSlideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes ccFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---------- Bottom banner (max 120px tall, full width) ---------- */
+
+.cc-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4000;
+  width: 100%;
+  max-height: 120px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 18px);
+  padding: 12px clamp(16px, 4vw, 32px);
+  background: #163828;
+  border-top: 1px solid rgba(201, 123, 92, 0.35);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.18);
+  animation: ccSlideUp 0.5s cubic-bezier(0.19, 1, 0.22, 1) both;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.cc-banner__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(201, 123, 92, 0.16);
+  color: #E8956D;
+}
+
+.cc-banner__text {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cc-banner__text a {
+  color: #E8956D;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cc-banner__text a:hover {
+  text-decoration: underline;
+}
+
+.cc-banner__actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Shared button styles ---------- */
+
+.cc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.cc-btn--ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.cc-btn--ghost:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.cc-btn--outline {
+  background: transparent;
+  color: #E8956D;
+  border: 1px solid rgba(201, 123, 92, 0.5);
+}
+
+.cc-btn--outline:hover {
+  background: rgba(201, 123, 92, 0.12);
+}
+
+.cc-btn--primary {
+  background: #C97B5C;
+  color: #ffffff;
+  border: 1px solid #C97B5C;
+}
+
+.cc-btn--primary:hover {
+  background: #B0603F;
+}
+
+/* Modal buttons sit on a cream background, so the ghost/outline
+   variants need ink-toned text instead of the banner's white/terra. */
+.cc-modal .cc-btn--ghost {
+  color: #5A6B64;
+  border-color: #D8C8B4;
+}
+
+.cc-modal .cc-btn--ghost:hover {
+  color: #163828;
+  border-color: #163828;
+}
+
+.cc-modal .cc-btn--outline {
+  color: #163828;
+  border-color: #1B4332;
+}
+
+.cc-modal .cc-btn--outline:hover {
+  background: rgba(27, 67, 50, 0.08);
+}
+
+/* ---------- Customize modal ---------- */
+
+.cc-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 4001;
+  background: rgba(14, 26, 20, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: ccFadeIn 0.25s ease both;
+}
+
+.cc-modal {
+  width: 100%;
+  max-width: 480px;
+  max-height: min(640px, 90vh);
+  overflow-y: auto;
+  background: #FAF6F0;
+  border-radius: 20px;
+  padding: clamp(20px, 4vw, 28px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.cc-modal__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cc-modal__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #F2E8DC;
+  color: #163828;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.cc-modal__back:hover {
+  background: #D8C8B4;
+}
+
+.cc-modal__title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: #163828;
+  margin: 0;
+}
+
+.cc-modal__lede {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #5A6B64;
+  margin: 0 0 1.4rem;
+}
+
+.cc-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 1.6rem;
+}
+
+.cc-category {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid #D8C8B4;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.cc-category__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cc-category__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #163828;
+}
+
+.cc-category__badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5A6B64;
+  background: #F2E8DC;
+  border: 1px solid #D8C8B4;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.cc-category__desc {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #5A6B64;
+  max-width: 30ch;
+}
+
+/* ---------- Toggle switch ---------- */
+
+.cc-toggle {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.cc-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cc-toggle__track {
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: #D8C8B4;
+  position: relative;
+  transition: background 0.25s ease;
+}
+
+.cc-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
+}
+
+.cc-toggle input:checked + .cc-toggle__track {
+  background: #1B4332;
+}
+
+.cc-toggle input:checked + .cc-toggle__track .cc-toggle__thumb {
+  transform: translateX(18px);
+}
+
+.cc-toggle--locked {
+  cursor: default;
+}
+
+.cc-toggle--locked .cc-toggle__track {
+  background: #1B4332;
+  opacity: 0.5;
+}
+
+.cc-toggle--locked .cc-toggle__thumb {
+  transform: translateX(18px);
+}
+
+.cc-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 720px) {
+  /* The 120px cap only fits a single row — on mobile the icon+text and
+     the action buttons each need their own row, so the banner needs
+     more breathing room here to actually show everything. */
+  .cc-banner {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-height: none;
+    padding: 14px 16px;
+    row-gap: 10px;
+  }
+
+  .cc-banner__icon {
+    order: 0;
+    margin-top: 1px;
+  }
+
+  .cc-banner__text {
+    order: 1;
+    flex: 1;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .cc-banner__actions {
+    order: 2;
+    flex-basis: 100%;
+    justify-content: flex-end;
+  }
+
+  .cc-btn {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .cc-category {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cc-category__desc {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-banner,
+  .cc-modal-backdrop {
+    animation: none;
+  }
+}

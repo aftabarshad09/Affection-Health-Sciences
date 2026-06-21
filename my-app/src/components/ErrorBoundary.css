@@ -1,0 +1,61 @@
+.eb-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FAF6F0;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.eb-content {
+  max-width: 480px;
+}
+
+.eb-eyebrow {
+  display: inline-flex;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #C97B5C;
+  background: rgba(201, 123, 92, 0.12);
+  border: 1px solid rgba(201, 123, 92, 0.3);
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  margin-bottom: 1.4rem;
+}
+
+.eb-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: #163828;
+  margin: 0 0 1rem;
+}
+
+.eb-lede {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #5A6B64;
+  margin: 0 0 2rem;
+}
+
+.eb-btn {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: #1B4332;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.eb-btn:hover {
+  background: #163828;
+}

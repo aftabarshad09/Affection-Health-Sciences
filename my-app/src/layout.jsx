@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import logo from './assets/logo2.png';
+import logo from './assets/logo3.png';
 import './layout.css';
 import Footer from './components/Footer';
 
@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-        <div className="header-inner">
+        <div className={`header-inner ${menuOpen ? 'menu-open' : ''}`}>
           <Link to="/" className="logo">
             <img src={logo} alt="Affection Health Sciences" className="logo-img" />
             <span className="logo-text">
@@ -64,7 +64,7 @@ const Layout = ({ children }) => {
 
             <Link
               to="/contact"
-              className="nav-cta"
+              className="nav-cta glass-btn"
               onClick={() => setMenuOpen(false)}
             >
               CONTACT US
@@ -73,7 +73,7 @@ const Layout = ({ children }) => {
         </div>
       </header>
 
-      <main>{children}
+      <main className="site-main">{children}
         <Footer/>
       </main>
     </>

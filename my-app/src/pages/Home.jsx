@@ -8,16 +8,16 @@ import NewsletterStrip from '../components/Newsletter';
 import WheelServices from '../components/wheel';
 import Logostrip from '../components/Logostrip';
 import CertificateStrip from '../components/CertificateStrip';
+import Affordability from '../components/Affordability';
 const Home = () => {
 
   return (
     <div className="home-page">
       <Hero />
       <CertificateStrip />
-      <About />
-      
       <Logostrip />
-
+      <About />
+      <Affordability />
       <WheelServices />
       <BlogSection />
       <ContactSection />

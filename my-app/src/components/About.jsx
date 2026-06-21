@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./About.css";
 
 const STATS = [
@@ -7,7 +8,8 @@ const STATS = [
   { value: "0", label: "Artificial fillers" },
 ];
 
-export default function About({ onExplore }) {
+export default function About() {
+  const navigate = useNavigate();
   const sectionRef = useRef(null);
   const [offset, setOffset] = useState(0);
   const [inView, setInView] = useState(false);
@@ -69,7 +71,7 @@ export default function About({ onExplore }) {
             first, and beautiful because it's honest.
           </p>
 
-          <button type="button" className="about-teaser__cta" onClick={onExplore}>
+          <button type="button" className="about-teaser__cta glass-btn" onClick={() => navigate("/about")}>
             <span>Explore who we are</span>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
               <path d="M4 9H14M14 9L9.5 4.5M14 9L9.5 13.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />

@@ -15,7 +15,7 @@ import {
 } from 'react-icons/fi';
 import { blogArticles } from '../data/seed';
 import { blogImages } from '../data/blogImages';
-import heroVideo from '../assets/videos/001.mp4';
+import heroVideo from '../assets/videos/blogs.mp4';
 import '../style/Blogs.css';
 
 const formatDate = (dateStr) =>
@@ -215,7 +215,7 @@ const Blogs = () => {
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                className={`bp-filter__btn ${selectedCategory === cat.id ? 'bp-active' : ''}`}
+                className={`bp-filter__btn glass-btn ${selectedCategory === cat.id ? 'bp-active' : ''}`}
                 onClick={() => setSelectedCategory(cat.id)}
               >
                 {cat.label}
@@ -341,7 +341,7 @@ const Blogs = () => {
                 disabled={newsletterStatus !== 'idle'}
               />
             </div>
-            <button type="submit" className="bp-newsletter__submit" disabled={newsletterStatus !== 'idle'}>
+            <button type="submit" className="bp-newsletter__submit glass-btn" disabled={newsletterStatus !== 'idle'}>
               {newsletterStatus === 'done' ? 'Subscribed' : newsletterStatus === 'submitting' ? 'Sending...' : 'Subscribe'}
             </button>
           </form>

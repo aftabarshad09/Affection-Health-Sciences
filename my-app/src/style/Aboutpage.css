@@ -610,6 +610,15 @@
    RESPONSIVE
    ============================================================ */
 
+@media (max-width: 900px) {
+  /* The page wrapper now reserves space for the fixed header on
+     mobile/tablet (see layout.css), so this hero no longer needs its
+     own large top padding to clear it on top of that. */
+  .abt-hero {
+    padding-top: 28px;
+  }
+}
+
 @media (max-width: 860px) {
   .abt-company__inner { grid-template-columns: 1fr; gap: 36px; }
   .abt-company__collage { height: 360px; order: -1; }
@@ -620,7 +629,7 @@
   .abt-ceo-card { flex-direction: column; }
   .abt-ceo-card__img-wrap { width: 100%; height: 220px; }
   .abt-certs__wall { grid-template-columns: 1fr 1fr; }
-  .abt-hero { padding: 80px 20px 64px; }
+  .abt-hero { padding-bottom: 64px; }
 }
 
 @media (max-width: 420px) {

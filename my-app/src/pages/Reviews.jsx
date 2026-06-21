@@ -15,8 +15,11 @@ import {
   FiHeart,
   FiPackage,
   FiFilter,
+  FiX,
+  FiCheck,
 } from 'react-icons/fi';
 import '../style/Reviews.css';
+import video from '../assets/videos/reviews.mp4';
 
 /* Scroll-reveal hook */
 function useReveal() {
@@ -183,6 +186,8 @@ const renderStars = (rating) =>
     )
   );
 
+const initialReviewForm = { name: '', email: '', product: '', rating: 0, text: '' };
+
 const Reviews = () => {
   const [helpfulClicks, setHelpfulClicks] = useState({});
   const [filterRating, setFilterRating] = useState('all');
@@ -192,8 +197,55 @@ const Reviews = () => {
   const [gridRef, gridShown] = useReveal();
   const [productsRef, productsShown] = useReveal();
 
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [reviewForm, setReviewForm] = useState(initialReviewForm);
+  const [reviewStatus, setReviewStatus] = useState('idle'); // idle | submitting | sent | error
+  const [hoverStar, setHoverStar] = useState(0);
+
   const markHelpful = (id) => {
     setHelpfulClicks((prev) => ({ ...prev, [id]: true }));
+  };
+
+  const openReviewModal = () => {
+    setShowReviewModal(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeReviewModal = () => {
+    setShowReviewModal(false);
+    document.body.style.overflow = '';
+    setReviewForm(initialReviewForm);
+    setReviewStatus('idle');
+    setHoverStar(0);
+  };
+
+  useEffect(() => {
+    if (!showReviewModal) return;
+    const handleKey = (e) => { if (e.key === 'Escape') closeReviewModal(); };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [showReviewModal]);
+
+  const handleReviewChange = (e) => {
+    setReviewForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const submitReview = async (e) => {
+    e.preventDefault();
+    if (!reviewForm.name || !reviewForm.email || !reviewForm.rating || !reviewForm.text) return;
+
+    setReviewStatus('submitting');
+    try {
+      const res = await fetch('/api/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reviewForm),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setReviewStatus('sent');
+    } catch {
+      setReviewStatus('error');
+    }
   };
 
   const filteredReviews =
@@ -205,7 +257,11 @@ const Reviews = () => {
     <main className="rv-page">
       {/* ========== HERO ========== */}
       <section className="rv-hero">
-        <div className="rv-hero__bg" aria-hidden="true">
+        <div className="rv-hero__media" aria-hidden="true">
+          <video className="rv-hero__video" autoPlay muted loop playsInline>
+            <source src={video} type="video/mp4" />
+          </video>
+          <div className="rv-hero__scrim" />
           <div className="rv-hero__glow rv-hero__glow--one" />
           <div className="rv-hero__glow rv-hero__glow--two" />
         </div>
@@ -362,7 +418,7 @@ const Reviews = () => {
                   <span className="rv-card__date">{review.date}</span>
                   <button
                     type="button"
-                    className={`rv-card__helpful ${helpfulClicks[review.id] ? 'rv-active' : ''}`}
+                    className={`rv-card__helpful glass-btn ${helpfulClicks[review.id] ? 'rv-active' : ''}`}
                     onClick={() => markHelpful(review.id)}
                   >
                     <FiThumbsUp size={13} />
@@ -415,11 +471,102 @@ const Reviews = () => {
           <p className="rv-cta__lede">
             Your experience could help another family make the right choice.
           </p>
-          <button type="button" className="rv-cta__btn">
+          <button type="button" className="rv-cta__btn glass-btn" onClick={openReviewModal}>
             Share your review <FiArrowRight size={16} />
           </button>
         </div>
       </section>
+
+      {/* ========== SHARE REVIEW MODAL ========== */}
+      {showReviewModal && (
+        <div className="rv-modal-backdrop" onClick={closeReviewModal}>
+          <div className="rv-modal" onClick={(e) => e.stopPropagation()}>
+            <button type="button" className="rv-modal__close" onClick={closeReviewModal} aria-label="Close">
+              <FiX size={18} />
+            </button>
+
+            {reviewStatus === 'sent' ? (
+              <div className="rv-modal__success">
+                <FiCheck size={32} />
+                <h3>Thank you!</h3>
+                <p>Your review has been submitted — we appreciate you sharing your experience.</p>
+                <button type="button" className="rv-cta__btn glass-btn" onClick={closeReviewModal}>
+                  Close
+                </button>
+              </div>
+            ) : (
+              <form className="rv-modal__form" onSubmit={submitReview}>
+                <h3 className="rv-modal__title">Share your review</h3>
+                <p className="rv-modal__lede">Tell other families about your experience with our products.</p>
+
+                <div className="rv-modal__stars" role="radiogroup" aria-label="Rating">
+                  {[1, 2, 3, 4, 5].map((n) => (
+                    <button
+                      key={n}
+                      type="button"
+                      className="rv-modal__star-btn"
+                      aria-label={`${n} star${n > 1 ? 's' : ''}`}
+                      onMouseEnter={() => setHoverStar(n)}
+                      onMouseLeave={() => setHoverStar(0)}
+                      onClick={() => setReviewForm((prev) => ({ ...prev, rating: n }))}
+                    >
+                      {n <= (hoverStar || reviewForm.rating) ? (
+                        <FaStar className="rv-star rv-star--filled" />
+                      ) : (
+                        <FaRegStar className="rv-star" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  value={reviewForm.name}
+                  onChange={handleReviewChange}
+                  required
+                  className="rv-modal__input"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email"
+                  value={reviewForm.email}
+                  onChange={handleReviewChange}
+                  required
+                  className="rv-modal__input"
+                />
+                <input
+                  type="text"
+                  name="product"
+                  placeholder="Which product did you use? (optional)"
+                  value={reviewForm.product}
+                  onChange={handleReviewChange}
+                  className="rv-modal__input"
+                />
+                <textarea
+                  name="text"
+                  placeholder="Share your experience..."
+                  value={reviewForm.text}
+                  onChange={handleReviewChange}
+                  required
+                  rows={4}
+                  className="rv-modal__textarea"
+                />
+
+                {reviewStatus === 'error' && (
+                  <p className="rv-modal__error">Something went wrong — please try again.</p>
+                )}
+
+                <button type="submit" className="rv-cta__btn glass-btn" disabled={reviewStatus === 'submitting'}>
+                  {reviewStatus === 'submitting' ? 'Sending...' : 'Submit review'}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 };
