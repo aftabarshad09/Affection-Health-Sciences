@@ -4,24 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import './wheel.css';
 import { FaCapsules } from 'react-icons/fa';
 import logo from '../assets/logo.png';
+import productGynogid from '../assets/Products/P1.png';
+import productMctolip from '../assets/Products/P2.png';
+import productGlumin from '../assets/Products/P3.png';
+import productEnergid from '../assets/Products/P5.png';
+import productBestProtein from '../assets/Products/P6.png';
+import productLactilus from '../assets/Products/P7.png';
+import productHepatovital from '../assets/Products/P8.png';
 
-/* ============================================================
-   PRODUCT IMAGES
-   Path: src/assets/Products/ (capital P, matches the real folder)
-   Files are named P1.png .. P13.png — only 7 are used here.
-   EDIT THE FILENAMES BELOW to point each product at the correct
-   P-number once you've matched them up yourself. Nothing else
-   in this file needs to change.
-   ============================================================ */
-const PRODUCT_IMG_BASE = '/src/assets/Products/';
 const PRODUCT_IMG = {
-  gynogid: `${PRODUCT_IMG_BASE}P1.png`,
-  mctolip: `${PRODUCT_IMG_BASE}P2.png`,
-  glumin: `${PRODUCT_IMG_BASE}P3.png`,
-  energid: `${PRODUCT_IMG_BASE}P5.png`,
-  bestProtein: `${PRODUCT_IMG_BASE}P6.png`,
-  lactilus: `${PRODUCT_IMG_BASE}P7.png`,
-  hepatovital: `${PRODUCT_IMG_BASE}P8.png`,
+  gynogid: productGynogid,
+  mctolip: productMctolip,
+  glumin: productGlumin,
+  energid: productEnergid,
+  bestProtein: productBestProtein,
+  lactilus: productLactilus,
+  hepatovital: productHepatovital,
 };
 
 const ROTATE_INTERVAL = 5000;

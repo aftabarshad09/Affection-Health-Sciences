@@ -1,13 +1,15 @@
 import React from "react";
 import "./Logostrip.css";
-
-const LOGO_BASE = "/src/assets/logos/";
+import logo1 from "../assets/logos/001.png";
+import logo2 from "../assets/logos/002.png";
+import logo3 from "../assets/logos/003.png";
+import logo4 from "../assets/logos/004.jpeg";
 
 const LOGOS = [
-  { id: 1, src: `${LOGO_BASE}001.png`, alt: "Partner logo 1" },
-  { id: 2, src: `${LOGO_BASE}002.png`, alt: "Partner logo 2" },
-  { id: 3, src: `${LOGO_BASE}003.png`, alt: "Partner logo 3" },
-  { id: 4, src: `${LOGO_BASE}004.jpeg`, alt: "Partner logo 4" },
+  { id: 1, src: logo1, alt: "Partner logo 1" },
+  { id: 2, src: logo2, alt: "Partner logo 2" },
+  { id: 3, src: logo3, alt: "Partner logo 3" },
+  { id: 4, src: logo4, alt: "Partner logo 4" },
 ];
 
 export default function LogoStrip() {

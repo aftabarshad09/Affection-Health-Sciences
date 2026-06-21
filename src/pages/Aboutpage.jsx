@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../style/Aboutpage.css";
+import aboutVideo from "../assets/videos/about.mp4";
 
 /* ============================================================
    STAFF IMAGES
@@ -9,14 +10,18 @@ import "../style/Aboutpage.css";
    temporarily reuses 001.png — swap in the real file whenever
    it's ready, no other code needs to change.
    ============================================================ */
-const STAFF_IMG_BASE = "/src/assets/staff/";
 import unsplash from "../assets/staff/p2222.png"; // placeholder until real CEO photo is added
+import staffCeo from "../assets/staff/ceo.png";
+import staffNutritionist from "../assets/staff/001.png"; // TODO: replace with 002.png once added
+import staffMarketing from "../assets/staff/003.jpeg";
+import staffCentral from "../assets/staff/004.jpeg";
+import staffSouth from "../assets/staff/005.png";
 const STAFF_IMG = {
-  ceo: `${STAFF_IMG_BASE}ceo.png`,
-  nutritionist: `${STAFF_IMG_BASE}001.png`, // TODO: replace with 002.png once added
-  marketing: `${STAFF_IMG_BASE}003.jpeg`,
-  central: `${STAFF_IMG_BASE}004.jpeg`,
-  south: `${STAFF_IMG_BASE}005.png`,
+  ceo: staffCeo,
+  nutritionist: staffNutritionist,
+  marketing: staffMarketing,
+  central: staffCentral,
+  south: staffSouth,
 };
 
 /* ============================================================
@@ -24,17 +29,25 @@ const STAFF_IMG = {
    Path: src/assets/Certificates/ (capital C, matches the folder)
    001–004 are .png, 005–009 are .jpeg — matches what's on disk.
    ============================================================ */
-const CERT_IMG_BASE = "/src/assets/Certificates/";
+import cert001 from "../assets/Certificates/001.png";
+import cert002 from "../assets/Certificates/002.jpg";
+import cert003 from "../assets/Certificates/003.png";
+import cert004 from "../assets/Certificates/004.png";
+import cert005 from "../assets/Certificates/005.jpeg";
+import cert006 from "../assets/Certificates/006.jpeg";
+import cert007 from "../assets/Certificates/007.jpeg";
+import cert008 from "../assets/Certificates/008.jpeg";
+import cert009 from "../assets/Certificates/009.jpeg";
 const CERT_IMG = [
-  `${CERT_IMG_BASE}001.png`,
-  `${CERT_IMG_BASE}002.jpg`,
-  `${CERT_IMG_BASE}003.png`,
-  `${CERT_IMG_BASE}004.png`,
-  `${CERT_IMG_BASE}005.jpeg`,
-  `${CERT_IMG_BASE}006.jpeg`,
-  `${CERT_IMG_BASE}007.jpeg`,
-  `${CERT_IMG_BASE}008.jpeg`,
-  `${CERT_IMG_BASE}009.jpeg`,
+  cert001,
+  cert002,
+  cert003,
+  cert004,
+  cert005,
+  cert006,
+  cert007,
+  cert008,
+  cert009,
 ];
 
 /* ============================================================
@@ -95,11 +108,13 @@ const LEADERSHIP = [
    Path: src/assets/awards/
    001.jpeg .. 003.jpeg
    ============================================================ */
-const AWARDS_IMG_BASE = "/src/assets/awards/";
+import award001 from "../assets/awards/001.jpeg";
+import award002 from "../assets/awards/002.jpeg";
+import award003 from "../assets/awards/003.jpeg";
 const AWARDS = [
-  { id: 1, img: `${AWARDS_IMG_BASE}001.jpeg`, alt: "Go Global Awards 2023 Finalist" },
-  { id: 2, img: `${AWARDS_IMG_BASE}002.jpeg`, alt: "2025 Go Global Awards Nominee" },
-  { id: 3, img: `${AWARDS_IMG_BASE}003.jpeg`, alt: "Go Global Awards 2025 Nominee" },
+  { id: 1, img: award001, alt: "Go Global Awards 2023 Finalist" },
+  { id: 2, img: award002, alt: "2025 Go Global Awards Nominee" },
+  { id: 3, img: award003, alt: "Go Global Awards 2025 Nominee" },
 ];
 
 const CERTIFICATIONS = CERT_IMG.map((src, i) => ({
@@ -187,7 +202,7 @@ export default function Aboutpage() {
       <section className="abt-hero">
         <video
           className="abt-hero__video"
-          src="/src/assets/videos/about.mp4"
+          src={aboutVideo}
           autoPlay
           loop
           muted
