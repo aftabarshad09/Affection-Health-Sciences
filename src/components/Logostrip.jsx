@@ -1,5 +1,5 @@
 import React from "react";
-import "./LogoStrip.css";
+import "./Logostrip.css";
 
 const LOGO_BASE = "/src/assets/logos/";
 
