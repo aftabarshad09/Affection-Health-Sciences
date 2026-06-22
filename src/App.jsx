@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Layout from './layout'
 import ScrollToTop from './components/ScrollToTop'
 import CookieConsent from './components/CookieConsent'
@@ -18,7 +18,7 @@ import Reviews from './pages/Reviews'
 
 function App() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <Layout>
         <Routes>
@@ -40,7 +40,7 @@ function App() {
         <Hero />
       </Layout> */}
       <CookieConsent />
-    </Router>
+    </>
   )
 }
 
