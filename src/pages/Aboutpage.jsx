@@ -34,10 +34,10 @@ import cert002 from "../assets/Certificates/002.jpg";
 import cert003 from "../assets/Certificates/003.png";
 import cert004 from "../assets/Certificates/004.png";
 import cert005 from "../assets/Certificates/005.jpeg";
-import cert006 from "../assets/Certificates/006.jpeg";
-import cert007 from "../assets/Certificates/007.jpeg";
-import cert008 from "../assets/Certificates/008.jpeg";
-import cert009 from "../assets/Certificates/009.jpeg";
+import cert006 from "../assets/Certificates/006.png";
+import cert007 from "../assets/Certificates/007.png";
+import cert008 from "../assets/Certificates/008.png";
+import cert009 from "../assets/Certificates/009.png";
 const CERT_IMG = [
   cert001,
   cert002,
