@@ -33,39 +33,58 @@ import immuneSupport1 from "../assets/Blogs/immuneSupport1.png";
 import immuneSupport2 from "../assets/Blogs/immuneSupport2.png";
 import immuneSupport3 from "../assets/Blogs/immuneSupport3.png";
 
-// `hero` is the banner image (the file ending in "1") shown at the top of the post.
-// `gallery` holds the 1:1 inline images, in order, matched to each section's `index` (1-based).
+// Card/cover thumbnails only — used on the blog listing cards (Blogs.jsx grid + featured card).
+import card001 from "../assets/Blogs/001.png";
+import card002 from "../assets/Blogs/002.png";
+import card003 from "../assets/Blogs/003.png";
+import card004 from "../assets/Blogs/004.png";
+import card005 from "../assets/Blogs/005.png";
+import card006 from "../assets/Blogs/006.png";
+import card007 from "../assets/Blogs/007.png";
+import card008 from "../assets/Blogs/008.png";
+
+// `hero`    = original banner image (file ending in "1") — used on the individual blog post page.
+// `card`    = new 001-008 thumbnail — used only for the blog listing cards (grid + featured).
+// `gallery` = the 1:1 inline images, in order, matched to each section's `index` (1-based).
 export const blogImages = {
   "bcaas-liver-health-cirrhosis-management": {
     hero: liverHealth1,
+    card: card001,
     gallery: [liverHealth2, liverHealth3, liverHealth4, liverHealth5],
   },
   "mct-oil-kids-weight-gain-nutritional-support": {
     hero: mctKids1,
+    card: card002,
     gallery: [mctKids2, mctKids3, mctKids4, mctKids5],
   },
   "folic-acid-vs-l-methylfolate-pregnancy": {
     hero: folicAcid1,
+    card: card003,
     gallery: [folicAcid2, folicAcid3],
   },
   "complete-adult-nutrition-energid-plus": {
     hero: adultNutrition1,
+    card: card004,
     gallery: [adultNutrition2],
   },
   "nafld-children-maternal-nutrition-early-intervention": {
     hero: nafld1,
+    card: card005,
     gallery: [nafld2, nafld3],
   },
   "maternal-nutrition-prenatal-postnatal-care": {
     hero: maternalNutrition1,
+    card: card006,
     gallery: [maternalNutrition2, maternalNutrition3],
   },
   "pediatric-health-growth-milestones-infant-nutrition": {
     hero: pediatricHealth1,
+    card: card007,
     gallery: [pediatricHealth2, pediatricHealth3],
   },
   "immune-support-vitamins-minerals-immune-response": {
     hero: immuneSupport1,
+    card: card008,
     gallery: [immuneSupport2, immuneSupport3],
   },
 };

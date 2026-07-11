@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./FAQ.css";
 
 const FAQS = [
@@ -83,12 +84,12 @@ export default function FaqSection() {
           <p className="faq-section__lede">
             Everything we get asked most — about formulation, shipping, and what happens after you order. Can't find it here? Reach out directly.
           </p>
-          <a href="#contact" className="faq-section__contact-link">
+          <Link to="/contact" className="faq-section__contact-link">
             <span>Ask us directly</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3.5 8H12.5M12.5 8L8.5 4M12.5 8L8.5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         <div className="faq-section__list">

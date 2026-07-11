@@ -45,6 +45,7 @@
   color: var(--ink);
   background: var(--gray-50);
   -webkit-font-smoothing: antialiased;
+  padding-bottom: 2rem;
 }
 
 /* ---------- Layout ---------- */
