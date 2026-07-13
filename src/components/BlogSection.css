@@ -6,7 +6,7 @@
 
 .hbs-section {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: #FAF6F0;  /* warm cream */
+  background: #f1eae0;  /* warm cream */
 }
 
 .hbs-container {
