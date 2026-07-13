@@ -11,12 +11,13 @@ import Aboutpage from './pages/Aboutpage';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
+import AdminApp from './admin/AdminApp'
 
 import './App.css'
 import ProductsPage from './pages/ProductsPage'
 import Reviews from './pages/Reviews'
 
-function App() {
+function PublicSite() {
   return (
     <>
       <ScrollToTop />
@@ -33,14 +34,19 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
-
         </Routes>
       </Layout>
-      {/* <Layout>
-        <Hero />
-      </Layout> */}
       <CookieConsent />
     </>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/admin/*" element={<AdminApp />} />
+      <Route path="/*" element={<PublicSite />} />
+    </Routes>
   )
 }
 

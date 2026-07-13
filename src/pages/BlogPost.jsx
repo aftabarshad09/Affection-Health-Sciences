@@ -1,8 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FiBookOpen } from "react-icons/fi";
-import { blogArticles } from "../data/seed";
-import { blogImages } from "../data/blogImages";
 import "../style/BlogPost.css";
 
 const formatDate = (dateStr) =>
@@ -44,13 +42,11 @@ const renderParagraph = (section, key) => (
   />
 );
 
-const renderMedia = ({ image, paragraphs }, index, gallery) => {
-  const src = gallery?.[(image.index || 1) - 1] ?? gallery?.[0];
-
+const renderMedia = ({ image, paragraphs }, index) => {
   if (paragraphs.length === 0) {
     return (
       <div key={`media-${index}`} className="blog-post__solo-image-wrap">
-        <img src={src} alt={image.alt} className="blog-post__solo-image" />
+        <img src={image.src} alt={image.alt} className="blog-post__solo-image" />
       </div>
     );
   }
@@ -58,7 +54,7 @@ const renderMedia = ({ image, paragraphs }, index, gallery) => {
   return (
     <div key={`media-${index}`} className="blog-post__media-row">
       <div className="blog-post__media-image-wrap">
-        <img src={src} alt={image.alt} className="blog-post__media-image" />
+        <img src={image.src} alt={image.alt} className="blog-post__media-image" />
       </div>
       <div className="blog-post__media-text">
         {paragraphs.map((p, i) => renderParagraph(p, `media-${index}-p-${i}`))}
@@ -126,8 +122,17 @@ const renderSection = (section, index) => {
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const article = blogArticles.find((a) => a.slug === slug);
+  const [article, setArticle] = useState(undefined);
   const [readProgress, setReadProgress] = useState(0);
+
+  useEffect(() => {
+    let active = true;
+    fetch(`/api/blogs/${slug}`)
+      .then((res) => res.json())
+      .then((data) => { if (active) setArticle(data.success ? data.post : null); })
+      .catch(() => { if (active) setArticle(null); });
+    return () => { active = false; };
+  }, [slug]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -139,6 +144,10 @@ export default function BlogPost() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [slug]);
+
+  if (article === undefined) {
+    return <div className="blog-post blog-post--missing" />;
+  }
 
   if (!article) {
     return (
@@ -152,9 +161,7 @@ export default function BlogPost() {
     );
   }
 
-  const images = blogImages[article.slug];
-  const heroImage = images?.hero;
-  const gallery = images?.gallery;
+  const heroImage = article.featuredImage;
   const groupedSections = groupSections(article.sections);
 
   return (
@@ -193,7 +200,7 @@ export default function BlogPost() {
         <div className="blog-post__body">
           {groupedSections.map((group, i) =>
             group.type === "media"
-              ? renderMedia(group, i, gallery)
+              ? renderMedia(group, i)
               : renderSection(group, i)
           )}
         </div>

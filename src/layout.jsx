@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaLock } from 'react-icons/fa';
 import logo from './assets/logo3.png';
 import './layout.css';
 import Footer from './components/Footer';
@@ -68,6 +68,15 @@ const Layout = ({ children }) => {
               onClick={() => setMenuOpen(false)}
             >
               CONTACT US
+            </Link>
+
+            <Link
+              to="/admin"
+              className="nav-admin-btn"
+              onClick={() => setMenuOpen(false)}
+              title="Admin Login"
+            >
+              <FaLock size={13} />
             </Link>
           </nav>
         </div>

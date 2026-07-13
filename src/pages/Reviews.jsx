@@ -52,89 +52,6 @@ const ratingBreakdown = [
   { stars: 1, percent: 1 },
 ];
 
-const featuredReview = {
-  name: 'Ayesha Raza',
-  location: 'Lahore, Pakistan',
-  product: 'Gynogid Forte — Prenatal Supplement',
-  rating: 5,
-  text: "I started Gynogid Forte in my second trimester after my OB recommended a better folate source. No more nausea after meals, and my last bloodwork came back exactly where it needed to be. Genuinely grateful I found this brand.",
-};
-
-const reviews = [
-  {
-    id: 1,
-    name: 'Sana Malik',
-    location: 'Karachi, Pakistan',
-    product: 'Hepatovital — Liver Support',
-    rating: 5,
-    date: 'March 14, 2026',
-    verified: true,
-    helpful: 34,
-    title: 'Noticeable energy improvement within weeks',
-    text: "My father has been managing cirrhosis for two years, and his hepatologist suggested adding a BCAA supplement. Hepatovital mixes easily and he actually tolerates the vanilla flavor well. His energy and appetite have both improved.",
-  },
-  {
-    id: 2,
-    name: 'Bilal Ahmed',
-    location: 'Islamabad, Pakistan',
-    product: 'ENERGID PLUS — Adult Nutrition',
-    rating: 5,
-    date: 'February 28, 2026',
-    verified: true,
-    helpful: 21,
-    title: 'Got my mother through post-surgery recovery',
-    text: "After my mother's surgery, she had almost no appetite. ENERGID PLUS became her main source of nutrition for nearly three weeks. The chocolate flavor was the only thing she'd actually finish without complaining. Huge relief for our whole family.",
-  },
-  {
-    id: 3,
-    name: 'Fatima Sheikh',
-    location: 'Lahore, Pakistan',
-    product: 'Mctolip — MCT Oil for Kids',
-    rating: 4,
-    date: 'February 19, 2026',
-    verified: true,
-    helpful: 17,
-    title: 'Helped, though it took some patience',
-    text: "My toddler is a notoriously picky eater and was falling behind on his growth chart. We started mixing a small amount of Mctolip into his yogurt. It took about three weeks before our pediatrician noted real improvement, but it's working. Wish it came in a bigger bottle.",
-  },
-  {
-    id: 4,
-    name: 'Hamza Tariq',
-    location: 'Faisalabad, Pakistan',
-    product: 'Gynogid Forte — Prenatal Supplement',
-    rating: 5,
-    date: 'January 30, 2026',
-    verified: true,
-    helpful: 29,
-    title: "My wife's go-to prenatal",
-    text: "Bought this for my wife after a friend recommended it. She liked that everything — folic acid, DHA, calcium, iron — was in one scoop instead of five different pills. Easier to stay consistent with, which honestly matters more than anything fancy on the label.",
-  },
-  {
-    id: 5,
-    name: 'Mariam Yousuf',
-    location: 'Rawalpindi, Pakistan',
-    product: 'Hepatovital — Liver Support',
-    rating: 5,
-    date: 'January 12, 2026',
-    verified: true,
-    helpful: 12,
-    title: 'Customer support was excellent too',
-    text: "Beyond the product itself, I want to mention the support team — I had questions about dosing alongside my mother's other medication and they responded quickly and pointed me back to her doctor appropriately instead of guessing. That kind of caution builds real trust.",
-  },
-  {
-    id: 6,
-    name: 'Usman Qureshi',
-    location: 'Multan, Pakistan',
-    product: 'ENERGID PLUS — Adult Nutrition',
-    rating: 4,
-    date: 'December 22, 2025',
-    verified: false,
-    helpful: 8,
-    title: 'Good product, shipping took a while',
-    text: "The supplement itself is solid — my father uses it as a meal supplement around his COPD treatment and it's helped him maintain his weight. Only complaint is that delivery to Multan took almost ten days. Otherwise, would recommend.",
-  },
-];
-
 const TRUST_SIGNALS = [
   {
     icon: FiShield,
@@ -189,8 +106,18 @@ const renderStars = (rating) =>
 const initialReviewForm = { name: '', email: '', product: '', rating: 0, text: '' };
 
 const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
   const [helpfulClicks, setHelpfulClicks] = useState({});
   const [filterRating, setFilterRating] = useState('all');
+
+  useEffect(() => {
+    fetch('/api/reviews')
+      .then((res) => res.json())
+      .then((data) => { if (data.success) setReviews(data.reviews); })
+      .catch(() => {});
+  }, []);
+
+  const featuredReview = reviews.find((r) => r.featured) || reviews[0];
 
   const [breakdownRef, breakdownShown] = useReveal();
   const [trustRef, trustShown] = useReveal();
@@ -236,7 +163,7 @@ const Reviews = () => {
 
     setReviewStatus('submitting');
     try {
-      const res = await fetch('/api/review', {
+      const res = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(reviewForm),
@@ -317,23 +244,25 @@ const Reviews = () => {
               ))}
             </div>
 
-            <div className="rv-breakdown__featured">
-              <FaQuoteLeft className="rv-breakdown__quote-icon" />
-              <p className="rv-breakdown__featured-text">{featuredReview.text}</p>
-              <div className="rv-breakdown__featured-stars">
-                {renderStars(featuredReview.rating)}
-              </div>
-              <div className="rv-breakdown__featured-author">
-                <FaUserCircle size={36} />
-                <div>
-                  <strong>{featuredReview.name}</strong>
-                  <span>{featuredReview.location}</span>
-                  <span className="rv-breakdown__featured-product">
-                    {featuredReview.product}
-                  </span>
+            {featuredReview && (
+              <div className="rv-breakdown__featured">
+                <FaQuoteLeft className="rv-breakdown__quote-icon" />
+                <p className="rv-breakdown__featured-text">{featuredReview.text}</p>
+                <div className="rv-breakdown__featured-stars">
+                  {renderStars(featuredReview.rating)}
+                </div>
+                <div className="rv-breakdown__featured-author">
+                  <FaUserCircle size={36} />
+                  <div>
+                    <strong>{featuredReview.name}</strong>
+                    <span>{featuredReview.location}</span>
+                    <span className="rv-breakdown__featured-product">
+                      {featuredReview.product}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

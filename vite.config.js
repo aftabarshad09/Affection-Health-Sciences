@@ -17,6 +17,12 @@ export default defineConfig({
         target: 'http://localhost:5000',
         changeOrigin: true,
       },
+      // CMS-uploaded product/blog images are served by the Express backend
+      // too — proxy them the same way as /api so they resolve in dev.
+      '/uploads': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
     },
   },
 })

@@ -12,7 +12,6 @@ const distDir = path.join(root, 'dist')
 const ssrDir = path.join(root, 'dist-ssr')
 
 const { render } = await import(pathToFileURL(path.join(ssrDir, 'entry-server.js')).href)
-const { blogArticles } = await import(pathToFileURL(path.join(root, 'src/data/seed.js')).href)
 
 const SITE_URL = 'https://www.affectionhealthsciences.com'
 
@@ -56,14 +55,7 @@ const staticPages = {
   },
 }
 
-const blogPages = Object.fromEntries(
-  blogArticles.map((post) => [
-    `/blog/${post.slug}`,
-    { title: `${post.title} | Affection Health Sciences`, description: post.metaDescription },
-  ])
-)
-
-const pageMeta = { ...staticPages, ...blogPages }
+const pageMeta = staticPages
 const routes = Object.keys(pageMeta)
 
 const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8')

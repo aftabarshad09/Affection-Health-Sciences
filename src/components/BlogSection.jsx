@@ -1,7 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiClock, FiUser } from "react-icons/fi";
-import { blogArticles } from "../data/seed";
-import { blogImages } from "../data/blogImages";
 import "./BlogSection.css";
 
 const BLOG_SLUGS = [
@@ -16,16 +15,16 @@ const ARTICLE_SLUGS = [
   "immune-support-vitamins-minerals-immune-response",
 ];
 
-const bySlugs = (slugs) =>
+const bySlugs = (slugs, articles) =>
   slugs
-    .map((slug) => blogArticles.find((a) => a.slug === slug))
+    .map((slug) => articles.find((a) => a.slug === slug))
     .filter(Boolean);
 
 function BlogCard({ post }) {
   return (
     <Link to={`/blog/${post.slug}`} className="hbs-card">
       <div className="hbs-card__img">
-        <img src={blogImages[post.slug]?.hero} alt={post.title} loading="lazy" />
+        <img src={post.featuredImage} alt={post.title} loading="lazy" />
         <span className="hbs-card__cat" style={{ background: post.categoryColor }}>
           {post.category}
         </span>
@@ -51,8 +50,17 @@ function BlogCard({ post }) {
 }
 
 export default function BlogSection() {
-  const blogs = bySlugs(BLOG_SLUGS);
-  const articles = bySlugs(ARTICLE_SLUGS);
+  const [blogArticles, setBlogArticles] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/blogs')
+      .then((res) => res.json())
+      .then((data) => { if (data.success) setBlogArticles(data.posts); })
+      .catch(() => {});
+  }, []);
+
+  const blogs = bySlugs(BLOG_SLUGS, blogArticles);
+  const articles = bySlugs(ARTICLE_SLUGS, blogArticles);
 
   return (
     <section className="hbs-section">

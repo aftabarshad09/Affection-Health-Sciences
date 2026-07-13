@@ -13,8 +13,6 @@ import {
   FiMail,
   FiChevronRight,
 } from 'react-icons/fi';
-import { blogArticles } from '../data/seed';
-import { blogImages } from '../data/blogImages';
 import heroVideo from '../assets/videos/blogs.mp4';
 import '../style/Blogs.css';
 
@@ -74,6 +72,7 @@ const TIPS = [
 ];
 
 const Blogs = () => {
+  const [blogArticles, setBlogArticles] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -88,6 +87,13 @@ const Blogs = () => {
     const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/blogs')
+      .then((res) => res.json())
+      .then((data) => { if (data.success) setBlogArticles(data.posts); })
+      .catch(() => {});
   }, []);
 
   const handleNewsletterSubmit = async (e) => {
@@ -158,39 +164,41 @@ const Blogs = () => {
       </section>
 
       {/* ========== FEATURED ARTICLE ========== */}
-      <section className="bp-featured">
-        <div className="bp-container">
-          <div className="bp-featured__card">
-            <div className="bp-featured__img">
-              <img src={blogImages[featured.slug]?.hero} alt={featured.title} loading="lazy" />
-              <span className="bp-featured__badge">Featured</span>
-            </div>
-            <div className="bp-featured__body">
-              <div className="bp-featured__meta">
-                <span className="bp-featured__cat" style={{ background: featured.categoryColor }}>
-                  {featured.category}
-                </span>
-                <span className="bp-featured__date">
-                  <FiClock size={13} /> {formatDate(featured.date)}
-                </span>
+      {featured && (
+        <section className="bp-featured">
+          <div className="bp-container">
+            <div className="bp-featured__card">
+              <div className="bp-featured__img">
+                <img src={featured.featuredImage} alt={featured.title} loading="lazy" />
+                <span className="bp-featured__badge">Featured</span>
               </div>
-              <h2 className="bp-featured__title">{featured.title}</h2>
-              <p className="bp-featured__excerpt">{featured.metaDescription}</p>
-              <div className="bp-featured__footer">
-                <div className="bp-featured__author">
-                  <FiUser size={14} />
-                  <span>{featured.author}</span>
-                  <span className="bp-featured__dot">·</span>
-                  <span>{featured.readTime}</span>
+              <div className="bp-featured__body">
+                <div className="bp-featured__meta">
+                  <span className="bp-featured__cat" style={{ background: featured.categoryColor }}>
+                    {featured.category}
+                  </span>
+                  <span className="bp-featured__date">
+                    <FiClock size={13} /> {formatDate(featured.date)}
+                  </span>
                 </div>
-                <Link to={`/blog/${featured.slug}`} className="bp-featured__link">
-                  Read article <FiArrowRight size={15} />
-                </Link>
+                <h2 className="bp-featured__title">{featured.title}</h2>
+                <p className="bp-featured__excerpt">{featured.metaDescription}</p>
+                <div className="bp-featured__footer">
+                  <div className="bp-featured__author">
+                    <FiUser size={14} />
+                    <span>{featured.author}</span>
+                    <span className="bp-featured__dot">·</span>
+                    <span>{featured.readTime}</span>
+                  </div>
+                  <Link to={`/blog/${featured.slug}`} className="bp-featured__link">
+                    Read article <FiArrowRight size={15} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ========== ARTICLES GRID ========== */}
       <section ref={articlesRef} className={`bp-articles ${articlesShown ? 'is-shown' : ''}`}>
@@ -230,7 +238,7 @@ const Blogs = () => {
             {remaining.map((blog) => (
               <article key={blog.slug} className="bp-card">
                 <div className="bp-card__img">
-                  <img src={blogImages[blog.slug]?.hero} alt={blog.title} loading="lazy" />
+                  <img src={blog.featuredImage} alt={blog.title} loading="lazy" />
                 </div>
                 <div className="bp-card__body">
                   <div className="bp-card__meta">
