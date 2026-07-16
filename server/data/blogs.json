@@ -1,16 +1,14 @@
 [
   {
+    "id": 1,
     "slug": "bcaas-liver-health-cirrhosis-management",
     "title": "BCAAs and Liver Health: Can They Support Cirrhosis Management?",
-    "metaDescription": "Discover how BCAAs (Branched-Chain Amino Acids) support liver health and cirrhosis management. Learn about hepatic nutrition, regeneration, and targeted supplementation for liver disease patients.",
+    "author": "Affection Health Sciences Team",
     "date": "2026-06-17",
     "readTime": "8 min read",
     "category": "Liver Health",
     "categoryColor": "#10b981",
-    "featured": true,
-    "imageCount": 6,
-    "imageBasePath": "/images/blog/bcaas-liver-health",
-    "author": "Affection Health Sciences Team",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1783928969/affection-health/blogs/liverHealth1.jpg",
     "sections": [
       {
         "type": "heading",
@@ -26,9 +24,9 @@
         "content": "<strong>Liver disease</strong> affects millions worldwide. Conditions like fatty liver disease, hepatitis, and cirrhosis can progressively impair liver function, leading to serious complications. Cirrhosis, in particular, represents advanced scarring of the liver tissue that disrupts its ability to function properly. This is where specialized nutrition plays a crucial role in management and support."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/liverHealth2.png",
         "alt": "Liver Anatomy and Function",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928970/affection-health/blogs/liverHealth2.jpg",
+        "type": "image",
         "index": 1
       },
       {
@@ -59,13 +57,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Improved Muscle Mass:</strong> Cirrhosis often leads to sarcopenia (muscle wasting). BCAAs, particularly leucine, stimulate muscle protein synthesis, helping preserve and rebuild muscle tissue.",
           "<strong>Reduced Hepatic Encephalopathy:</strong> BCAAs can help manage hepatic encephalopathy by competing with aromatic amino acids for brain transport, potentially reducing neurological symptoms.",
           "<strong>Enhanced Liver Regeneration:</strong> High leucine content in BCAA formulas favors the natural regeneration process of liver tissue, supporting recovery and repair.",
           "<strong>Improved Nutritional Status:</strong> BCAAs help meet the higher protein needs of cirrhosis patients who often suffer from malnutrition and hypermetabolic states."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -82,23 +80,23 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Cirrhosis Patients:</strong> Those with advanced liver scarring require higher protein intake and specialized amino acid support.",
           "<strong>Fatty Liver Disease Patients:</strong> Individuals with NAFLD or NASH can benefit from nutritional support that reduces liver stress.",
           "<strong>Hepatitis Patients:</strong> Those with viral or autoimmune hepatitis may need nutritional support to maintain liver function.",
           "<strong>Post-Liver Surgery Patients:</strong> Recovery after liver procedures requires enhanced nutrition to support healing.",
           "<strong>Malnourished Patients:</strong> Individuals with poor appetite or malabsorption issues can benefit from nutrient-dense supplement."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
         "content": "It's important to note that BCAA supplementation should be part of a comprehensive management plan under medical supervision. The <strong>targeted hepatic care</strong> provided by specialized products addresses the unique nutritional needs of liver disease patients who cannot meet their requirements through diet alone."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/liverHealth3.png",
         "alt": "BCAA Supplementation Benefits",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928972/affection-health/blogs/liverHealth3.jpg",
+        "type": "image",
         "index": 2
       },
       {
@@ -117,26 +115,20 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Optimized BCAAs:</strong> Enhanced branched-chain amino acid profile for liver support",
           "<strong>High Leucine Content:</strong> Supports natural regeneration and tissue repair",
           "<strong>Nutrient-Dense:</strong> Provides essential calories and protein in concentrated form",
           "<strong>Easy Absorption:</strong> BCAAs escape primary liver metabolism for systemic delivery",
           "<strong>Professional Grade:</strong> Developed with clinical expertise for maximum efficacy"
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
         "content": "A typical hepatic support formula provides approximately 217 kcal per 5-scoop serving, with 45 kcal per scoop and 1.5g protein per scoop. This <strong>nutritional efficiency</strong> ensures patients receive substantial nutritional support in an easily consumable form, which is crucial for those with reduced appetite or digestive issues."
       },
       {
-        "type": "table",
-        "headers": [
-          "Nutrient Component",
-          "Per Scoop",
-          "Per Serving (5 Scoops)"
-        ],
         "rows": [
           [
             "Calories",
@@ -158,6 +150,12 @@
             "High Quantity",
             "Enhanced Regeneration Support"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Nutrient Component",
+          "Per Scoop",
+          "Per Serving (5 Scoops)"
         ]
       },
       {
@@ -175,14 +173,14 @@
       },
       {
         "type": "list",
-        "ordered": true,
         "items": [
           "<strong>Follow Recommended Dosing:</strong> Typical serving is 5 scoops daily, providing 217 kcal and comprehensive amino acid support.",
           "<strong>Consistency Matters:</strong> Regular daily supplementation is more effective than sporadic use.",
           "<strong>Mix with Water:</strong> The powder format mixes easily with water for convenient consumption.",
           "<strong>Timing Considerations:</strong> Can be consumed between meals or as a meal supplement.",
           "<strong>Medical Guidance:</strong> Always use under healthcare provider supervision for best results."
-        ]
+        ],
+        "ordered": true
       },
       {
         "type": "paragraph",
@@ -199,13 +197,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Safety:</strong> BCAAs are generally well-tolerated when used as directed, but medical supervision is recommended for liver disease patients.",
           "<strong>Side Effects:</strong> Some patients may experience mild gastrointestinal effects, which can often be managed by adjusting intake patterns.",
           "<strong>Interactions:</strong> BCAAs may interact with other medications; disclose all supplements to your healthcare provider.",
           "<strong>Cost:</strong> While specialized hepatic formulas may cost more than standard supplements, their targeted effectiveness justifies the investment."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -225,9 +223,9 @@
         "content": "Research has shown that patients with cirrhosis who receive BCAA supplementation experience: lower rates of hepatic encephalopathy, improved protein synthesis, better overall survival rates, and enhanced nutritional status. The <strong>hypermetabolic needs</strong> of cirrhosis patients are addressed more effectively with BCAA supplementation than with standard nutritional support."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/liverHealth4.png",
         "alt": "Clinical Research on BCAAs",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928972/affection-health/blogs/liverHealth4.jpg",
+        "type": "image",
         "index": 3
       },
       {
@@ -241,14 +239,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>BCAA Ratio:</strong> Look for formulas optimized specifically for hepatic support with appropriate leucine, isoleucine, and valine ratios.",
           "<strong>Additional Nutrients:</strong> Comprehensive hepatic formulas often include complementary nutrients that support liver function.",
           "<strong>Quality Standards:</strong> Choose professional-grade products from reputable manufacturers with quality controls.",
           "<strong>Clinical Testing:</strong> Products supported by clinical research provide greater confidence in their effectiveness.",
           "<strong>Patient Preferences:</strong> Consider flavor options and format for better compliance."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -265,23 +263,23 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Proper Nutrition:</strong> A balanced diet with adequate protein, vegetables, and essential nutrients.",
           "<strong>Medical Management:</strong> Regular medical monitoring and treatment of underlying liver conditions.",
           "<strong>Healthy Lifestyle:</strong> Avoidance of alcohol, maintaining a healthy weight, and regular physical activity.",
           "<strong>Stress Management:</strong> Reducing stress through relaxation techniques and adequate rest.",
           "<strong>Targeted Supplementation:</strong> BCAA formulas like Hepatovital for specialized nutritional support."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
         "content": "The <strong>nutritional efficiency</strong> of hepatic support products makes them an integral part of this comprehensive approach, ensuring that patients receive the concentrated nutrition they need without excessive volume or calorie intake."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/liverHealth5.png",
         "alt": "Liver Health Wellness Plan",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928976/affection-health/blogs/liverHealth5.jpg",
+        "type": "image",
         "index": 4
       },
       {
@@ -306,36 +304,36 @@
         "type": "faq",
         "items": [
           {
-            "question": "Can BCAAs cure liver disease or cirrhosis?",
-            "answer": "No, BCAAs cannot cure liver disease or reverse cirrhosis. They are a nutritional support tool that helps manage symptoms, maintain muscle mass, and support liver function as part of a comprehensive treatment plan."
+            "answer": "No, BCAAs cannot cure liver disease or reverse cirrhosis. They are a nutritional support tool that helps manage symptoms, maintain muscle mass, and support liver function as part of a comprehensive treatment plan.",
+            "question": "Can BCAAs cure liver disease or cirrhosis?"
           },
           {
-            "question": "How do BCAAs differ from standard protein supplements?",
-            "answer": "BCAAs are specific amino acids that bypass primary liver metabolism, making them particularly beneficial for liver disease patients. Standard protein supplements may not provide this targeted support and could be less effectively utilized."
+            "answer": "BCAAs are specific amino acids that bypass primary liver metabolism, making them particularly beneficial for liver disease patients. Standard protein supplements may not provide this targeted support and could be less effectively utilized.",
+            "question": "How do BCAAs differ from standard protein supplements?"
           },
           {
-            "question": "When is the best time to take BCAA supplements?",
-            "answer": "BCAA supplements can be taken between meals, before or after physical activity, or as a meal replacement. For liver health, consistency in daily intake is more important than specific timing."
+            "answer": "BCAA supplements can be taken between meals, before or after physical activity, or as a meal replacement. For liver health, consistency in daily intake is more important than specific timing.",
+            "question": "When is the best time to take BCAA supplements?"
           },
           {
-            "question": "Are there any side effects of BCAA supplementation?",
-            "answer": "BCAAs are generally safe when used as directed. Some patients may experience mild gastrointestinal issues, fatigue, or changes in appetite. Always consult your healthcare provider before starting supplementation."
+            "answer": "BCAAs are generally safe when used as directed. Some patients may experience mild gastrointestinal issues, fatigue, or changes in appetite. Always consult your healthcare provider before starting supplementation.",
+            "question": "Are there any side effects of BCAA supplementation?"
           },
           {
-            "question": "How long does it take to see benefits from BCAA supplementation?",
-            "answer": "Benefits may be noticed within 2-4 weeks of consistent use. However, individual results vary, and the full benefits of improved nutrition and muscle support may take 3-6 months to become apparent."
+            "answer": "Benefits may be noticed within 2-4 weeks of consistent use. However, individual results vary, and the full benefits of improved nutrition and muscle support may take 3-6 months to become apparent.",
+            "question": "How long does it take to see benefits from BCAA supplementation?"
           },
           {
-            "question": "Can I take BCAAs if I have fatty liver disease?",
-            "answer": "Yes, BCAAs can be beneficial for patients with fatty liver disease. They help meet nutritional needs while reducing the burden on the liver. However, lifestyle changes like diet and exercise remain essential."
+            "answer": "Yes, BCAAs can be beneficial for patients with fatty liver disease. They help meet nutritional needs while reducing the burden on the liver. However, lifestyle changes like diet and exercise remain essential.",
+            "question": "Can I take BCAAs if I have fatty liver disease?"
           },
           {
-            "question": "What makes Hepatovital different from other BCAA supplements?",
-            "answer": "Hepatovital is specifically formulated for hepatic support with optimized BCAAs and high leucine content. It's a professional-grade product designed for cirrhosis patients with hypermetabolic needs, offering targeted nutritional efficiency."
+            "answer": "Hepatovital is specifically formulated for hepatic support with optimized BCAAs and high leucine content. It's a professional-grade product designed for cirrhosis patients with hypermetabolic needs, offering targeted nutritional efficiency.",
+            "question": "What makes Hepatovital different from other BCAA supplements?"
           },
           {
-            "question": "Can BCAAs be taken with other medications or supplements?",
-            "answer": "BCAAs are generally compatible with most medications and supplements. However, always disclose all supplements to your healthcare provider to avoid potential interactions and ensure appropriate dosing."
+            "answer": "BCAAs are generally compatible with most medications and supplements. However, always disclose all supplements to your healthcare provider to avoid potential interactions and ensure appropriate dosing.",
+            "question": "Can BCAAs be taken with other medications or supplements?"
           }
         ]
       },
@@ -356,21 +354,18 @@
         "type": "paragraph",
         "content": "As research continues to illuminate the importance of nutrition in liver disease management, the role of BCAAs will likely expand. Patients and healthcare providers alike should consider targeted amino acid support as a cornerstone of comprehensive hepatic care. With the right nutritional strategies, patients with liver disease can maintain better health, preserve muscle mass, and improve their overall quality of life."
       }
-    ],
-    "featuredImage": "/uploads/blogs/liverHealth1.png"
+    ]
   },
   {
+    "id": 2,
     "slug": "mct-oil-kids-weight-gain-nutritional-support",
     "title": "MCT Oil for Kids: A Complete Guide to Weight Gain & Nutritional Support",
-    "metaDescription": "Discover how MCT oil supports children's weight management, brain function, and nutritional absorption. Complete guide to MCT oil for infants and kids with dosage, benefits, and safety guidelines.",
+    "author": "Affection Health Sciences Team",
     "date": "2026-06-17",
     "readTime": "7 min read",
     "category": "Children's Health",
     "categoryColor": "#f59e0b",
-    "featured": true,
-    "imageCount": 5,
-    "imageBasePath": "/images/blog/mct-oil-kids",
-    "author": "Affection Health Sciences Team",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1783928980/affection-health/blogs/mctKids1.jpg",
     "sections": [
       {
         "type": "heading",
@@ -386,9 +381,9 @@
         "content": "<strong>MCT oil</strong> is derived from sources like coconut oil and palm kernel oil. It contains saturated and monounsaturated fatty acids that are easily absorbed and quickly converted into energy. The unique structure of MCTs allows them to be transported directly to the liver where they are rapidly oxidized for energy, rather than being stored as fat in adipose tissue."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/mctKids2.png",
         "alt": "MCT Oil for Children's Health",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928982/affection-health/blogs/mctKids2.jpg",
+        "type": "image",
         "index": 1
       },
       {
@@ -402,13 +397,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Weight Management:</strong> MCT oil provides concentrated calories essential for toddlers and children who need healthy weight gain.",
           "<strong>Brain Function:</strong> MCTs are metabolized into ketones, which serve as a superior energy source for brain cells, supporting cognitive development.",
           "<strong>Energy Source:</strong> The rapid absorption of MCTs provides immediate, sustained energy for active children.",
           "<strong>Nutrient Absorption:</strong> MCT oil enhances the absorption of amino acids, calcium, and magnesium, essential for growing bodies."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -425,22 +420,22 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Initial Growth Support:</strong> MCT oil provides the concentrated calories needed for rapid infant growth during the first months of life.",
           "<strong>Physiological Development:</strong> The medium-chain fatty acids in MCT oil support proper development of organ systems and tissues.",
           "<strong>Enhanced Absorption:</strong> MCT oil improves the absorption of calcium and magnesium, supporting bone development.",
           "<strong>Digestive Tolerance:</strong> Infants with sensitive digestive systems often tolerate MCT oil better than other fat sources."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
         "content": "MCT oil is also widely used in <strong>neonatal nutrition</strong> protocols for premature or low-birth-weight infants who require additional nutritional support. The energy density and easy digestibility make it an ideal component of specialized infant nutrition."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/mctKids3.png",
         "alt": "MCT Oil Benefits for Infants",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928983/affection-health/blogs/mctKids3.jpg",
+        "type": "image",
         "index": 2
       },
       {
@@ -458,13 +453,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Caloric Density:</strong> Provides concentrated calories in a small volume, ideal for children with small appetites.",
           "<strong>Easy to Mix:</strong> Can be added to virtually any food or drink without changing taste significantly.",
           "<strong>Digestible:</strong> Gentle on developing digestive systems with minimal gastrointestinal side effects.",
           "<strong>Nutritional Support:</strong> Provides energy while supporting absorption of other essential nutrients."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -481,13 +476,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Calcium:</strong> Essential for bone development and growth in children.",
           "<strong>Magnesium:</strong> Crucial for muscle function, energy production, and bone health.",
           "<strong>Amino Acids:</strong> The building blocks of protein essential for growth and repair.",
           "<strong>Fat-Soluble Vitamins:</strong> Vitamins A, D, E, and K absorption is enhanced by MCT presence."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -508,18 +503,18 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Cognitive Development:</strong> Optimal brain energy supports learning, memory, and mental processing.",
           "<strong>Behavioral Regulation:</strong> Stable energy supply helps maintain mood stability in children.",
           "<strong>Neurological Health:</strong> Ketonеs may provide neuroprotective benefits for developing brains.",
           "<strong>Focus and Concentration:</strong> Sustained energy availability supports attention and learning capacity."
-        ]
+        ],
+        "ordered": false
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/mctKids4.png",
         "alt": "MCT Oil and Brain Function",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928982/affection-health/blogs/mctKids4.jpg",
+        "type": "image",
         "index": 3
       },
       {
@@ -532,12 +527,6 @@
         "content": "Proper dosing of MCT oil is essential for safety and effectiveness. The dosage should be tailored to the child's age, weight, and specific needs:"
       },
       {
-        "type": "table",
-        "headers": [
-          "Age Group",
-          "Recommended Dosage",
-          "Administration"
-        ],
         "rows": [
           [
             "Infants",
@@ -554,6 +543,12 @@
             "2.5-5 ml (½-1 teaspoon) daily",
             "Start low and increase gradually"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Age Group",
+          "Recommended Dosage",
+          "Administration"
         ]
       },
       {
@@ -562,13 +557,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "Start with a low dose and increase gradually to avoid gastrointestinal discomfort.",
           "MCT oil should not be overheated as this can affect its nutritional properties.",
           "It can be mixed with formula, breast milk, pureed foods, or added to smoothies.",
           "Always consult with a healthcare provider before starting supplementation."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -581,14 +576,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Medical Supervision:</strong> Always consult with a pediatrician or healthcare provider before beginning supplementation.",
           "<strong>Gradual Introduction:</strong> Start with small amounts and increase gradually to assess tolerance.",
           "<strong>Proper Storage:</strong> Store MCT oil away from heat and light to maintain quality.",
           "<strong>Observation:</strong> Monitor the child for any adverse reactions or changes in digestive patterns.",
           "<strong>Quality Matters:</strong> Choose a high-quality MCT oil product that is <strong>cholesterol-free</strong> and free from additives."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -609,13 +604,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Moisturization:</strong> MCT oil helps retain moisture in the skin, preventing dryness.",
           "<strong>Gentle Formula:</strong> Less likely to cause skin irritation compared to some other oils.",
           "<strong>Absorption:</strong> MCT oil absorbs easily without leaving a greasy residue.",
           "<strong>Nutritional Support:</strong> The skin may absorb beneficial fatty acids during massage."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -632,23 +627,23 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Purity:</strong> Choose products that are <strong>cholesterol-free</strong> and made from high-quality sources.",
           "<strong>Content:</strong> Look for MCT oil with appropriate levels of caprylic and capric acids.",
           "<strong>Additives:</strong> Avoid products with unnecessary additives, fillers, or artificial ingredients.",
           "<strong>Brand Reputation:</strong> Choose products from established manufacturers with quality controls.",
           "<strong>Specific Formulation:</strong> Some products like Mctolip are specifically formulated for pediatric use."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
         "content": "Products like <strong>Mctolip</strong> from Nutritech represent the standard in pediatric MCT oil supplementation. These products are specifically designed to support <strong>weight management</strong> in children while providing the nutritional benefits of medium-chain triglycerides."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/mctKids5.png",
         "alt": "Choosing MCT Oil Products",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928983/affection-health/blogs/mctKids5.jpg",
+        "type": "image",
         "index": 4
       },
       {
@@ -662,14 +657,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Low Weight:</strong> Children who are underweight or not gaining weight adequately.",
           "<strong>Fat Malabsorption:</strong> Conditions like cystic fibrosis or gastrointestinal disorders.",
           "<strong>Poor Appetite:</strong> Children who have difficulty consuming enough calories through food.",
           "<strong>Growth Concerns:</strong> When growth charts show delayed or inadequate progression.",
           "<strong>Digestive Issues:</strong> Children with digestive problems that affect nutrient absorption."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -684,36 +679,36 @@
         "type": "faq",
         "items": [
           {
-            "question": "Is MCT oil safe for newborn infants?",
-            "answer": "Yes, MCT oil is safe for newborns when used as directed under medical supervision. It helps support initial growth and physiological development, particularly in low-birth-weight or premature infants."
+            "answer": "Yes, MCT oil is safe for newborns when used as directed under medical supervision. It helps support initial growth and physiological development, particularly in low-birth-weight or premature infants.",
+            "question": "Is MCT oil safe for newborn infants?"
           },
           {
-            "question": "How quickly does MCT oil help with weight gain in toddlers?",
-            "answer": "Results vary, but parents typically notice improvements in weight gain within 2-4 weeks of consistent use when combined with a balanced diet."
+            "answer": "Results vary, but parents typically notice improvements in weight gain within 2-4 weeks of consistent use when combined with a balanced diet.",
+            "question": "How quickly does MCT oil help with weight gain in toddlers?"
           },
           {
-            "question": "Can MCT oil cause digestive problems in children?",
-            "answer": "When started at low doses and increased gradually, MCT oil is generally well-tolerated. Starting with too high a dose may cause loose stools or mild discomfort. Always follow recommended dosage guidelines."
+            "answer": "When started at low doses and increased gradually, MCT oil is generally well-tolerated. Starting with too high a dose may cause loose stools or mild discomfort. Always follow recommended dosage guidelines.",
+            "question": "Can MCT oil cause digestive problems in children?"
           },
           {
-            "question": "How should MCT oil be given to a picky eater?",
-            "answer": "MCT oil can be mixed into foods your child already enjoys—smoothies, yogurt, purees, oatmeal, or even added to beverages. It has a mild taste that doesn't significantly alter food flavor."
+            "answer": "MCT oil can be mixed into foods your child already enjoys—smoothies, yogurt, purees, oatmeal, or even added to beverages. It has a mild taste that doesn't significantly alter food flavor.",
+            "question": "How should MCT oil be given to a picky eater?"
           },
           {
-            "question": "Is MCT oil cholesterol-free?",
-            "answer": "Yes, high-quality MCT oils like Mctolip are cholesterol-free. MCTs are plant-derived fats that do not contain cholesterol."
+            "answer": "Yes, high-quality MCT oils like Mctolip are cholesterol-free. MCTs are plant-derived fats that do not contain cholesterol.",
+            "question": "Is MCT oil cholesterol-free?"
           },
           {
-            "question": "Can MCT oil improve calcium absorption in infants?",
-            "answer": "Yes, research shows that MCT oil enhances the absorption of calcium and magnesium, supporting proper bone development in infants."
+            "answer": "Yes, research shows that MCT oil enhances the absorption of calcium and magnesium, supporting proper bone development in infants.",
+            "question": "Can MCT oil improve calcium absorption in infants?"
           },
           {
-            "question": "What's the difference between MCT oil and coconut oil for children?",
-            "answer": "MCT oil is concentrated medium-chain triglycerides extracted from sources like coconut oil. It has higher MCT content and is easier to digest than coconut oil, which also contains long-chain fats."
+            "answer": "MCT oil is concentrated medium-chain triglycerides extracted from sources like coconut oil. It has higher MCT content and is easier to digest than coconut oil, which also contains long-chain fats.",
+            "question": "What's the difference between MCT oil and coconut oil for children?"
           },
           {
-            "question": "When is the best time to give MCT oil to children?",
-            "answer": "MCT oil can be given with meals or snacks to support absorption and energy. For infants, divide the daily dose into 3-4 smaller portions throughout the day."
+            "answer": "MCT oil can be given with meals or snacks to support absorption and energy. For infants, divide the daily dose into 3-4 smaller portions throughout the day.",
+            "question": "When is the best time to give MCT oil to children?"
           }
         ]
       },
@@ -734,21 +729,18 @@
         "type": "paragraph",
         "content": "For parents seeking a <strong>complete baby supplement</strong> that supports weight management, brain function, and overall growth, products like Mctolip provide the quality and reliability needed for pediatric nutrition. By incorporating MCT oil into your child's health plan, you can support their journey toward optimal growth and development."
       }
-    ],
-    "featuredImage": "/uploads/blogs/mctKids1.png"
+    ]
   },
   {
+    "id": 3,
     "slug": "folic-acid-vs-l-methylfolate-pregnancy",
     "title": "Folic Acid vs L-Methylfolate: What to Take During Pregnancy?",
-    "metaDescription": "Compare folic acid and L-methylfolate for pregnancy. Learn which form is more bioavailable and effective for fetal development. Expert guide to prenatal nutrition with DHA, calcium, and iron.",
+    "author": "Affection Health Sciences Team",
     "date": "2026-06-17",
     "readTime": "10 min read",
     "category": "Maternal Health",
     "categoryColor": "#ec4899",
-    "featured": true,
-    "imageCount": 6,
-    "imageBasePath": "/images/blog/folic-acid-vs-l-methylfolate",
-    "author": "Affection Health Sciences Team",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1783928987/affection-health/blogs/folicAcid1.jpg",
     "sections": [
       {
         "type": "heading",
@@ -764,9 +756,9 @@
         "content": "The <strong>maternal nutritional supplement</strong> needs during pregnancy cannot be overstated. The demand for folate increases dramatically as the developing fetus grows, and the mother's body adapts to support this growth. Yet the discussion around which form of folate is optimal for pregnancy has evolved significantly in recent years, raising important questions about <strong>folic acid vs L-methylfolate</strong>."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/folicAcid2.png",
         "alt": "Folate Importance in Pregnancy",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928990/affection-health/blogs/folicAcid2.jpg",
+        "type": "image",
         "index": 1
       },
       {
@@ -793,13 +785,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Neural Tube Development:</strong> Directly supports the formation of the neural tube that becomes the brain and spinal cord.",
           "<strong>DNA Synthesis:</strong> Essential for the rapid cell division occurring in fetal growth.",
           "<strong>Red Blood Cell Production:</strong> Supports the increased blood volume needed during pregnancy.",
           "<strong>Homocysteine Regulation:</strong> Helps maintain healthy homocysteine levels, protecting against pregnancy complications."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -820,12 +812,12 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>MTHFR C677T:</strong> The most common variant, affecting up to 30-40% of some populations.",
           "<strong>MTHFR A1298C:</strong> A less common variant but still significant in affecting folate metabolism.",
           "<strong>Compound Heterozygosity:</strong> Having one copy of each variant can still affect conversion efficiency."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -837,12 +829,6 @@
         "content": "Understanding the distinctions between these two forms of folate is essential for making informed decisions during pregnancy:"
       },
       {
-        "type": "table",
-        "headers": [
-          "Aspect",
-          "Folic Acid",
-          "L-Methylfolate"
-        ],
         "rows": [
           [
             "Form",
@@ -874,6 +860,12 @@
             "Well-established in research",
             "Excellent safety profile"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Aspect",
+          "Folic Acid",
+          "L-Methylfolate"
         ]
       },
       {
@@ -895,18 +887,18 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Brain Development:</strong> DHA accumulates rapidly in the fetal brain during the third trimester.",
           "<strong>Eye Development:</strong> DHA is crucial for retinal development and visual function.",
           "<strong>Neuroprotection:</strong> Supports proper neural connections and neurotransmitter function.",
           "<strong>Maternal Mood:</strong> May help support healthy mood balance during the postpartum period."
-        ]
+        ],
+        "ordered": false
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/folicAcid3.png",
         "alt": "DHA for Baby Development",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928989/affection-health/blogs/folicAcid3.jpg",
+        "type": "image",
         "index": 2
       },
       {
@@ -929,13 +921,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "Supports fetal skeletal development and tooth formation.",
           "Maintains maternal bone density during pregnancy and breastfeeding.",
           "Helps prevent pregnancy-related hypertension complications.",
           "Supports proper muscle and nerve function in both mother and baby."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -948,13 +940,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "Prevents maternal anemia and associated fatigue and weakness.",
           "Supports fetal brain development and cognitive function.",
           "Contributes to healthy birth weight outcomes.",
           "Reduces risk of preterm delivery and low birth weight."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -967,12 +959,12 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Go:</strong> Provides sustained energy through balanced caloric intake and appropriate carbohydrate sources.",
           "<strong>Grow:</strong> Supports fetal development through essential nutrients including folate, DHA, calcium, and iron.",
           "<strong>Glow:</strong> Promotes dynamic maternal health through antioxidants and supporting nutrients."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -989,7 +981,6 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Active Folate:</strong> L-methylfolate for optimal absorption regardless of genetics.",
           "<strong>DHA:</strong> Essential fatty acid for brain and eye development.",
@@ -997,7 +988,8 @@
           "<strong>Iron:</strong> Adequate iron to prevent anemia and support fetal development.",
           "<strong>Folic Acid:</strong> If L-methylfolate is not available, adequate folic acid remains important.",
           "<strong>Energy Support:</strong> Appropriate caloric content to support increased energy needs."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1014,13 +1006,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Myth: All folate is the same.</strong> Reality: L-methylfolate provides superior bioavailability, especially for women with MTHFR variants.",
           "<strong>Myth: More is always better.</strong> Reality: Balanced ratios and appropriate forms matter more than quantity.",
           "<strong>Myth: Prenatal vitamins are only about folic acid.</strong> Reality: Comprehensive nutrition including DHA, calcium, and iron is essential.",
           "<strong>Myth: Diet alone provides enough nutrition.</strong> Reality: Modern diets often require supplementation for optimal pregnancy outcomes."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -1032,12 +1024,6 @@
         "content": "Folate needs change throughout pregnancy, making consistent supplementation essential at each stage:"
       },
       {
-        "type": "table",
-        "headers": [
-          "Pregnancy Stage",
-          "Folate Needs",
-          "Why It Matters"
-        ],
         "rows": [
           [
             "Pre-Conception",
@@ -1064,6 +1050,12 @@
             "Elevated",
             "Supporting milk production and postpartum recovery"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Pregnancy Stage",
+          "Folate Needs",
+          "Why It Matters"
         ]
       },
       {
@@ -1077,14 +1069,14 @@
       },
       {
         "type": "list",
-        "ordered": true,
         "items": [
           "<strong>Know Your MTHFR Status:</strong> Genetic testing can reveal whether you're likely to benefit from L-methylfolate.",
           "<strong>Consider Your Medical History:</strong> Previous pregnancy outcomes or neural tube defects may influence choices.",
           "<strong>Assess Your Diet:</strong> Natural folate intake from food may be supplemented differently.",
           "<strong>Consult Your Provider:</strong> Healthcare guidance is essential for personalized recommendations.",
           "<strong>Choose Quality Supplements:</strong> Products with L-methylfolate ensure bioavailability regardless of genetics."
-        ]
+        ],
+        "ordered": true
       },
       {
         "type": "paragraph",
@@ -1101,13 +1093,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "Studies show L-methylfolate achieves higher blood folate levels than folic acid in MTHFR variant carriers.",
           "Research indicates adequate folate levels reduce neural tube defect risk by 50-70%.",
           "Some evidence suggests L-methylfolate may reduce risks of gestational complications.",
           "Ongoing research explores optimal dosing for different genetic profiles."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1122,28 +1114,28 @@
         "type": "faq",
         "items": [
           {
-            "question": "Do I need to take both folic acid and L-methylfolate?",
-            "answer": "No, you typically need one or the other. L-methylfolate is generally considered superior because it's the active form the body uses directly, bypassing conversion requirements."
+            "answer": "No, you typically need one or the other. L-methylfolate is generally considered superior because it's the active form the body uses directly, bypassing conversion requirements.",
+            "question": "Do I need to take both folic acid and L-methylfolate?"
           },
           {
-            "question": "How do I know if I have the MTHFR gene variant?",
-            "answer": "Genetic testing through your healthcare provider can identify MTHFR variants. Many women choose L-methylfolate supplementation regardless of testing due to its superior bioavailability."
+            "answer": "Genetic testing through your healthcare provider can identify MTHFR variants. Many women choose L-methylfolate supplementation regardless of testing due to its superior bioavailability.",
+            "question": "How do I know if I have the MTHFR gene variant?"
           },
           {
-            "question": "What is the recommended daily dose of L-methylfolate?",
-            "answer": "Typical recommendations align with standard folate needs of 400-800 mcg daily for pregnancy, but healthcare providers may recommend different amounts based on individual circumstances."
+            "answer": "Typical recommendations align with standard folate needs of 400-800 mcg daily for pregnancy, but healthcare providers may recommend different amounts based on individual circumstances.",
+            "question": "What is the recommended daily dose of L-methylfolate?"
           },
           {
-            "question": "Can I switch from folic acid to L-methylfolate during pregnancy?",
-            "answer": "Yes, but always consult your healthcare provider before making changes to your prenatal nutrition plan."
+            "answer": "Yes, but always consult your healthcare provider before making changes to your prenatal nutrition plan.",
+            "question": "Can I switch from folic acid to L-methylfolate during pregnancy?"
           },
           {
-            "question": "Is L-methylfolate safe during pregnancy?",
-            "answer": "Yes, L-methylfolate is considered safe and often recommended for pregnancy. It's the natural, active form of folate that poses no additional risks compared to folic acid."
+            "answer": "Yes, L-methylfolate is considered safe and often recommended for pregnancy. It's the natural, active form of folate that poses no additional risks compared to folic acid.",
+            "question": "Is L-methylfolate safe during pregnancy?"
           },
           {
-            "question": "Do prenatal supplements with L-methylfolate cost more?",
-            "answer": "L-methylfolate supplements may be priced slightly higher due to the formulation costs, but the increased bioavailability often justifies the investment in maternal and fetal health."
+            "answer": "L-methylfolate supplements may be priced slightly higher due to the formulation costs, but the increased bioavailability often justifies the investment in maternal and fetal health.",
+            "question": "Do prenatal supplements with L-methylfolate cost more?"
           }
         ]
       },
@@ -1164,21 +1156,18 @@
         "type": "paragraph",
         "content": "Ultimately, the best choice is informed by individual circumstances, genetic factors, and medical guidance. By prioritizing nutrient-dense, bioavailable prenatal nutrition, expecting mothers can support optimal fetal development and their own health throughout pregnancy and beyond."
       }
-    ],
-    "featuredImage": "/uploads/blogs/folicAcid1.png"
+    ]
   },
   {
+    "id": 4,
     "slug": "complete-adult-nutrition-energid-plus",
     "title": "Complete Adult Nutrition: Understanding ENERGID PLUS Benefits",
-    "metaDescription": "Complete adult nutrition guide for COPD, pre/post-surgery, malnourishment, and low appetite. Discover ENERGID PLUS benefits with balanced calories, protein, and vitamins for adults.",
+    "author": "Affection Health Sciences Team",
     "date": "2026-06-17",
     "readTime": "9 min read",
     "category": "Adult Nutrition",
     "categoryColor": "#8b5cf6",
-    "featured": true,
-    "imageCount": 5,
-    "imageBasePath": "/images/blog/adult-nutrition-energid",
-    "author": "Affection Health Sciences Team",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1783928994/affection-health/blogs/adultNutrition1.jpg",
     "sections": [
       {
         "type": "heading",
@@ -1194,9 +1183,9 @@
         "content": "When medical conditions or life circumstances compromise nutritional status, specialized <strong>adult nutrition</strong> supplementation becomes crucial. Conditions like COPD, cancer, surgery recovery, and malnutrition require concentrated nutrition that goes beyond normal dietary intake. This is where complete nutritional supplements play a vital role in maintaining health and supporting recovery."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/adultNutrition2.png",
         "alt": "Complete Adult Nutrition",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783928997/affection-health/blogs/adultNutrition2.jpg",
+        "type": "image",
         "index": 1
       },
       {
@@ -1210,14 +1199,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>COPD (Chronic Obstructive Pulmonary Disease):</strong> Patients with COPD often have increased caloric needs due to the work of breathing. Additionally, they may experience decreased appetite and dietary intake. <strong>COPD—NG feed</strong> patients require specialized nutrition support.",
           "<strong>Pre and Post-Surgery:</strong> The body requires additional nutrients for healing and recovery. <strong>Before and after surgery</strong>, nutritional status significantly affects outcomes, wound healing, and recovery speed.",
           "<strong>Malnourishment:</strong> Generalized malnutrition can result from various causes including chronic illness, poor diet, and malabsorption conditions.",
           "<strong>Loss of Appetite:</strong> Medical conditions, medications, and psychological factors can diminish appetite, making adequate nutrition challenging.",
           "<strong>High Calorie Requirements:</strong> Certain conditions increase metabolic demands, requiring higher calorie and nutrient intake."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1234,7 +1223,6 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Calories:</strong> Adequate energy to meet metabolic needs—typically around 230 kcal per serving.",
           "<strong>Protein:</strong> Essential amino acids for tissue repair and maintenance—1.6g/kg body weight as required.",
@@ -1242,7 +1230,8 @@
           "<strong>Fats:</strong> Essential fatty acids and energy-dense calories in appropriate proportion.",
           "<strong>Vitamins and Minerals:</strong> The micronutrient foundation for all metabolic processes.",
           "<strong>Fiber:</strong> For digestive health and satisfaction."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1263,14 +1252,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Tissue Repair:</strong> Protein provides the building blocks for healing tissues and organ systems.",
           "<strong>Immune Function:</strong> Antibodies and immune cells are protein-based and require adequate intake.",
           "<strong>Muscle Preservation:</strong> Preventing muscle wasting during illness or recovery is critical.",
           "<strong>Wound Healing:</strong> Collagen synthesis requires amino acids for skin and tissue integrity.",
           "<strong>Enzyme Production:</strong> Metabolic enzymes require protein for proper function."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1286,12 +1275,6 @@
         "content": "<strong>ENERGID PLUS</strong> represents the gold standard in adult nutritional support. Designed to provide comprehensive nutrition in a convenient format, it addresses the specific needs of adults facing nutritional challenges."
       },
       {
-        "type": "table",
-        "headers": [
-          "Nutrient Component",
-          "Per Scoop",
-          "Per Serving (5 Scoops)"
-        ],
         "rows": [
           [
             "Calories",
@@ -1313,6 +1296,12 @@
             "Strawberry, Vanilla, Mango, Chocolate",
             "Multiple choices"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Nutrient Component",
+          "Per Scoop",
+          "Per Serving (5 Scoops)"
         ]
       },
       {
@@ -1330,14 +1319,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Weight Maintenance:</strong> Provides adequate calories to prevent unhealthy weight loss during illness.",
           "<strong>Muscle Preservation:</strong> Protein content prevents muscle wasting, crucial for recovery and function.",
           "<strong>Improved Energy:</strong> Adequate calories and balanced nutrients support energy levels and reduce fatigue.",
           "<strong>Enhanced Recovery:</strong> Better nutritional status supports faster recovery from surgery or illness.",
           "<strong>Strength Maintenance:</strong> Proper nutrition supports physical function and independence."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1354,7 +1343,6 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Elderly Adults:</strong> Those with decreased appetite, malabsorption, or increased nutrient needs.",
           "<strong>Pre-Surgery Patients:</strong> Those undergoing surgery who need optimized nutritional status.",
@@ -1362,7 +1350,8 @@
           "<strong>Critical Care Patients:</strong> Those with elevated nutritional needs due to metabolic demands.",
           "<strong>Patients with Chronic Illness:</strong> Those with conditions like COPD that increase caloric requirements.",
           "<strong>Cancer Patients:</strong> Those experiencing weight loss, decreased appetite, or treatment side effects."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -1375,14 +1364,14 @@
       },
       {
         "type": "list",
-        "ordered": true,
         "items": [
           "Mix 5 scoops with approximately 230ml of water to prepare a serving.",
           "Consume as directed by your healthcare provider or nutritionist.",
           "Can be used as a meal replacement or supplement between meals.",
           "Store in a cool, dry place away from direct light.",
           "Different flavor options (Vanilla, Strawberry, Mango, Chocolate) allow for variety."
-        ]
+        ],
+        "ordered": true
       },
       {
         "type": "paragraph",
@@ -1399,13 +1388,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "Increased energy expenditure from breathing difficulties.",
           "Reduced food intake due to breathlessness and fatigue.",
           "Nutritional deficiencies from inadequate intake.",
           "Weight loss and muscle wasting (cachexia)."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1448,7 +1437,6 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Comprehensive Nutrition:</strong> Provides all essential nutrients in appropriate proportions.",
           "<strong>Quality Ingredients:</strong> Professional-grade formulation ensuring purity and effectiveness.",
@@ -1456,7 +1444,8 @@
           "<strong>Flavor Options:</strong> Multiple flavors available, making it more appealing.",
           "<strong>Trusted Brand:</strong> From Nutritech, a company with a track record of quality nutrition.",
           "<strong>Versatile Use:</strong> Suitable for oral use, tube feeding, or as a meal replacement."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -1467,36 +1456,36 @@
         "type": "faq",
         "items": [
           {
-            "question": "Who should consider complete adult nutrition supplements?",
-            "answer": "Adults with increased nutritional needs—including those with COPD, malnourishment, low appetite, pre/post-surgery, or high calorie requirements—should consider complete nutrition supplements."
+            "answer": "Adults with increased nutritional needs—including those with COPD, malnourishment, low appetite, pre/post-surgery, or high calorie requirements—should consider complete nutrition supplements.",
+            "question": "Who should consider complete adult nutrition supplements?"
           },
           {
-            "question": "How is protein dosage determined in ENERGID PLUS?",
-            "answer": "Protein is calculated at 1.6g per kg of body weight, ensuring personalized supplementation based on individual needs."
+            "answer": "Protein is calculated at 1.6g per kg of body weight, ensuring personalized supplementation based on individual needs.",
+            "question": "How is protein dosage determined in ENERGID PLUS?"
           },
           {
-            "question": "Can ENERGID PLUS be used as a meal replacement?",
-            "answer": "Yes, ENERGID PLUS can serve as a meal replacement when needed, providing 230 kcal per serving as a complete nutrition source."
+            "answer": "Yes, ENERGID PLUS can serve as a meal replacement when needed, providing 230 kcal per serving as a complete nutrition source.",
+            "question": "Can ENERGID PLUS be used as a meal replacement?"
           },
           {
-            "question": "Is ENERGID PLUS suitable for NG tube feeding?",
-            "answer": "Yes, ENERGID PLUS is formulated for use in NG feed (tube feeding) in appropriate clinical settings."
+            "answer": "Yes, ENERGID PLUS is formulated for use in NG feed (tube feeding) in appropriate clinical settings.",
+            "question": "Is ENERGID PLUS suitable for NG tube feeding?"
           },
           {
-            "question": "What flavors are available for ENERGID PLUS?",
-            "answer": "ENERGID PLUS comes in Vanilla, Strawberry, Mango, and Chocolate flavors to suit different taste preferences."
+            "answer": "ENERGID PLUS comes in Vanilla, Strawberry, Mango, and Chocolate flavors to suit different taste preferences.",
+            "question": "What flavors are available for ENERGID PLUS?"
           },
           {
-            "question": "How long can ENERGID PLUS be stored after opening?",
-            "answer": "Follow product labeling for specific storage instructions. Generally, keep in a cool, dry place and use within the recommended period."
+            "answer": "Follow product labeling for specific storage instructions. Generally, keep in a cool, dry place and use within the recommended period.",
+            "question": "How long can ENERGID PLUS be stored after opening?"
           },
           {
-            "question": "Can ENERGID PLUS help with malnutrition?",
-            "answer": "Yes, ENERGID PLUS is specifically designed to address malnourishment by providing concentrated, complete nutrition in an easily digestible form."
+            "answer": "Yes, ENERGID PLUS is specifically designed to address malnourishment by providing concentrated, complete nutrition in an easily digestible form.",
+            "question": "Can ENERGID PLUS help with malnutrition?"
           },
           {
-            "question": "Is ENERGID PLUS gluten-free?",
-            "answer": "Please check the product label or consult with the manufacturer for specific dietary information regarding gluten content."
+            "answer": "Please check the product label or consult with the manufacturer for specific dietary information regarding gluten content.",
+            "question": "Is ENERGID PLUS gluten-free?"
           }
         ]
       },
@@ -1513,21 +1502,18 @@
         "type": "paragraph",
         "content": "Products like ENERGID PLUS offer a comprehensive approach to adult nutrition, supporting those with COPD, surgical needs, malnourishment, and loss of appetite. With the right nutritional support, adults can maintain their health, recover more effectively, and enjoy better quality of life."
       }
-    ],
-    "featuredImage": "/uploads/blogs/adultNutrition1.png"
+    ]
   },
   {
+    "id": 5,
     "slug": "nafld-children-maternal-nutrition-early-intervention",
     "title": "NAFLD in Children: The Role of Maternal Nutrition and Early Intervention",
-    "metaDescription": "Learn about NAFLD in children, maternal nutrition's role in prevention, and early intervention strategies. Discover how maternal health impacts fetal liver development and prevents fatty liver disease.",
+    "author": "Affection Health Sciences Team",
     "date": "2026-06-17",
     "readTime": "11 min read",
     "category": "Liver Health",
     "categoryColor": "#10b981",
-    "featured": true,
-    "imageCount": 6,
-    "imageBasePath": "/images/blog/nafld-children",
-    "author": "Affection Health Sciences Team",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1783929000/affection-health/blogs/nafld1.jpg",
     "sections": [
       {
         "type": "heading",
@@ -1543,9 +1529,9 @@
         "content": "The rise of <strong>NAFLD in children</strong> parallels increasing rates of childhood obesity, but it's also influenced by maternal nutrition, genetic factors, and early-life exposures. This recognition has shifted focus toward prevention and early intervention strategies that begin even before birth, emphasizing the critical role of <strong>maternal nutrition</strong> in fetal development."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/nafld2.png",
         "alt": "NAFLD in Children Overview",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783929003/affection-health/blogs/nafld2.jpg",
+        "type": "image",
         "index": 1
       },
       {
@@ -1559,14 +1545,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Obesity Epidemic:</strong> Childhood obesity is a primary risk factor, with overweight children having significantly higher NAFLD risk.",
           "<strong>Dietary Patterns:</strong> High sugar and processed food consumption contributes to metabolic disturbances.",
           "<strong>Maternal Health:</strong> Maternal obesity, diabetes, and poor nutrition during pregnancy influence fetal liver development.",
           "<strong>Inactivity:</strong> Sedentary lifestyles contribute to metabolic syndrome and liver fat accumulation.",
           "<strong>Genetic Factors:</strong> Some children have genetic predispositions to fat accumulation in the liver."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1587,14 +1573,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Macronutrient Balance:</strong> Appropriate protein, carbohydrate, and fat intake supports proper organ development.",
           "<strong>Folic Acid:</strong> Essential for DNA synthesis and methylation, influencing metabolic programming.",
           "<strong>DHA and Omega-3s:</strong> Critical for neurological and metabolic development.",
           "<strong>Calcium and Iron:</strong> Support bone and blood development while influencing metabolism.",
           "<strong>Caloric Intake:</strong> Both under- and overnutrition can affect fetal metabolic programming."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1610,12 +1596,6 @@
         "content": "The link between maternal health and infant liver health is increasingly evident in research:"
       },
       {
-        "type": "table",
-        "headers": [
-          "Maternal Factor",
-          "Effect on Fetal/Infant Liver",
-          "Potential Intervention"
-        ],
         "rows": [
           [
             "Maternal Obesity",
@@ -1637,6 +1617,12 @@
             "Increased risk of childhood NAFLD",
             "Appropriate weight gain monitoring"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Maternal Factor",
+          "Effect on Fetal/Infant Liver",
+          "Potential Intervention"
         ]
       },
       {
@@ -1654,7 +1640,6 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Preconception Health:</strong> Optimize maternal weight and nutrition before pregnancy.",
           "<strong>Prenatal Nutrition:</strong> Ensure comprehensive maternal nutrition including essential vitamins and minerals.",
@@ -1662,7 +1647,8 @@
           "<strong>Childhood Diet:</strong> Emphasize whole foods, limit sugars and processed foods.",
           "<strong>Physical Activity:</strong> Encourage regular physical activity from early childhood.",
           "<strong>Regular Monitoring:</strong> Track growth and weight to identify concerns early."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1679,14 +1665,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Obesity:</strong> Being overweight is the strongest risk factor.",
           "<strong>Abdominal Pain:</strong> Vague upper right abdominal discomfort may occur.",
           "<strong>Fatigue:</strong> Persistent tiredness without explanation.",
           "<strong>Elevated Liver Enzymes:</strong> Detected through routine blood testing.",
           "<strong>Enlarged Liver:</strong> May be detected on physical examination."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1703,21 +1689,21 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Go:</strong> Sustained energy through balanced caloric intake and appropriate carbohydrates. Gynogid Forte provides 213 kcal per serving.",
           "<strong>Grow:</strong> Supports fetal development through essential nutrients including DHA, folic acid, calcium, and iron.",
           "<strong>Glow:</strong> Promotes dynamic maternal health through antioxidants and supporting nutrients."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
         "content": "This system ensures <strong>premium maternal nutrition</strong> that not only supports fetal development but also protects against conditions that could predispose children to NAFLD and other metabolic conditions."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/nafld3.png",
         "alt": "3G Nutritional System for Maternal Health",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783929003/affection-health/blogs/nafld3.jpg",
+        "type": "image",
         "index": 2
       },
       {
@@ -1731,14 +1717,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Weight Management:</strong> Gradual, sustainable weight loss if overweight.",
           "<strong>Diet Quality:</strong> Mediterranean or DASH-style diets with whole foods and limited sugars.",
           "<strong>Adequate Protein:</strong> Maintains muscle mass while reducing liver fat.",
           "<strong>Healthy Fats:</strong> Emphasis on omega-3s and beneficial fats like MCT oil.",
           "<strong>Liver-Supporting Nutrients:</strong> Nutrients that specifically support hepatic health."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1755,7 +1741,6 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>BCAAs:</strong> Branched-chain amino acids support muscle preservation and liver function.",
           "<strong>Choline:</strong> Essential for fat metabolism and liver health.",
@@ -1763,7 +1748,8 @@
           "<strong>Vitamin D:</strong> Often deficient in children with NAFLD; supplementation may help.",
           "<strong>Omega-3 Fatty Acids:</strong> Anti-inflammatory effects support liver health.",
           "<strong>MCT Oil:</strong> Rapidly utilized energy that doesn't burden the liver."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1780,14 +1766,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Family Meals:</strong> Regular family meals with nutritious foods model healthy eating.",
           "<strong>Fruit and Vegetable Intake:</strong> Aim for colorful varieties to ensure diverse nutrients.",
           "<strong>Active Lifestyle:</strong> Incorporate physical activity as a family activity.",
           "<strong>Beverage Choices:</strong> Limit sugary drinks and emphasize water.",
           "<strong>Portion Awareness:</strong> Appropriate portions support healthy weight maintenance."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1804,13 +1790,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "Studies show maternal supplementation with essential nutrients improves fetal metabolic programming.",
           "Research demonstrates links between maternal obesity and increased childhood NAFLD risk.",
           "Folic acid supplementation during pregnancy is associated with reduced risk of pediatric liver conditions.",
           "DHA supplementation may have beneficial effects on infant metabolism and development."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "paragraph",
@@ -1831,14 +1817,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "Early detection and intervention",
           "Family-based lifestyle changes",
           "Comprehensive nutritional support",
           "Regular medical monitoring",
           "Ongoing support for healthy habits"
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -1849,36 +1835,36 @@
         "type": "faq",
         "items": [
           {
-            "question": "What causes NAFLD in children?",
-            "answer": "NAFLD in children is caused by a combination of factors including obesity, poor diet, genetic predisposition, and maternal nutritional status during pregnancy."
+            "answer": "NAFLD in children is caused by a combination of factors including obesity, poor diet, genetic predisposition, and maternal nutritional status during pregnancy.",
+            "question": "What causes NAFLD in children?"
           },
           {
-            "question": "Can NAFLD in children be reversed?",
-            "answer": "Yes, with appropriate lifestyle changes—including healthy diet, weight management, and regular physical activity—NAFLD can often be reversed in children."
+            "answer": "Yes, with appropriate lifestyle changes—including healthy diet, weight management, and regular physical activity—NAFLD can often be reversed in children.",
+            "question": "Can NAFLD in children be reversed?"
           },
           {
-            "question": "How can maternal nutrition during pregnancy help prevent NAFLD?",
-            "answer": "Maternal nutrition influences fetal metabolic programming. Adequate nutrients, appropriate weight gain, and avoiding excessive weight can reduce the child's risk of metabolic conditions including NAFLD."
+            "answer": "Maternal nutrition influences fetal metabolic programming. Adequate nutrients, appropriate weight gain, and avoiding excessive weight can reduce the child's risk of metabolic conditions including NAFLD.",
+            "question": "How can maternal nutrition during pregnancy help prevent NAFLD?"
           },
           {
-            "question": "Does GYNOGID FORTE support healthy fetal development?",
-            "answer": "Yes, Gynogid Forte provides essential nutrients for fetal development, including folic acid, DHA, calcium, and iron, supporting proper organ development and metabolic programming."
+            "answer": "Yes, Gynogid Forte provides essential nutrients for fetal development, including folic acid, DHA, calcium, and iron, supporting proper organ development and metabolic programming.",
+            "question": "Does GYNOGID FORTE support healthy fetal development?"
           },
           {
-            "question": "What are signs that a child might have NAFLD?",
-            "answer": "Signs include persistent obesity, fatigue, abdominal discomfort, and elevated liver enzymes. However, symptoms may be subtle, making screening important for at-risk children."
+            "answer": "Signs include persistent obesity, fatigue, abdominal discomfort, and elevated liver enzymes. However, symptoms may be subtle, making screening important for at-risk children.",
+            "question": "What are signs that a child might have NAFLD?"
           },
           {
-            "question": "How is NAFLD diagnosed in children?",
-            "answer": "Diagnosis typically involves liver function tests, imaging (ultrasound or MRI), and sometimes liver biopsy in complex cases."
+            "answer": "Diagnosis typically involves liver function tests, imaging (ultrasound or MRI), and sometimes liver biopsy in complex cases.",
+            "question": "How is NAFLD diagnosed in children?"
           },
           {
-            "question": "Is MCT oil beneficial for children with liver concerns?",
-            "answer": "MCT oil can be beneficial as it provides easy-to-utilize energy without burdening the liver. However, use should be under medical supervision for children with liver conditions."
+            "answer": "MCT oil can be beneficial as it provides easy-to-utilize energy without burdening the liver. However, use should be under medical supervision for children with liver conditions.",
+            "question": "Is MCT oil beneficial for children with liver concerns?"
           },
           {
-            "question": "How does the 3G nutritional system support maternal and child health?",
-            "answer": "The 3G system—Go, Grow, Glow—provides a comprehensive nutritional approach that supports sustained energy, fetal development, and maternal health, promoting optimal outcomes for both mother and child."
+            "answer": "The 3G system—Go, Grow, Glow—provides a comprehensive nutritional approach that supports sustained energy, fetal development, and maternal health, promoting optimal outcomes for both mother and child.",
+            "question": "How does the 3G nutritional system support maternal and child health?"
           }
         ]
       },
@@ -1899,21 +1885,18 @@
         "type": "paragraph",
         "content": "By addressing NAFLD risk factors from the earliest stages, we can protect the next generation from this condition, promoting healthier children and a healthier future. Early intervention, comprehensive maternal nutrition, and family-based approaches are the keys to turning the tide against NAFLD in children."
       }
-    ],
-    "featuredImage": "/uploads/blogs/nafld1.png"
+    ]
   },
   {
+    "id": 6,
     "slug": "maternal-nutrition-prenatal-postnatal-care",
     "title": "Maternal Nutrition: Evidence-Based Guidance for Prenatal and Postnatal Care",
-    "metaDescription": "A complete, evidence-based guide to maternal nutrition across pregnancy and the postpartum period — what to supplement, when to take it, and why it matters for mother and baby.",
+    "author": "Affection Health Sciences Team",
     "date": "2026-06-18",
     "readTime": "9 min read",
     "category": "Maternal Health",
     "categoryColor": "#ec4899",
-    "featured": false,
-    "imageCount": 4,
-    "imageBasePath": "/images/blog/maternal-nutrition",
-    "author": "Affection Health Sciences Team",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1783929005/affection-health/blogs/maternalNutrition1.jpg",
     "sections": [
       {
         "type": "heading",
@@ -1929,9 +1912,9 @@
         "content": "This guide breaks maternal nutrition into its two natural phases — <strong>prenatal</strong> (during pregnancy) and <strong>postnatal</strong> (after birth) — and explains what to supplement, when, and why, in plain language."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/maternalNutrition2.png",
         "alt": "Maternal Nutrition During Pregnancy",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783929008/affection-health/blogs/maternalNutrition2.jpg",
+        "type": "image",
         "index": 1
       },
       {
@@ -1945,7 +1928,6 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Folate / Folic Acid:</strong> Critical for neural tube formation in the first weeks of pregnancy, often before a woman knows she's pregnant.",
           "<strong>DHA (Omega-3):</strong> Structural fat for the developing fetal brain and eyes, especially in the third trimester.",
@@ -1953,7 +1935,8 @@
           "<strong>Calcium:</strong> Builds fetal bone and teeth while protecting maternal bone density.",
           "<strong>Protein:</strong> Supplies the amino acids needed for placental and fetal tissue growth.",
           "<strong>Iodine:</strong> Supports fetal thyroid function and early brain development."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -1965,12 +1948,6 @@
         "content": "Needs are not static — what matters most in week six is different from what matters most in week thirty-two."
       },
       {
-        "type": "table",
-        "headers": [
-          "Trimester",
-          "Priority Focus",
-          "Why It Matters"
-        ],
         "rows": [
           [
             "First",
@@ -1987,6 +1964,12 @@
             "DHA, protein, iron",
             "Rapid brain growth and final weight gain place the highest demand on the mother"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Trimester",
+          "Priority Focus",
+          "Why It Matters"
         ]
       },
       {
@@ -2000,17 +1983,17 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Go:</strong> Balanced calories that support energy without excessive weight gain.",
           "<strong>Grow:</strong> Folic acid, DHA, calcium, and iron dosed for fetal development.",
           "<strong>Glow:</strong> Supporting micronutrients that help maintain maternal energy and mood through pregnancy."
-        ]
+        ],
+        "ordered": false
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/maternalNutrition3.png",
         "alt": "The 3G Maternal Nutrition Framework",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783929008/affection-health/blogs/maternalNutrition3.jpg",
+        "type": "image",
         "index": 2
       },
       {
@@ -2024,14 +2007,14 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Iron replenishment:</strong> Blood loss during delivery can leave iron stores depleted; ongoing intake supports recovery from fatigue.",
           "<strong>DHA for lactation:</strong> Breast milk DHA content reflects maternal intake, directly supporting infant brain development.",
           "<strong>Calcium continuation:</strong> Breastfeeding draws on maternal calcium stores; continued intake protects bone density.",
           "<strong>Extra calories and protein:</strong> Milk production is metabolically demanding and requires sustained energy intake.",
           "<strong>Hydration:</strong> Milk supply is sensitive to maternal hydration status."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -2040,13 +2023,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Stopping supplementation right after birth:</strong> Postnatal needs are often as high as prenatal ones, especially for breastfeeding mothers.",
           "<strong>Relying on folic acid alone:</strong> A complete prenatal nutrition plan also needs DHA, iron, and calcium, not folate in isolation.",
           "<strong>Treating nausea as a reason to skip nutrition entirely:</strong> Smaller, more frequent intake — including nutrient-dense liquids — often works better than forcing large meals.",
           "<strong>Ignoring protein intake:</strong> Protein needs rise substantially in the second and third trimesters and are easy to underestimate."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -2066,28 +2049,28 @@
         "type": "faq",
         "items": [
           {
-            "question": "Do prenatal nutrition needs change after the first trimester?",
-            "answer": "Yes. While folate is most urgent early on, calcium and iron demand rises through the second trimester, and DHA and protein needs peak in the third as fetal growth accelerates."
+            "answer": "Yes. While folate is most urgent early on, calcium and iron demand rises through the second trimester, and DHA and protein needs peak in the third as fetal growth accelerates.",
+            "question": "Do prenatal nutrition needs change after the first trimester?"
           },
           {
-            "question": "How long should I continue prenatal supplementation after birth?",
-            "answer": "Most healthcare providers recommend continuing through the postpartum period, especially while breastfeeding, since milk production draws directly on maternal nutrient stores."
+            "answer": "Most healthcare providers recommend continuing through the postpartum period, especially while breastfeeding, since milk production draws directly on maternal nutrient stores.",
+            "question": "How long should I continue prenatal supplementation after birth?"
           },
           {
-            "question": "Can poor maternal nutrition affect the baby long-term?",
-            "answer": "Research on fetal programming suggests maternal nutritional status during pregnancy can influence a child's long-term metabolic health, which is why consistent, comprehensive nutrition matters throughout pregnancy."
+            "answer": "Research on fetal programming suggests maternal nutritional status during pregnancy can influence a child's long-term metabolic health, which is why consistent, comprehensive nutrition matters throughout pregnancy.",
+            "question": "Can poor maternal nutrition affect the baby long-term?"
           },
           {
-            "question": "Is it safe to combine a prenatal multivitamin with a separate DHA supplement?",
-            "answer": "Generally yes, but always check combined dosing with your provider to avoid exceeding recommended limits for fat-soluble vitamins like A and D."
+            "answer": "Generally yes, but always check combined dosing with your provider to avoid exceeding recommended limits for fat-soluble vitamins like A and D.",
+            "question": "Is it safe to combine a prenatal multivitamin with a separate DHA supplement?"
           },
           {
-            "question": "What's the difference between prenatal and postnatal nutrition needs?",
-            "answer": "Prenatal nutrition is focused on supporting fetal development as it happens. Postnatal nutrition shifts toward maternal recovery and, for breastfeeding mothers, sustaining milk production — both remain nutritionally demanding."
+            "answer": "Prenatal nutrition is focused on supporting fetal development as it happens. Postnatal nutrition shifts toward maternal recovery and, for breastfeeding mothers, sustaining milk production — both remain nutritionally demanding.",
+            "question": "What's the difference between prenatal and postnatal nutrition needs?"
           },
           {
-            "question": "Can diet alone meet maternal nutrition needs without supplements?",
-            "answer": "It's difficult for most people. Nutrients like folate and DHA are needed in amounts that are hard to consistently reach through diet alone, which is why supplementation is broadly recommended during pregnancy and lactation."
+            "answer": "It's difficult for most people. Nutrients like folate and DHA are needed in amounts that are hard to consistently reach through diet alone, which is why supplementation is broadly recommended during pregnancy and lactation.",
+            "question": "Can diet alone meet maternal nutrition needs without supplements?"
           }
         ]
       },
@@ -2100,21 +2083,18 @@
         "type": "paragraph",
         "content": "Maternal nutrition works best when treated as a continuous thread running from preconception through breastfeeding, rather than a box to check during pregnancy alone. Comprehensive formulas built on frameworks like 3G — providing folate, DHA, calcium, iron, and balanced calories together — make it easier to meet these shifting needs consistently, supporting both a healthy pregnancy and a strong recovery afterward."
       }
-    ],
-    "featuredImage": "/uploads/blogs/maternalNutrition1.png"
+    ]
   },
   {
+    "id": 7,
     "slug": "pediatric-health-growth-milestones-infant-nutrition",
     "title": "Pediatric Health: Growth Milestones, Infant Nutrition, and Trusted Supplementation",
-    "metaDescription": "A parent's guide to pediatric health — growth milestones by age, infant and toddler nutrition essentials, and how to support healthy weight gain in slow-growing children.",
+    "author": "Affection Health Sciences Team",
     "date": "2026-06-18",
     "readTime": "8 min read",
     "category": "Children's Health",
     "categoryColor": "#f59e0b",
-    "featured": false,
-    "imageCount": 4,
-    "imageBasePath": "/images/blog/pediatric-health",
-    "author": "Affection Health Sciences Team",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1783929012/affection-health/blogs/pediatricHealth1.jpg",
     "sections": [
       {
         "type": "heading",
@@ -2130,9 +2110,9 @@
         "content": "This guide walks through what to expect at each growth stage, the infant nutrition essentials parents are most likely to overlook, and what to do when a child isn't gaining weight the way their growth chart suggests they should."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/pediatricHealth2.png",
         "alt": "Pediatric Health and Growth Milestones",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783929016/affection-health/blogs/pediatricHealth2.jpg",
+        "type": "image",
         "index": 1
       },
       {
@@ -2141,12 +2121,6 @@
         "content": "Growth Milestones: What to Watch For at Every Stage"
       },
       {
-        "type": "table",
-        "headers": [
-          "Age Range",
-          "Typical Milestone",
-          "Nutritional Focus"
-        ],
         "rows": [
           [
             "0–6 months",
@@ -2168,6 +2142,12 @@
             "Refinement of motor skills and appetite regulation",
             "Balanced meals, limiting added sugar, calcium for bone growth"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Age Range",
+          "Typical Milestone",
+          "Nutritional Focus"
         ]
       },
       {
@@ -2181,13 +2161,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Breast milk or formula</strong> remains the primary nutrition source through the first year, even after solids are introduced.",
           "<strong>Iron-rich first foods</strong> — fortified cereals, pureed meats, legumes — matter because iron stores from birth begin depleting around six months.",
           "<strong>Vitamin D</strong> supplementation is commonly recommended for breastfed infants, since breast milk alone often doesn't provide enough.",
           "<strong>Avoiding added sugar and salt</strong> in the first year protects developing taste preferences and kidney function."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -2196,13 +2176,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Iron deficiency:</strong> One of the most common nutritional deficiencies in toddlers, often linked to excessive milk intake displacing iron-rich foods.",
           "<strong>Vitamin D shortfalls:</strong> Common in children with limited sun exposure or restricted diets.",
           "<strong>Picky eating phases:</strong> Can create temporary but real nutrient gaps, particularly around fiber, iron, and healthy fats.",
           "<strong>Insufficient calories for slow gainers:</strong> Some children need calorie-dense additions to meet energy needs without large food volumes."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -2215,17 +2195,17 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "Start with small amounts and increase gradually to assess tolerance.",
           "Mix into familiar foods rather than serving alone, to maintain acceptance.",
           "Use under guidance from a pediatrician, particularly for infants or children with underlying digestive conditions."
-        ]
+        ],
+        "ordered": false
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/pediatricHealth3.png",
         "alt": "Supporting Healthy Weight Gain in Children",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783929015/affection-health/blogs/pediatricHealth3.jpg",
+        "type": "image",
         "index": 2
       },
       {
@@ -2244,13 +2224,13 @@
       },
       {
         "type": "list",
-        "ordered": true,
         "items": [
           "Track growth against pediatric growth charts at every checkup rather than comparing to other children.",
           "Offer new foods repeatedly — taste acceptance in toddlers often takes 8–10 exposures.",
           "Keep milk intake within recommended limits (roughly 16–24 oz/day for toddlers) so it doesn't crowd out solid food intake.",
           "Discuss any consistent growth chart plateau with a pediatrician rather than waiting it out."
-        ]
+        ],
+        "ordered": true
       },
       {
         "type": "heading",
@@ -2261,28 +2241,28 @@
         "type": "faq",
         "items": [
           {
-            "question": "When should solid foods be introduced?",
-            "answer": "Most guidelines recommend introducing solids around six months, alongside continued breast milk or formula, once a baby shows signs of readiness like good head control and interest in food."
+            "answer": "Most guidelines recommend introducing solids around six months, alongside continued breast milk or formula, once a baby shows signs of readiness like good head control and interest in food.",
+            "question": "When should solid foods be introduced?"
           },
           {
-            "question": "How do I know if my child isn't gaining weight properly?",
-            "answer": "Pediatricians track growth using percentile curves over time rather than single measurements. A consistent drop across percentiles, rather than a single low reading, is usually the signal that prompts further evaluation."
+            "answer": "Pediatricians track growth using percentile curves over time rather than single measurements. A consistent drop across percentiles, rather than a single low reading, is usually the signal that prompts further evaluation.",
+            "question": "How do I know if my child isn't gaining weight properly?"
           },
           {
-            "question": "Is MCT oil safe for toddlers?",
-            "answer": "Yes, when introduced gradually and used as directed. It's generally well tolerated, though starting with too much at once can cause loose stools — start low and increase slowly."
+            "answer": "Yes, when introduced gradually and used as directed. It's generally well tolerated, though starting with too much at once can cause loose stools — start low and increase slowly.",
+            "question": "Is MCT oil safe for toddlers?"
           },
           {
-            "question": "Does picky eating cause real nutritional harm?",
-            "answer": "Short phases are usually harmless if overall variety improves over weeks. Prolonged, severe food restriction is worth discussing with a pediatrician or pediatric dietitian."
+            "answer": "Short phases are usually harmless if overall variety improves over weeks. Prolonged, severe food restriction is worth discussing with a pediatrician or pediatric dietitian.",
+            "question": "Does picky eating cause real nutritional harm?"
           },
           {
-            "question": "How much vitamin D does a breastfed infant need?",
-            "answer": "Many pediatric guidelines recommend a daily vitamin D supplement for exclusively or partially breastfed infants, since breast milk alone typically doesn't supply enough. Confirm the exact dose with your pediatrician."
+            "answer": "Many pediatric guidelines recommend a daily vitamin D supplement for exclusively or partially breastfed infants, since breast milk alone typically doesn't supply enough. Confirm the exact dose with your pediatrician.",
+            "question": "How much vitamin D does a breastfed infant need?"
           },
           {
-            "question": "What's the biggest nutrition mistake parents make with toddlers?",
-            "answer": "Over-reliance on milk. Excess milk intake is filling, which can reduce appetite for iron-rich solid foods and contribute to iron deficiency."
+            "answer": "Over-reliance on milk. Excess milk intake is filling, which can reduce appetite for iron-rich solid foods and contribute to iron deficiency.",
+            "question": "What's the biggest nutrition mistake parents make with toddlers?"
           }
         ]
       },
@@ -2295,21 +2275,18 @@
         "type": "paragraph",
         "content": "Most of pediatric health happens quietly, in the accumulation of thousands of small meals and feeds. Knowing what each growth stage needs — and recognizing early when a child needs extra calorie or nutrient support — turns an overwhelming list of milestones into a manageable, stage-by-stage plan that supports healthy growth and development."
       }
-    ],
-    "featuredImage": "/uploads/blogs/pediatricHealth1.png"
+    ]
   },
   {
+    "id": 8,
     "slug": "immune-support-vitamins-minerals-immune-response",
     "title": "Immune Support: How Vitamins, Minerals, and Targeted Formulas Strengthen Your Immune Response",
-    "metaDescription": "An evidence-based look at immune support — the vitamins and minerals that matter most, the gut-immunity connection, seasonal risk factors, and how to choose a quality immune formula.",
+    "author": "Affection Health Sciences Team",
     "date": "2026-06-18",
     "readTime": "8 min read",
     "category": "Immune Health",
     "categoryColor": "#06b6d4",
-    "featured": false,
-    "imageCount": 4,
-    "imageBasePath": "/images/blog/immune-support",
-    "author": "Affection Health Sciences Team",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1783929019/affection-health/blogs/immuneSupport1.jpg",
     "sections": [
       {
         "type": "heading",
@@ -2321,9 +2298,9 @@
         "content": "The immune system isn't a single organ — it's a coordinated network of cells, signaling proteins, and physical barriers spanning the skin, gut, and bloodstream. <strong>Immune support</strong> nutrition works by giving that network the raw materials it needs: amino acids to build antibodies, micronutrients to fuel immune cell production, and antioxidants to limit collateral inflammation during an immune response."
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/immuneSupport2.png",
         "alt": "How the Immune System Works",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783929023/affection-health/blogs/immuneSupport2.jpg",
+        "type": "image",
         "index": 1
       },
       {
@@ -2333,7 +2310,6 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Vitamin C:</strong> Supports the function of immune cells and acts as an antioxidant during immune responses.",
           "<strong>Vitamin D:</strong> Regulates immune cell activity and is one of the most commonly deficient nutrients tied to immune function.",
@@ -2341,7 +2317,8 @@
           "<strong>Selenium:</strong> Supports antioxidant enzyme systems that regulate inflammation.",
           "<strong>Iron:</strong> Needed for immune cell proliferation; both deficiency and excess can impair immune function.",
           "<strong>Protein:</strong> Antibodies are proteins — inadequate protein intake directly limits the immune system's raw materials."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -2363,12 +2340,12 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Probiotics:</strong> Support a diverse, balanced gut microbiome linked to healthier immune regulation.",
           "<strong>Fiber:</strong> Feeds beneficial gut bacteria, which in turn produce compounds that support gut-lining integrity.",
           "<strong>Fermented foods:</strong> Yogurt, kefir, and similar foods provide live cultures that contribute to microbiome diversity."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -2376,12 +2353,6 @@
         "content": "Seasonal Immune Support: What Changes in Winter"
       },
       {
-        "type": "table",
-        "headers": [
-          "Season",
-          "Common Risk Factor",
-          "Nutritional Focus"
-        ],
         "rows": [
           [
             "Winter",
@@ -2403,6 +2374,12 @@
             "Back-to-school exposure, schedule changes",
             "Consistent meal timing, vitamin C, sleep hygiene"
           ]
+        ],
+        "type": "table",
+        "headers": [
+          "Season",
+          "Common Risk Factor",
+          "Nutritional Focus"
         ]
       },
       {
@@ -2412,18 +2389,18 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Sleep:</strong> Chronic sleep deprivation measurably reduces immune cell activity and response quality.",
           "<strong>Stress:</strong> Prolonged elevated cortisol suppresses several aspects of immune function over time.",
           "<strong>Exercise:</strong> Moderate, regular activity is associated with better immune surveillance; extreme overtraining without recovery can have the opposite effect.",
           "<strong>Hydration:</strong> Supports the mucous membranes that act as a first physical barrier against pathogens."
-        ]
+        ],
+        "ordered": false
       },
       {
-        "type": "image",
-        "src": "/uploads/blogs/immuneSupport3.png",
         "alt": "Lifestyle Factors and Immune Health",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783929021/affection-health/blogs/immuneSupport3.jpg",
+        "type": "image",
         "index": 2
       },
       {
@@ -2437,13 +2414,13 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Clinically studied doses:</strong> Look for amounts that match research-backed ranges, not arbitrary or excessive mega-doses.",
           "<strong>Third-party testing:</strong> Independent verification of purity and label accuracy.",
           "<strong>Transparent labeling:</strong> Full disclosure of every ingredient and amount, with no hidden proprietary blends.",
           "<strong>Complementary nutrients:</strong> Formulas that combine vitamin C, D, and zinc tend to address immune support more comprehensively than single-nutrient products."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -2452,12 +2429,12 @@
       },
       {
         "type": "list",
-        "ordered": false,
         "items": [
           "<strong>Myth: More vitamin C always means stronger immunity.</strong> Reality: benefits plateau past a certain intake; excess is simply excreted.",
           "<strong>Myth: Supplements can replace sleep and stress management.</strong> Reality: nutrition supports immune function, but it doesn't override chronic sleep loss or stress.",
           "<strong>Myth: You only need immune support when you're already sick.</strong> Reality: consistent nutrient status matters most as ongoing prevention, not a same-day fix."
-        ]
+        ],
+        "ordered": false
       },
       {
         "type": "heading",
@@ -2468,28 +2445,28 @@
         "type": "faq",
         "items": [
           {
-            "question": "Can supplements prevent illness entirely?",
-            "answer": "No supplement can guarantee prevention. Immune support nutrients reduce risk factors and support a well-functioning immune response, but they work alongside — not instead of — sleep, hygiene, and overall health."
+            "answer": "No supplement can guarantee prevention. Immune support nutrients reduce risk factors and support a well-functioning immune response, but they work alongside — not instead of — sleep, hygiene, and overall health.",
+            "question": "Can supplements prevent illness entirely?"
           },
           {
-            "question": "How do I know if I'm vitamin D deficient?",
-            "answer": "A simple blood test is the most reliable way to check vitamin D status, since deficiency often produces no obvious symptoms."
+            "answer": "A simple blood test is the most reliable way to check vitamin D status, since deficiency often produces no obvious symptoms.",
+            "question": "How do I know if I'm vitamin D deficient?"
           },
           {
-            "question": "Is zinc safe to take daily for immune support?",
-            "answer": "Zinc is generally safe within recommended daily limits. Long-term excessive intake can interfere with copper absorption, so staying within labeled doses matters."
+            "answer": "Zinc is generally safe within recommended daily limits. Long-term excessive intake can interfere with copper absorption, so staying within labeled doses matters.",
+            "question": "Is zinc safe to take daily for immune support?"
           },
           {
-            "question": "Do probiotics really affect immune health?",
-            "answer": "A substantial portion of immune tissue is located in the gut, and a healthy microbiome is linked to better-regulated immune responses, which is why gut health is increasingly considered part of immune support."
+            "answer": "A substantial portion of immune tissue is located in the gut, and a healthy microbiome is linked to better-regulated immune responses, which is why gut health is increasingly considered part of immune support.",
+            "question": "Do probiotics really affect immune health?"
           },
           {
-            "question": "Should immune support nutrients be taken year-round or only seasonally?",
-            "answer": "Baseline nutrients like vitamin D and zinc are often relevant year-round, especially for people with limited sun exposure, while needs may increase seasonally during higher-exposure periods like winter."
+            "answer": "Baseline nutrients like vitamin D and zinc are often relevant year-round, especially for people with limited sun exposure, while needs may increase seasonally during higher-exposure periods like winter.",
+            "question": "Should immune support nutrients be taken year-round or only seasonally?"
           },
           {
-            "question": "Can children take immune support supplements?",
-            "answer": "Many immune-supporting nutrients are appropriate for children at pediatric-specific doses, but formulations and amounts should always be confirmed with a pediatrician before starting."
+            "answer": "Many immune-supporting nutrients are appropriate for children at pediatric-specific doses, but formulations and amounts should always be confirmed with a pediatrician before starting.",
+            "question": "Can children take immune support supplements?"
           }
         ]
       },
@@ -2502,7 +2479,237 @@
         "type": "paragraph",
         "content": "Strong immune function comes from a consistent pattern — adequate vitamin D and zinc, a fiber-rich diet that supports gut health, sufficient sleep, and stress management — rather than any single nutrient or supplement. Targeted formulas can fill real gaps, particularly for vitamin D and zinc, but they work best as part of that broader, ongoing pattern rather than a stand-alone fix."
       }
-    ],
-    "featuredImage": "/uploads/blogs/immuneSupport1.png"
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "mega-3-fish-oil-epa-dha-omega3-benefits",
+    "title": "Mega-3 Fish Oil: EPA & DHA Omega-3 Benefits Explained",
+    "author": "Affection Health Sciences Team",
+    "date": "2026-07-13",
+    "readTime": "5 min read",
+    "category": "Heart & Omega-3 Health",
+    "categoryColor": "#000809",
+    "featuredImage": "https://res.cloudinary.com/a474bikz/image/upload/v1784213194/affection-health/blogs/omega3Fish1.png",
+    "sections": [
+      {
+        "type": "heading",
+        "level": 2,
+        "content": "Why Omega-3 Fatty Acids Are Essential — and Why Most People Fall Short"
+      },
+      {
+        "type": "paragraph",
+        "content": "Omega-3 fatty acids are essential fats the body cannot produce on its own, meaning they must come from diet or supplementation. Among the different types, EPA (eicosapentaenoic acid) and DHA (docosahexaenoic acid) — collectively known as marine omega-3s — carry the bulk of the research-backed benefits for heart, brain, and joint health. Despite widespread awareness of their importance, most people simply don't eat enough oily fish to reach adequate levels, which is exactly the gap a fish oil supplement like <strong>Mega-3 (1000mg)</strong> is designed to fill."
+      },
+      {
+        "type": "paragraph",
+        "content": "Each softgel of Mega-3 delivers <strong>1000mg of omega-3 fish oil</strong>, standardized to <strong>18% EPA and 12% DHA</strong>. This dual-fatty-acid approach matters because EPA and DHA aren't interchangeable — each plays a distinct physiological role, and a well-balanced formula supports a broader range of health outcomes than an EPA-only or DHA-only product."
+      },
+      {
+        "alt": "Mega-3 Omega-3 Fish Oil Supplemen",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783950817/affection-health/blogs/yvxwmwxokovlifixtee4.jpg",
+        "type": "image",
+        "index": 1
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": "EPA vs DHA: What's the Difference?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Understanding <strong>EPA vs DHA</strong> helps explain why both matter in a single formula rather than choosing one over the other."
+      },
+      {
+        "type": "list",
+        "items": [
+          "EPA (Eicosapentaenoic Acid): Primarily supports a healthy inflammatory response, cardiovascular function, and mood balance. It's the omega-3 most associated with heart health research.",
+          "DHA (Docosahexaenoic Acid): A structural fat that makes up a significant share of the fatty acids in the brain and retina. DHA is critical for cognitive function and eye health, and is especially important during pregnancy for fetal brain development.",
+          "Combined Effect: Taking EPA and DHA together, as in Mega-3's 18%/12% ratio, supports both the anti-inflammatory and structural sides of omega-3 nutrition rather than addressing just one."
+        ],
+        "ordered": false
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": "Fish Oil Benefits: What the Research Actually Shows"
+      },
+      {
+        "type": "paragraph",
+        "content": "Fish oil is one of the most studied dietary supplements, and the evidence is strongest in a few specific areas:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Heart Health: Omega-3s are well documented to reduce triglyceride levels, with research showing meaningful reductions in blood triglycerides among regular users.",
+          "Joint Comfort: Some studies suggest fish oil may help reduce joint stiffness and tenderness, particularly in people with inflammatory joint conditions.",
+          "Brain & Mood Support: DHA is a core structural component of brain tissue, and some research links adequate omega-3 intake to mood and cognitive support.",
+          "Eye Health: DHA is concentrated in the retina, making omega-3 intake relevant to long-term eye health.",
+          "Anti-Inflammatory Support: EPA in particular plays a role in supporting the body's natural inflammatory response."
+        ],
+        "ordered": false
+      },
+      {
+        "alt": "Fish Oil Benefits for Heart and Brain Health",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783951437/affection-health/blogs/d0xeq5homjqa4ybgdgzy.jpg",
+        "type": "image",
+        "index": 1
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": " How Much Omega-3 Do You Actually Need?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Unlike some nutrients, there isn't a single universal recommended daily amount for EPA and DHA, but general guidance from major health organizations offers a useful benchmark for everyday supplementation."
+      },
+      {
+        "rows": [
+          [
+            "General Wellness | 250–500 mg/day | Supports baseline omega-3 status for most healthy adults"
+          ],
+          [
+            "Heart Health Support | ~1,000 mg/day | Aligned with guidance for individuals focused on cardiovascular wellness"
+          ],
+          [
+            "Higher Triglyceride Support | 2,000+ mg/day | Only under healthcare provider guidance; higher doses should be medically supervised"
+          ]
+        ],
+        "type": "table",
+        "headers": [
+          "Purpose, Typical EPA + DHA Range, Notes"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "A single <strong>Mega-3 softgel (1000mg)</strong> makes it straightforward to work toward these targets without needing to track multiple separate supplements or rely solely on dietary fish intake, which most people fall short of in practice."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": " Why the Form of Fish Oil Matters: Triglyceride vs Ethyl Ester"
+      },
+      {
+        "type": "paragraph",
+        "content": "Not all fish oil is absorbed equally by the body. Fish oil is typically found in one of two molecular forms: natural triglyceride form, or the more processed ethyl ester form. Research suggests that <strong>triglyceride-form fish oil is generally better absorbed</strong> than ethyl ester form, particularly when not taken alongside a high-fat meal. When evaluating any fish oil supplement, checking the molecular form on the label is one of the most overlooked but important quality signals."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": " Who Can Benefit from Fish Oil Supplementation?"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Adults with Limited Fish Intake: Most people eating fish less than twice weekly fall short of recommended omega-3 levels.",
+          "Individuals Focused on Heart Health: Particularly those managing triglyceride levels alongside diet and lifestyle changes.",
+          "Active Individuals: Omega-3s support recovery and joint comfort alongside physical activity.",
+          "Those Seeking Cognitive & Mood Support: DHA's structural role in the brain makes it relevant for long-term cognitive wellness.",
+          "Adults With Joint Stiffness: EPA's anti-inflammatory properties may offer supportive benefits for joint comfort."
+        ],
+        "ordered": false
+      },
+      {
+        "alt": "Who Should Take Omega-3 Fish Oil Supplements",
+        "src": "https://res.cloudinary.com/a474bikz/image/upload/v1783956618/affection-health/blogs/mwg5pkunodczrmawtfow.jpg",
+        "type": "image",
+        "index": 1
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": "Best Time to Take Fish Oil — and How to Avoid Fishy Aftertaste"
+      },
+      {
+        "type": "paragraph",
+        "content": "Fish oil is best absorbed when taken with a meal that contains some fat, since dietary fat supports the absorption of fat-soluble nutrients. Taking Mega-3 with breakfast or dinner is a simple, sustainable habit that also helps minimize the \"fishy burps\" some people report with fish oil supplements. If aftertaste remains a concern, storing softgels in the refrigerator can help reduce this common side effect."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Take with a meal containing healthy fats for optimal absorption.",
+          "Keep intake consistent — daily use matters more than timing precision.",
+          "Store in a cool place, away from direct heat and light, to protect oil quality.",
+          "Split higher doses across two meals if taking more than one softgel daily.",
+          "Consult a healthcare provider before combining with blood-thinning medication."
+        ],
+        "ordered": true
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": " Fish Oil Side Effects and Safety Considerations"
+      },
+      {
+        "type": "paragraph",
+        "content": "Fish oil is generally well tolerated, but as with any supplement, it's worth understanding the safety profile before starting."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Mild GI Effects: Some people experience burping, mild nausea, or loose stools, particularly at higher doses.",
+          "Blood-Thinning Effect: Fish oil may mildly increase bleeding risk, so caution is advised for those on anticoagulant or antiplatelet medication.",
+          "Upper Intake Consideration: Very high daily doses (multiple grams) should only be used under medical supervision.",
+          "Quality Matters: Choosing a reputable, tested source reduces concerns about oxidation or contaminants like mercury, which fish oil (unlike whole fish) is generally low in."
+        ],
+        "ordered": false
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": "Choosing a Quality Omega-3 Supplement: What to Look For"
+      },
+      {
+        "type": "list",
+        "items": [
+          "EPA/DHA Concentration: Check the actual EPA and DHA milligrams per softgel, not just total fish oil content.",
+          "Molecular Form: Triglyceride form generally offers superior absorption over ethyl ester form.",
+          "Third-Party Testing: Look for purity testing that screens for heavy metals and oxidation.",
+          "Sourcing: Reputable sourcing from cold-water fish supports both quality and sustainability.",
+          "Practical Dosing: A straightforward 1000mg softgel format, like Mega-3, makes consistent daily use easier to maintain long-term."
+        ],
+        "ordered": false
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": " FAQs About Mega-3 Fish Oil and Omega-3 Supplementation"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "answer": "A: EPA primarily supports cardiovascular and inflammatory balance, while DHA is a structural fat concentrated in the brain and eyes. Mega-3 provides both (18% EPA, 12% DHA) for broader coverage.",
+            "question": "Q: What's the difference between EPA and DHA?"
+          },
+          {
+            "answer": "A: Follow the label directions or your healthcare provider's guidance, as individual needs vary based on diet, health goals, and current omega-3 status.",
+            "question": "Q: How many Mega-3 softgels should I take per day?"
+          },
+          {
+            "answer": "A: Fish oil can have a mild blood-thinning effect, so anyone on anticoagulant or antiplatelet medication should consult their healthcare provider before starting supplementation.",
+            "question": "Q: Can I take Mega-3 if I'm on blood thinners?"
+          },
+          {
+            "answer": "A: It can, particularly on an empty stomach. Taking Mega-3 with a meal and storing softgels in the refrigerator both help reduce this common side effect.",
+            "question": "Q: Will fish oil give me fishy burps?"
+          },
+          {
+            "answer": "A: Some effects, like triglyceride reduction, can take several weeks of consistent use to become measurable through bloodwork; benefits related to joint comfort or mood may take longer and vary by individual.",
+            "question": "Q: How long does it take to notice benefits from omega-3 supplementation?"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "content": " Conclusion: A Simple Daily Step for Long-Term Omega-3 Support"
+      },
+      {
+        "type": "paragraph",
+        "content": "Most people don't get enough EPA and DHA from diet alone, and the gap matters — these fats are structurally and functionally essential to heart, brain, and joint health in ways few other nutrients replicate. With <strong>1000mg of fish oil per softgel, standardized to 18% EPA and 12% DHA</strong>, Mega-3 offers a straightforward, consistent way to close that gap as part of a daily wellness routine, best taken alongside meals and combined with an overall balanced diet."
+      }
+    ]
   }
 ]

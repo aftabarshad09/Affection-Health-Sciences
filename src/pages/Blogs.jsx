@@ -23,6 +23,11 @@ const formatDate = (dateStr) =>
     day: 'numeric',
   });
 
+const cloudinaryCrop = (url, w, h) => {
+  if (!url || !url.includes('res.cloudinary.com')) return url;
+  return url.replace('/upload/', `/upload/c_fill,g_auto,w_${w},h_${h},q_auto,f_auto/`);
+};
+
 /* Scroll-reveal hook */
 function useReveal() {
   const ref = useRef(null);
@@ -169,7 +174,7 @@ const Blogs = () => {
           <div className="bp-container">
             <div className="bp-featured__card">
               <div className="bp-featured__img">
-                <img src={featured.featuredImage} alt={featured.title} loading="lazy" />
+                <img src={cloudinaryCrop(featured.featuredImage, 800, 500)} alt={featured.title} loading="lazy" />
                 <span className="bp-featured__badge">Featured</span>
               </div>
               <div className="bp-featured__body">
@@ -238,7 +243,7 @@ const Blogs = () => {
             {remaining.map((blog) => (
               <article key={blog.slug} className="bp-card">
                 <div className="bp-card__img">
-                  <img src={blog.featuredImage} alt={blog.title} loading="lazy" />
+                  <img src={cloudinaryCrop(blog.featuredImage, 600, 380)} alt={blog.title} loading="lazy" />
                 </div>
                 <div className="bp-card__body">
                   <div className="bp-card__meta">
