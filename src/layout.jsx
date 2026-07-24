@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaLock } from 'react-icons/fa';
+import { FaBars, FaTimes, FaLock, FaShoppingCart, FaUser } from 'react-icons/fa';
 import logo from './assets/logo3.png';
 import './layout.css';
 import Footer from './components/Footer';
+import { useCartStore } from './modules/cart/cartStore';
+import { useCustomerAuth } from './modules/auth/CustomerAuthContext';
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const itemCount = useCartStore((s) => s.itemCount());
+  const { isAuthenticated } = useCustomerAuth() || {};
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,6 +72,25 @@ const Layout = ({ children }) => {
               onClick={() => setMenuOpen(false)}
             >
               CONTACT US
+            </Link>
+
+            <Link
+              to={isAuthenticated ? '/account' : '/login'}
+              className="nav-admin-btn"
+              onClick={() => setMenuOpen(false)}
+              title={isAuthenticated ? 'My Account' : 'Log in'}
+            >
+              <FaUser size={13} />
+            </Link>
+
+            <Link
+              to="/cart"
+              className="nav-admin-btn nav-cart-btn"
+              onClick={() => setMenuOpen(false)}
+              title="Cart"
+            >
+              <FaShoppingCart size={13} />
+              {itemCount > 0 && <span className="nav-cart-badge">{itemCount}</span>}
             </Link>
 
             <Link

@@ -799,3 +799,76 @@
 @media (max-width: 560px) {
   .prod-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Commerce: price, stock/discount badges, Add to Cart ---- */
+.prod-card__price-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 10px;
+}
+
+.prod-card__price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1B4332;
+}
+
+.prod-card__price--was {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.prod-card__discount-badge {
+  background: #B0603F;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.prod-card__stock-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #9ca3af;
+}
+
+.prod-card__stock-badge--low {
+  color: #B0603F;
+}
+
+.prod-card__coming-soon {
+  display: inline-block;
+  margin: 6px 0 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #9ca3af;
+}
+
+.prod-card__add-btn,
+.prod-panel__add-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #1B4332;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.prod-panel__add-btn {
+  margin: 14px 0 20px;
+  font-size: 0.95rem;
+}
+
+.prod-card__add-btn:disabled,
+.prod-panel__add-btn:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+}

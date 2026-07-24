@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
@@ -6,22 +6,12 @@ const STORAGE_KEY = 'ahs_admin_token';
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => sessionStorage.getItem(STORAGE_KEY));
-
-  const login = useCallback(async (username, password) => {
-    const res = await fetch('/api/admin/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
-    });
-    const data = await res.json();
-    if (!res.ok || !data.success) throw new Error(data.error || 'Login failed');
-    sessionStorage.setItem(STORAGE_KEY, data.token);
-    setToken(data.token);
-  }, []);
+  const [user, setUser] = useState(null);
 
   const logout = useCallback(() => {
     sessionStorage.removeItem(STORAGE_KEY);
     setToken(null);
+    setUser(null);
   }, []);
 
   // Wraps fetch with the auth header and clears the session on 401, so a
@@ -42,8 +32,34 @@ export function AuthProvider({ children }) {
     [token, logout]
   );
 
+  const login = useCallback(async (email, password) => {
+    const res = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.error || 'Login failed');
+    sessionStorage.setItem(STORAGE_KEY, data.token);
+    setToken(data.token);
+    setUser(data.user);
+  }, []);
+
+  // On a page refresh the token survives in sessionStorage but `user` does
+  // not (it's only ever set in-memory) — re-fetch it once so role-gated UI
+  // (e.g. the super_admin-only user management page) still works.
+  useEffect(() => {
+    if (token && !user) {
+      authFetch('/api/admin/me')
+        .then((res) => res.json())
+        .then((data) => { if (data.success) setUser(data.user); })
+        .catch(() => {});
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
+
   return (
-    <AuthContext.Provider value={{ token, login, logout, authFetch }}>
+    <AuthContext.Provider value={{ token, user, login, logout, authFetch }}>
       {children}
     </AuthContext.Provider>
   );

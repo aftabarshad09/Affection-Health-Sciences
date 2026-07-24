@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const dotenv = require('dotenv');
 const multer = require('multer');
 const path = require('path');
@@ -7,16 +8,40 @@ const fs = require('fs');
 
 dotenv.config({ path: path.join(__dirname, '.env') });
 
+const { validateEnv } = require('./lib/validateEnv');
+validateEnv();
+
 const emailRoutes = require('./routes/emailRoutes');
 const errorHandler = require('./middleware/errorHandler');
+const { apiLimiter } = require('./middleware/rateLimiter');
 const newsletterRoutes = require('./routes/newsletterRoutes');
 const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const productRoutes = require('./routes/productRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+const addressRoutes = require('./routes/addressRoutes');
+const checkoutRoutes = require('./routes/checkoutRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const profileRoutes = require('./routes/profileRoutes');
+const adminOrderRoutes = require('./routes/adminOrderRoutes');
+const adminDashboardRoutes = require('./routes/adminDashboardRoutes');
+const settingsRoutes = require('./routes/settingsRoutes');
+const activityLogRoutes = require('./routes/activityLogRoutes');
+const adminUserRoutes = require('./routes/adminUserRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(helmet({
+  // The app serves its own frontend build from the same origin, so a
+  // restrictive default CSP would need every existing inline style/script
+  // audited first — cross-origin protections (frameguard, noSniff, HSTS,
+  // etc.) are what matter most for an API server and are left at default.
+  contentSecurityPolicy: false,
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+}));
 
 app.use(cors({
   origin: ['https://www.affectionhealthsciences.com', 'https://affectionhealthsciences.com', 'http://localhost:5173', 'http://localhost:5174'],
@@ -27,6 +52,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/api', apiLimiter);
 
 // API Routes
 app.use('/api', emailRoutes);
@@ -35,6 +61,17 @@ app.use('/api/admin', authRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/addresses', addressRoutes);
+app.use('/api/checkout', checkoutRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/admin/orders', adminOrderRoutes);
+app.use('/api/admin/dashboard', adminDashboardRoutes);
+app.use('/api/admin/settings', settingsRoutes);
+app.use('/api/admin/activity-logs', activityLogRoutes);
+app.use('/api/admin/users', adminUserRoutes);
 
 // CMS-uploaded images (products/blogs)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

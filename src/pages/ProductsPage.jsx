@@ -1,9 +1,30 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams, useNavigate } from 'react-router-dom';
 import '../style/ProductsPage.css';
 import { FaTimes, FaCheckCircle, FaFlask, FaShieldAlt, FaLeaf, FaAtom } from 'react-icons/fa';
+import AddToCartButton from '../modules/cart/AddToCartButton';
+import { formatMoney } from '../utils/currency';
 
 import heroBg from '../assets/videos/002.mp4';
+
+const ProductPriceBlock = ({ product }) => {
+  if (product.commerceStatus !== 'active' || !product.retailPrice) {
+    return <span className="prod-card__coming-soon">Coming Soon</span>;
+  }
+  const hasDiscount = product.salePrice && product.salePrice < product.retailPrice;
+  const discountPct = hasDiscount
+    ? Math.round(100 - (product.salePrice / product.retailPrice) * 100)
+    : 0;
+  return (
+    <div className="prod-card__price-row">
+      <span className="prod-card__price">{formatMoney(hasDiscount ? product.salePrice : product.retailPrice)}</span>
+      {hasDiscount && <span className="prod-card__price--was">{formatMoney(product.retailPrice)}</span>}
+      {hasDiscount && <span className="prod-card__discount-badge">-{discountPct}%</span>}
+      {product.stock <= 0 && <span className="prod-card__stock-badge">Out of Stock</span>}
+      {product.stock > 0 && product.stock <= 10 && <span className="prod-card__stock-badge prod-card__stock-badge--low">Only {product.stock} left</span>}
+    </div>
+  );
+};
 
 const categoryColors = {
   "Women's Health": '#db2777',
@@ -62,6 +83,8 @@ const DualPackPanelImage = ({ product }) => {
 
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { slug } = useParams();
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [active, setActive] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -100,7 +123,8 @@ const ProductsPage = () => {
       setActive(null);
       document.body.style.overflow = '';
     }, 320);
-    setSearchParams({}, { replace: true });
+    if (slug) navigate('/products', { replace: true });
+    else setSearchParams({}, { replace: true });
   };
 
   useEffect(() => {
@@ -109,14 +133,20 @@ const ProductsPage = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
+  // Deep links resolve two ways: a clean SEO-friendly path (/products/:slug,
+  // what's shared/prerendered) or the original ?product=<id> query param
+  // (kept for backward compatibility with any links already using it).
   useEffect(() => {
     const productId = searchParams.get('product');
-    if (!productId) return;
-    const match = products.find(p => String(p.id) === productId);
+    const match = slug
+      ? products.find((p) => p.slug === slug)
+      : productId
+        ? products.find((p) => String(p.id) === productId)
+        : null;
     if (!match) return;
     const timer = setTimeout(() => openProduct(match), 0);
     return () => clearTimeout(timer);
-  }, [searchParams]);
+  }, [searchParams, slug, products]);
 
   return (
     <div className="prod-pg">
@@ -185,7 +215,7 @@ const ProductsPage = () => {
             <div
               className={`prod-card${product.cardVariant ? ` prod-card--${product.cardVariant}` : ''}`}
               key={product.id}
-              onClick={() => openProduct(product)}
+              onClick={() => (product.slug ? navigate(`/products/${product.slug}`) : openProduct(product))}
               style={{ animationDelay: `${i * 40}ms` }}
             >
               {product.badge && (
@@ -209,10 +239,12 @@ const ProductsPage = () => {
                 </span>
                 <h3 className="prod-card__name">{product.name}</h3>
                 <p className="prod-card__one-line">{product.cardLine}</p>
+                <ProductPriceBlock product={product} />
                 <div className="prod-card__footer">
                   <span className="prod-card__form"><FaLeaf /> {product.form}</span>
                   <span className="prod-card__cta">View →</span>
                 </div>
+                <AddToCartButton product={product} className="prod-card__add-btn glass-btn" />
               </div>
             </div>
           ))}
@@ -245,6 +277,8 @@ const ProductsPage = () => {
               </button>
               <div className="prod-panel__scroll">
                 {active.badge && <span className="prod-panel__badge">{active.badge}</span>}
+                <ProductPriceBlock product={active} />
+                <AddToCartButton product={active} className="prod-panel__add-btn glass-btn" />
                 <p className="prod-panel__desc">{active.description}</p>
 
                 <div className="prod-panel__section">

@@ -2,12 +2,15 @@ const express = require('express');
 const router = express.Router();
 const reviewController = require('../controllers/reviewController');
 const { requireAuth } = require('../middleware/auth');
+const { requireRole } = require('../middleware/requireRole');
+
+const requireAdmin = [requireAuth, requireRole('admin', 'super_admin')];
 
 router.get('/', reviewController.list);
 router.post('/', reviewController.create);
 
-router.get('/admin', requireAuth, reviewController.adminList);
-router.put('/admin/:id', requireAuth, reviewController.update);
-router.delete('/admin/:id', requireAuth, reviewController.remove);
+router.get('/admin', requireAdmin, reviewController.adminList);
+router.put('/admin/:id', requireAdmin, reviewController.update);
+router.delete('/admin/:id', requireAdmin, reviewController.remove);
 
 module.exports = router;

@@ -5,7 +5,7 @@ import { useAuth } from '../AuthContext';
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -15,7 +15,7 @@ export default function Login() {
     setError('');
     setSubmitting(true);
     try {
-      await login(username, password);
+      await login(email, password);
       navigate('/admin');
     } catch (err) {
       setError(err.message);
@@ -30,11 +30,12 @@ export default function Login() {
         <h1>Admin Login</h1>
         <form onSubmit={handleSubmit}>
           <div className="admin-field">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">Email</label>
             <input
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               autoFocus
               required
             />

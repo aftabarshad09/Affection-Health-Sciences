@@ -1,0 +1,135 @@
+.checkout-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+  min-height: 60vh;
+}
+
+.checkout-page__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1B4332;
+  margin-bottom: 28px;
+}
+
+.checkout-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7280;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkout-section {
+  background: #fff;
+  border: 1px solid rgba(27, 67, 50, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.checkout-section h2 {
+  font-size: 1.05rem;
+  color: #1B4332;
+  margin-bottom: 16px;
+}
+
+.checkout-address-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkout-address-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border: 1.5px solid #E3DCCB;
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: #4b5563;
+}
+
+.checkout-address-card.selected {
+  border-color: #2D6A4F;
+  background: rgba(45, 106, 79, 0.05);
+}
+
+.checkout-address-card p {
+  margin-top: 4px;
+  color: #6b7280;
+}
+
+.checkout-link-btn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: #2D6A4F;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.checkout-notes {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1.5px solid #E3DCCB;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.checkout-summary {
+  background: #fff;
+  border: 1px solid rgba(27, 67, 50, 0.08);
+  border-radius: 14px;
+  padding: 22px;
+  position: sticky;
+  top: 100px;
+}
+
+.checkout-summary h2 {
+  font-size: 1.05rem;
+  color: #1B4332;
+  margin-bottom: 14px;
+}
+
+.checkout-summary__items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.checkout-summary__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.checkout-payment-note {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: #6b7280;
+  font-weight: 600;
+}
