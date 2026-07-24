@@ -22,6 +22,21 @@ const categoryColors = {
   'Skin & Antioxidant Care': '#e11d48',
 };
 
+// Only these products are shown on the public "Our Products" page for now.
+// The catalog may hold more, but the storefront is intentionally limited to
+// this set. Matched case-insensitively against the /api/products name.
+const FEATURED_PRODUCT_NAMES = [
+  'gynogid',
+  'hepatovital',
+  'glumin sr',
+  'best protein',
+  'energid plus',
+  'babyline cereal',
+];
+
+const isFeaturedProduct = (product) =>
+  FEATURED_PRODUCT_NAMES.includes((product.name || '').trim().toLowerCase());
+
 const DualPackCardImage = ({ product }) => {
   const [showA, setShowA] = useState(true);
   useEffect(() => {
@@ -72,7 +87,7 @@ const ProductsPage = () => {
   useEffect(() => {
     fetch('/api/products')
       .then((res) => res.json())
-      .then((data) => { if (data.success) setProducts(data.products); })
+      .then((data) => { if (data.success) setProducts(data.products.filter(isFeaturedProduct)); })
       .catch(() => {});
   }, []);
 
