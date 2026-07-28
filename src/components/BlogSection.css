@@ -115,17 +115,24 @@
   border-color: rgba(201, 123, 92, 0.4);  /* terracotta tint */
 }
 
+/* Fixed: use aspect-ratio instead of a hard-coded height so the
+   crop area scales with the card width at every breakpoint, and
+   img is block + object-position:center so nothing gets clipped
+   oddly on tall/short source images. */
 .hbs-card__img {
   position: relative;
-  height: 180px;
+  width: 100%;
   overflow: hidden;
+  line-height: 0; /* kill the inline-img baseline gap */
   background: linear-gradient(165deg, #F2E8DC 0%, #D8C8B4 100%);
 }
 
 .hbs-card__img img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* height follows the image's own aspect ratio — no letterboxing */
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.5s ease;
 }
 

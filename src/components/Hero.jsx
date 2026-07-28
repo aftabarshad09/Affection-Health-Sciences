@@ -4,26 +4,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import "./Hero.css";
 
-import P1 from "../assets/Products/P1.png";
-import P2 from "../assets/Products/P24.1.png";
-import P3 from "../assets/Products/P5.png";
-import P4 from "../assets/Products/P6.png";
-import P5 from "../assets/Products/P8.png";
-import P6 from "../assets/Products/P3.png";
-import P7 from "../assets/Products/P21.png";
-import P8 from "../assets/Products/P20.png";
-import P9 from "../assets/Products/P8.png";
+// These 5 correspond to the products actually shown on the live site
+// (Gynogid, Glumin SR, Energid Plus, Best Protein, Hepatovital).
+// If any of these files don't exist yet in your assets folder, just
+// drop your product photo in with the same filename, or swap the
+// import path — the "name" labels won't need to change.
+import P1 from "../assets/Products/P1.png"; // Gynogid
+import P3 from "../assets/Products/P3.png"; // Glumin SR
+import P5 from "../assets/Products/P5.png"; // Energid Plus
+import P6 from "../assets/Products/P6.png"; // Best Protein
+import P8 from "../assets/Products/P8.png"; // Hepatovital
 
 const products = [
-  { image: P1, name: "GYNOgID" },
-  { image: P2, name: "INFANTIN LF" },
-  { image: P3, name: "ENERGID PLUS" },
-  { image: P4, name: "BEST PROTIEN" },
-  { image: P5, name: "HIPATOVITAL" },
-  { image: P6, name: "GLUMIN SR" },
-  { image: P7, name: "INFANTIN PRE" },
-  { image: P8, name: "INFANTIN AR" },
-  { image: P9, name: "HIPATOVITAL" },
+  { image: P1, name: "GYNOGID" },
+  { image: P3, name: "GLUMIN SR" },
+  { image: P5, name: "ENERGID PLUS" },
+  { image: P6, name: "BEST PROTEIN" },
+  { image: P8, name: "HEPATOVITAL" },
 ];
 
 // Typewriter hook: types text out, holds, then deletes (used for product name)

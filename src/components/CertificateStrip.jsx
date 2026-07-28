@@ -38,10 +38,14 @@ export default function CertificateStrip() {
 
         {/* Certificate Strip */}
         <div className="certificate-strip-wrapper">
-          <motion.div 
+          <motion.div
             className="certificate-strip"
             animate={{
-              x: [0, -1920],
+              // -50% always equals the width of exactly ONE full set
+              // (since we render the array twice below), regardless of
+              // screen size or image widths — so the loop point always
+              // lines up perfectly and there's no jump/gap.
+              x: ["0%", "-50%"],
             }}
             transition={{
               x: {
@@ -54,21 +58,21 @@ export default function CertificateStrip() {
             {/* First set */}
             {certificates.map((cert) => (
               <div key={cert.id} className="certificate-item">
-                <img 
-                  src={cert.image} 
-                  alt={cert.name} 
+                <img
+                  src={cert.image}
+                  alt={cert.name}
                   className="certificate-image"
                 />
                 <p className="certificate-name">{cert.name}</p>
               </div>
             ))}
-            
+
             {/* Duplicate set for seamless loop */}
             {certificates.map((cert) => (
               <div key={`dup-${cert.id}`} className="certificate-item">
-                <img 
-                  src={cert.image} 
-                  alt={cert.name} 
+                <img
+                  src={cert.image}
+                  alt={cert.name}
                   className="certificate-image"
                 />
                 <p className="certificate-name">{cert.name}</p>

@@ -6,7 +6,6 @@ import ContactSection from '../components/Contact';
 import BlogSection from '../components/BlogSection';
 import NewsletterStrip from '../components/Newsletter';
 import WheelServices from '../components/wheel';
-import Logostrip from '../components/Logostrip';
 import CertificateStrip from '../components/CertificateStrip';
 import Affordability from '../components/Affordability';
 const Home = () => {
@@ -15,7 +14,6 @@ const Home = () => {
     <div className="home-page">
       <Hero />
       <CertificateStrip />
-      <Logostrip />
       <About />
       <Affordability />
       <WheelServices />

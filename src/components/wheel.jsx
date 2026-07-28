@@ -5,20 +5,16 @@ import './wheel.css';
 import { FaCapsules } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import productGynogid from '../assets/Products/P1.png';
-import productMctolip from '../assets/Products/P2.png';
 import productGlumin from '../assets/Products/P3.png';
 import productEnergid from '../assets/Products/P5.png';
 import productBestProtein from '../assets/Products/P6.png';
-import productLactilus from '../assets/Products/P7.png';
 import productHepatovital from '../assets/Products/P8.png';
 
 const PRODUCT_IMG = {
   gynogid: productGynogid,
-  mctolip: productMctolip,
   glumin: productGlumin,
   energid: productEnergid,
   bestProtein: productBestProtein,
-  lactilus: productLactilus,
   hepatovital: productHepatovital,
 };
 
@@ -31,13 +27,6 @@ const products = [
     tagline: "Prenatal nutrition, for mom's care",
     content: `Built on the 3G System — Go, Grow, Glow — for sustained maternal energy and healthy fetal development. Enriched with fennel and vanilla extracts. Vanilla flavor, 400gm.`,
     productId: 1,
-  },
-  {
-    label: "MCTOLIP Drops",
-    image: PRODUCT_IMG.mctolip,
-    tagline: "Medium chain triglycerides",
-    content: `Supports weight management, improves brain function, and provides a good energy source — formulated for infants and growing children who need fat absorption support.`,
-    productId: 2,
   },
   {
     label: "Glumin SR",
@@ -61,13 +50,6 @@ const products = [
     productId: 6,
   },
   {
-    label: "Lactilus Prob",
-    image: PRODUCT_IMG.lactilus,
-    tagline: "Lactobacillus Acidophilus & Zinc",
-    content: `Supports digestive and immune health with live bacteria that reach the gut alive. 10 directly-consumed sachets per box.`,
-    productId: 7,
-  },
-  {
     label: "Hepatovital",
     image: PRODUCT_IMG.hepatovital,
     tagline: "BCAA-enriched hepatic nutrition",
@@ -79,10 +61,10 @@ const products = [
 const WheelProducts = () => {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
-  const radius = 220;
-  const innerRadius = 100;
-  const cx = 250;
-  const cy = 250;
+  const radius = 270;
+  const innerRadius = 125;
+  const cx = 300;
+  const cy = 300;
   const sliceAngle = (2 * Math.PI) / products.length;
   const intervalRef = useRef(null);
 
@@ -139,7 +121,7 @@ const WheelProducts = () => {
       <h1 className="wheel-heading">Discover Our Product Range</h1>
       <div className="wheel-services-container">
         <div className="wheel-section">
-          <svg className="wheel-svg" viewBox="0 0 500 500">
+          <svg className="wheel-svg" viewBox="0 0 600 600">
             {products.map((product, index) => {
               const pos = getLabelPosition(index);
               return (
@@ -159,13 +141,13 @@ const WheelProducts = () => {
                 </g>
               );
             })}
-            <circle cx={cx} cy={cy} r={innerRadius - 10} fill="#fff" />
+            <circle cx={cx} cy={cy} r={innerRadius - 12} fill="#fff" />
             <image
               href={logo}
-              x={cx - 40}
-              y={cy - 20}
-              height="40"
-              width="80"
+              x={cx - 50}
+              y={cy - 25}
+              height="50"
+              width="100"
             />
           </svg>
         </div>
