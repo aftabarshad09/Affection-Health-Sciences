@@ -18,6 +18,16 @@ const reviewRoutes = require('./routes/reviewRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Canonicalize host to www — the apex domain was serving the same content
+// with a 200 instead of redirecting, creating duplicate URLs for every page
+// (sitemap/canonical tags only ever reference the www host).
+app.use((req, res, next) => {
+  if (req.headers.host === 'affectionhealthsciences.com') {
+    return res.redirect(301, `https://www.affectionhealthsciences.com${req.originalUrl}`);
+  }
+  next();
+});
+
 app.use(cors({
   origin: ['https://www.affectionhealthsciences.com', 'https://affectionhealthsciences.com', 'http://localhost:5173', 'http://localhost:5174'],
   credentials: true,
@@ -50,9 +60,18 @@ console.log(`Checking for dist at: ${distPath}`);
 
 if (fs.existsSync(distPath)) {
   console.log('✅ dist folder found, serving static files');
-  app.use(express.static(distPath));
+  // redirect: false — prerendered routes live at dist/<route>/index.html,
+  // which express.static would otherwise 301 (e.g. /contact -> /contact/)
+  // before serving. All built assets use absolute paths (see vite base),
+  // so the trailing slash isn't needed for asset resolution — we can just
+  // serve the file directly below instead of redirecting for it.
+  app.use(express.static(distPath, { redirect: false }));
   app.get('*', (req, res) => {
     if (req.path.startsWith('/api')) return;
+    const routeIndex = path.join(distPath, req.path, 'index.html');
+    if (fs.existsSync(routeIndex)) {
+      return res.sendFile(routeIndex);
+    }
     res.sendFile(path.join(distPath, 'index.html'));
   });
 } else {
