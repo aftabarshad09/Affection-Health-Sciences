@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaLock, FaShoppingCart, FaUser } from 'react-icons/fa';
+import { FaBars, FaTimes, FaShoppingCart, FaHeart } from 'react-icons/fa';
 import logo from './assets/logo3.png';
 import './layout.css';
 import Footer from './components/Footer';
 import { useCartStore } from './modules/cart/cartStore';
-import { useCustomerAuth } from './modules/auth/CustomerAuthContext';
+import { useWishlistStore } from './modules/wishlist/wishlistStore';
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const itemCount = useCartStore((s) => s.itemCount());
-  const { isAuthenticated } = useCustomerAuth() || {};
+  const wishlistCount = useWishlistStore((s) => s.items.length);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,12 +75,13 @@ const Layout = ({ children }) => {
             </Link>
 
             <Link
-              to={isAuthenticated ? '/account' : '/login'}
-              className="nav-admin-btn"
+              to="/wishlist"
+              className="nav-admin-btn nav-cart-btn"
               onClick={() => setMenuOpen(false)}
-              title={isAuthenticated ? 'My Account' : 'Log in'}
+              title="Wishlist"
             >
-              <FaUser size={13} />
+              <FaHeart size={13} />
+              {wishlistCount > 0 && <span className="nav-cart-badge">{wishlistCount}</span>}
             </Link>
 
             <Link
@@ -91,15 +92,6 @@ const Layout = ({ children }) => {
             >
               <FaShoppingCart size={13} />
               {itemCount > 0 && <span className="nav-cart-badge">{itemCount}</span>}
-            </Link>
-
-            <Link
-              to="/admin"
-              className="nav-admin-btn"
-              onClick={() => setMenuOpen(false)}
-              title="Admin Login"
-            >
-              <FaLock size={13} />
             </Link>
           </nav>
         </div>

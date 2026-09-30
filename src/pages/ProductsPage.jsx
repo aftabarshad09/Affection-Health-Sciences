@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, useParams, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import '../style/ProductsPage.css';
 import { FaTimes, FaCheckCircle, FaFlask, FaShieldAlt, FaLeaf, FaAtom } from 'react-icons/fa';
 import AddToCartButton from '../modules/cart/AddToCartButton';
+import WishlistButton from '../modules/wishlist/WishlistButton';
 import { formatMoney } from '../utils/currency';
 
 import heroBg from '../assets/videos/002.mp4';
 
 const ProductPriceBlock = ({ product }) => {
-  if (product.commerceStatus !== 'active' || !product.retailPrice) {
-    return <span className="prod-card__coming-soon">Coming Soon</span>;
+  if (!product.retailPrice) {
+    return <span className="prod-card__price-request">Price on request</span>;
   }
   const hasDiscount = product.salePrice && product.salePrice < product.retailPrice;
   const discountPct = hasDiscount
@@ -20,8 +21,6 @@ const ProductPriceBlock = ({ product }) => {
       <span className="prod-card__price">{formatMoney(hasDiscount ? product.salePrice : product.retailPrice)}</span>
       {hasDiscount && <span className="prod-card__price--was">{formatMoney(product.retailPrice)}</span>}
       {hasDiscount && <span className="prod-card__discount-badge">-{discountPct}%</span>}
-      {product.stock <= 0 && <span className="prod-card__stock-badge">Out of Stock</span>}
-      {product.stock > 0 && product.stock <= 10 && <span className="prod-card__stock-badge prod-card__stock-badge--low">Only {product.stock} left</span>}
     </div>
   );
 };
@@ -83,8 +82,6 @@ const DualPackPanelImage = ({ product }) => {
 
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { slug } = useParams();
-  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [active, setActive] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -123,8 +120,7 @@ const ProductsPage = () => {
       setActive(null);
       document.body.style.overflow = '';
     }, 320);
-    if (slug) navigate('/products', { replace: true });
-    else setSearchParams({}, { replace: true });
+    setSearchParams({}, { replace: true });
   };
 
   useEffect(() => {
@@ -133,20 +129,15 @@ const ProductsPage = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
-  // Deep links resolve two ways: a clean SEO-friendly path (/products/:slug,
-  // what's shared/prerendered) or the original ?product=<id> query param
-  // (kept for backward compatibility with any links already using it).
+  // Optional deep link: /products?product=<id> opens that product's modal.
   useEffect(() => {
     const productId = searchParams.get('product');
-    const match = slug
-      ? products.find((p) => p.slug === slug)
-      : productId
-        ? products.find((p) => String(p.id) === productId)
-        : null;
+    if (!productId) return;
+    const match = products.find((p) => String(p.id) === productId);
     if (!match) return;
     const timer = setTimeout(() => openProduct(match), 0);
     return () => clearTimeout(timer);
-  }, [searchParams, slug, products]);
+  }, [searchParams, products]);
 
   return (
     <div className="prod-pg">
@@ -215,12 +206,13 @@ const ProductsPage = () => {
             <div
               className={`prod-card${product.cardVariant ? ` prod-card--${product.cardVariant}` : ''}`}
               key={product.id}
-              onClick={() => (product.slug ? navigate(`/products/${product.slug}`) : openProduct(product))}
+              onClick={() => openProduct(product)}
               style={{ animationDelay: `${i * 40}ms` }}
             >
               {product.badge && (
                 <span className="prod-card__badge">{product.badge}</span>
               )}
+              <WishlistButton product={product} className="prod-card__wishlist" />
               <div className="prod-card__img-wrap">
                 {product.isDualPack ? (
                   <DualPackCardImage product={product} />
@@ -278,7 +270,10 @@ const ProductsPage = () => {
               <div className="prod-panel__scroll">
                 {active.badge && <span className="prod-panel__badge">{active.badge}</span>}
                 <ProductPriceBlock product={active} />
-                <AddToCartButton product={active} className="prod-panel__add-btn glass-btn" />
+                <div className="prod-panel__actions">
+                  <AddToCartButton product={active} className="prod-panel__add-btn glass-btn" />
+                  <WishlistButton product={active} className="prod-panel__wishlist" />
+                </div>
                 <p className="prod-panel__desc">{active.description}</p>
 
                 <div className="prod-panel__section">

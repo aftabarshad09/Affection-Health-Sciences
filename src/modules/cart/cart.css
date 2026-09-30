@@ -163,3 +163,53 @@
 .cart-summary__checkout:hover {
   background: #2D6A4F;
 }
+
+/* WhatsApp order button + summary note */
+.cart-summary__note {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 14px 0 4px;
+  line-height: 1.5;
+}
+
+.cart-summary__whatsapp {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #25D366;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.98rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.cart-summary__whatsapp svg {
+  font-size: 1.25rem;
+}
+
+.cart-summary__whatsapp:hover {
+  background: #1DA851;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
+}
+
+.cart-summary__continue {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #2D6A4F;
+  text-decoration: none;
+}
+
+.cart-summary__continue:hover {
+  text-decoration: underline;
+}
