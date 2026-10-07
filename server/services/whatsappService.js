@@ -1,12 +1,12 @@
 // Sends the business a WhatsApp notification when an order is placed, via
 // CallMeBot (https://www.callmebot.com/blog/free-api-whatsapp-messages/).
 //
-// One-time setup (owner):
-//   1. Add the CallMeBot number +34 644 51 95 23 to your phone contacts.
+// One-time setup (owner), from the phone that should receive the alerts:
+//   1. Add the CallMeBot number +34 623 80 11 90 to your phone contacts.
 //   2. Send it this WhatsApp message: "I allow callmebot to send me messages"
-//   3. It replies with your personal API key.
-//   4. Put CALLMEBOT_PHONE (your number, intl digits, e.g. 923498703301) and
-//      CALLMEBOT_APIKEY in server/.env.
+//   3. It replies with your personal API key (usually within ~2 minutes).
+//   4. Put CALLMEBOT_PHONE (your number with country code, e.g. +923498703301)
+//      and CALLMEBOT_APIKEY in server/.env, then restart the backend.
 //
 // Until those env vars are set, sending is skipped (logged) so order placement
 // still works end-to-end without it.
