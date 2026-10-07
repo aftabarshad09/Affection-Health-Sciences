@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "migrate": "node scripts/run-migrations.js",
-    "seed:store": "node scripts/seed-store.js",
-    "migrate:admin": "node scripts/migrate-admin-to-supabase-auth.js"
+    "seed:sqlite": "node scripts/seed-sqlite.js"
   },
   "keywords": [
     "express",
@@ -21,12 +19,13 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",
     "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
     "cloudinary": "^1.41.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "emailjs": "^5.0.0",
     "express": "^4.18.2",
     "express-rate-limit": "^7.4.1",
-    "emailjs": "^5.0.0",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.3",
     "multer": "^1.4.5-lts.1",

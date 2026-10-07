@@ -1,39 +1,34 @@
-const supabaseAuth = require('../lib/supabaseAuth');
-const db = require('../lib/db');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-// Admin/Super Admin login. Authenticates against real Supabase Auth accounts
-// (no more hardcoded env-var credentials) and then checks the caller's role
-// from `profiles` — a valid Supabase session alone is not enough to reach
-// the admin panel, only admin/super_admin roles are let through.
+// Local admin login (no external auth service). Credentials come from
+// server/.env: ADMIN_USERNAME + ADMIN_PASSWORD (or ADMIN_PASSWORD_HASH).
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  const user = req.body.email || req.body.username;
+  const { password } = req.body;
 
-  if (!email || !password) {
+  if (!user || !password) {
     return res.status(400).json({ success: false, error: 'Email and password are required' });
   }
-
-  const { data, error } = await supabaseAuth.auth.signInWithPassword({ email, password });
-  if (error || !data?.session) {
+  if (user !== process.env.ADMIN_USERNAME) {
     return res.status(401).json({ success: false, error: 'Invalid credentials' });
   }
 
-  const profile = await db.profiles.getById(data.user.id);
-  if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
-    return res.status(403).json({ success: false, error: 'This account is not authorized for admin access' });
+  let valid = false;
+  if (process.env.ADMIN_PASSWORD_HASH) {
+    valid = await bcrypt.compare(password, process.env.ADMIN_PASSWORD_HASH);
   }
-  if (profile.status === 'suspended') {
-    return res.status(403).json({ success: false, error: 'This account has been suspended' });
+  if (!valid && process.env.ADMIN_PASSWORD) {
+    valid = password === process.env.ADMIN_PASSWORD;
+  }
+  if (!valid) {
+    return res.status(401).json({ success: false, error: 'Invalid credentials' });
   }
 
-  res.json({
-    success: true,
-    token: data.session.access_token,
-    user: { id: profile.id, fullName: profile.fullName, email: profile.email, role: profile.role },
-  });
+  const token = jwt.sign({ username: user, role: 'super_admin' }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  res.json({ success: true, token, user: { id: user, email: user, fullName: 'Admin', role: 'super_admin' } });
 };
 
-// Returns the currently authenticated admin's profile — lets the frontend
-// verify a stored token is still a valid admin session on app load/refresh.
-exports.me = async (req, res) => {
+exports.me = (req, res) => {
   res.json({ success: true, user: req.user });
 };

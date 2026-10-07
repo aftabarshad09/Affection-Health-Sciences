@@ -303,3 +303,11 @@
   padding: 0.5rem 0.75rem;
   font-size: 0.9rem;
 }
+
+/* Order detail badges row */
+.admin-order-badges {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}

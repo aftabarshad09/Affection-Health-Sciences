@@ -20,16 +20,12 @@ const blogRoutes = require('./routes/blogRoutes');
 const productRoutes = require('./routes/productRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
-const cartRoutes = require('./routes/cartRoutes');
-const addressRoutes = require('./routes/addressRoutes');
 const checkoutRoutes = require('./routes/checkoutRoutes');
-const orderRoutes = require('./routes/orderRoutes');
-const profileRoutes = require('./routes/profileRoutes');
+const trackRoutes = require('./routes/trackRoutes');
 const adminOrderRoutes = require('./routes/adminOrderRoutes');
 const adminDashboardRoutes = require('./routes/adminDashboardRoutes');
 const settingsRoutes = require('./routes/settingsRoutes');
 const activityLogRoutes = require('./routes/activityLogRoutes');
-const adminUserRoutes = require('./routes/adminUserRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -62,16 +58,12 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/categories', categoryRoutes);
-app.use('/api/cart', cartRoutes);
-app.use('/api/addresses', addressRoutes);
 app.use('/api/checkout', checkoutRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/profile', profileRoutes);
+app.use('/api/track', trackRoutes);
 app.use('/api/admin/orders', adminOrderRoutes);
 app.use('/api/admin/dashboard', adminDashboardRoutes);
 app.use('/api/admin/settings', settingsRoutes);
 app.use('/api/admin/activity-logs', activityLogRoutes);
-app.use('/api/admin/users', adminUserRoutes);
 
 // CMS-uploaded images (products/blogs)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

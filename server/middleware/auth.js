@@ -1,11 +1,9 @@
-const supabase = require('../lib/supabase');
-const db = require('../lib/db');
+const jwt = require('jsonwebtoken');
 
-// Verifies the bearer token against Supabase Auth (never trusts a locally
-// signed JWT) and attaches the caller's profile — including their role —
-// onto req.user. Route-level authorization is enforced separately by
-// requireRole, since being logged in and being an admin are different things.
-const requireAuth = async (req, res, next) => {
+// Verifies the admin JWT (signed locally at login). Attaches req.user with the
+// admin identity + role. There are no customer accounts — only the admin logs
+// in — so a valid token means an admin.
+const requireAuth = (req, res, next) => {
   const header = req.headers.authorization || '';
   const token = header.startsWith('Bearer ') ? header.slice(7) : null;
 
@@ -14,22 +12,18 @@ const requireAuth = async (req, res, next) => {
   }
 
   try {
-    const { data, error } = await supabase.auth.getUser(token);
-    if (error || !data?.user) {
-      return res.status(401).json({ success: false, error: 'Invalid or expired session' });
-    }
-
-    const profile = await db.profiles.getById(data.user.id);
-    if (!profile) {
-      return res.status(401).json({ success: false, error: 'No profile found for this account' });
-    }
-    if (profile.status === 'suspended') {
-      return res.status(403).json({ success: false, error: 'This account has been suspended' });
-    }
-
-    req.user = profile;
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = {
+      id: payload.username,
+      username: payload.username,
+      email: payload.username,
+      fullName: 'Admin',
+      role: payload.role || 'super_admin',
+      status: 'active',
+    };
+    req.admin = req.user;
     next();
-  } catch (err) {
+  } catch {
     res.status(401).json({ success: false, error: 'Invalid or expired session' });
   }
 };

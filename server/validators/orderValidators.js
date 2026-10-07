@@ -7,4 +7,12 @@ const updateOrderStatusSchema = z.object({
   notes: z.string().trim().max(500).optional().or(z.literal('')),
 });
 
-module.exports = { updateOrderStatusSchema, ORDER_STATUSES };
+const updatePaymentStatusSchema = z.object({
+  paymentStatus: z.enum(['pending', 'paid']),
+});
+
+const addNoteSchema = z.object({
+  notes: z.string().trim().min(1, 'Note cannot be empty').max(500),
+});
+
+module.exports = { updateOrderStatusSchema, updatePaymentStatusSchema, addNoteSchema, ORDER_STATUSES };

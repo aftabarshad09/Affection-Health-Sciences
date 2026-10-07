@@ -29,15 +29,10 @@ exports.placeGuestOrder = async (req, res) => {
       notes,
     });
 
-    // place_guest_order() returns the bare order row — re-fetch with items for
-    // the notifications.
-    db.orders.getById(order.id).then((fullOrder) => {
-      const emailService = require('../services/orderEmailService');
-      const whatsappService = require('../services/whatsappService');
-      emailService.notifyOrderPlaced(fullOrder).catch((err) => console.error('Order confirmation email failed:', err.message));
-      emailService.notifyAdminNewOrder(fullOrder).catch((err) => console.error('Admin new-order email failed:', err.message));
-      whatsappService.notifyNewOrder(fullOrder).catch((err) => console.error('WhatsApp notification failed:', err.message));
-    });
+    // Fire-and-forget notifications: customer confirmation + admin new-order.
+    const emailService = require('../services/orderEmailService');
+    emailService.notifyOrderPlaced(order).catch((err) => console.error('Order confirmation email failed:', err.message));
+    emailService.notifyAdminNewOrder(order).catch((err) => console.error('Admin new-order email failed:', err.message));
 
     res.status(201).json({ success: true, order: { orderNumber: order.orderNumber, grandTotal: order.grandTotal } });
   } catch (err) {

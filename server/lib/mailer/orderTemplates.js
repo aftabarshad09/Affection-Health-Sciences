@@ -2,6 +2,23 @@ const { wrapEmail } = require('./baseTemplate');
 
 const money = (n) => `Rs. ${Number(n).toLocaleString('en-PK', { maximumFractionDigits: 0 })}`;
 
+const APP_URL = (process.env.APP_URL || 'https://www.affectionhealthsciences.com').replace(/\/$/, '');
+
+// A live order-tracking block — the customer opens this personal link any time
+// to see their order's current status and details (no login needed).
+const trackingBlock = (order) => {
+  if (!order.trackToken) return '';
+  const url = `${APP_URL}/track/${order.trackToken}`;
+  return `
+    <div style="margin:22px 0;padding:16px 18px;background:rgba(45,106,79,0.08);border-radius:10px;">
+      <p style="margin:0 0 10px;"><strong>Track your order</strong><br/>
+      Check your order status and details any time from your personal tracking link:</p>
+      <a class="btn" href="${url}">Track My Order</a>
+      <p style="margin:12px 0 0;font-size:12px;color:#777;word-break:break-all;">${url}</p>
+    </div>
+  `;
+};
+
 const itemsTable = (items) => `
   <table class="items">
     <thead><tr><th>Product</th><th>Qty</th><th style="text-align:right;">Subtotal</th></tr></thead>
@@ -36,10 +53,11 @@ function orderConfirmationEmail(order) {
       <p>We've received your order <strong>${order.orderNumber}</strong> and it's now <span class="badge">${order.orderStatus}</span>.</p>
       ${itemsTable(order.items || [])}
       ${totalsTable(order)}
+      ${trackingBlock(order)}
       <h2 style="margin-top:24px;">Delivery Address</h2>
       ${addressBlock(order.address)}
       <p>Payment Method: <strong>Cash on Delivery</strong></p>
-      <p>We'll email you every time your order's status changes.</p>
+      <p>To track your order, open your tracking link above any time — it always shows the latest status.</p>
     `,
   });
 }
@@ -65,6 +83,7 @@ function orderStatusChangedEmail(order) {
       <p>Status: <span class="badge">${order.orderStatus.replace(/_/g, ' ')}</span></p>
       ${order.items ? itemsTable(order.items) : ''}
       ${totalsTable(order)}
+      ${trackingBlock(order)}
       <h2 style="margin-top:24px;">Delivery Address</h2>
       ${addressBlock(order.address)}
     `,

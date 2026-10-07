@@ -39,10 +39,6 @@ export default function Dashboard() {
           <div className="admin-stat-card__label">Active Products</div>
           <div className="admin-stat-card__value">{stats.productsCount}</div>
         </div>
-        <div className="admin-stat-card">
-          <div className="admin-stat-card__label">Customers</div>
-          <div className="admin-stat-card__value">{stats.usersCount}</div>
-        </div>
       </div>
 
       <div className="admin-two-col">
@@ -91,30 +87,20 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="admin-two-col" style={{ marginTop: '1.5rem' }}>
-        <div className="admin-card">
-          <h2>Recent Orders</h2>
+      <div className="admin-card" style={{ marginTop: '1.5rem' }}>
+        <h2>Recent Orders</h2>
+        {stats.recentOrders.length === 0 ? (
+          <p>No orders yet.</p>
+        ) : (
           <ul className="admin-mini-list">
             {stats.recentOrders.map((o) => (
               <li key={o.id}>
-                <Link to={`/admin/orders/${o.id}`}>{o.orderNumber}</Link>
+                <span><Link to={`/admin/orders/${o.id}`}>{o.orderNumber}</Link> — {o.customerName} · Rs. {o.grandTotal}</span>
                 <span className={`admin-badge admin-badge--${o.orderStatus}`}>{o.orderStatus.replace(/_/g, ' ')}</span>
               </li>
             ))}
           </ul>
-        </div>
-
-        <div className="admin-card">
-          <h2>Latest Customers</h2>
-          <ul className="admin-mini-list">
-            {stats.latestCustomers.map((c) => (
-              <li key={c.id}>
-                <span>{c.fullName || c.email}</span>
-                <span>{new Date(c.createdAt).toLocaleDateString()}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        )}
       </div>
 
       <div className="admin-card" style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>

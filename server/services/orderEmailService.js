@@ -1,5 +1,4 @@
 const transporter = require('../config/emailConfig');
-const db = require('../lib/db');
 const {
   orderConfirmationEmail,
   orderStatusChangedEmail,
@@ -11,15 +10,9 @@ const {
 const FROM = process.env.EMAIL_USER;
 const ADMIN_TO = process.env.RECEIVER_EMAIL;
 
-async function customerEmailFor(order) {
-  // Guest orders carry the email directly; logged-in orders (legacy) fall
-  // back to the profile.
-  if (order.customerEmail) return order.customerEmail;
-  if (order.userId) {
-    const profile = await db.profiles.getById(order.userId);
-    return profile?.email;
-  }
-  return null;
+function customerEmailFor(order) {
+  // Guest orders carry the customer's email directly on the order.
+  return order.customerEmail || null;
 }
 
 exports.notifyOrderPlaced = async (order) => {

@@ -12,7 +12,6 @@ import CategoriesAdmin from './pages/CategoriesAdmin';
 import InventoryAdmin from './pages/InventoryAdmin';
 import SettingsAdmin from './pages/SettingsAdmin';
 import ActivityLogsAdmin from './pages/ActivityLogsAdmin';
-import CustomersAdmin from './pages/CustomersAdmin';
 import './admin.css';
 
 function AdminNav() {
@@ -27,7 +26,6 @@ function AdminNav() {
       <NavLink to="/admin/products">Products</NavLink>
       <NavLink to="/admin/categories">Categories</NavLink>
       <NavLink to="/admin/inventory">Inventory</NavLink>
-      <NavLink to="/admin/users">Users</NavLink>
       <NavLink to="/admin/activity-logs">Activity Logs</NavLink>
       <NavLink to="/admin/settings">Settings</NavLink>
       <NavLink to="/admin/reviews">Reviews</NavLink>
@@ -69,7 +67,6 @@ export default function AdminApp() {
                   <Route path="products/:id/edit" element={<ProductForm />} />
                   <Route path="categories" element={<CategoriesAdmin />} />
                   <Route path="inventory" element={<InventoryAdmin />} />
-                  <Route path="users" element={<CustomersAdmin />} />
                   <Route path="activity-logs" element={<ActivityLogsAdmin />} />
                   <Route path="settings" element={<SettingsAdmin />} />
                   <Route path="reviews" element={<ReviewsAdmin />} />

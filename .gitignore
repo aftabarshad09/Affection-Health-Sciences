@@ -37,3 +37,7 @@ server/test-hostinger.js
 *.njsproj
 *.sln
 *.sw?
+
+# Local SQLite database (runtime data - regenerate catalog with: cd server && npm run seed:sqlite)
+server/data/store.db
+server/data/store.db-*

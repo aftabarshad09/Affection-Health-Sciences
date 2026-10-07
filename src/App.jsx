@@ -16,6 +16,7 @@ import CartPage from './modules/cart/pages/CartPage'
 import WishlistPage from './modules/wishlist/pages/WishlistPage'
 import CheckoutPage from './modules/checkout/pages/CheckoutPage'
 import OrderConfirmationPage from './modules/checkout/pages/OrderConfirmationPage'
+import TrackOrderPage from './modules/tracking/pages/TrackOrderPage'
 import ToastContainer from './components/ToastContainer'
 
 import './App.css'
@@ -34,6 +35,7 @@ function PublicSite() {
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
+          <Route path="/track/:token" element={<TrackOrderPage />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/careers" element={<Careers />} />
