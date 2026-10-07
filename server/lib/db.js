@@ -133,6 +133,9 @@ const orderFromRow = (row) => ({
   id: row.id,
   orderNumber: row.order_number,
   userId: row.user_id,
+  customerName: row.customer_name,
+  customerEmail: row.customer_email,
+  customerPhone: row.customer_phone,
   address: row.address,
   subtotal: row.subtotal,
   shipping: row.shipping,
@@ -551,6 +554,19 @@ const orders = {
   async place({ userId, address, items, notes }) {
     const { data, error } = await supabase.rpc('place_order', {
       p_user_id: userId,
+      p_address: address,
+      p_items: items.map((i) => ({ product_id: i.productId, quantity: i.quantity })),
+      p_notes: notes || null,
+    });
+    if (error) throw error;
+    return orderFromRow(data);
+  },
+
+  // Guest checkout (no login): totals/order-number computed server-side by
+  // the place_guest_order() function. See supabase/migrations/0008.
+  async placeGuest({ customer, address, items, notes }) {
+    const { data, error } = await supabase.rpc('place_guest_order', {
+      p_customer: customer,
       p_address: address,
       p_items: items.map((i) => ({ product_id: i.productId, quantity: i.quantity })),
       p_notes: notes || null,

@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
-import { FaWhatsapp } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '../cartStore';
 import { formatMoney } from '../../../utils/currency';
-import { buildWhatsappOrderUrl } from '../../../config/whatsapp';
 import '../cart.css';
 
 export default function CartPage() {
@@ -10,6 +8,7 @@ export default function CartPage() {
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const removeItem = useCartStore((s) => s.removeItem);
   const subtotal = useCartStore((s) => s.subtotal());
+  const navigate = useNavigate();
 
   if (items.length === 0) {
     return (
@@ -22,10 +21,6 @@ export default function CartPage() {
       </div>
     );
   }
-
-  const orderOnWhatsapp = () => {
-    window.open(buildWhatsappOrderUrl(items, subtotal), '_blank', 'noopener');
-  };
 
   return (
     <div className="cart-page">
@@ -74,12 +69,9 @@ export default function CartPage() {
             <span>Subtotal</span>
             <span>{formatMoney(subtotal)}</span>
           </div>
-          <p className="cart-summary__note">
-            Place your order on WhatsApp — we'll confirm availability, delivery, and the final total (including any
-            "price on request" items) in chat.
-          </p>
-          <button className="cart-summary__whatsapp glass-btn" onClick={orderOnWhatsapp}>
-            <FaWhatsapp /> Order on WhatsApp
+          <p className="cart-summary__note">Shipping is calculated at checkout. Payment is Cash on Delivery.</p>
+          <button className="cart-summary__checkout glass-btn" onClick={() => navigate('/checkout')}>
+            Proceed to Checkout
           </button>
           <Link to="/products" className="cart-summary__continue">← Continue shopping</Link>
         </div>

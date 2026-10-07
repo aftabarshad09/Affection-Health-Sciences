@@ -6,7 +6,7 @@ const itemsTable = (items) => `
   <table class="items">
     <thead><tr><th>Product</th><th>Qty</th><th style="text-align:right;">Subtotal</th></tr></thead>
     <tbody>
-      ${items.map((i) => `<tr><td>${i.title}</td><td>${i.quantity}</td><td style="text-align:right;">${money(i.subtotal)}</td></tr>`).join('')}
+      ${items.map((i) => `<tr><td>${i.title}</td><td>${i.quantity}</td><td style="text-align:right;">${i.price ? money(i.subtotal) : 'Price on request'}</td></tr>`).join('')}
     </tbody>
   </table>
 `;
@@ -23,7 +23,7 @@ const totalsTable = (order) => `
 const addressBlock = (address) => `
   <p style="color:#555;">
     ${address.receiver_name} — ${address.phone}<br/>
-    ${address.address_line}, ${address.area ? `${address.area}, ` : ''}${address.city}, ${address.province} ${address.postal_code || ''}
+    ${address.apartment ? `${address.apartment}, ` : ''}${address.address_line}, ${address.area ? `${address.area}, ` : ''}${address.city}, ${address.province} ${address.postal_code || ''}
   </p>
 `;
 

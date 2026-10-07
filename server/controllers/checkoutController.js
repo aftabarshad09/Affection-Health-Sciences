@@ -1,59 +1,47 @@
 const db = require('../lib/db');
 
-const addressToSnapshot = (a) => ({
-  receiver_name: a.receiverName,
-  phone: a.phone,
-  province: a.province,
-  city: a.city,
-  area: a.area || null,
-  postal_code: a.postalCode || null,
-  address_line: a.addressLine,
+// Builds the delivery-address snapshot stored on the order (jsonb). Keys match
+// what the admin order view and the email templates already read.
+const addressToSnapshot = (customer, address) => ({
+  receiver_name: customer.name,
+  phone: customer.phone,
+  email: customer.email,
+  apartment: address.apartment || null,
+  address_line: address.addressLine,
+  area: address.area || null,
+  city: address.city,
+  province: address.province,
+  postal_code: address.postalCode || null,
 });
 
-// Places an order via the atomic place_order() Postgres function — this
-// controller never computes or trusts a total from the client; it only
-// resolves the address and forwards items to be priced/validated server-side.
-exports.placeOrder = async (req, res) => {
+// Guest checkout (no login). The server computes all totals via the
+// place_guest_order() function — client-submitted amounts are never trusted.
+// On success it fires (fire-and-forget) the customer confirmation email, the
+// admin new-order email, and the CallMeBot WhatsApp notification.
+exports.placeGuestOrder = async (req, res) => {
   try {
-    const { addressId, address, saveAddress, items, notes } = req.body;
+    const { customer, address, items, notes } = req.body;
 
-    let addressSnapshot;
-    if (addressId) {
-      const existing = await db.addresses.getById(addressId);
-      if (!existing || existing.userId !== req.user.id) {
-        return res.status(404).json({ success: false, error: 'Address not found' });
-      }
-      addressSnapshot = addressToSnapshot(existing);
-    } else {
-      if (saveAddress) {
-        const saved = await db.addresses.create(req.user.id, address);
-        addressSnapshot = addressToSnapshot(saved);
-      } else {
-        addressSnapshot = addressToSnapshot(address);
-      }
-    }
-
-    const order = await db.orders.place({
-      userId: req.user.id,
-      address: addressSnapshot,
+    const order = await db.orders.placeGuest({
+      customer: { name: customer.name, email: customer.email, phone: customer.phone },
+      address: addressToSnapshot(customer, address),
       items,
       notes,
     });
 
-    // place_order() returns the bare orders row (no items) — re-fetch with
-    // the joined order_items for the confirmation/notification emails.
-    const emailService = require('../services/orderEmailService');
+    // place_guest_order() returns the bare order row — re-fetch with items for
+    // the notifications.
     db.orders.getById(order.id).then((fullOrder) => {
+      const emailService = require('../services/orderEmailService');
+      const whatsappService = require('../services/whatsappService');
       emailService.notifyOrderPlaced(fullOrder).catch((err) => console.error('Order confirmation email failed:', err.message));
       emailService.notifyAdminNewOrder(fullOrder).catch((err) => console.error('Admin new-order email failed:', err.message));
+      whatsappService.notifyNewOrder(fullOrder).catch((err) => console.error('WhatsApp notification failed:', err.message));
     });
 
-    res.status(201).json({ success: true, order });
+    res.status(201).json({ success: true, order: { orderNumber: order.orderNumber, grandTotal: order.grandTotal } });
   } catch (err) {
-    // place_order() raises plain exceptions for business-rule failures
-    // (out of stock, unavailable product, empty cart) — surface those as
-    // 400s instead of generic 500s.
-    const isBusinessRuleError = /stock|available|no items/i.test(err.message);
+    const isBusinessRuleError = /no items|not found|invalid order item/i.test(err.message);
     res.status(isBusinessRuleError ? 400 : 500).json({ success: false, error: err.message });
   }
 };

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const checkoutController = require('../controllers/checkoutController');
-const { requireAuth } = require('../middleware/auth');
 const { validate } = require('../middleware/validate');
-const { checkoutSchema } = require('../validators/checkoutValidators');
+const { guestCheckoutSchema } = require('../validators/guestCheckoutValidators');
 
+// Public guest checkout — no authentication.
 router.get('/settings', checkoutController.getShippingSettings);
-router.post('/', requireAuth, validate(checkoutSchema), checkoutController.placeOrder);
+router.post('/', validate(guestCheckoutSchema), checkoutController.placeGuestOrder);
 
 module.exports = router;

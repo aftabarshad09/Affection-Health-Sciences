@@ -12,8 +12,14 @@ const FROM = process.env.EMAIL_USER;
 const ADMIN_TO = process.env.RECEIVER_EMAIL;
 
 async function customerEmailFor(order) {
-  const profile = await db.profiles.getById(order.userId);
-  return profile?.email;
+  // Guest orders carry the email directly; logged-in orders (legacy) fall
+  // back to the profile.
+  if (order.customerEmail) return order.customerEmail;
+  if (order.userId) {
+    const profile = await db.profiles.getById(order.userId);
+    return profile?.email;
+  }
+  return null;
 }
 
 exports.notifyOrderPlaced = async (order) => {
