@@ -34,6 +34,9 @@ exports.placeGuestOrder = async (req, res) => {
     emailService.notifyOrderPlaced(order).catch((err) => console.error('Order confirmation email failed:', err.message));
     emailService.notifyAdminNewOrder(order).catch((err) => console.error('Admin new-order email failed:', err.message));
 
+    // Snapshot the database so this order is never lost (throttled internally).
+    require('../lib/backup').backupNow('order').catch(() => {});
+
     res.status(201).json({ success: true, order: { orderNumber: order.orderNumber, grandTotal: order.grandTotal } });
   } catch (err) {
     const isBusinessRuleError = /no items|not found|invalid order item/i.test(err.message);

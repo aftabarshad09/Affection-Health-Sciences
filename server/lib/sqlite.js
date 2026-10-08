@@ -10,8 +10,10 @@ const DATA_DIR = path.join(__dirname, '../data');
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
 const db = new Database(path.join(DATA_DIR, 'store.db'));
-db.pragma('journal_mode = WAL'); // better concurrency + durability
+db.pragma('journal_mode = WAL');    // durable + allows readers during a write
+db.pragma('synchronous = NORMAL');  // safe with WAL, good durability
 db.pragma('foreign_keys = ON');
+db.pragma('busy_timeout = 5000');   // wait (don't error) if the file is briefly locked
 
 db.exec(`
 CREATE TABLE IF NOT EXISTS categories (

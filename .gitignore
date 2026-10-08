@@ -38,6 +38,8 @@ server/test-hostinger.js
 *.sln
 *.sw?
 
-# Local SQLite database (runtime data - regenerate catalog with: cd server && npm run seed:sqlite)
+# Local SQLite database + its backups (runtime data, never committed).
+# Regenerate the catalog with: cd server && npm run seed:sqlite
 server/data/store.db
 server/data/store.db-*
+server/data/backups/

@@ -97,4 +97,6 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Server running on port ${PORT}`);
   console.log(`✅ Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`✅ API available at: /api/health`);
+  // Automatic rotating backups of the orders database.
+  require('./lib/backup').startScheduledBackups();
 });
