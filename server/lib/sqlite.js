@@ -6,10 +6,13 @@ const Database = require('better-sqlite3');
 // is ALWAYS available (no external service, nothing to "activate", never
 // pauses). Products, orders, reviews, categories and settings all live here.
 // Product images still live on Cloudinary (a CDN that doesn't pause).
-const DATA_DIR = path.join(__dirname, '../data');
+// DB_PATH lets you point the database file at a PERSISTENT location (e.g. a
+// directory that survives deploys on managed hosting). Defaults to data/store.db.
+const dbFile = process.env.DB_PATH || path.join(__dirname, '../data', 'store.db');
+const DATA_DIR = path.dirname(dbFile);
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
-const db = new Database(path.join(DATA_DIR, 'store.db'));
+const db = new Database(dbFile);
 db.pragma('journal_mode = WAL');    // durable + allows readers during a write
 db.pragma('synchronous = NORMAL');  // safe with WAL, good durability
 db.pragma('foreign_keys = ON');
@@ -142,3 +145,19 @@ CREATE INDEX IF NOT EXISTS idx_products_commerce ON products(commerce_status);
 `);
 
 module.exports = db;
+
+// Auto-seed the catalog on first run (empty database) so a fresh deploy has
+// its products immediately, with no manual step. This only fills the catalog
+// (products/categories/reviews/settings) and NEVER touches orders.
+try {
+  const count = db.prepare('SELECT COUNT(*) AS c FROM products').get().c;
+  if (count === 0) {
+    const seedMod = require('../scripts/seed-sqlite');
+    if (typeof seedMod.seedFromExport === 'function') {
+      seedMod.seedFromExport();
+      console.log('🌱 Catalog auto-seeded (database was empty).');
+    }
+  }
+} catch (err) {
+  console.error('⚠️ Catalog auto-seed check failed:', err.message);
+}

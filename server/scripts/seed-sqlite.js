@@ -10,7 +10,7 @@ const EXPORT = path.join(__dirname, '../data/supabase-export.json');
 const b = (v) => (v ? 1 : 0);
 const js = (v) => (v == null ? null : JSON.stringify(v));
 
-function run() {
+function seedFromExport() {
   const data = JSON.parse(fs.readFileSync(EXPORT, 'utf8'));
 
   const seed = db.transaction(() => {
@@ -72,4 +72,7 @@ function run() {
   console.log('   active products:', db.prepare("SELECT COUNT(*) c FROM products WHERE commerce_status='active'").get().c);
 }
 
-run();
+module.exports = { seedFromExport };
+
+// Run directly: `npm run seed:sqlite`
+if (require.main === module) seedFromExport();
