@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
+import CommerceFieldsSection from './CommerceFieldsSection';
 
 const emptyProduct = {
   name: '',
@@ -200,6 +201,14 @@ export default function ProductForm() {
           {saving ? 'Saving…' : 'Save Product'}
         </button>
       </form>
+
+      {isEdit ? (
+        <CommerceFieldsSection productId={Number(id)} initial={product} />
+      ) : (
+        <p className="admin-card" style={{ marginTop: '1rem', color: '#6b7280' }}>
+          Save this product first — pricing, stock, and category can be set once it exists.
+        </p>
+      )}
     </div>
   );
 }

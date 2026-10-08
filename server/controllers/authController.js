@@ -1,19 +1,19 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// Local admin login (no external auth service). Credentials come from
+// server/.env: ADMIN_USERNAME + ADMIN_PASSWORD (or ADMIN_PASSWORD_HASH).
 exports.login = async (req, res) => {
-  const { username, password } = req.body;
+  const user = req.body.email || req.body.username;
+  const { password } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).json({ success: false, error: 'Username and password are required' });
+  if (!user || !password) {
+    return res.status(400).json({ success: false, error: 'Email and password are required' });
   }
-
-  if (username !== process.env.ADMIN_USERNAME) {
+  if (user !== process.env.ADMIN_USERNAME) {
     return res.status(401).json({ success: false, error: 'Invalid credentials' });
   }
 
-  // Support both a bcrypt hash (ADMIN_PASSWORD_HASH) and a plain password (ADMIN_PASSWORD).
-  // Plain password is safer to store in hosting panels where $ signs get mangled.
   let valid = false;
   if (process.env.ADMIN_PASSWORD_HASH) {
     valid = await bcrypt.compare(password, process.env.ADMIN_PASSWORD_HASH);
@@ -25,6 +25,10 @@ exports.login = async (req, res) => {
     return res.status(401).json({ success: false, error: 'Invalid credentials' });
   }
 
-  const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '12h' });
-  res.json({ success: true, token });
+  const token = jwt.sign({ username: user, role: 'super_admin' }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  res.json({ success: true, token, user: { id: user, email: user, fullName: 'Admin', role: 'super_admin' } });
+};
+
+exports.me = (req, res) => {
+  res.json({ success: true, user: req.user });
 };

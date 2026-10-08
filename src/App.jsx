@@ -12,6 +12,12 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
 import AdminApp from './admin/AdminApp'
+import CartPage from './modules/cart/pages/CartPage'
+import WishlistPage from './modules/wishlist/pages/WishlistPage'
+import CheckoutPage from './modules/checkout/pages/CheckoutPage'
+import OrderConfirmationPage from './modules/checkout/pages/OrderConfirmationPage'
+import TrackOrderPage from './modules/tracking/pages/TrackOrderPage'
+import ToastContainer from './components/ToastContainer'
 
 import './App.css'
 import ProductsPage from './pages/ProductsPage'
@@ -25,6 +31,11 @@ function PublicSite() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
+          <Route path="/track/:token" element={<TrackOrderPage />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/careers" element={<Careers />} />
@@ -43,10 +54,13 @@ function PublicSite() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/admin/*" element={<AdminApp />} />
-      <Route path="/*" element={<PublicSite />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/admin/*" element={<AdminApp />} />
+        <Route path="/*" element={<PublicSite />} />
+      </Routes>
+      <ToastContainer />
+    </>
   )
 }
 

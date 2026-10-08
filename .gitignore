@@ -12,8 +12,16 @@ dist
 dist-ssr
 *.local
 
+# Test artifacts
+test-results
+playwright-report
+blob-report
+playwright/.cache
+
 # Server secrets
 server/.env
+.env
+.env.local
 
 # Uploaded files (local storage, not committed)
 server/uploads/
@@ -29,3 +37,9 @@ server/test-hostinger.js
 *.njsproj
 *.sln
 *.sw?
+
+# Local SQLite database + its backups (runtime data, never committed).
+# Regenerate the catalog with: cd server && npm run seed:sqlite
+server/data/store.db
+server/data/store.db-*
+server/data/backups/

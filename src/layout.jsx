@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaLock } from 'react-icons/fa';
+import { FaBars, FaTimes, FaShoppingCart, FaHeart } from 'react-icons/fa';
 import logo from './assets/logo3.png';
 import './layout.css';
 import Footer from './components/Footer';
+import { useCartStore } from './modules/cart/cartStore';
+import { useWishlistStore } from './modules/wishlist/wishlistStore';
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const itemCount = useCartStore((s) => s.itemCount());
+  const wishlistCount = useWishlistStore((s) => s.items.length);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,12 +75,23 @@ const Layout = ({ children }) => {
             </Link>
 
             <Link
-              to="/admin"
-              className="nav-admin-btn"
+              to="/wishlist"
+              className="nav-admin-btn nav-cart-btn"
               onClick={() => setMenuOpen(false)}
-              title="Admin Login"
+              title="Wishlist"
             >
-              <FaLock size={13} />
+              <FaHeart size={13} />
+              {wishlistCount > 0 && <span className="nav-cart-badge">{wishlistCount}</span>}
+            </Link>
+
+            <Link
+              to="/cart"
+              className="nav-admin-btn nav-cart-btn"
+              onClick={() => setMenuOpen(false)}
+              title="Cart"
+            >
+              <FaShoppingCart size={13} />
+              {itemCount > 0 && <span className="nav-cart-badge">{itemCount}</span>}
             </Link>
           </nav>
         </div>

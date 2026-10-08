@@ -799,3 +799,132 @@
 @media (max-width: 560px) {
   .prod-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Commerce: price, discount, Add to Cart, wishlist ---- */
+.prod-card__price-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.prod-card__price {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1B4332;
+  letter-spacing: -0.01em;
+}
+
+.prod-card__price--was {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.prod-card__discount-badge {
+  background: #B0603F;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.prod-card__price-request {
+  display: inline-block;
+  margin: 8px 0 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #B0603F;
+  background: rgba(176, 96, 63, 0.1);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* Add-to-cart button — full width, lifts on hover */
+.prod-card__add-btn,
+.prod-panel__add-btn {
+  width: 100%;
+  padding: 11px 14px;
+  border: none;
+  border-radius: 12px;
+  background: #1B4332;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.prod-card__add-btn:hover,
+.prod-panel__add-btn:hover {
+  background: #2D6A4F;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(27, 67, 50, 0.25);
+}
+
+.prod-panel__add-btn {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.prod-panel__actions {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin: 14px 0 20px;
+}
+
+/* Wishlist heart — floating on the card, inline in the panel */
+.wishlist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  color: #B0603F;
+  background: #fff;
+  transition: transform 0.15s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.12);
+}
+
+.wishlist-btn.active {
+  color: #e11d48;
+}
+
+.prod-card__wishlist {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.prod-panel__wishlist {
+  width: 48px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  border: 1.5px solid #E3DCCB;
+}
+
+/* Card polish */
+.prod-card {
+  position: relative;
+}
+
+.prod-card__add-btn:focus-visible,
+.prod-panel__add-btn:focus-visible,
+.wishlist-btn:focus-visible {
+  outline: 2px solid #2D6A4F;
+  outline-offset: 2px;
+}

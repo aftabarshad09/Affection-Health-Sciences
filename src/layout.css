@@ -220,6 +220,26 @@
   color: #fff;
 }
 
+.nav-cart-btn {
+  position: relative;
+}
+
+.nav-cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #B0603F;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+}
+
 /* =============================================
    HAMBURGER (mobile)
 ============================================= */

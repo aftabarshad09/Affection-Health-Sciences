@@ -2,8 +2,28 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import '../style/ProductsPage.css';
 import { FaTimes, FaCheckCircle, FaFlask, FaShieldAlt, FaLeaf, FaAtom } from 'react-icons/fa';
+import AddToCartButton from '../modules/cart/AddToCartButton';
+import WishlistButton from '../modules/wishlist/WishlistButton';
+import { formatMoney } from '../utils/currency';
 
 import heroBg from '../assets/videos/002.mp4';
+
+const ProductPriceBlock = ({ product }) => {
+  if (!product.retailPrice) {
+    return <span className="prod-card__price-request">Price on request</span>;
+  }
+  const hasDiscount = product.salePrice && product.salePrice < product.retailPrice;
+  const discountPct = hasDiscount
+    ? Math.round(100 - (product.salePrice / product.retailPrice) * 100)
+    : 0;
+  return (
+    <div className="prod-card__price-row">
+      <span className="prod-card__price">{formatMoney(hasDiscount ? product.salePrice : product.retailPrice)}</span>
+      {hasDiscount && <span className="prod-card__price--was">{formatMoney(product.retailPrice)}</span>}
+      {hasDiscount && <span className="prod-card__discount-badge">-{discountPct}%</span>}
+    </div>
+  );
+};
 
 const categoryColors = {
   "Women's Health": '#db2777',
@@ -21,21 +41,6 @@ const categoryColors = {
   'Hormonal Health': '#ec4899',
   'Skin & Antioxidant Care': '#e11d48',
 };
-
-// Only these products are shown on the public "Our Products" page for now.
-// The catalog may hold more, but the storefront is intentionally limited to
-// this set. Matched case-insensitively against the /api/products name.
-const FEATURED_PRODUCT_NAMES = [
-  'gynogid',
-  'hepatovital',
-  'glumin sr',
-  'best protein',
-  'energid plus',
-  'babyline cereal',
-];
-
-const isFeaturedProduct = (product) =>
-  FEATURED_PRODUCT_NAMES.includes((product.name || '').trim().toLowerCase());
 
 const DualPackCardImage = ({ product }) => {
   const [showA, setShowA] = useState(true);
@@ -87,7 +92,7 @@ const ProductsPage = () => {
   useEffect(() => {
     fetch('/api/products')
       .then((res) => res.json())
-      .then((data) => { if (data.success) setProducts(data.products.filter(isFeaturedProduct)); })
+      .then((data) => { if (data.success) setProducts(data.products); })
       .catch(() => {});
   }, []);
 
@@ -124,14 +129,15 @@ const ProductsPage = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
+  // Optional deep link: /products?product=<id> opens that product's modal.
   useEffect(() => {
     const productId = searchParams.get('product');
     if (!productId) return;
-    const match = products.find(p => String(p.id) === productId);
+    const match = products.find((p) => String(p.id) === productId);
     if (!match) return;
     const timer = setTimeout(() => openProduct(match), 0);
     return () => clearTimeout(timer);
-  }, [searchParams]);
+  }, [searchParams, products]);
 
   return (
     <div className="prod-pg">
@@ -206,6 +212,7 @@ const ProductsPage = () => {
               {product.badge && (
                 <span className="prod-card__badge">{product.badge}</span>
               )}
+              <WishlistButton product={product} className="prod-card__wishlist" />
               <div className="prod-card__img-wrap">
                 {product.isDualPack ? (
                   <DualPackCardImage product={product} />
@@ -224,10 +231,12 @@ const ProductsPage = () => {
                 </span>
                 <h3 className="prod-card__name">{product.name}</h3>
                 <p className="prod-card__one-line">{product.cardLine}</p>
+                <ProductPriceBlock product={product} />
                 <div className="prod-card__footer">
                   <span className="prod-card__form"><FaLeaf /> {product.form}</span>
                   <span className="prod-card__cta">View →</span>
                 </div>
+                <AddToCartButton product={product} className="prod-card__add-btn glass-btn" />
               </div>
             </div>
           ))}
@@ -260,6 +269,11 @@ const ProductsPage = () => {
               </button>
               <div className="prod-panel__scroll">
                 {active.badge && <span className="prod-panel__badge">{active.badge}</span>}
+                <ProductPriceBlock product={active} />
+                <div className="prod-panel__actions">
+                  <AddToCartButton product={active} className="prod-panel__add-btn glass-btn" />
+                  <WishlistButton product={active} className="prod-panel__wishlist" />
+                </div>
                 <p className="prod-panel__desc">{active.description}</p>
 
                 <div className="prod-panel__section">

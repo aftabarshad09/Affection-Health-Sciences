@@ -39,7 +39,9 @@ export default function ProductsAdmin() {
             <th>Image</th>
             <th>Name</th>
             <th>Category</th>
-            <th>Badge</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Shop Status</th>
             <th></th>
           </tr>
         </thead>
@@ -49,7 +51,15 @@ export default function ProductsAdmin() {
               <td><img src={p.isDualPack ? p.imageA : p.image} alt={p.name} /></td>
               <td>{p.name}</td>
               <td>{p.category}</td>
-              <td>{p.badge || '—'}</td>
+              <td>{p.retailPrice ? `Rs. ${p.retailPrice}` : '—'}</td>
+              <td>
+                {p.commerceStatus === 'active' && p.stock <= 10 ? (
+                  <span className="admin-badge admin-badge--low-stock">{p.stock} left</span>
+                ) : (
+                  p.stock ?? '—'
+                )}
+              </td>
+              <td><span className={`admin-badge admin-badge--${p.commerceStatus || 'draft'}`}>{p.commerceStatus || 'draft'}</span></td>
               <td>
                 <div className="admin-row-actions">
                   <Link to={`/admin/products/${p.id}/edit`} className="admin-btn admin-btn--ghost">Edit</Link>
