@@ -1,8 +1,14 @@
 .cart-page {
   max-width: 960px;
   margin: 0 auto;
-  padding: 48px 20px 80px;
+  /* top padding clears the fixed header (~75px) on desktop */
+  padding: 96px 20px 80px;
   min-height: 60vh;
+}
+
+/* on mobile the Layout (.site-main) already offsets for the header */
+@media (max-width: 900px) {
+  .cart-page { padding-top: 24px; }
 }
 
 .cart-page__title {

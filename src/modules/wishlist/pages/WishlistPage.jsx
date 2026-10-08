@@ -3,6 +3,7 @@ import { useWishlistStore } from '../wishlistStore';
 import { useCartStore } from '../../cart/cartStore';
 import { useToast } from '../../../hooks/useToastStore';
 import { formatMoney } from '../../../utils/currency';
+import { optimizedImage } from '../../../utils/image';
 import '../../cart/cart.css';
 import '../wishlist.css';
 
@@ -40,7 +41,7 @@ export default function WishlistPage() {
             <div className="wishlist-card" key={product.id}>
               <div className="wishlist-card__img">
                 {(product?.image || product?.imageA) && (
-                  <img src={product.image || product.imageA} alt={product.name} />
+                  <img src={optimizedImage(product.image || product.imageA, 300)} alt={product.name} loading="lazy" />
                 )}
               </div>
               <div className="wishlist-card__body">

@@ -1,8 +1,12 @@
 .checkout-page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 48px 20px 80px;
+  padding: 96px 20px 80px;
   min-height: 60vh;
+}
+
+@media (max-width: 900px) {
+  .checkout-page { padding-top: 24px; }
 }
 
 .checkout-page__title {

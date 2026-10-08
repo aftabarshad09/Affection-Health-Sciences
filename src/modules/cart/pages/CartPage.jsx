@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '../cartStore';
 import { formatMoney } from '../../../utils/currency';
+import { optimizedImage } from '../../../utils/image';
 import '../cart.css';
 
 export default function CartPage() {
@@ -33,7 +34,7 @@ export default function CartPage() {
               <div className="cart-item" key={item.productId}>
                 <div className="cart-item__img-wrap">
                   {(item.product?.image || item.product?.imageA) && (
-                    <img src={item.product.image || item.product.imageA} alt={item.product.name} />
+                    <img src={optimizedImage(item.product.image || item.product.imageA, 160)} alt={item.product.name} loading="lazy" />
                   )}
                 </div>
                 <div>

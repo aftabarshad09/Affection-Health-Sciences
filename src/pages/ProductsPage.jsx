@@ -5,6 +5,7 @@ import { FaTimes, FaCheckCircle, FaFlask, FaShieldAlt, FaLeaf, FaAtom } from 're
 import AddToCartButton from '../modules/cart/AddToCartButton';
 import WishlistButton from '../modules/wishlist/WishlistButton';
 import { formatMoney } from '../utils/currency';
+import { optimizedImage } from '../utils/image';
 
 import heroBg from '../assets/videos/002.mp4';
 
@@ -50,8 +51,8 @@ const DualPackCardImage = ({ product }) => {
   }, []);
   return (
     <div className="prod-card__dual-wrap">
-      <img src={product.imageA} alt={product.name} className={`prod-card__dual-img${showA ? ' visible' : ''}`} />
-      <img src={product.imageB} alt={product.name} className={`prod-card__dual-img${!showA ? ' visible' : ''}`} />
+      <img src={optimizedImage(product.imageA)} alt={product.name} loading="lazy" decoding="async" className={`prod-card__dual-img${showA ? ' visible' : ''}`} />
+      <img src={optimizedImage(product.imageB)} alt={product.name} loading="lazy" decoding="async" className={`prod-card__dual-img${!showA ? ' visible' : ''}`} />
       <div className="prod-card__dual-dots">
         <span className={`prod-card__dual-dot${showA ? ' active' : ''}`} />
         <span className={`prod-card__dual-dot${!showA ? ' active' : ''}`} />
@@ -69,8 +70,8 @@ const DualPackPanelImage = ({ product }) => {
   return (
     <div className="prod-panel__dual-wrap">
       <div className="prod-panel__dual-img-area">
-        <img src={product.imageA} alt={product.name} className={`prod-panel__dual-img${showA ? ' visible' : ''}`} />
-        <img src={product.imageB} alt={product.name} className={`prod-panel__dual-img${!showA ? ' visible' : ''}`} />
+        <img src={optimizedImage(product.imageA, 800)} alt={product.name} decoding="async" className={`prod-panel__dual-img${showA ? ' visible' : ''}`} />
+        <img src={optimizedImage(product.imageB, 800)} alt={product.name} decoding="async" className={`prod-panel__dual-img${!showA ? ' visible' : ''}`} />
       </div>
       <div className="prod-panel__dual-toggle">
         <button className={`dual-dot-btn${showA ? ' active' : ''}`} onClick={() => setShowA(true)} aria-label="Show variant 1" />
@@ -88,12 +89,14 @@ const ProductsPage = () => {
   const [filter, setFilter] = useState('All');
 
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/products')
       .then((res) => res.json())
       .then((data) => { if (data.success) setProducts(data.products); })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
   const categories = ['All', ...Array.from(new Set(products.map(p => p.category)))];
@@ -194,7 +197,21 @@ const ProductsPage = () => {
       </div>
 
       <section className="prod-grid-wrap">
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div className="prod-grid">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div className="prod-card prod-card--skeleton" key={i}>
+                <div className="prod-card__img-wrap"><div className="skeleton skeleton--img" /></div>
+                <div className="prod-card__body">
+                  <div className="skeleton skeleton--line skeleton--sm" />
+                  <div className="skeleton skeleton--line" />
+                  <div className="skeleton skeleton--line skeleton--md" />
+                  <div className="skeleton skeleton--btn" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="prod-empty">
             <span className="prod-empty__icon">🔍</span>
             <p className="prod-empty__text">No products match "<strong>{search}</strong>"</p>
@@ -218,7 +235,7 @@ const ProductsPage = () => {
                   <DualPackCardImage product={product} />
                 ) : product.image ? (
                   <div className="prod-card__svg-wrap">
-                    <img src={product.image} alt={product.name} className="prod-card__img--svg" />
+                    <img src={optimizedImage(product.image)} alt={product.name} loading="lazy" decoding="async" className="prod-card__img--svg" />
                   </div>
                 ) : null}
               </div>
@@ -253,7 +270,7 @@ const ProductsPage = () => {
                 <DualPackPanelImage product={active} />
               ) : active.image ? (
                 <div className="prod-panel__svg-wrap">
-                  <img src={active.image} alt={active.name} className="prod-panel__img-svg" />
+                  <img src={optimizedImage(active.image, 800)} alt={active.name} decoding="async" className="prod-panel__img-svg" />
                 </div>
               ) : null}
               <div className="prod-panel__left-text">
