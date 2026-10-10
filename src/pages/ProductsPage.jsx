@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams, useNavigate } from 'react-router-dom';
 import '../style/ProductsPage.css';
 import { FaTimes, FaCheckCircle, FaFlask, FaShieldAlt, FaLeaf, FaAtom } from 'react-icons/fa';
 import AddToCartButton from '../modules/cart/AddToCartButton';
@@ -83,6 +83,8 @@ const DualPackPanelImage = ({ product }) => {
 
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { slug } = useParams();
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [active, setActive] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -123,27 +125,55 @@ const ProductsPage = () => {
       setActive(null);
       document.body.style.overflow = '';
     }, 320);
-    setSearchParams({}, { replace: true });
+    // Return to the clean /products URL.
+    if (slug) navigate('/products', { replace: false });
+    else setSearchParams({}, { replace: true });
+  };
+
+  // Clicking a product goes to its own URL (/products/<slug>) so the address
+  // bar reflects the product and the page is shareable/indexable.
+  const goToProduct = (product) => {
+    if (product.slug) navigate(`/products/${product.slug}`);
+    else openProduct(product);
   };
 
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') closeProduct(); };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
 
-  // Optional deep link: /products?product=<id> opens that product's modal.
+  // Open the matching product's details when the URL carries a slug
+  // (/products/<slug>) — this handles both clicks and direct links from Google.
+  // The legacy /products?product=<id> deep link is also supported.
   useEffect(() => {
-    const productId = searchParams.get('product');
-    if (!productId) return;
-    const match = products.find((p) => String(p.id) === productId);
-    if (!match) return;
-    const timer = setTimeout(() => openProduct(match), 0);
-    return () => clearTimeout(timer);
-  }, [searchParams, products]);
+    if (!products.length) return;
+    let match = null;
+    if (slug) match = products.find((p) => p.slug === slug);
+    else {
+      const productId = searchParams.get('product');
+      if (productId) match = products.find((p) => String(p.id) === productId);
+    }
+    if (match) {
+      const timer = setTimeout(() => openProduct(match), 0);
+      return () => clearTimeout(timer);
+    }
+    // URL has no (valid) product → make sure no modal is open.
+    if (!slug && !searchParams.get('product') && active) {
+      setVisible(false);
+      setActive(null);
+      document.body.style.overflow = '';
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug, searchParams, products]);
 
+  // Update the browser tab title to the open product (React 19 hoists <title>
+  // to <head> and keeps a single one). The full SEO meta/canonical/structured
+  // data for crawlers is baked into each prerendered /products/<slug> page.
   return (
     <div className="prod-pg">
+      {active && <title>{`${active.name} | Affection Health Sciences`}</title>}
       <section className="prod-hero">
         <video
           className="prod-hero__video"
@@ -223,7 +253,7 @@ const ProductsPage = () => {
             <div
               className={`prod-card${product.cardVariant ? ` prod-card--${product.cardVariant}` : ''}`}
               key={product.id}
-              onClick={() => openProduct(product)}
+              onClick={() => goToProduct(product)}
               style={{ animationDelay: `${i * 40}ms` }}
             >
               {product.badge && (
